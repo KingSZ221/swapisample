@@ -170,10 +170,7 @@ namespace wpfapp
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
             RespVo oRespVo = SwBuAppService.getInstance().saveCurDoc();
-            if (!oRespVo.ok)
-            {
-                MessageBox.Show(oRespVo.msg);
-            }
+            MessageBox.Show(oRespVo.msg);
         }
 
         /// <summary>
@@ -181,11 +178,8 @@ namespace wpfapp
         /// </summary>
         private void Button_Click_9(object sender, RoutedEventArgs e)
         {
-            RespVo oRespVo = SwBuAppService.getInstance().saveAsCurDoc();
-            if (!oRespVo.ok)
-            {
-                MessageBox.Show(oRespVo.msg);
-            }
+            RespVo oRespVo = SwBuAppService.getInstance().saveAsCurDoc(SwBuAppService.getInstance().getCurDocPath());
+            MessageBox.Show(oRespVo.msg);
         }
 
         /// <summary>
@@ -198,6 +192,34 @@ namespace wpfapp
             {
                 MessageBox.Show(oRespVo.msg);
             }
+        }
+
+        /// <summary>
+        /// 导出dxf
+        /// </summary>
+        private void Button_Click_12(object sender, RoutedEventArgs e)
+        {
+            RespVo oRespVo = SwBuAppService.getInstance().exportDxf();
+            MessageBox.Show(oRespVo.msg);
+
+        }
+
+        /// <summary>
+        /// 导出svg
+        /// </summary>
+        private void Button_Click_13(object sender, RoutedEventArgs e)
+        {
+            RespVo oRespVo = SwBuAppService.getInstance().exportSvg();
+            MessageBox.Show(oRespVo.msg);
+        }
+
+        /// <summary>
+        /// 导出iges
+        /// </summary>
+        private void Button_Click_14(object sender, RoutedEventArgs e)
+        {
+            RespVo oRespVo = SwBuAppService.getInstance().exportIges();
+            MessageBox.Show(oRespVo.msg);
         }
     }
 }

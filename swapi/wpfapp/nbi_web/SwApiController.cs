@@ -32,7 +32,7 @@ namespace wpfapp.nbi
         }
 
         [HttpPost]
-        [Route("openDoc")]  // 对应 对应 api/sw/openDoc
+        [Route("openDoc")]
         public IHttpActionResult openDoc([FromBody] OpenDocInVo oInVo)
         {
             if (oInVo == null)
@@ -40,6 +40,39 @@ namespace wpfapp.nbi
                 return Ok(RespVo.genError("请求参数错误"));
             }
             return Ok(SwBuAppService.getInstance().openDoc(oInVo.getTestDocName(), oInVo.getSwDocType()));
+        }
+
+        [HttpPost]
+        [Route("closeDoc")]
+        public IHttpActionResult closeDoc([FromBody] CloseDocInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuAppService.getInstance().closeDoc(oInVo.DocTitle));
+        }
+
+        [HttpPost]
+        [Route("saveDoc")]
+        public IHttpActionResult saveDoc([FromBody] SaveDocInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuAppService.getInstance().saveDoc(oInVo));
+        }
+
+        [HttpPost]
+        [Route("exportDoc")]
+        public IHttpActionResult exportDoc([FromBody] ExportDocInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuAppService.getInstance().exportDoc(oInVo));
         }
 
         [HttpPost]

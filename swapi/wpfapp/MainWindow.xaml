@@ -17,9 +17,10 @@
                 <TextBox x:Name="msgBox" Grid.Column="1" TextWrapping="WrapWithOverflow"></TextBox>
             </Grid>
         </GroupBox>
-        <GroupBox Margin="2,10" Header="文档" Height="120">
+        <GroupBox Margin="2,10" Header="文档" Height="150">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
@@ -41,6 +42,9 @@
                 <Button Grid.Row="1" Grid.Column="2" Margin="2" Width="100" Height="25" Click="Button_Click_9">另存当前</Button>
                 <Button Grid.Row="2" Grid.Column="2" Margin="2" Width="100" Height="25" Click="Button_Click_10">关闭当前</Button>
 
+                <Button Grid.Row="4" Grid.Column="0" Margin="2" Width="100" Height="25" Click="Button_Click_12">导出dxf</Button>
+                <Button Grid.Row="4" Grid.Column="1" Margin="2" Width="100" Height="25" Click="Button_Click_13">导出svg</Button>
+                <Button Grid.Row="4" Grid.Column="2" Margin="2" Width="100" Height="25" Click="Button_Click_14">导出iges</Button>
             </Grid>
         </GroupBox>
         <GroupBox Margin="2,10" Header="创建圆管" Height="240">
@@ -63,7 +67,7 @@
                 <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtBoxLength" Height="25">100</TextBox>
                 <Label Grid.Row="3" Grid.Column="0">壁厚:</Label>
                 <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtBoxThickness" Height="25">2</TextBox>
-                <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Width="150" Height="25" Click="Button_Click_7">绘制</Button>
+                <Button Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" Width="150" Height="25" Click="Button_Click_7">绘制</Button>
             </Grid>
         </GroupBox>
     </StackPanel>
