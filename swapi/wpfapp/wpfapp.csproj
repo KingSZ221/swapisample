@@ -145,6 +145,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="bu\log\ILogService.cs" />
+    <Compile Include="bu\log\RespVoLogExt.cs" />
+    <Compile Include="bu\log\SwBuLogService.cs" />
+    <Compile Include="ui\menu\SwUiMenuService.cs" />
+    <Compile Include="ui\output\SwUiLogPanel.xaml.cs">
+      <DependentUpon>SwUiLogPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\output\SwUiOutputService.cs" />
+    <Compile Include="ui\prop\SwUiPropDialog.xaml.cs">
+      <DependentUpon>SwUiPropDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\prop\SwUiPropService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -153,19 +165,29 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="bu\SwBuAppService.cs" />
-    <Compile Include="bu\utils\DxfToSvgConverter.cs" />
-    <Compile Include="bu\vo\CloseDocInVo.cs" />
-    <Compile Include="bu\vo\ExportDocInVo.cs" />
-    <Compile Include="bu\vo\NewCirclePipeInVo.cs" />
-    <Compile Include="bu\vo\NewDocInVo.cs" />
-    <Compile Include="bu\vo\OpenDocInVo.cs" />
-    <Compile Include="bu\vo\RespVo.cs" />
-    <Compile Include="bu\vo\SaveDocInVo.cs" />
+    <Compile Include="bu\app\SwBuAppService.cs" />
+    <Compile Include="bu\file\SwBuFileService.cs" />
+    <Compile Include="bu\sketch\SwBuSketchService.cs" />
+    <Compile Include="bu\file\export\DxfToSvgConverter.cs" />
+    <Compile Include="bu\file\vo\CloseDocInVo.cs" />
+    <Compile Include="bu\file\vo\ExportDocInVo.cs" />
+    <Compile Include="bu\sketch\vo\NewCirclePipeInVo.cs" />
+    <Compile Include="bu\file\vo\NewDocInVo.cs" />
+    <Compile Include="bu\file\vo\OpenDocInVo.cs" />
+    <Compile Include="utils\io\RespVo.cs" />
+    <Compile Include="bu\file\vo\SaveDocInVo.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ui\output\SwUiLogPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\prop\SwUiPropDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="nbi_web\SampleController.cs" />
@@ -209,9 +231,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="core\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
@@ -225,6 +245,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit">
+      <Version>4.7.25104.5739</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.9" />
     <PackageReference Include="Microsoft.Owin.Host.HttpListener" Version="4.2.3" />
     <PackageReference Include="Microsoft.Owin.Hosting" Version="4.2.3" />

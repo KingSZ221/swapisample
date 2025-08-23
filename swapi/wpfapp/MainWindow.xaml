@@ -5,71 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpfapp"
         mc:Ignorable="d"
-        Title="SolidWorks API Test" Height="600" Width="400">
-    <StackPanel>
-        <GroupBox Margin="2" Header="连接SolidWorks" Height="100">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Width="150" Height="25" Click="Button_Click">连接SolidWorks</Button>
-                <TextBox x:Name="msgBox" Grid.Column="1" TextWrapping="WrapWithOverflow"></TextBox>
-            </Grid>
-        </GroupBox>
-        <GroupBox Margin="2,10" Header="文档" Height="150">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="120"/>
-                    <ColumnDefinition Width="120"/>
-                    <ColumnDefinition Width="120"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" Margin="2" Width="100" Height="25" Click="Button_Click_1">新建零件</Button>
-                <Button Grid.Row="1" Grid.Column="0" Margin="2" Width="100" Height="25" Click="Button_Click_2">新建装配体</Button>
-                <Button Grid.Row="2" Grid.Column="0" Margin="2" Width="100" Height="25" Click="Button_Click_3">新建工程图</Button>
+        Title="SolidWorks API Test" Height="800" Width="400">
+    <DockPanel LastChildFill="True">
+        <!-- 顶部区域 -->
+        <DockPanel DockPanel.Dock="Top">
+            <Menu x:Name="mainMenu" DockPanel.Dock="Top" Height="20"/>
+            <ToolBarTray x:Name="mainToobar" DockPanel.Dock="Top" Height="75"/>
+        </DockPanel>
 
-                <Button Grid.Row="0" Grid.Column="1" Margin="2" Width="100" Height="25" Click="Button_Click_4">打开零件</Button>
-                <Button Grid.Row="1" Grid.Column="1" Margin="2" Width="100" Height="25" Click="Button_Click_5">打开装配体</Button>
-                <Button Grid.Row="2" Grid.Column="1" Margin="2" Width="100" Height="25" Click="Button_Click_6">打开工程图</Button>
+        <!-- 左侧工具箱 -->
+        <TabControl x:Name="mainToolbox" DockPanel.Dock="Left" Width="0"/>
 
-                <Button Grid.Row="0" Grid.Column="2" Margin="2" Width="100" Height="25" Click="Button_Click_8">保存当前</Button>
-                <Button Grid.Row="1" Grid.Column="2" Margin="2" Width="100" Height="25" Click="Button_Click_9">另存当前</Button>
-                <Button Grid.Row="2" Grid.Column="2" Margin="2" Width="100" Height="25" Click="Button_Click_10">关闭当前</Button>
+        <!-- 右侧属性面板 -->
+        <GridSplitter DockPanel.Dock="Right" Width="5"/>
+        <StackPanel x:Name="mainProp" DockPanel.Dock="Right" Width="0"/>
 
-                <Button Grid.Row="4" Grid.Column="0" Margin="2" Width="100" Height="25" Click="Button_Click_12">导出dxf</Button>
-                <Button Grid.Row="4" Grid.Column="1" Margin="2" Width="100" Height="25" Click="Button_Click_13">导出svg</Button>
-                <Button Grid.Row="4" Grid.Column="2" Margin="2" Width="100" Height="25" Click="Button_Click_14">导出iges</Button>
-            </Grid>
-        </GroupBox>
-        <GroupBox Margin="2,10" Header="创建圆管" Height="240">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center">圆心:0,0</TextBlock>
-                <Label Grid.Row="1" Grid.Column="0">半径:</Label>
-                <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtBoxRadius" Height="25">30</TextBox>
-                <Label Grid.Row="2" Grid.Column="0">长度:</Label>
-                <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtBoxLength" Height="25">100</TextBox>
-                <Label Grid.Row="3" Grid.Column="0">壁厚:</Label>
-                <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtBoxThickness" Height="25">2</TextBox>
-                <Button Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" Width="150" Height="25" Click="Button_Click_7">绘制</Button>
-            </Grid>
-        </GroupBox>
-    </StackPanel>
+        <!-- 底部输出窗口 -->
+        <GridSplitter DockPanel.Dock="Bottom" Height="5"/>
+        <TabControl x:Name="mainOutput" DockPanel.Dock="Bottom" Height="600"/>
+
+        <!-- 中央编辑器 -->
+        <StackPanel Height="10">
+        </StackPanel>
+    </DockPanel>
+    
     
 </Window>

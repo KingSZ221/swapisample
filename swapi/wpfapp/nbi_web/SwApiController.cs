@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using wpfapp.bu;
+using wpfapp.bu.app;
+using wpfapp.bu.file;
+using wpfapp.bu.sketch;
 using wpfapp.bu.vo;
 
 namespace wpfapp.nbi
@@ -28,7 +31,7 @@ namespace wpfapp.nbi
             {
                 return Ok(RespVo.genError("请求参数错误"));
             }
-            return Ok(SwBuAppService.getInstance().newDoc(oInVo.getSwDefaultTemplateType()));
+            return Ok(SwBuFileService.getInstance().newDoc(oInVo.getSwDefaultTemplateType()));
         }
 
         [HttpPost]
@@ -39,7 +42,7 @@ namespace wpfapp.nbi
             {
                 return Ok(RespVo.genError("请求参数错误"));
             }
-            return Ok(SwBuAppService.getInstance().openDoc(oInVo.getTestDocName(), oInVo.getSwDocType()));
+            return Ok(SwBuFileService.getInstance().openDoc(oInVo.getTestDocName(), oInVo.getSwDocType()));
         }
 
         [HttpPost]
@@ -50,7 +53,7 @@ namespace wpfapp.nbi
             {
                 return Ok(RespVo.genError("请求参数错误"));
             }
-            return Ok(SwBuAppService.getInstance().closeDoc(oInVo.DocTitle));
+            return Ok(SwBuFileService.getInstance().closeDoc(oInVo.DocTitle));
         }
 
         [HttpPost]
@@ -61,7 +64,7 @@ namespace wpfapp.nbi
             {
                 return Ok(RespVo.genError("请求参数错误"));
             }
-            return Ok(SwBuAppService.getInstance().saveDoc(oInVo));
+            return Ok(SwBuFileService.getInstance().saveDoc(oInVo));
         }
 
         [HttpPost]
@@ -72,7 +75,7 @@ namespace wpfapp.nbi
             {
                 return Ok(RespVo.genError("请求参数错误"));
             }
-            return Ok(SwBuAppService.getInstance().exportDoc(oInVo));
+            return Ok(SwBuFileService.getInstance().exportDoc(oInVo));
         }
 
         [HttpPost]
@@ -83,7 +86,7 @@ namespace wpfapp.nbi
             {
                 return Ok(RespVo.genError("请求参数错误"));
             }
-            return Ok(SwBuAppService.getInstance().createCirclePipe(oInVo));
+            return Ok(SwBuSketchService.getInstance().createCirclePipe(oInVo));
         }
     }
 }
