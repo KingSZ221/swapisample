@@ -84,7 +84,7 @@ namespace wpfapp.bu.file
         /// <param name="docType">文档类型</param>
         public RespVo openDoc(string strDocFileName, swDocumentTypes_e docType)
         {
-            string strDocPath = Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "Model", strDocFileName);
+            string strDocPath = SwBuAppService.getAppResFilePath(strDocFileName);
 
             if (swApp == null)
             {
@@ -223,7 +223,7 @@ namespace wpfapp.bu.file
                         strDocFileType = ".sldprt";
                         break;
                 }
-                strDocPath = Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "Model", strDocFileName + strDocFileType);
+                strDocPath = SwBuAppService.getAppResFilePath(strDocFileName + strDocFileType);
                 int errors = 0;
                 int warnings = 0;
                 bool oOk = doc.Extension.SaveAs3(strDocPath, (int)swSaveAsVersion_e.swSaveAsCurrentVersion, (int)swSaveAsOptions_e.swSaveAsOptions_Silent, null, null, ref errors, ref warnings);
@@ -327,7 +327,7 @@ namespace wpfapp.bu.file
                         strDocFileType = ".sldprt";
                         break;
                 }
-                strDocPath = Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "Model", strDocFileName + strDocFileType);
+                strDocPath = SwBuAppService.getAppResFilePath(strDocFileName + strDocFileType);
                 int errors = 0;
                 int warnings = 0;
                 bool oOk = doc.Extension.SaveAs3(strDocPath, (int)swSaveAsVersion_e.swSaveAsCurrentVersion, (int)swSaveAsOptions_e.swSaveAsOptions_Silent, null, null, ref errors, ref warnings);
@@ -451,7 +451,7 @@ namespace wpfapp.bu.file
                         continue;
                     }
 
-                    string strDocPath = Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "Model", strDocFileName + "_" + strViewName + ".dxf");
+                    string strDocPath = SwBuAppService.getAppResFilePath(strDocFileName + "_" + strViewName + ".dxf");
 
                     // 将工程图视图导出为Dxf
                     oRespVo = priExportToDxf(drawingDoc as ModelDoc2, strDocPath);
@@ -474,7 +474,7 @@ namespace wpfapp.bu.file
             else if (doc.GetType() == (int)swDocumentTypes_e.swDocDRAWING)
             {
                 // 将工程图视图导出为Dxf
-                string strDocPath = Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "Model", strDocFileName + ".dxf");
+                string strDocPath = SwBuAppService.getAppResFilePath(strDocFileName + ".dxf");
                 oRespVo = priExportToDxf(doc as ModelDoc2, strDocPath);
 
                 if (!oRespVo.ok)
@@ -516,8 +516,8 @@ namespace wpfapp.bu.file
             RespVo oRespVo = new RespVo();
             string strDocFilePath = doc.GetPathName();
             string strDocFileName = doc.GetTitle().Split(".".ToCharArray())[0];
-            string strDocPathDxf = Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "Model", strDocFileName + ".dxf");
-            string strDocPathSvg = Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "Model", strDocFileName + ".svg");
+            string strDocPathDxf = SwBuAppService.getAppResFilePath(strDocFileName + ".dxf");
+            string strDocPathSvg = SwBuAppService.getAppResFilePath(strDocFileName + ".svg");
             swDocumentTypes_e docType = (swDocumentTypes_e)doc.GetType();
 
             if (docType == swDocumentTypes_e.swDocPART ||
@@ -537,7 +537,7 @@ namespace wpfapp.bu.file
                     return oRespVo;
                 }
 
-                string strDocPath = Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "Model", strDocFileName + "_" + strViewName + ".dxf");
+                string strDocPath = SwBuAppService.getAppResFilePath(strDocFileName + "_" + strViewName + ".dxf");
 
                 // 将工程图视图导出为Dxf
                 oRespVo = priExportToDxf(drawingDoc as ModelDoc2, strDocPathDxf);
@@ -608,7 +608,7 @@ namespace wpfapp.bu.file
 
             RespVo oRespVo = new RespVo();
             string strDocFileName = doc.GetTitle().Split(".".ToCharArray())[0];
-            string strDocPath = Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "Model", strDocFileName + ".igs");
+            string strDocPath = SwBuAppService.getAppResFilePath(strDocFileName + ".igs");
             swDocumentTypes_e docType = (swDocumentTypes_e)doc.GetType();
 
             if (docType == swDocumentTypes_e.swDocPART ||
@@ -638,7 +638,7 @@ namespace wpfapp.bu.file
         private static RespVo priCreateTempDrawingDoc(ISldWorks swApp, ModelDoc2 modelDoc, ref IDrawingDoc drawingDoc)
         {
             // 获取空白工程图模板路径
-            var template = Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "Model", "blank_a0.DRWDOT");
+            var template = SwBuAppService.getAppResFilePath("blank_a0.DRWDOT");
             if (!File.Exists(template))
             {
                 return RespVoLogExt.genError("默认工程模板不存在");

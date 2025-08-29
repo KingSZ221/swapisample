@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,6 +111,23 @@ namespace wpfapp.bu.app
             return Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
         }
 
+        public static string getAppPath()
+        {
+            string strAppPath = Path.GetDirectoryName(typeof(MainWindow).Assembly.Location);
+            return strAppPath;
+        }
+
+        public static string getAppResDirPath()
+        {
+            string strResDirPath = Path.Combine(getAppPath(), "res");
+            return strResDirPath;
+        }
+
+        public static string getAppResFilePath(string strFileName)
+        {
+            string strDocPath = Path.Combine(getAppResDirPath(), strFileName);
+            return strDocPath;
+        }
 
         #endregion
 

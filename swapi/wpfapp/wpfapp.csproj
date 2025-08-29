@@ -148,6 +148,51 @@
     <Compile Include="bu\log\ILogService.cs" />
     <Compile Include="bu\log\RespVoLogExt.cs" />
     <Compile Include="bu\log\SwBuLogService.cs" />
+    <Compile Include="bu\sketch\action\arc\Create3PointArcAction.cs" />
+    <Compile Include="bu\sketch\action\arc\CreateArcAction.cs" />
+    <Compile Include="bu\sketch\action\arc\CreateTangentArcAction.cs" />
+    <Compile Include="bu\sketch\action\circle\CreateCircleAction.cs" />
+    <Compile Include="bu\sketch\action\circle\PerimeterCircleAction.cs" />
+    <Compile Include="bu\sketch\action\EnumSwSketchActionType.cs" />
+    <Compile Include="bu\sketch\action\line\CreateCenterLineAction.cs" />
+    <Compile Include="bu\sketch\action\pipe\CreateCirclePipeAction.cs" />
+    <Compile Include="bu\sketch\action\rect\Create3PointCenterRectangleAction.cs" />
+    <Compile Include="bu\sketch\action\rect\Create3PointCornerRectangleAction.cs" />
+    <Compile Include="bu\sketch\action\rect\CreateCenterRectangleAction.cs" />
+    <Compile Include="bu\sketch\action\rect\CreateCornerRectangleAction.cs" />
+    <Compile Include="bu\sketch\action\rect\CreateParallelogramAction.cs" />
+    <Compile Include="bu\sketch\action\sketch\ExitSketchAction.cs" />
+    <Compile Include="bu\sketch\action\sketch\DeleteSketchAction.cs" />
+    <Compile Include="bu\sketch\action\sketch\EditSketchAction.cs" />
+    <Compile Include="bu\sketch\action\sketch\GetAllSketchs.cs" />
+    <Compile Include="bu\sketch\action\slot\CreateSketchSlot3PointArcAction.cs" />
+    <Compile Include="bu\sketch\action\slot\CreateSketchSlotArcAction.cs" />
+    <Compile Include="bu\sketch\action\slot\CreateSketchSlotCenterLineAction.cs" />
+    <Compile Include="bu\sketch\action\slot\CreateSketchSlotLineAction.cs" />
+    <Compile Include="bu\sketch\action\SwSketchActionAttribute.cs" />
+    <Compile Include="bu\sketch\action\SwSketchActionBase.cs" />
+    <Compile Include="bu\sketch\action\line\CreateLineAction.cs" />
+    <Compile Include="bu\sketch\action\SwSketchActionProvider.cs" />
+    <Compile Include="bu\sketch\action\SwSketchEditActionBase.cs" />
+    <Compile Include="bu\sketch\vo\arc\Create3PointArcInVo.cs" />
+    <Compile Include="bu\sketch\vo\arc\CreateArcInVo.cs" />
+    <Compile Include="bu\sketch\vo\arc\CreateTangentArcInVo.cs" />
+    <Compile Include="bu\sketch\vo\circle\CreateCircleInVo.cs" />
+    <Compile Include="bu\sketch\vo\circle\PerimeterCircleInVo.cs" />
+    <Compile Include="bu\sketch\vo\line\CreateCenterLineInVo.cs" />
+    <Compile Include="bu\sketch\vo\line\CreateLineInVo.cs" />
+    <Compile Include="bu\sketch\vo\rect\Create3PointCenterRectangleInVo.cs" />
+    <Compile Include="bu\sketch\vo\rect\Create3PointCornerRectangleInVo.cs" />
+    <Compile Include="bu\sketch\vo\rect\CreateCenterRectangleInVo.cs" />
+    <Compile Include="bu\sketch\vo\rect\CreateCornerRectangleInVo.cs" />
+    <Compile Include="bu\sketch\vo\rect\CreateParallelogramInVo.cs" />
+    <Compile Include="bu\sketch\vo\SketchEditInVoBase.cs" />
+    <Compile Include="bu\sketch\vo\sketch\EditSketchInVo.cs" />
+    <Compile Include="bu\sketch\vo\sketch\ExitSketchInVo.cs" />
+    <Compile Include="bu\sketch\vo\slot\CreateSketchSlot3PointArcInVo.cs" />
+    <Compile Include="bu\sketch\vo\slot\CreateSketchSlotArcInVo.cs" />
+    <Compile Include="bu\sketch\vo\slot\CreateSketchSlotCenterLineInVo.cs" />
+    <Compile Include="bu\sketch\vo\slot\CreateSketchSlotLineInVo.cs" />
     <Compile Include="ui\menu\SwUiMenuService.cs" />
     <Compile Include="ui\output\SwUiLogPanel.xaml.cs">
       <DependentUpon>SwUiLogPanel.xaml</DependentUpon>
@@ -157,6 +202,7 @@
       <DependentUpon>SwUiPropDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="ui\prop\SwUiPropService.cs" />
+    <Compile Include="utils\reflect\ReflectUtils.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -171,7 +217,7 @@
     <Compile Include="bu\file\export\DxfToSvgConverter.cs" />
     <Compile Include="bu\file\vo\CloseDocInVo.cs" />
     <Compile Include="bu\file\vo\ExportDocInVo.cs" />
-    <Compile Include="bu\sketch\vo\NewCirclePipeInVo.cs" />
+    <Compile Include="bu\sketch\vo\pipe\CreateCirclePipeInVo.cs" />
     <Compile Include="bu\file\vo\NewDocInVo.cs" />
     <Compile Include="bu\file\vo\OpenDocInVo.cs" />
     <Compile Include="utils\io\RespVo.cs" />
@@ -210,16 +256,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Model\blank_a0.DRWDOT">
+    <None Include="res\blank_a0.DRWDOT">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Model\工程图测试1.SLDDRW">
+    <None Include="res\SwApiWeb.postman_collection.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Model\装配体测试1.SLDASM">
+    <None Include="res\工程图测试1.SLDDRW">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Model\零件测试1.SLDPRT">
+    <None Include="res\装配体测试1.SLDASM">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="res\零件测试1.SLDPRT">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace wpfapp.bu.vo
 {
-    [DisplayName("新建圆管")]
-    public class NewCirclePipeInVo
+    [DisplayName("创建圆管")]
+    public class CreateCirclePipeInVo
     {
         #region Fields
 

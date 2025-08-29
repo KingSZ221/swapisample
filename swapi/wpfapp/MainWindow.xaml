@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpfapp"
         mc:Ignorable="d"
-        Title="SolidWorks API Test" Height="800" Width="400">
+        Title="SolidWorks API Test" Height="800" Width="500">
     <DockPanel LastChildFill="True">
         <!-- 顶部区域 -->
         <DockPanel DockPanel.Dock="Top">
@@ -22,10 +22,10 @@
 
         <!-- 底部输出窗口 -->
         <GridSplitter DockPanel.Dock="Bottom" Height="5"/>
-        <TabControl x:Name="mainOutput" DockPanel.Dock="Bottom" Height="600"/>
+        <TabControl x:Name="mainOutput" DockPanel.Dock="Bottom" Height="700"/>
 
         <!-- 中央编辑器 -->
-        <StackPanel Height="10">
+        <StackPanel Height="0">
         </StackPanel>
     </DockPanel>
     

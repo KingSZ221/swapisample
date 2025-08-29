@@ -2,15 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using wpfapp.bu.app;
 using wpfapp.bu.file;
+using wpfapp.bu.log;
 using wpfapp.bu.sketch;
+using wpfapp.bu.sketch.action;
 using wpfapp.bu.vo;
 using wpfapp.ui.prop;
+using wpfapp.utils.reflect;
 
 namespace wpfapp.ui.menu
 {
@@ -73,30 +77,49 @@ namespace wpfapp.ui.menu
             menu.Header = "文件";
             mainMenu.Items.Add(menu);
 
-            menu.Items.Add(priCreateMenuItem("新建零件", Button_Click_NewPart));
-            menu.Items.Add(priCreateMenuItem("新建装配体", Button_Click_NewAssembly));
-            menu.Items.Add(priCreateMenuItem("新建工程图", Button_Click_NewDrawing));
+            priCreateSubMenu4File(null, menu);
+        }
 
-            menu.Items.Add(new Separator());
+        private void priCreateSubMenu4File(Menu menu1, MenuItem menu2)
+        {
+            MenuItem menuNew = priCreateMenuItem("新建", null);
+            menuNew.Items.Add(priCreateMenuItem("新建零件", Button_Click_NewPart));
+            menuNew.Items.Add(priCreateMenuItem("新建装配体", Button_Click_NewAssembly));
+            menuNew.Items.Add(priCreateMenuItem("新建工程图", Button_Click_NewDrawing));
 
-            menu.Items.Add(priCreateMenuItem("打开零件", Button_Click_OpenPart));
-            menu.Items.Add(priCreateMenuItem("打开装配体", Button_Click_OpenAssembly));
-            menu.Items.Add(priCreateMenuItem("打开工程图", Button_Click_OpenDrawing));
+            MenuItem menuOpen = priCreateMenuItem("打开", null);
+            menuOpen.Items.Add(priCreateMenuItem("打开零件", Button_Click_OpenPart));
+            menuOpen.Items.Add(priCreateMenuItem("打开装配体", Button_Click_OpenAssembly));
+            menuOpen.Items.Add(priCreateMenuItem("打开工程图", Button_Click_OpenDrawing));
 
-            menu.Items.Add(new Separator());
+            MenuItem menuSave = priCreateMenuItem("保存", null);
+            menuSave.Items.Add(priCreateMenuItem("保存当前文档", Button_Click_SaveCurDoc));
+            menuSave.Items.Add(priCreateMenuItem("另存当前文档", Button_Click_SaveAsCurDoc));
 
-            menu.Items.Add(priCreateMenuItem("保存当前文档", Button_Click_SaveCurDoc));
-            menu.Items.Add(priCreateMenuItem("另存当前文档", Button_Click_SaveAsCurDoc));
+            MenuItem menuClose = priCreateMenuItem("关闭", null);
+            menuClose.Items.Add(priCreateMenuItem("关闭当前文档", Button_Click_CloseCurDoc));
 
-            menu.Items.Add(new Separator());
+            MenuItem menuExport = priCreateMenuItem("导出", null);
+            menuExport.Items.Add(priCreateMenuItem("导出Dxf", Button_Click_ExportDxf));
+            menuExport.Items.Add(priCreateMenuItem("导出Svg", Button_Click_ExportSvg));
+            menuExport.Items.Add(priCreateMenuItem("导出Igs", Button_Click_ExportIges));
 
-            menu.Items.Add(priCreateMenuItem("关闭当前文档", Button_Click_CloseCurDoc));
-
-            menu.Items.Add(new Separator());
-
-            menu.Items.Add(priCreateMenuItem("导出Dxf", Button_Click_ExportDxf));
-            menu.Items.Add(priCreateMenuItem("导出Svg", Button_Click_ExportSvg));
-            menu.Items.Add(priCreateMenuItem("导出Igs", Button_Click_ExportIges));
+            if (menu1 != null)
+            {
+                menu1.Items.Add(menuNew);
+                menu1.Items.Add(menuOpen);
+                menu1.Items.Add(menuSave);
+                menu1.Items.Add(menuClose);
+                menu1.Items.Add(menuExport);
+            }
+            else
+            {
+                menu2.Items.Add(menuNew);
+                menu2.Items.Add(menuOpen);
+                menu2.Items.Add(menuSave);
+                menu2.Items.Add(menuClose);
+                menu2.Items.Add(menuExport);
+            }
         }
 
         private void priCreateMenu4Sketch(Menu mainMenu)
@@ -105,7 +128,64 @@ namespace wpfapp.ui.menu
             menu.Header = "草图";
             mainMenu.Items.Add(menu);
 
-            menu.Items.Add(priCreateMenuItem("创建圆管", Button_Click_CreateCirclePipe));
+            priCreateSubMenu4Sketch(null, menu);
+        }
+
+        private void priCreateSubMenu4Sketch(Menu menu1, MenuItem menu2)
+        {
+            MenuItem menuEdit = priCreateMenuItem("绘制草图", null);
+            menuEdit.Items.Add(priCreateMenuItem("绘制草图", Button_Click_EditSketch));
+            menuEdit.Items.Add(priCreateMenuItem("退出草图", Button_Click_ExitSketch));
+
+            MenuItem menuLine = priCreateMenuItem("绘制直线", null);
+            menuLine.Items.Add(priCreateMenuItem("绘制直线", Button_Click_CreateLine));
+            menuLine.Items.Add(priCreateMenuItem("绘制中心直线", Button_Click_CreateCenterLine));
+
+            MenuItem menuRect = priCreateMenuItem("绘制矩形", null);
+            menuRect.Items.Add(priCreateMenuItem("绘制边角矩形", Button_Click_CreateCornerRectangle));
+            menuRect.Items.Add(priCreateMenuItem("绘制中心矩形", Button_Click_CreateCenterRectangle));
+            menuRect.Items.Add(priCreateMenuItem("绘制3点边角矩形", Button_Click_Create3PointCornerRectangle));
+            menuRect.Items.Add(priCreateMenuItem("绘制3点中心矩形", Button_Click_Create3PointCenterRectangle));
+            menuRect.Items.Add(priCreateMenuItem("绘制平行四边形", Button_Click_CreateParallelogram));
+
+            MenuItem menuSlot = priCreateMenuItem("绘制槽口", null);
+            menuSlot.Items.Add(priCreateMenuItem("绘制直槽口", Button_Click_CreateSketchSlot_line));
+            menuSlot.Items.Add(priCreateMenuItem("绘制中心点直槽口", Button_Click_CreateSketchSlot_center_line));
+            menuSlot.Items.Add(priCreateMenuItem("绘制三点圆弧槽口", Button_Click_CreateSketchSlot_3pointarc));
+            menuSlot.Items.Add(priCreateMenuItem("绘制中心点圆弧槽口", Button_Click_CreateSketchSlot_arc));
+
+            MenuItem menuCircle = priCreateMenuItem("绘制圆", null);
+            menuCircle.Items.Add(priCreateMenuItem("绘制圆", Button_Click_CreateCircle));
+            menuCircle.Items.Add(priCreateMenuItem("绘制周边圆", Button_Click_PerimeterCircle));
+
+            MenuItem menuArc = priCreateMenuItem("绘制圆弧", null);
+            menuArc.Items.Add(priCreateMenuItem("绘制圆心/起/终点画弧", Button_Click_CreateArc));
+            menuArc.Items.Add(priCreateMenuItem("绘制切线弧", Button_Click_CreateTangentArc));
+            menuArc.Items.Add(priCreateMenuItem("绘制3点圆弧", Button_Click_Create3PointArc));
+
+            MenuItem menuPipe = priCreateMenuItem("绘制管材", null);
+            menuPipe.Items.Add(priCreateMenuItem("绘制圆管", Button_Click_CreateCirclePipe));
+
+            if (menu1 != null)
+            {
+                menu1.Items.Add(menuEdit);
+                menu1.Items.Add(menuLine);
+                menu1.Items.Add(menuRect);
+                menu1.Items.Add(menuSlot);
+                menu1.Items.Add(menuCircle);
+                menu1.Items.Add(menuArc);
+                menu1.Items.Add(menuPipe);
+            }
+            else
+            {
+                menu2.Items.Add(menuEdit);
+                menu2.Items.Add(menuLine);
+                menu2.Items.Add(menuRect);
+                menu2.Items.Add(menuSlot);
+                menu2.Items.Add(menuCircle);
+                menu2.Items.Add(menuArc);
+                menu2.Items.Add(menuPipe);
+            }
         }
 
         private MenuItem priCreateMenuItem(string strHeader, Action<object, RoutedEventArgs> clickHandler = null)
@@ -146,6 +226,9 @@ namespace wpfapp.ui.menu
             // 创建ToolBar
             ToolBar toolBar = new ToolBar();
 
+            // 添加到ToolBarTray
+            mainToolbar.ToolBars.Add(toolBar);
+
             // 设置ItemsPanelTemplate为WrapPanel
             var itemsPanelTemplate = new ItemsPanelTemplate();
             var wrapPanelFactory = new FrameworkElementFactory(typeof(WrapPanel));
@@ -155,40 +238,24 @@ namespace wpfapp.ui.menu
             toolBar.ItemsPanel = itemsPanelTemplate;
 
             // 添加按钮
-            toolBar.Items.Add(priCreateToolBarBtn("新建零件", Button_Click_NewPart));
-            toolBar.Items.Add(priCreateToolBarBtn("新建装配体", Button_Click_NewAssembly));
-            toolBar.Items.Add(priCreateToolBarBtn("新建工程图", Button_Click_NewDrawing));
+            Menu menu = new Menu();
+            toolBar.Items.Add(menu);
+            priCreateSubMenu4File(menu, null);
 
-            toolBar.Items.Add(new Separator());
-
-            toolBar.Items.Add(priCreateToolBarBtn("打开零件", Button_Click_OpenPart));
-            toolBar.Items.Add(priCreateToolBarBtn("打开装配体", Button_Click_OpenAssembly));
-            toolBar.Items.Add(priCreateToolBarBtn("打开工程图", Button_Click_OpenDrawing));
-
-            toolBar.Items.Add(new Separator());
-
-            toolBar.Items.Add(priCreateToolBarBtn("保存当前文档", Button_Click_SaveCurDoc));
-            toolBar.Items.Add(priCreateToolBarBtn("另存当前文档", Button_Click_SaveAsCurDoc));
-
-            toolBar.Items.Add(new Separator());
-
-            toolBar.Items.Add(priCreateToolBarBtn("关闭当前文档", Button_Click_CloseCurDoc));
-
-            toolBar.Items.Add(new Separator());
-
-            toolBar.Items.Add(priCreateToolBarBtn("导出Dxf", Button_Click_ExportDxf));
-            toolBar.Items.Add(priCreateToolBarBtn("导出Svg", Button_Click_ExportSvg));
-            toolBar.Items.Add(priCreateToolBarBtn("导出Igs", Button_Click_ExportIges));
-
-            // 添加到ToolBarTray
-            mainToolbar.ToolBars.Add(toolBar);
+            
         }
         private void priCreateToolbar4Sketch(ToolBarTray mainToolbar)
         {
+            // 创建ToolBar
             ToolBar toolBar = new ToolBar();
+
+            // 添加到ToolBarTray
             mainToolbar.ToolBars.Add(toolBar);
 
-            toolBar.Items.Add(priCreateToolBarBtn("创建圆管", Button_Click_CreateCirclePipe));
+            // 添加按钮
+            Menu menu = new Menu();
+            toolBar.Items.Add(menu);
+            priCreateSubMenu4Sketch(menu, null); 
         }
 
         private Button priCreateToolBarBtn(string strHeader, Action<object, RoutedEventArgs> clickHandler = null)
@@ -206,7 +273,6 @@ namespace wpfapp.ui.menu
         }
 
         #endregion
-
 
         #region 应用操作
 
@@ -335,16 +401,198 @@ namespace wpfapp.ui.menu
 
         #region 草图操作
 
+        #region 绘制草图
+
         /// <summary>
-        /// 创建圆管
+        /// 草图绘制
+        /// </summary>
+        private void Button_Click_EditSketch(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.EditSketch);
+        }
+
+        /// <summary>
+        /// 退出草图
+        /// </summary>
+        /// <param name="arg1"></param>
+        /// <param name="arg2"></param>
+        private void Button_Click_ExitSketch(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.ExitSketch);
+        }
+
+        #endregion
+
+        #region 绘制直线
+
+        /// <summary>
+        /// 绘制直线
+        /// </summary>
+        private void Button_Click_CreateLine(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateLine);
+        }
+
+        /// <summary>
+        /// 绘制中心直线
+        /// </summary>
+        private void Button_Click_CreateCenterLine(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateCenterLine);
+        }
+
+        #endregion
+
+        #region 绘制矩形
+
+        /// <summary>
+        /// 绘制边角矩形
+        /// </summary>
+        private void Button_Click_CreateCornerRectangle(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateCornerRectangle);
+        }
+
+        /// <summary>
+        /// 绘制中心矩形
+        /// </summary>
+        private void Button_Click_CreateCenterRectangle(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateCenterRectangle);
+        }
+
+        /// <summary>
+        /// 绘制3点边角矩形
+        /// </summary>
+        private void Button_Click_Create3PointCornerRectangle(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.Create3PointCornerRectangle);
+        }
+
+        /// <summary>
+        /// 绘制3点中心矩形
+        /// </summary>
+        private void Button_Click_Create3PointCenterRectangle(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.Create3PointCenterRectangle);
+        }
+
+        /// <summary>
+        /// 绘制平行四边形
+        /// </summary>
+        private void Button_Click_CreateParallelogram(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateParallelogram);
+        }
+
+        #endregion
+
+        #region 绘制槽口
+
+        /// <summary>
+        /// 绘制直槽口
+        /// </summary>
+        private void Button_Click_CreateSketchSlot_line(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateSketchSlot_line);
+        }
+
+        /// <summary>
+        /// 绘制中心点直槽口
+        /// </summary>
+        private void Button_Click_CreateSketchSlot_center_line(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateSketchSlot_center_line);
+        }
+
+        /// <summary>
+        /// 绘制三点圆弧槽口
+        /// </summary>
+        private void Button_Click_CreateSketchSlot_3pointarc(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateSketchSlot_3pointarc);
+        }
+
+        /// <summary>
+        /// 绘制中心点圆弧槽口
+        /// </summary>
+        private void Button_Click_CreateSketchSlot_arc(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateSketchSlot_arc);
+        }
+        #endregion
+
+        #region 绘制圆
+
+        /// <summary>
+        /// 绘制圆
+        /// </summary>
+        private void Button_Click_CreateCircle(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateCircle);
+        }
+
+        /// <summary>
+        /// 绘制周边圆
+        /// </summary>
+        private void Button_Click_PerimeterCircle(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.PerimeterCircle);
+        }
+
+        #endregion
+
+        #region 绘制圆弧
+
+        /// <summary>
+        /// 绘制圆心/起/终点画弧
+        /// </summary>
+        private void Button_Click_CreateArc(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateArc);
+        }
+
+        /// <summary>
+        /// 绘制切线弧
+        /// </summary>
+        /// <param name="arg1"></param>
+        /// <param name="arg2"></param>
+        private void Button_Click_CreateTangentArc(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateTangentArc);
+        }
+
+        /// <summary>
+        /// 绘制3点圆弧
+        /// </summary>
+        private void Button_Click_Create3PointArc(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.Create3PointArc);
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 绘制圆管
         /// </summary>
         private void Button_Click_CreateCirclePipe(object sender, RoutedEventArgs e)
         {
-            //新建一个草图并且绘制一个圆管
-            NewCirclePipeInVo oCreateCirclePipeInVo = new NewCirclePipeInVo();
-            if(SwUiPropService.getInstance().showPropObjDlg("创建圆管", oCreateCirclePipeInVo))
+            priExecuteSketchActon(EnumSwSketchActionType.CreateCirclePipe);
+        }
+
+        private RespVo priExecuteSketchActon(EnumSwSketchActionType actionType)
+        {
+            FieldInfo field = actionType.GetType().GetField(actionType.ToString());
+            SwSketchActionAttribute attribute = field.GetCustomAttribute<SwSketchActionAttribute>();
+            string strActionName = attribute.ActionName;
+            object actionInVo = Activator.CreateInstance(attribute.ActionType);
+            if (SwUiPropService.getInstance().showPropObjDlg(strActionName, actionInVo))
             {
-                SwBuSketchService.getInstance().createCirclePipe(oCreateCirclePipeInVo);
+                return SwBuSketchService.getInstance().executeSketchAction(actionType, actionInVo);
+            }
+            else
+            {
+                return RespVoLogExt.genOk($"绘制草图操作取消, {strActionName}");
             }
         }
 

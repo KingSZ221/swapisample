@@ -1,0 +1,990 @@
+{
+	"info": {
+		"_postman_id": "a8ace8e0-2d7e-411a-8ff2-f07a6f59e89f",
+		"name": "SwApiWeb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "连接SW",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/sw/ConnectSw",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"ConnectSw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "创建零件",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocType\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/NewDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"NewDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "创建装配体",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocType\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/NewDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"NewDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "创建工程图",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocType\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/NewDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"NewDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "打开零件",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocType\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/OpenDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"OpenDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "打开装配体",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocType\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/OpenDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"OpenDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "打开工程图",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocType\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/OpenDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"OpenDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "关闭当前文档",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocTitle\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CloseDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CloseDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "关闭指定文档",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocTitle\": \"零件1.SLDPRT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CloseDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CloseDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "保存当前文档",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocTitle\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/SaveDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"SaveDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "保存指定文档",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocTitle\": \"零件1.SLDPRT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/SaveDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"SaveDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "导出dxf",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocTitle\": \"\",\r\n    \"ExportFileType\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/ExportDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"ExportDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "导出svg",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocTitle\": \"\",\r\n    \"ExportFileType\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/ExportDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"ExportDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "导出igs",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"DocTitle\": \"\",\r\n    \"ExportFileType\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/ExportDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"ExportDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制草图",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"SketchName\": \"\",\r\n    \"RefPlaneName\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/EditSketch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"EditSketch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "退出草图",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/ExitSketch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"ExitSketch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制直线",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"X1\": 0,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 100,\r\n    \"Y2\": 100,\r\n    \"Z2\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateLine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateLine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制中心直线",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"X1\": 0,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 100,\r\n    \"Y2\": 100,\r\n    \"Z2\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateCenterLine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateCenterLine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制边角矩形",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"X1\": 0,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 100,\r\n    \"Y2\": 100,\r\n    \"Z2\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateCornerRectangle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateCornerRectangle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制中心矩形",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"X1\": 0,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 100,\r\n    \"Y2\": 100,\r\n    \"Z2\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateCenterRectangle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateCenterRectangle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制3点边角矩形",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"X1\": 0,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 100,\r\n    \"Y2\": 0,\r\n    \"Z2\": 0,\r\n    \"X3\": 0,\r\n    \"Y3\": 100,\r\n    \"Z3\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/Create3PointCornerRectangle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"Create3PointCornerRectangle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制3点中心矩形",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"X1\": 0,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 100,\r\n    \"Y2\": 0,\r\n    \"Z2\": 0,\r\n    \"X3\": 0,\r\n    \"Y3\": 100,\r\n    \"Z3\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/Create3PointCenterRectangle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"Create3PointCenterRectangle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制平行四边形",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"X1\": 0,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 100,\r\n    \"Y2\": 0,\r\n    \"Z2\": 0,\r\n    \"X3\": 0,\r\n    \"Y3\": 100,\r\n    \"Z3\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateParallelogram",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateParallelogram"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制直槽口",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 6\r\n,    \"X1\": 756,\r\n    \"Y1\": -50,\r\n    \"Z1\": 0,\r\n    \"X2\": 769,\r\n    \"Y2\": -50,\r\n    \"Z2\": 0,\r\n    \"X3\": 0,\r\n    \"Y3\": 100,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": \"false\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateSketchSlotLine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateSketchSlotLine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制中心点直槽口",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 6\r\n,    \"X1\": 756,\r\n    \"Y1\": -50,\r\n    \"Z1\": 0,\r\n    \"X2\": 769,\r\n    \"Y2\": -50,\r\n    \"Z2\": 0,\r\n    \"X3\": 0,\r\n    \"Y3\": 100,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateSketchSlotCenterLine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateSketchSlotCenterLine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制三点圆弧槽口",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 5\r\n,    \"X1\": 30,\r\n    \"Y1\": 20,\r\n    \"Z1\": 0,\r\n    \"X2\": 43,\r\n    \"Y2\": 13,\r\n    \"Z2\": 0,\r\n    \"X3\": 43,\r\n    \"Y3\": 28,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateSketchSlot3PointArc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateSketchSlot3PointArc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制中心点圆弧槽口",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 5\r\n,    \"X1\": 30,\r\n    \"Y1\": 20,\r\n    \"Z1\": 0,\r\n    \"X2\": 43,\r\n    \"Y2\": 13,\r\n    \"Z2\": 0,\r\n    \"X3\": 43,\r\n    \"Y3\": 28,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateSketchSlotArc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateSketchSlotArc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制圆",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"XC\": 0,\r\n    \"YC\": 0,\r\n    \"ZC\": 0,\r\n    \"XP\": 100,\r\n    \"YP\": 100,\r\n    \"ZP\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateCircle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateCircle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制周边圆",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"X1\": 0,\r\n    \"Y1\": 0,\r\n    \"X2\": 0,\r\n    \"Y2\": 100,\r\n    \"X3\": 100,\r\n    \"Y3\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/PerimeterCircle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"PerimeterCircle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制圆心/起/终点画弧",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"XC\": 0,\r\n    \"YC\": 0,\r\n    \"ZC\": 0,\r\n    \"X1\": 100,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 0,\r\n    \"Y2\": 100,\r\n    \"Z2\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateArc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateArc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制切线弧",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"X1\": 100,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 0,\r\n    \"Y2\": 100,\r\n    \"Z2\": 0,\r\n    \"ArcType\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateTangentArc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateTangentArc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制3点圆弧",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"X1\": 0,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 100,\r\n    \"Y2\": 0,\r\n    \"Z2\": 0,\r\n    \"X3\": 0,\r\n    \"Y3\": 100,\r\n    \"Z3\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/Create3PointArc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"Create3PointArc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制圆管",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"CircleRadius\": 15,\r\n    \"Length\": 100,\r\n    \"Thickness\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateCirclePipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateCirclePipe"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
