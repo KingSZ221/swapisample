@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolidWorks.Interop.sldworks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,11 +36,15 @@ namespace wpfapp.bu.sketch.action.arc
             var skeMgr = curDoc.SketchManager;
 
             // 绘制图形
-            skeMgr.CreateArc(
+            var sketchSegment = skeMgr.CreateArc(
                 oInVo.XC / 1000, oInVo.YC / 1000, oInVo.ZC / 1000,
                 oInVo.X1 / 1000, oInVo.Y1 / 1000, oInVo.Z1 / 1000,
                 oInVo.X2 / 1000, oInVo.Y2 / 1000, oInVo.Z2 / 1000,
-                oInVo.Direction);
+                oInVo.Direction) as ISketchArc;
+            if (sketchSegment == null)
+            {
+                return RespVoLogExt.genError("绘制参数错误");
+            }
 
             return RespVoLogExt.genOk("绘制圆心/起/终点画弧成功");
         }

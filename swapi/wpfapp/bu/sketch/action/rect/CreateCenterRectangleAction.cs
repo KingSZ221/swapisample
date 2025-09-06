@@ -35,8 +35,12 @@ namespace wpfapp.bu.sketch.action.rect
             var skeMgr = curDoc.SketchManager;
 
             // 绘制图形
-            skeMgr.CreateCenterRectangle(oInVo.X1 / 1000, oInVo.Y1 / 1000, oInVo.Z1 / 1000,
+            var sketchSegment = skeMgr.CreateCenterRectangle(oInVo.X1 / 1000, oInVo.Y1 / 1000, oInVo.Z1 / 1000,
                 oInVo.X2 / 1000, oInVo.Y2 / 1000, oInVo.Z2 / 1000);
+            if (sketchSegment == null)
+            {
+                return RespVoLogExt.genError("绘制参数错误");
+            }
 
             return RespVoLogExt.genOk("绘制中心矩形成功");
         }

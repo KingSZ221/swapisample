@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolidWorks.Interop.sldworks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,8 +36,12 @@ namespace wpfapp.bu.sketch.action.circle
             var skeMgr = curDoc.SketchManager;
 
             // 绘制图形
-            skeMgr.CreateCircle(oInVo.XC / 1000, oInVo.YC / 1000, oInVo.ZC / 1000,
-                oInVo.XP / 1000, oInVo.YP / 1000, oInVo.ZP / 1000);
+            var sketchSegment = skeMgr.CreateCircle(oInVo.XC / 1000, oInVo.YC / 1000, oInVo.ZC / 1000,
+                oInVo.XP / 1000, oInVo.YP / 1000, oInVo.ZP / 1000) as ISketchSegment;
+            if (sketchSegment == null)
+            {
+                return RespVoLogExt.genError("绘制参数错误");
+            }
 
             return RespVoLogExt.genOk("绘制圆成功");
         }

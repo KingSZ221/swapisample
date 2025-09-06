@@ -36,11 +36,15 @@ namespace wpfapp.bu.sketch.action.slot
             var skeMgr = curDoc.SketchManager;
 
             // 绘制图形
-            skeMgr.CreateSketchSlot((int)swSketchSlotCreationType_e.swSketchSlotCreationType_line, oInVo.SlotLengthType, oInVo.Width / 1000,
+            var sketchSlot = skeMgr.CreateSketchSlot((int)swSketchSlotCreationType_e.swSketchSlotCreationType_line, oInVo.SlotLengthType, oInVo.Width / 1000,
                 oInVo.X1 / 1000, oInVo.Y1 / 1000, oInVo.Z1 / 1000,
                 oInVo.X2 / 1000, oInVo.Y2 / 1000, oInVo.Z2 / 1000,
                 oInVo.X3 / 1000, oInVo.Y3 / 1000, oInVo.Z3 / 1000,
                 oInVo.CenterArcDirection, oInVo.AddDimension);
+            if (sketchSlot == null)
+            {
+                return RespVoLogExt.genError("绘制参数错误");
+            }
 
             return RespVoLogExt.genOk("绘制直槽口成功");
         }

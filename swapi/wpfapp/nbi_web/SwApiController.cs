@@ -13,9 +13,14 @@ using wpfapp.bu.sketch.action;
 using wpfapp.bu.sketch.vo;
 using wpfapp.bu.sketch.vo.arc;
 using wpfapp.bu.sketch.vo.circle;
+using wpfapp.bu.sketch.vo.ellipse;
+using wpfapp.bu.sketch.vo.point;
+using wpfapp.bu.sketch.vo.polygon;
 using wpfapp.bu.sketch.vo.rect;
 using wpfapp.bu.sketch.vo.sketch;
 using wpfapp.bu.sketch.vo.slot;
+using wpfapp.bu.sketch.vo.spline;
+using wpfapp.bu.sketch.vo.text;
 using wpfapp.bu.vo;
 
 namespace wpfapp.nbi
@@ -312,6 +317,142 @@ namespace wpfapp.nbi
             }
             return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.Create3PointArc, oInVo));
         }
+        #endregion
+
+        #region 绘制多边形
+
+        [HttpPost]
+        [Route("CreatePolygon")]
+        public IHttpActionResult CreatePolygon([FromBody] CreatePolygonInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreatePolygon, oInVo));
+        }
+
+        #endregion
+
+        #region 绘制样条曲线
+
+        /// <summary>
+        /// 绘制B样条曲线
+        /// </summary>
+        [HttpPost]
+        [Route("CreateSpline")]
+        public IHttpActionResult CreateSpline([FromBody] CreateSplineInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateSpline, oInVo));
+        }
+
+        /// <summary>
+        /// 绘制方程式驱动曲线
+        /// </summary>
+        [HttpPost]
+        [Route("CreateEquationSpline")]
+        public IHttpActionResult CreateEquationSpline([FromBody] CreateEquationSplineInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateEquationSpline, oInVo));
+        }
+
+        #endregion
+
+        #region 绘制椭圆
+
+        /// <summary>
+        /// 绘制椭圆
+        /// </summary>
+        [HttpPost]
+        [Route("CreateEllipse")]
+        public IHttpActionResult CreateEllipse([FromBody] CreateEllipseInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateEllipse, oInVo));
+        }
+
+        /// <summary>
+        /// 绘制部分椭圆
+        /// </summary>
+        [HttpPost]
+        [Route("CreateEllipticalArc")]
+        public IHttpActionResult CreateEllipticalArc([FromBody] CreateEllipticalArcInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateEllipticalArc, oInVo));
+        }
+
+        /// <summary>
+        /// 绘制抛物线
+        /// </summary>
+        [HttpPost]
+        [Route("CreateParabola")]
+        public IHttpActionResult CreateParabola([FromBody] CreateParabolaInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateParabola, oInVo));
+        }
+
+        /// <summary>
+        /// 绘制圆锥
+        /// </summary>
+        [HttpPost]
+        [Route("CreateConic")]
+        public IHttpActionResult CreateConic([FromBody] CreateConicInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateConic, oInVo));
+        }
+        #endregion
+
+        #region 绘制文本
+
+        [HttpPost]
+        [Route("InsertSketchText")]
+        public IHttpActionResult InsertSketchText([FromBody] InsertSketchTextInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.InsertSketchText, oInVo));
+        }
+
+        #endregion
+
+        #region 绘制点
+
+        [HttpPost]
+        [Route("CreatePoint")]
+        public IHttpActionResult CreatePoint([FromBody] CreatePointInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreatePoint, oInVo));
+        }
+
         #endregion
 
         #region 绘制圆管

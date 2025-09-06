@@ -5,22 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
-using wpfapp.bu.sketch.vo;
+using wpfapp.bu.sketch.vo.text;
 using wpfapp.bu.vo;
 
-namespace wpfapp.bu.sketch.action.line
+namespace wpfapp.bu.sketch.action.text
 {
     /// <summary>
-    /// 绘制中心直线
+    /// 绘制文本
     /// </summary>
-    public class CreateCenterLineAction : SwSketchEditActionBase
+    public class InsertSketchTextAction : SwSketchEditActionBase
     {
         #region Fields
         #endregion
 
         #region Construction
 
-        public CreateCenterLineAction(object oInVo) : base(oInVo)
+        public InsertSketchTextAction(object oInVo) : base(oInVo)
         {
 
         }
@@ -30,20 +30,20 @@ namespace wpfapp.bu.sketch.action.line
         protected override RespVo onExecute()
         {
             // 获取绘制参数
-            CreateCenterLineInVo oInVo = this.actionInVo<CreateCenterLineInVo>();
+            InsertSketchTextInVo oInVo = this.actionInVo<InsertSketchTextInVo>();
 
             // 获取草图管理器
             var skeMgr = curDoc.SketchManager;
 
             // 绘制图形
-            var sketchSegment = skeMgr.CreateCenterLine(oInVo.X1 / 1000, oInVo.Y1 / 1000, oInVo.Z1 / 1000,
-                oInVo.X2 / 1000, oInVo.Y2 / 1000, oInVo.Z2 / 1000) as ISketchSegment;
-            if (sketchSegment == null)
+            var text = curDoc.InsertSketchText(oInVo.Ptx, oInVo.Pty, oInVo.Ptz, oInVo.Text, oInVo.Alignment,
+                oInVo.FlipDirection, oInVo.HorizontalMirror, oInVo.WidthFactor, oInVo.SpaceBetweenChars) as ISketchText;
+            if (text == null)
             {
                 return RespVoLogExt.genError("绘制参数错误");
             }
 
-            return RespVoLogExt.genOk("绘制中心直线成功");
+            return RespVoLogExt.genOk("绘制文本成功");
         }
     }
 }

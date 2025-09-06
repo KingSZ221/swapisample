@@ -1,0 +1,49 @@
+﻿using SolidWorks.Interop.sldworks;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using wpfapp.bu.log;
+using wpfapp.bu.sketch.vo.spline;
+using wpfapp.bu.vo;
+
+namespace wpfapp.bu.sketch.action.spline
+{
+    /// <summary>
+    /// 绘制方程式驱动曲线
+    /// </summary>
+    public class CreateEquationSplineAction : SwSketchEditActionBase
+    {
+        #region Fields
+        #endregion
+
+        #region Construction
+
+        public CreateEquationSplineAction(object oInVo) : base(oInVo)
+        {
+
+        }
+
+        #endregion
+
+        protected override RespVo onExecute()
+        {
+            // 获取绘制参数
+            CreateEquationSplineInVo oInVo = this.actionInVo<CreateEquationSplineInVo>();
+
+            // 获取草图管理器
+            var skeMgr = curDoc.SketchManager;
+
+            // 绘制图形
+            var spline = skeMgr.CreateEquationSpline2(oInVo.XExpression, oInVo.YExpression, oInVo.ZExpression, oInVo.RangeStart, oInVo.RangeEnd,
+                oInVo.IsAngleRange, oInVo.RotationAngle, oInVo.XOffset, oInVo.YOffset, oInVo.LockStart, oInVo.LockEnd) as ISketchSpline;
+            if (spline == null)
+            {
+                return RespVoLogExt.genError("绘制参数错误");
+            }
+
+            return RespVoLogExt.genOk("绘制方程式驱动曲线成功");
+        }
+    }
+}

@@ -12,6 +12,7 @@ using wpfapp.bu.file;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch;
 using wpfapp.bu.sketch.action;
+using wpfapp.bu.sketch.vo.spline;
 using wpfapp.bu.vo;
 using wpfapp.ui.prop;
 using wpfapp.utils.reflect;
@@ -163,29 +164,41 @@ namespace wpfapp.ui.menu
             menuArc.Items.Add(priCreateMenuItem("绘制切线弧", Button_Click_CreateTangentArc));
             menuArc.Items.Add(priCreateMenuItem("绘制3点圆弧", Button_Click_Create3PointArc));
 
+            MenuItem menuPolygon = priCreateMenuItem("绘制多边形", null);
+            menuPolygon.Items.Add(priCreateMenuItem("绘制多边形", Button_Click_CreatePolygon));
+
+            MenuItem menuSpline = priCreateMenuItem("绘制样条曲线", null);
+            menuSpline.Items.Add(priCreateMenuItem("绘制B样条曲线", Button_Click_CreateSpline));
+            menuSpline.Items.Add(priCreateMenuItem("绘制方程式驱动曲线", Button_Click_CreateEquationSpline));
+
+            MenuItem menuEllipse = priCreateMenuItem("绘制椭圆", null);
+            menuEllipse.Items.Add(priCreateMenuItem("绘制椭圆", Button_Click_CreateEllipse));
+            menuEllipse.Items.Add(priCreateMenuItem("绘制部分椭圆", Button_Click_CreateEllipticalArc));
+            menuEllipse.Items.Add(priCreateMenuItem("绘制抛物线", Button_Click_CreateParabola));
+            menuEllipse.Items.Add(priCreateMenuItem("绘制圆锥", Button_Click_CreateConic));
+
+            MenuItem menuText = priCreateMenuItem("绘制文本", null);
+            menuText.Items.Add(priCreateMenuItem("绘制文本", Button_Click_InsertSketchText));
+            
+            MenuItem menuPoint = priCreateMenuItem("绘制点", null);
+            menuPoint.Items.Add(priCreateMenuItem("绘制点", Button_Click_CreatePoint));
+
             MenuItem menuPipe = priCreateMenuItem("绘制管材", null);
             menuPipe.Items.Add(priCreateMenuItem("绘制圆管", Button_Click_CreateCirclePipe));
 
-            if (menu1 != null)
-            {
-                menu1.Items.Add(menuEdit);
-                menu1.Items.Add(menuLine);
-                menu1.Items.Add(menuRect);
-                menu1.Items.Add(menuSlot);
-                menu1.Items.Add(menuCircle);
-                menu1.Items.Add(menuArc);
-                menu1.Items.Add(menuPipe);
-            }
-            else
-            {
-                menu2.Items.Add(menuEdit);
-                menu2.Items.Add(menuLine);
-                menu2.Items.Add(menuRect);
-                menu2.Items.Add(menuSlot);
-                menu2.Items.Add(menuCircle);
-                menu2.Items.Add(menuArc);
-                menu2.Items.Add(menuPipe);
-            }
+            ItemCollection menuItems = (menu1 != null) ? menu1.Items : menu2.Items;
+            menuItems.Add(menuEdit);
+            menuItems.Add(menuLine);
+            menuItems.Add(menuRect);
+            menuItems.Add(menuSlot);
+            menuItems.Add(menuCircle);
+            menuItems.Add(menuArc);
+            menuItems.Add(menuPolygon);
+            menuItems.Add(menuSpline);
+            menuItems.Add(menuEllipse); 
+            menuItems.Add(menuText);
+            menuItems.Add(menuPoint);
+            menuItems.Add(menuPipe);
         }
 
         private MenuItem priCreateMenuItem(string strHeader, Action<object, RoutedEventArgs> clickHandler = null)
@@ -572,6 +585,96 @@ namespace wpfapp.ui.menu
 
         #endregion
 
+        #region 绘制多边形
+
+        /// <summary>
+        /// 绘制多边形
+        /// </summary>
+        private void Button_Click_CreatePolygon(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreatePolygon);
+        }
+
+        #endregion
+
+        #region 绘制样条曲线
+
+        /// <summary>
+        /// 绘制B样条曲线
+        /// </summary>
+        private void Button_Click_CreateSpline(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateSpline, CreateSplineInVo.Default());
+        }
+
+        /// <summary>
+        /// 绘制方程式驱动曲线
+        /// </summary>
+        private void Button_Click_CreateEquationSpline(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateEquationSpline);
+        }
+
+        #endregion
+
+        #region 绘制样条曲线
+
+
+        /// <summary>
+        /// 绘制椭圆
+        /// </summary>
+        private void Button_Click_CreateEllipse(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateEllipse);
+        }
+
+        /// <summary>
+        /// 绘制部分椭圆
+        /// </summary>
+        private void Button_Click_CreateEllipticalArc(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateEllipticalArc);
+        }
+
+        /// <summary>
+        /// 绘制抛物线
+        /// </summary>
+        private void Button_Click_CreateParabola(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateParabola);
+        }
+
+        /// <summary>
+        /// 绘制圆锥
+        /// </summary>
+        private void Button_Click_CreateConic(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateConic);
+        }
+
+        #endregion
+
+        #region 绘制文本
+
+        private void Button_Click_InsertSketchText(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.InsertSketchText);
+        }
+
+        #endregion
+
+        #region 绘制点
+
+        /// <summary>
+        /// 绘制点
+        /// </summary>
+        private void Button_Click_CreatePoint(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreatePoint);
+        }
+
+        #endregion
+
         /// <summary>
         /// 绘制圆管
         /// </summary>
@@ -580,12 +683,15 @@ namespace wpfapp.ui.menu
             priExecuteSketchActon(EnumSwSketchActionType.CreateCirclePipe);
         }
 
-        private RespVo priExecuteSketchActon(EnumSwSketchActionType actionType)
+        private RespVo priExecuteSketchActon(EnumSwSketchActionType actionType, object actionInVo = null)
         {
             FieldInfo field = actionType.GetType().GetField(actionType.ToString());
             SwSketchActionAttribute attribute = field.GetCustomAttribute<SwSketchActionAttribute>();
             string strActionName = attribute.ActionName;
-            object actionInVo = Activator.CreateInstance(attribute.ActionType);
+            if(actionInVo == null)
+            {
+                actionInVo = Activator.CreateInstance(attribute.ActionType);
+            }
             if (SwUiPropService.getInstance().showPropObjDlg(strActionName, actionInVo))
             {
                 return SwBuSketchService.getInstance().executeSketchAction(actionType, actionInVo);

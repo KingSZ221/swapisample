@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.action.arc;
 using wpfapp.bu.sketch.action.circle;
+using wpfapp.bu.sketch.action.ellipse;
 using wpfapp.bu.sketch.action.line;
 using wpfapp.bu.sketch.action.pipe;
+using wpfapp.bu.sketch.action.point;
+using wpfapp.bu.sketch.action.polygon;
 using wpfapp.bu.sketch.action.rect;
 using wpfapp.bu.sketch.action.sketch;
 using wpfapp.bu.sketch.action.slot;
+using wpfapp.bu.sketch.action.spline;
+using wpfapp.bu.sketch.action.text;
 using wpfapp.bu.vo;
 
 namespace wpfapp.bu.sketch.action
@@ -65,6 +70,15 @@ namespace wpfapp.bu.sketch.action
             actionTypeMap[EnumSwSketchActionType.CreateArc] = typeof(CreateArcAction);
             actionTypeMap[EnumSwSketchActionType.CreateTangentArc] = typeof(CreateTangentArcAction);
             actionTypeMap[EnumSwSketchActionType.Create3PointArc] = typeof(Create3PointArcAction);
+            actionTypeMap[EnumSwSketchActionType.CreatePolygon] = typeof(CreatePolygonAction);
+            actionTypeMap[EnumSwSketchActionType.CreateSpline] = typeof(CreateSplineAction);
+            actionTypeMap[EnumSwSketchActionType.CreateEquationSpline] = typeof(CreateEquationSplineAction);
+            actionTypeMap[EnumSwSketchActionType.CreateEllipse] = typeof(CreateEllipseAction);
+            actionTypeMap[EnumSwSketchActionType.CreateEllipticalArc] = typeof(CreateEllipticalArcAction);
+            actionTypeMap[EnumSwSketchActionType.CreateParabola] = typeof(CreateParabolaAction);
+            actionTypeMap[EnumSwSketchActionType.CreateConic] = typeof(CreateConicAction);
+            actionTypeMap[EnumSwSketchActionType.InsertSketchText] = typeof(InsertSketchTextAction); 
+            actionTypeMap[EnumSwSketchActionType.CreatePoint] = typeof(CreatePointAction); 
             actionTypeMap[EnumSwSketchActionType.CreateCirclePipe] = typeof(CreateCirclePipeAction);
         }
 

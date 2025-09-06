@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 using wpfapp.bu.sketch.vo;
 using wpfapp.bu.sketch.vo.arc;
 using wpfapp.bu.sketch.vo.circle;
+using wpfapp.bu.sketch.vo.ellipse;
+using wpfapp.bu.sketch.vo.point;
+using wpfapp.bu.sketch.vo.polygon;
 using wpfapp.bu.sketch.vo.rect;
 using wpfapp.bu.sketch.vo.sketch;
 using wpfapp.bu.sketch.vo.slot;
+using wpfapp.bu.sketch.vo.spline;
+using wpfapp.bu.sketch.vo.text;
 using wpfapp.bu.vo;
 
 namespace wpfapp.bu.sketch.action
@@ -72,6 +77,33 @@ namespace wpfapp.bu.sketch.action
 
         [SwSketchAction("绘制3点圆弧", typeof(Create3PointArcInVo))]
         Create3PointArc,
+
+        [SwSketchAction("绘制多边形", typeof(CreatePolygonInVo))]
+        CreatePolygon,
+
+        [SwSketchAction("绘制B样条曲线", typeof(CreateSplineInVo))]
+        CreateSpline,
+
+        [SwSketchAction("绘制方程式驱动曲线", typeof(CreateEquationSplineInVo))]
+        CreateEquationSpline,
+
+        [SwSketchAction("绘制椭圆", typeof(CreateEllipseInVo))]
+        CreateEllipse,
+
+        [SwSketchAction("绘制部分椭圆", typeof(CreateEllipticalArcInVo))]
+        CreateEllipticalArc,
+
+        [SwSketchAction("绘制抛物线", typeof(CreateParabolaInVo))]
+        CreateParabola,
+
+        [SwSketchAction("绘制圆锥", typeof(CreateConicInVo))]
+        CreateConic,
+
+        [SwSketchAction("绘制文本", typeof(InsertSketchTextInVo))]
+        InsertSketchText,
+
+        [SwSketchAction("绘制点", typeof(CreatePointInVo))]
+        CreatePoint,
 
         [SwSketchAction("绘制圆管", typeof(CreateCirclePipeInVo))]
         CreateCirclePipe

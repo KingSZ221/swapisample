@@ -5,22 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
-using wpfapp.bu.sketch.vo;
+using wpfapp.bu.sketch.vo.polygon;
 using wpfapp.bu.vo;
 
-namespace wpfapp.bu.sketch.action.line
+namespace wpfapp.bu.sketch.action.polygon
 {
     /// <summary>
-    /// 绘制中心直线
+    /// 绘制多边形
     /// </summary>
-    public class CreateCenterLineAction : SwSketchEditActionBase
+    public class CreatePolygonAction : SwSketchEditActionBase
     {
         #region Fields
         #endregion
 
         #region Construction
 
-        public CreateCenterLineAction(object oInVo) : base(oInVo)
+        public CreatePolygonAction(object oInVo) : base(oInVo)
         {
 
         }
@@ -30,20 +30,20 @@ namespace wpfapp.bu.sketch.action.line
         protected override RespVo onExecute()
         {
             // 获取绘制参数
-            CreateCenterLineInVo oInVo = this.actionInVo<CreateCenterLineInVo>();
+            CreatePolygonInVo oInVo = this.actionInVo<CreatePolygonInVo>();
 
             // 获取草图管理器
             var skeMgr = curDoc.SketchManager;
 
             // 绘制图形
-            var sketchSegment = skeMgr.CreateCenterLine(oInVo.X1 / 1000, oInVo.Y1 / 1000, oInVo.Z1 / 1000,
-                oInVo.X2 / 1000, oInVo.Y2 / 1000, oInVo.Z2 / 1000) as ISketchSegment;
+            var sketchSegment = skeMgr.CreatePolygon(oInVo.XC / 1000, oInVo.YC / 1000, oInVo.ZC / 1000,
+                oInVo.XP / 1000, oInVo.YP / 1000, oInVo.ZP / 1000, oInVo.Sides, oInVo.Inscribed);
             if (sketchSegment == null)
             {
                 return RespVoLogExt.genError("绘制参数错误");
             }
 
-            return RespVoLogExt.genOk("绘制中心直线成功");
+            return RespVoLogExt.genOk("绘制多边形成功");
         }
     }
 }

@@ -693,7 +693,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 6\r\n,    \"X1\": 756,\r\n    \"Y1\": -50,\r\n    \"Z1\": 0,\r\n    \"X2\": 769,\r\n    \"Y2\": -50,\r\n    \"Z2\": 0,\r\n    \"X3\": 0,\r\n    \"Y3\": 100,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": \"false\"\r\n}",
+					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 6,\r\n    \"X1\": 756,\r\n    \"Y1\": -50,\r\n    \"Z1\": 0,\r\n    \"X2\": 769,\r\n    \"Y2\": -50,\r\n    \"Z2\": 0,\r\n    \"X3\": 0,\r\n    \"Y3\": 100,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": \"false\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -723,7 +723,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 6\r\n,    \"X1\": 756,\r\n    \"Y1\": -50,\r\n    \"Z1\": 0,\r\n    \"X2\": 769,\r\n    \"Y2\": -50,\r\n    \"Z2\": 0,\r\n    \"X3\": 0,\r\n    \"Y3\": 100,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": false\r\n}",
+					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 6,\r\n    \"X1\": 756,\r\n    \"Y1\": -50,\r\n    \"Z1\": 0,\r\n    \"X2\": 769,\r\n    \"Y2\": -50,\r\n    \"Z2\": 0,\r\n    \"X3\": 0,\r\n    \"Y3\": 100,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": false\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -753,7 +753,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 5\r\n,    \"X1\": 30,\r\n    \"Y1\": 20,\r\n    \"Z1\": 0,\r\n    \"X2\": 43,\r\n    \"Y2\": 13,\r\n    \"Z2\": 0,\r\n    \"X3\": 43,\r\n    \"Y3\": 28,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": false\r\n}",
+					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 5,\r\n    \"X1\": 30,\r\n    \"Y1\": 20,\r\n    \"Z1\": 0,\r\n    \"X2\": 43,\r\n    \"Y2\": 13,\r\n    \"Z2\": 0,\r\n    \"X3\": 43,\r\n    \"Y3\": 28,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": false\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -783,7 +783,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 5\r\n,    \"X1\": 30,\r\n    \"Y1\": 20,\r\n    \"Z1\": 0,\r\n    \"X2\": 43,\r\n    \"Y2\": 13,\r\n    \"Z2\": 0,\r\n    \"X3\": 43,\r\n    \"Y3\": 28,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": false\r\n}",
+					"raw": "{\r\n\t\"SlotLengthType\": 0,\r\n    \"Width\": 5,\r\n    \"X1\": 30,\r\n    \"Y1\": 20,\r\n    \"Z1\": 0,\r\n    \"X2\": 43,\r\n    \"Y2\": 13,\r\n    \"Z2\": 0,\r\n    \"X3\": 43,\r\n    \"Y3\": 28,\r\n    \"Z3\": 0,\r\n    \"CenterArcDirection\": -1,\r\n    \"AddDimension\": false\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -951,6 +951,277 @@
 						"api",
 						"sw",
 						"Create3PointArc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制多边形",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"XC\": 0,\r\n    \"YC\": 0,\r\n    \"ZC\": 0,\r\n    \"XP\": 100,\r\n    \"YP\": 100,\r\n    \"ZP\": 0,\r\n    \"Sides\": 9,\r\n    \"Inscribed\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreatePolygon",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreatePolygon"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制B样条曲线",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"Points\": [\r\n\t{\"X\": -45,\"Y\": 12,\"Z\": 0},\r\n\t{\"X\": -15,\"Y\": 22,\"Z\": 0},\r\n\t{\"X\": -9,\"Y\": -12,\"Z\": 0},\r\n\t{\"X\": -38,\"Y\": -10,\"Z\": 0}\r\n\t]\r\n}",
+
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateSpline",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateSpline"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制方程式驱动曲线",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"XExpression\": \"\",\r\n    \"YExpression\": \"x^2\",\r\n    \"ZExpression\": \"\",\r\n    \"RangeStart\": \"-5\",\r\n    \"RangeEnd\": \"5\",\r\n    \"IsAngleRange\": false,\r\n    \"RotationAngle\": 0,\r\n    \"XOffset\": 0,\n    \"YOffset\": 0,\n    \"LockStart\": false,\n    \"LockEnd\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateEquationSpline",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateEquationSpline"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制椭圆",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"XC\": 0,\r\n    \"YC\": 0,\r\n    \"ZC\": 0,\r\n    \"XMajor\": 100,\r\n    \"YMajor\": 0,\r\n    \"ZMajor\": 0,\r\n    \"XMinor\": 0,\r\n    \"YMinor\": 50,\r\n    \"ZMinor\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateEllipse",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateEllipse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制部分椭圆",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"XC\": 0,\r\n    \"YC\": 0,\r\n    \"ZC\": 0,\r\n    \"XMajor\": 1000,\r\n    \"YMajor\": 0,\r\n    \"ZMajor\": 0,\r\n    \"XMinor\": 0,\r\n    \"YMinor\": 500,\r\n    \"ZMinor\": 0,\r\n    \"X1\": 1000,\r\n    \"Y1\": 500,\r\n    \"Z1\": 0,\r\n    \"X2\": 0,\r\n    \"Y2\": 500,\r\n    \"Z2\": 0,\r\n    \"Direction\": -1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateEllipticalArc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateEllipticalArc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制抛物线",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"XFocus\": 0,\r\n    \"YFocus\": 500,\r\n    \"ZFocus\": 0,\r\n    \"XApex\": 0,\r\n    \"YApex\": 0,\r\n    \"ZApex\": 0,\r\n    \"X1\": -3000,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 3000,\r\n    \"Y2\": 0,\r\n    \"Z2\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateParabola",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateParabola"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制圆锥",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"XFocus\": 0,\r\n    \"YFocus\": 500,\r\n    \"ZFocus\": 0,\r\n    \"XApex\": 0,\r\n    \"YApex\": 0,\r\n    \"ZApex\": 0,\r\n    \"X1\": -3000,\r\n    \"Y1\": 0,\r\n    \"Z1\": 0,\r\n    \"X2\": 3000,\r\n    \"Y2\": 0,\r\n    \"Z2\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateConic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateConic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制文本",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Ptx\": 100,\r\n    \"Pty\": 100,\r\n    \"Ptz\": 0,\r\n    \"Text\": \"Hello SolidWorks\",\r\n    \"Alignment\": 0,\r\n    \"FlipDirection\": 0,\r\n    \"HorizontalMirror\": 0,\r\n    \"WidthFactor\": 100,\r\n    \"SpaceBetweenChars\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/InsertSketchText",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"InsertSketchText"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "绘制点",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"X\": 100,\r\n    \"Y\": 100,\r\n    \"Z\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreatePoint",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreatePoint"
 					]
 				}
 			},
