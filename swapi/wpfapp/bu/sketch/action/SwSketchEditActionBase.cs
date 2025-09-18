@@ -12,7 +12,7 @@ using wpfapp.bu.vo;
 namespace wpfapp.bu.sketch.action
 {
     /// <summary>
-    /// 草图绘制操作基类
+    /// 草图编辑操作基类
     /// </summary>
     public class SwSketchEditActionBase : SwSketchActionBase
     {
@@ -50,15 +50,9 @@ namespace wpfapp.bu.sketch.action
             {
                 //如果草图名称为空，则在当前选中的草图中绘制;
                 //如果当前未选中草图，则以前视基准面创建草图;
-                if(skeMgr.ActiveSketch == null)
+                if (skeMgr.ActiveSketch == null)
                 {
-                    if (!swModelDocExt.SelectByID2("前视基准面", "PLANE", 0, 0, 0, false, 0, null, 0))
-                    {
-                        return RespVoLogExt.genOk("新建草图失败");
-                    }
-
-                    // 在这个基准面上插入一个草图，进入编辑草图模式
-                    skeMgr.InsertSketch(true);
+                    return RespVoLogExt.genOk("草图未打开或未激活");
                 }
             }
             else
@@ -90,7 +84,17 @@ namespace wpfapp.bu.sketch.action
                 swApp.Sw.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swSketchInference, false);
             }
 
-            // 执行绘制操作
+            // 选择实体
+            curDoc.ClearSelection();
+            if (oInVo.SelectIds != null && oInVo.SelectIds.Count > 0)
+            {
+                foreach (var selectId in oInVo.SelectIds)
+                {
+                    curDocExt.SelectByID2(selectId.Name, selectId.Type, selectId.X / 1000, selectId.Y / 1000, selectId.Z / 1000, true, 0, null, (int)swSelectOption_e.swSelectOptionDefault);
+                }
+            }
+
+            // 执行编辑操作
             try
             {
                 oRespVo = onExecute();
@@ -107,7 +111,7 @@ namespace wpfapp.bu.sketch.action
             // 还原草图激活捕捉设置
             swApp.Sw.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swSketchInference, hasInference);
 
-            if(oInVo.ExitEdit)
+            if (oInVo.ExitEdit)
             {
                 // 退出编辑草图模式
                 skeMgr.InsertSketch(true);

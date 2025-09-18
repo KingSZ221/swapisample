@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.slot
     /// <summary>
     /// 绘制直槽口
     /// </summary>
-    public class CreateSketchSlotLineAction : SwSketchEditActionBase
+    public class CreateSketchSlotLineAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

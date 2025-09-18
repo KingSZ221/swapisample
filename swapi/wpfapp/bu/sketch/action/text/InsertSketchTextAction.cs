@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.text
     /// <summary>
     /// 绘制文本
     /// </summary>
-    public class InsertSketchTextAction : SwSketchEditActionBase
+    public class InsertSketchTextAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

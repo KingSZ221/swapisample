@@ -11,7 +11,7 @@ namespace wpfapp.bu.sketch.vo.rect
     /// 绘制中心矩形
     /// </summary>
     [DisplayName("绘制中心矩形")]
-    public class CreateCenterRectangleInVo : SketchEditInVoBase
+    public class CreateCenterRectangleInVo : SketchDrawInVoBase
     {
         #region Fields
 

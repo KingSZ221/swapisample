@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace wpfapp.bu.sketch.vo.arc
 {
     [DisplayName("绘制圆心/起/终点画弧")]
-    public class CreateArcInVo : SketchEditInVoBase
+    public class CreateArcInVo : SketchDrawInVoBase
     {
         #region Fields
 

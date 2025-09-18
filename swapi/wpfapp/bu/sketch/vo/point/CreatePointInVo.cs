@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace wpfapp.bu.sketch.vo.point
 {
     [DisplayName("绘制点")]
-    public class CreatePointInVo : SketchEditInVoBase
+    public class CreatePointInVo : SketchDrawInVoBase
     {
         #region Fields
 

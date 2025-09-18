@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using wpfapp.bu.vo;
 
 namespace wpfapp.bu.log
 {
@@ -16,5 +17,6 @@ namespace wpfapp.bu.log
         void Warning(string message);
         void Error(string message);
         void Exception(Exception ex, string message = null);
+        void Resp(RespVo oRespVo);
     }
 }

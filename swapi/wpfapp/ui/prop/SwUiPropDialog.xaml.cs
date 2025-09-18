@@ -36,6 +36,12 @@ namespace wpfapp.ui.prop
 
         #region PropObj
 
+
+        public void setTip(string strTip)
+        {
+            gridTip.Text = "strTip";
+        }
+
         public void setPropObj(object oPropObj)
         {
             propObj = oPropObj;

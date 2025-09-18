@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.ellipse
     /// <summary>
     /// 绘制椭圆
     /// </summary>
-    public class CreateEllipseAction : SwSketchEditActionBase
+    public class CreateEllipseAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

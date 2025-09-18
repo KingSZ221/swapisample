@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.polygon
     /// <summary>
     /// 绘制多边形
     /// </summary>
-    public class CreatePolygonAction : SwSketchEditActionBase
+    public class CreatePolygonAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

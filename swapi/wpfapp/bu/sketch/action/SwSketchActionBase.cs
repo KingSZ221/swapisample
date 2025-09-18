@@ -129,6 +129,18 @@ namespace wpfapp.bu.sketch.action
             }
         }
 
+        protected ModelDocExtension curDocExt
+        {
+            get
+            {
+                if (curDoc != null)
+                {
+                    return curDoc.Extension;
+                }
+                return null;
+            }
+        }
+
         protected T actionInVo<T>()
         {
             if (_curDoc != null)

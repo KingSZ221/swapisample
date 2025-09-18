@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace wpfapp.bu.sketch.vo
 {
     [DisplayName("绘制中心直线")]
-    public class CreateCenterLineInVo : SketchEditInVoBase
+    public class CreateCenterLineInVo : SketchDrawInVoBase
     {
         #region Fields
 

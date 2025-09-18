@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.ellipse
     /// <summary>
     /// 绘制部分椭圆
     /// </summary>
-    public class CreateEllipticalArcAction : SwSketchEditActionBase
+    public class CreateEllipticalArcAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

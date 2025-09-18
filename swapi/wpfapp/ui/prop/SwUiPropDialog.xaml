@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBlock Text="请输入参数:" Margin="5"/>
+            <TextBlock x:Name="gridTip" Text="请输入参数:" Margin="5"/>
         </StackPanel>
         <xctk:PropertyGrid Grid.Row="1" x:Name="propertyGrid"/>
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">

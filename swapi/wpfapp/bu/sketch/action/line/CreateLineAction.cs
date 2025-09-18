@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.line
     /// <summary>
     /// 绘制直线
     /// </summary>
-    public class CreateLineAction : SwSketchEditActionBase
+    public class CreateLineAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

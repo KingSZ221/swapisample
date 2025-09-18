@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.spline
     /// <summary>
     /// 绘制B样条曲线
     /// </summary>
-    public class CreateSplineAction : SwSketchEditActionBase
+    public class CreateSplineAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

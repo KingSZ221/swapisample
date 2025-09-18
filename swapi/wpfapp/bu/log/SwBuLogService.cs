@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using wpfapp.bu.vo;
 
 namespace wpfapp.bu.log
 {
@@ -71,6 +72,12 @@ namespace wpfapp.bu.log
                 logger.Warning(message);
         }
 
+        public void Resp(RespVo oRespVo)
+        {
+            foreach (var logger in _logServices)
+                logger.Resp(oRespVo);
+        }
+
         #endregion
 
         #region 打印日志2
@@ -112,6 +119,14 @@ namespace wpfapp.bu.log
             if (_instance != null)
             {
                 _instance.Warning(message);
+            }
+        }
+
+        public static void SResp(RespVo oRespVo)
+        {
+            if (_instance != null)
+            {
+                _instance.Resp(oRespVo);
             }
         }
 

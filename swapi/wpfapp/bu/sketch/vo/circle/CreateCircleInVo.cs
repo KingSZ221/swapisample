@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace wpfapp.bu.sketch.vo.circle
 {
     [DisplayName("绘制圆")]
-    public class CreateCircleInVo : SketchEditInVoBase
+    public class CreateCircleInVo : SketchDrawInVoBase
     {
         #region Fields
 

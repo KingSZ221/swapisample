@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.arc
     /// <summary>
     /// 绘制圆心/起/终点画弧
     /// </summary>
-    public class CreateArcAction : SwSketchEditActionBase
+    public class CreateArcAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

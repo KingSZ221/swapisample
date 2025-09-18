@@ -11,7 +11,7 @@ namespace wpfapp.bu.sketch.vo.slot
     /// 绘制直槽口
     /// </summary>
     [DisplayName("绘制直槽口")]
-    public class CreateSketchSlotLineInVo : SketchEditInVoBase
+    public class CreateSketchSlotLineInVo : SketchDrawInVoBase
     {
         #region Fields
 

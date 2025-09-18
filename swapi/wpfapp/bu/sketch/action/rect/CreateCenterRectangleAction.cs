@@ -12,7 +12,7 @@ namespace wpfapp.bu.sketch.action.rect
     /// <summary>
     /// 绘制中心矩形
     /// </summary>
-    public class CreateCenterRectangleAction : SwSketchEditActionBase
+    public class CreateCenterRectangleAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace wpfapp.bu.sketch.vo.polygon
 {
     [DisplayName("绘制多边形")]
-    public class CreatePolygonInVo : SketchEditInVoBase
+    public class CreatePolygonInVo : SketchDrawInVoBase
     {
         #region Fields
 

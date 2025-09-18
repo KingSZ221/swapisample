@@ -12,7 +12,7 @@ namespace wpfapp.bu.sketch.action.rect
     /// <summary>
     /// 绘制平行四边形
     /// </summary>
-    public class CreateParallelogramAction : SwSketchEditActionBase
+    public class CreateParallelogramAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

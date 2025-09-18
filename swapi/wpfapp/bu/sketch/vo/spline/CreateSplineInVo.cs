@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace wpfapp.bu.sketch.vo.spline
 {
     [DisplayName("绘制B样条曲线")]
-    public class CreateSplineInVo : SketchEditInVoBase
+    public class CreateSplineInVo : SketchDrawInVoBase
     {
         #region Fields
 

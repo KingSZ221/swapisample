@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace wpfapp.bu.sketch.vo.text
 {
     [DisplayName("绘制文本")]
-    public class InsertSketchTextInVo : SketchEditInVoBase
+    public class InsertSketchTextInVo : SketchDrawInVoBase
     {
         #region Fields
 

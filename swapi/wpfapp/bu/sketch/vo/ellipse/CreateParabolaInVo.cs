@@ -11,7 +11,7 @@ namespace wpfapp.bu.sketch.vo.ellipse
     /// 绘制抛物线
     /// </summary>
     [DisplayName("绘制抛物线")]
-    public class CreateParabolaInVo : SketchEditInVoBase
+    public class CreateParabolaInVo : SketchDrawInVoBase
     {
         #region Fields
 

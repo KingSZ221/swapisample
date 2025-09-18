@@ -8,6 +8,8 @@ using wpfapp.bu.log;
 using wpfapp.bu.sketch.action.arc;
 using wpfapp.bu.sketch.action.circle;
 using wpfapp.bu.sketch.action.ellipse;
+using wpfapp.bu.sketch.action.entity;
+using wpfapp.bu.sketch.action.fillet;
 using wpfapp.bu.sketch.action.line;
 using wpfapp.bu.sketch.action.pipe;
 using wpfapp.bu.sketch.action.point;
@@ -54,6 +56,7 @@ namespace wpfapp.bu.sketch.action
         {
             actionTypeMap[EnumSwSketchActionType.EditSketch] = typeof(EditSketchAction);
             actionTypeMap[EnumSwSketchActionType.ExitSketch] = typeof(ExitSketchAction);
+            actionTypeMap[EnumSwSketchActionType.GetSketchEntityInfo] = typeof(GetSketchEntityInfoAction);
             actionTypeMap[EnumSwSketchActionType.CreateLine] = typeof(CreateLineAction);
             actionTypeMap[EnumSwSketchActionType.CreateCenterLine] = typeof(CreateCenterLineAction);
             actionTypeMap[EnumSwSketchActionType.CreateCornerRectangle] = typeof(CreateCornerRectangleAction);
@@ -78,7 +81,9 @@ namespace wpfapp.bu.sketch.action
             actionTypeMap[EnumSwSketchActionType.CreateParabola] = typeof(CreateParabolaAction);
             actionTypeMap[EnumSwSketchActionType.CreateConic] = typeof(CreateConicAction);
             actionTypeMap[EnumSwSketchActionType.InsertSketchText] = typeof(InsertSketchTextAction); 
-            actionTypeMap[EnumSwSketchActionType.CreatePoint] = typeof(CreatePointAction); 
+            actionTypeMap[EnumSwSketchActionType.CreatePoint] = typeof(CreatePointAction);
+            actionTypeMap[EnumSwSketchActionType.CreateFillet] = typeof(CreateFilletAction);
+            actionTypeMap[EnumSwSketchActionType.CreateChamfer] = typeof(CreateChamferAction); 
             actionTypeMap[EnumSwSketchActionType.CreateCirclePipe] = typeof(CreateCirclePipeAction);
         }
 

@@ -23,6 +23,11 @@ namespace wpfapp.bu.vo
         /// </summary>
         public string msg = "";
 
+        /// <summary>
+        /// 操作返回对象
+        /// </summary>
+        public object obj = null;
+
         #endregion
 
         #region Construction
@@ -41,6 +46,19 @@ namespace wpfapp.bu.vo
         {
             this.ok = bOk;
             this.msg = strMsg;
+        }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="bOk"></param>
+        /// <param name="strMsg"></param>
+        /// <param name="oObj"></param>
+        public RespVo(bool bOk, string strMsg, object oObj)
+        {
+            this.ok = bOk;
+            this.msg = strMsg;
+            this.obj = oObj;
         }
 
         #endregion
@@ -63,6 +81,15 @@ namespace wpfapp.bu.vo
         public static RespVo genOk(string strMsg)
         {
             return new RespVo(true, strMsg);
+        }
+
+        /// <summary>
+        /// 构造成功RespVo
+        /// </summary>
+        /// <returns>RespVo</returns>
+        public static RespVo genOk(string strMsg, object oObj)
+        {
+            return new RespVo(true, strMsg, oObj);
         }
 
         /// <summary>

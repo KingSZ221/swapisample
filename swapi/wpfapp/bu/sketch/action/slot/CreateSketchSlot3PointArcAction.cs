@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.slot
     /// <summary>
     /// 绘制三点圆弧槽口
     /// </summary>
-    public class CreateSketchSlot3PointArcAction : SwSketchEditActionBase
+    public class CreateSketchSlot3PointArcAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

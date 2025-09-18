@@ -8,6 +8,8 @@ using wpfapp.bu.sketch.vo;
 using wpfapp.bu.sketch.vo.arc;
 using wpfapp.bu.sketch.vo.circle;
 using wpfapp.bu.sketch.vo.ellipse;
+using wpfapp.bu.sketch.vo.entity;
+using wpfapp.bu.sketch.vo.fillet;
 using wpfapp.bu.sketch.vo.point;
 using wpfapp.bu.sketch.vo.polygon;
 using wpfapp.bu.sketch.vo.rect;
@@ -29,6 +31,9 @@ namespace wpfapp.bu.sketch.action
 
         [SwSketchAction("退出草图", typeof(ExitSketchInVo))]
         ExitSketch,
+
+        [SwSketchAction("退出草图", typeof(GetSketchEntityInfoInVo))]
+        GetSketchEntityInfo,
 
         [SwSketchAction("绘制直线", typeof(CreateLineInVo))]
         CreateLine,
@@ -104,6 +109,12 @@ namespace wpfapp.bu.sketch.action
 
         [SwSketchAction("绘制点", typeof(CreatePointInVo))]
         CreatePoint,
+
+        [SwSketchAction("绘制圆角", typeof(CreateFilletInVo))]
+        CreateFillet,
+
+        [SwSketchAction("绘制导角", typeof(CreateChamferInVo))]
+        CreateChamfer,
 
         [SwSketchAction("绘制圆管", typeof(CreateCirclePipeInVo))]
         CreateCirclePipe

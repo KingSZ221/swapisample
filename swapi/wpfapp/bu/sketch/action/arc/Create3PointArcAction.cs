@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.arc
     /// <summary>
     /// 绘制3点圆弧
     /// </summary>
-    public class Create3PointArcAction : SwSketchEditActionBase
+    public class Create3PointArcAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

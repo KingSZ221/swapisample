@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace wpfapp.bu.sketch.vo.circle
 {
     [DisplayName("绘制周边圆")]
-    public class PerimeterCircleInVo : SketchEditInVoBase
+    public class PerimeterCircleInVo : SketchDrawInVoBase
     {
         #region Fields
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using wpfapp.bu.log;
+using wpfapp.bu.vo;
 
 namespace wpfapp.ui.output
 {
@@ -41,7 +42,7 @@ namespace wpfapp.ui.output
         public void init(TabControl mainOutput)
         {
             TabItem logTabItem = new TabItem();
-            logTabItem.Header = "系统日志";
+            logTabItem.Header = "操作日志";
             mainOutput.Items.Add(logTabItem);
 
             _swUiLogPanel = new SwUiLogPanel();
@@ -80,6 +81,12 @@ namespace wpfapp.ui.output
         void ILogService.Exception(Exception ex, string message)
         {
             _swUiLogPanel.Log(message + ",exceptoin " + ex.ToString(), LogLevel.Error);
+        }
+
+        void ILogService.Resp(RespVo oRespVo)
+        {
+
+            _swUiLogPanel.Log(oRespVo.msg, oRespVo.ok ? LogLevel.Info : LogLevel.Error, oRespVo.obj);
         }
 
         #endregion

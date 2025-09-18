@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.circle
     /// <summary>
     /// 绘制圆
     /// </summary>
-    public class CreateCircleAction : SwSketchEditActionBase
+    public class CreateCircleAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.arc
     /// <summary>
     /// 绘制切线弧
     /// </summary>
-    public class CreateTangentArcAction : SwSketchEditActionBase
+    public class CreateTangentArcAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

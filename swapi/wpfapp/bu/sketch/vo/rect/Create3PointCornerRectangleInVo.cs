@@ -11,7 +11,7 @@ namespace wpfapp.bu.sketch.vo.rect
     /// 绘制3点边角矩形
     /// </summary>
     [DisplayName("绘制3点边角矩形")]
-    public class Create3PointCornerRectangleInVo : SketchEditInVoBase
+    public class Create3PointCornerRectangleInVo : SketchDrawInVoBase
     {
         #region Fields
 

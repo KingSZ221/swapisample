@@ -11,7 +11,7 @@ namespace wpfapp.bu.sketch.vo.rect
     /// 绘制平行四边形
     /// </summary>
     [DisplayName("绘制平行四边形")]
-    public class CreateParallelogramInVo : SketchEditInVoBase
+    public class CreateParallelogramInVo : SketchDrawInVoBase
     {
         #region Fields
 

@@ -11,7 +11,7 @@ namespace wpfapp.bu.sketch.vo.ellipse
     /// 绘制椭圆
     /// </summary>
     [DisplayName("绘制椭圆")]
-    public class CreateEllipseInVo : SketchEditInVoBase
+    public class CreateEllipseInVo : SketchDrawInVoBase
     {
         #region Fields
 

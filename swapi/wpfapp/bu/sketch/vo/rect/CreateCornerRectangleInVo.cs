@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace wpfapp.bu.sketch.vo.rect
 {
     [DisplayName("绘制边角矩形")]
-    public class CreateCornerRectangleInVo : SketchEditInVoBase
+    public class CreateCornerRectangleInVo : SketchDrawInVoBase
     {
         #region Fields
 

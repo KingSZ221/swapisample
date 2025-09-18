@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.point
     /// <summary>
     /// 绘制点
     /// </summary>
-    public class CreatePointAction : SwSketchEditActionBase
+    public class CreatePointAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

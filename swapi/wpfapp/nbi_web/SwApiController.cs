@@ -14,6 +14,8 @@ using wpfapp.bu.sketch.vo;
 using wpfapp.bu.sketch.vo.arc;
 using wpfapp.bu.sketch.vo.circle;
 using wpfapp.bu.sketch.vo.ellipse;
+using wpfapp.bu.sketch.vo.entity;
+using wpfapp.bu.sketch.vo.fillet;
 using wpfapp.bu.sketch.vo.point;
 using wpfapp.bu.sketch.vo.polygon;
 using wpfapp.bu.sketch.vo.rect;
@@ -100,6 +102,9 @@ namespace wpfapp.nbi
 
         #region 绘制草图
 
+        /// <summary>
+        /// 进入草图绘制
+        /// </summary>
         [HttpPost]
         [Route("EditSketch")]
         public IHttpActionResult EditSketch([FromBody] EditSketchInVo oInVo)
@@ -111,6 +116,9 @@ namespace wpfapp.nbi
             return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.EditSketch, oInVo));
         }
 
+        /// <summary>
+        /// 退出草图绘制
+        /// </summary>
         [HttpPost]
         [Route("ExitSketch")]
         public IHttpActionResult ExitSketch([FromBody] ExitSketchInVo oInVo)
@@ -120,6 +128,20 @@ namespace wpfapp.nbi
                 return Ok(RespVo.genError("请求参数错误"));
             }
             return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.ExitSketch, oInVo));
+        }
+
+        /// <summary>
+        /// 获取草图实体信息
+        /// </summary>
+        [HttpPost]
+        [Route("GetSketchEntityInfo")]
+        public IHttpActionResult GetSketchEntityInfo([FromBody] GetSketchEntityInfoInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.GetSketchEntityInfo, oInVo));
         }
 
         #endregion
@@ -451,6 +473,38 @@ namespace wpfapp.nbi
                 return Ok(RespVo.genError("请求参数错误"));
             }
             return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreatePoint, oInVo));
+        }
+
+        #endregion
+
+        #region 绘制圆角
+
+        /// <summary>
+        /// 绘制圆角
+        /// </summary>
+        [HttpPost]
+        [Route("CreateFillet")]
+        public IHttpActionResult CreateFillet([FromBody] CreateFilletInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateFillet, oInVo));
+        }
+
+        /// <summary>
+        /// 绘制倒角
+        /// </summary>
+        [HttpPost]
+        [Route("CreateChamfer")]
+        public IHttpActionResult CreateChamfer([FromBody] CreateChamferInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateChamfer, oInVo));
         }
 
         #endregion

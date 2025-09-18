@@ -11,7 +11,7 @@ namespace wpfapp.bu.sketch.vo.arc
     /// 绘制3点圆弧
     /// </summary>
     [DisplayName("绘制3点圆弧")]
-    public class Create3PointArcInVo : SketchEditInVoBase
+    public class Create3PointArcInVo : SketchDrawInVoBase
     {
         #region Fields
 

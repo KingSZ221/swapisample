@@ -13,7 +13,7 @@ namespace wpfapp.bu.sketch.action.ellipse
     /// <summary>
     /// 绘制抛物线
     /// </summary>
-    public class CreateParabolaAction : SwSketchEditActionBase
+    public class CreateParabolaAction : SwSketchDrawActionBase
     {
         #region Fields
         #endregion

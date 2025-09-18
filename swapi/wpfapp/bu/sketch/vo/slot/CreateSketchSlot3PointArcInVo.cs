@@ -11,7 +11,7 @@ namespace wpfapp.bu.sketch.vo.slot
     /// 绘制4种槽口
     /// </summary>
     [DisplayName("绘制三点圆弧槽口")]
-    public class CreateSketchSlot3PointArcInVo : SketchEditInVoBase
+    public class CreateSketchSlot3PointArcInVo : SketchDrawInVoBase
     {
         #region Fields
 

@@ -137,6 +137,7 @@ namespace wpfapp.ui.menu
             MenuItem menuEdit = priCreateMenuItem("绘制草图", null);
             menuEdit.Items.Add(priCreateMenuItem("绘制草图", Button_Click_EditSketch));
             menuEdit.Items.Add(priCreateMenuItem("退出草图", Button_Click_ExitSketch));
+            menuEdit.Items.Add(priCreateMenuItem("获取实体信息", Button_Click_GetSketchEntityInfo));
 
             MenuItem menuLine = priCreateMenuItem("绘制直线", null);
             menuLine.Items.Add(priCreateMenuItem("绘制直线", Button_Click_CreateLine));
@@ -183,6 +184,10 @@ namespace wpfapp.ui.menu
             MenuItem menuPoint = priCreateMenuItem("绘制点", null);
             menuPoint.Items.Add(priCreateMenuItem("绘制点", Button_Click_CreatePoint));
 
+            MenuItem menuFillet = priCreateMenuItem("绘制圆角", null);
+            menuFillet.Items.Add(priCreateMenuItem("绘制圆角", Button_Click_CreateFillet));
+            menuFillet.Items.Add(priCreateMenuItem("绘制倒角", Button_Click_CreateChamfer));
+
             MenuItem menuPipe = priCreateMenuItem("绘制管材", null);
             menuPipe.Items.Add(priCreateMenuItem("绘制圆管", Button_Click_CreateCirclePipe));
 
@@ -198,6 +203,7 @@ namespace wpfapp.ui.menu
             menuItems.Add(menuEllipse); 
             menuItems.Add(menuText);
             menuItems.Add(menuPoint);
+            menuItems.Add(menuFillet);
             menuItems.Add(menuPipe);
         }
 
@@ -433,6 +439,17 @@ namespace wpfapp.ui.menu
         {
             priExecuteSketchActon(EnumSwSketchActionType.ExitSketch);
         }
+
+        /// <summary>
+        /// 获取实体
+        /// </summary>
+        /// <param name="arg1"></param>
+        /// <param name="arg2"></param>
+        private void Button_Click_GetSketchEntityInfo(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.GetSketchEntityInfo);
+        }
+        
 
         #endregion
 
@@ -675,6 +692,26 @@ namespace wpfapp.ui.menu
 
         #endregion
 
+        #region 绘制圆角
+
+        /// <summary>
+        /// 绘制圆角
+        /// </summary>
+        private void Button_Click_CreateFillet(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateFillet);
+        }
+
+        /// <summary>
+        /// 绘制倒角
+        /// </summary>
+        private void Button_Click_CreateChamfer(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateChamfer);
+        }
+
+        #endregion
+
         /// <summary>
         /// 绘制圆管
         /// </summary>
@@ -692,7 +729,7 @@ namespace wpfapp.ui.menu
             {
                 actionInVo = Activator.CreateInstance(attribute.ActionType);
             }
-            if (SwUiPropService.getInstance().showPropObjDlg(strActionName, actionInVo))
+            if (SwUiPropService.getInstance().showPropObjDlg(strActionName, "请输入绘制参数:", actionInVo))
             {
                 return SwBuSketchService.getInstance().executeSketchAction(actionType, actionInVo);
             }

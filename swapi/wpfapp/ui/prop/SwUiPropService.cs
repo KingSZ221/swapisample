@@ -45,11 +45,12 @@ namespace wpfapp.ui.prop
 
         }
 
-        public bool showPropObjDlg(string strDlgTitle, object oPropObj)
+        public bool showPropObjDlg(string strDlgTitle, string strTip, object oPropObj)
         {
             SwUiPropDialog oPropDlg = new SwUiPropDialog();
             oPropDlg.Owner = SwBuAppService.getMainWindow();
             oPropDlg.Title = strDlgTitle;
+            oPropDlg.setTip(strTip);
             oPropDlg.setPropObj(oPropObj);
             bool? bResult = oPropDlg.ShowDialog();
 
