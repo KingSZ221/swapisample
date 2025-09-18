@@ -12,7 +12,7 @@ using wpfapp.bu.file;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch;
 using wpfapp.bu.sketch.action;
-using wpfapp.bu.sketch.vo.spline;
+using wpfapp.bu.sketch.vo.draw.spline;
 using wpfapp.bu.vo;
 using wpfapp.ui.prop;
 using wpfapp.utils.reflect;

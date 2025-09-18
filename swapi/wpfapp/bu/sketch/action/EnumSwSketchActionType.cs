@@ -5,19 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.sketch.vo;
-using wpfapp.bu.sketch.vo.arc;
-using wpfapp.bu.sketch.vo.circle;
-using wpfapp.bu.sketch.vo.ellipse;
+using wpfapp.bu.sketch.vo.draw.arc;
+using wpfapp.bu.sketch.vo.draw.circle;
+using wpfapp.bu.sketch.vo.draw.ellipse;
 using wpfapp.bu.sketch.vo.entity;
-using wpfapp.bu.sketch.vo.fillet;
-using wpfapp.bu.sketch.vo.point;
-using wpfapp.bu.sketch.vo.polygon;
-using wpfapp.bu.sketch.vo.rect;
+using wpfapp.bu.sketch.vo.edit.fillet;
+using wpfapp.bu.sketch.vo.draw.point;
+using wpfapp.bu.sketch.vo.draw.polygon;
+using wpfapp.bu.sketch.vo.draw.rect;
 using wpfapp.bu.sketch.vo.sketch;
-using wpfapp.bu.sketch.vo.slot;
-using wpfapp.bu.sketch.vo.spline;
-using wpfapp.bu.sketch.vo.text;
+using wpfapp.bu.sketch.vo.draw.slot;
+using wpfapp.bu.sketch.vo.draw.spline;
+using wpfapp.bu.sketch.vo.draw.text;
 using wpfapp.bu.vo;
+using wpfapp.bu.sketch.vo.draw.line;
+using wpfapp.bu.vo.draw.pipe;
 
 namespace wpfapp.bu.sketch.action
 {

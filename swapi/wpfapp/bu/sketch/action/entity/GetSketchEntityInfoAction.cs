@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
+using wpfapp.bu.sketch.action.edit;
 using wpfapp.bu.sketch.vo.entity;
 using wpfapp.bu.vo;
 
