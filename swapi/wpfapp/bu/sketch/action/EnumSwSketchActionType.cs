@@ -20,6 +20,10 @@ using wpfapp.bu.sketch.vo.draw.text;
 using wpfapp.bu.vo;
 using wpfapp.bu.sketch.vo.draw.line;
 using wpfapp.bu.vo.draw.pipe;
+using wpfapp.bu.sketch.vo.edit.trim;
+using wpfapp.bu.sketch.vo.draw.define;
+using wpfapp.bu.sketch.vo.compose.ladder;
+using wpfapp.bu.sketch.vo.feature.extrusion;
 
 namespace wpfapp.bu.sketch.action
 {
@@ -118,7 +122,19 @@ namespace wpfapp.bu.sketch.action
         [SwSketchAction("绘制导角", typeof(CreateChamferInVo))]
         CreateChamfer,
 
+        [SwSketchAction("裁剪实体", typeof(SketchTrimInVo))]
+        SketchTrim,
+
+        [SwSketchAction("完全草图定义", typeof(FullyDefineSketchInVo))]
+        FullyDefineSketch,
+
+        [SwSketchAction("薄壁拉伸", typeof(FeatureExtrusionThinInVo))]
+        FeatureExtrusionThin,
+
         [SwSketchAction("绘制圆管", typeof(CreateCirclePipeInVo))]
-        CreateCirclePipe
+        CreateCirclePipe,
+
+        [SwSketchAction("绘制扶梯", typeof(CreateLadderInVo))]
+        CreateLadder
     }
 }

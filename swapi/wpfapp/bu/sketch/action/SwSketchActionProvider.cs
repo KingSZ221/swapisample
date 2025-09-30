@@ -20,6 +20,10 @@ using wpfapp.bu.sketch.action.draw.slot;
 using wpfapp.bu.sketch.action.draw.spline;
 using wpfapp.bu.sketch.action.draw.text;
 using wpfapp.bu.vo;
+using wpfapp.bu.sketch.action.edit.trim;
+using wpfapp.bu.sketch.action.draw.define;
+using wpfapp.bu.sketch.action.compose.ladder;
+using wpfapp.bu.sketch.action.feature.extrusion;
 
 namespace wpfapp.bu.sketch.action
 {
@@ -83,8 +87,12 @@ namespace wpfapp.bu.sketch.action
             actionTypeMap[EnumSwSketchActionType.InsertSketchText] = typeof(InsertSketchTextAction); 
             actionTypeMap[EnumSwSketchActionType.CreatePoint] = typeof(CreatePointAction);
             actionTypeMap[EnumSwSketchActionType.CreateFillet] = typeof(CreateFilletAction);
-            actionTypeMap[EnumSwSketchActionType.CreateChamfer] = typeof(CreateChamferAction); 
+            actionTypeMap[EnumSwSketchActionType.CreateChamfer] = typeof(CreateChamferAction);
+            actionTypeMap[EnumSwSketchActionType.SketchTrim] = typeof(SketchTrimAction);
+            actionTypeMap[EnumSwSketchActionType.FullyDefineSketch] = typeof(FullyDefineSketchAction);
+            actionTypeMap[EnumSwSketchActionType.FeatureExtrusionThin] = typeof(FeatureExtrusionThinAction); 
             actionTypeMap[EnumSwSketchActionType.CreateCirclePipe] = typeof(CreateCirclePipeAction);
+            actionTypeMap[EnumSwSketchActionType.CreateLadder] = typeof(CreateLadderAction); 
         }
 
         private Type getActionType(EnumSwSketchActionType actionType)

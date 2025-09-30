@@ -84,8 +84,13 @@ namespace wpfapp.bu.sketch.action.edit
                 swApp.Sw.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swSketchInference, false);
             }
 
+            // 编辑前清空选中实体
+            if(oInVo.ClearSelectionBeforeEdit)
+            {
+                curDoc.ClearSelection();
+            }
+
             // 选择实体
-            curDoc.ClearSelection();
             if (oInVo.SelectIds != null && oInVo.SelectIds.Count > 0)
             {
                 foreach (var selectId in oInVo.SelectIds)

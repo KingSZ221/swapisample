@@ -143,7 +143,7 @@ namespace wpfapp.bu.sketch.action
 
         protected T actionInVo<T>()
         {
-            if (_curDoc != null)
+            if (curDoc != null)
             {
                 return (T)_actionInVo;
             }
@@ -168,7 +168,7 @@ namespace wpfapp.bu.sketch.action
             }
 
             //获取当前打开的文档
-            doc = swApp.Sw.IActiveDoc2;
+            doc = curDoc;
             if (doc == null)
             {
                 return RespVoLogExt.genError("没有打开的文档");

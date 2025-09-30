@@ -43,6 +43,9 @@ namespace wpfapp.bu.sketch.action.draw.line
                 return RespVoLogExt.genError("绘制参数错误");
             }
 
+            // 添加固定约束关系
+            curDoc.SketchAddConstraints("sgFIXED");
+
             return RespVoLogExt.genOk("绘制直线成功");
         }
     }

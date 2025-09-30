@@ -24,6 +24,14 @@ namespace wpfapp.bu.sketch.vo.edit
         public string SketchName { get; set; } = "";
 
         /// <summary>
+        /// 编辑前是否清空选中实体
+        /// </summary>
+        [DisplayName("编辑前是否清空选中实体")]
+        [Category("选择")]
+        [Description("编辑前是否清空选中实体")]
+        public bool ClearSelectionBeforeEdit { get; set; } = true;
+
+        /// <summary>
         /// 角点
         /// </summary>
         [DisplayName("选择实体")]

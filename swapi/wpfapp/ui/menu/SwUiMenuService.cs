@@ -188,8 +188,14 @@ namespace wpfapp.ui.menu
             menuFillet.Items.Add(priCreateMenuItem("绘制圆角", Button_Click_CreateFillet));
             menuFillet.Items.Add(priCreateMenuItem("绘制倒角", Button_Click_CreateChamfer));
 
+            MenuItem menuTrim = priCreateMenuItem("裁剪实体", null);
+            menuTrim.Items.Add(priCreateMenuItem("裁剪实体", Button_Click_SketchTrim));
+
             MenuItem menuPipe = priCreateMenuItem("绘制管材", null);
             menuPipe.Items.Add(priCreateMenuItem("绘制圆管", Button_Click_CreateCirclePipe));
+            menuPipe.Items.Add(priCreateMenuItem("绘制扶梯", Button_Click_CreateLadder));
+            menuPipe.Items.Add(priCreateMenuItem("完全草图定义", Button_Click_FullyDefineSketch));
+            menuPipe.Items.Add(priCreateMenuItem("薄壁拉伸", Button_Click_FeatureExtrusionThin));
 
             ItemCollection menuItems = (menu1 != null) ? menu1.Items : menu2.Items;
             menuItems.Add(menuEdit);
@@ -204,6 +210,7 @@ namespace wpfapp.ui.menu
             menuItems.Add(menuText);
             menuItems.Add(menuPoint);
             menuItems.Add(menuFillet);
+            menuItems.Add(menuTrim);
             menuItems.Add(menuPipe);
         }
 
@@ -712,12 +719,49 @@ namespace wpfapp.ui.menu
 
         #endregion
 
+        #region 裁剪实体
+
+        /// <summary>
+        /// 裁剪实体
+        /// </summary>
+        private void Button_Click_SketchTrim(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.SketchTrim);
+        }
+
+        #endregion
+        
+
         /// <summary>
         /// 绘制圆管
         /// </summary>
         private void Button_Click_CreateCirclePipe(object sender, RoutedEventArgs e)
         {
             priExecuteSketchActon(EnumSwSketchActionType.CreateCirclePipe);
+        }
+
+        /// <summary>
+        /// 绘制扶梯
+        /// </summary>
+        private void Button_Click_CreateLadder(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateLadder);
+        }
+
+        /// <summary>
+        /// 完全草图定义
+        /// </summary>
+        private void Button_Click_FullyDefineSketch(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.FullyDefineSketch);
+        }
+
+        /// <summary>
+        /// 薄壁拉伸
+        /// </summary>
+        private void Button_Click_FeatureExtrusionThin(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.FeatureExtrusionThin);
         }
 
         private RespVo priExecuteSketchActon(EnumSwSketchActionType actionType, object actionInVo = null)
