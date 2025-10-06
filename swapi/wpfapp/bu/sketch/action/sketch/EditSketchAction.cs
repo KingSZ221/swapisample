@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
+using wpfapp.bu.sketch.utils;
 using wpfapp.bu.sketch.vo;
 using wpfapp.bu.sketch.vo.sketch;
 using wpfapp.bu.vo;
@@ -39,8 +40,6 @@ namespace wpfapp.bu.sketch.action.sketch
                 return oRespVo;
             }
 
-            // 获取扩展文档
-            var swModelDocExt = swModelDoc.Extension;
             // 获取草图管理器
             var skeMgr = curDoc.SketchManager;
 
@@ -56,14 +55,14 @@ namespace wpfapp.bu.sketch.action.sketch
 
                 // 如果草图名称为空，则选中参考基准面绘制草图;
                 // 如果参考基准面为空，则以前视基准面绘制草图
-                string sketchName = oInVo.SketchName;
-                if(string.IsNullOrEmpty(sketchName))
+                string refPlaneName = oInVo.RefPlaneName;
+                if(string.IsNullOrEmpty(refPlaneName))
                 {
-                    sketchName = "前视基准面";
+                    refPlaneName = "前视基准面";
                 }
 
                 // 选中基准面
-                if (!swModelDocExt.SelectByID2(sketchName, "PLANE", 0, 0, 0, false, 0, null, 0))
+                if (!curDocExt.SelectByID2(refPlaneName, "PLANE", 0, 0, 0, false, 0, null, 0))
                 {
                     return RespVoLogExt.genOk("基准面不存在");
                 }
@@ -73,23 +72,57 @@ namespace wpfapp.bu.sketch.action.sketch
             }
             else
             {
+                // 如果草图名称不为空
                 if (skeMgr.ActiveSketch != null)
                 {
                     // 退出编辑草图模式
                     skeMgr.InsertSketch(true);
                 }
 
-                // 如果草图名称不为空，则打开该草图进行绘制
-                if (!swModelDocExt.SelectByID2(oInVo.SketchName, "SKETCH", 0, 0, 0, false, 0, null, 0))
+                // 选中草图，则打开该草图进行绘制
+                if (curDocExt.SelectByID2(oInVo.SketchName, "SKETCH", 0, 0, 0, false, 0, null, 0))
                 {
+                    // 草图存在，则直接进入编辑草图模式
+                    skeMgr.InsertSketch(true);
                     return RespVoLogExt.genOk($"草图不存在: {oInVo.SketchName}");
                 }
+                else
+                {
+                    // 草图不存在，则选中参考基准面创建草图
+                    // 如果参考基准面为空，则以前视基准面绘制草图
+                    string refPlaneName = oInVo.RefPlaneName;
+                    if (string.IsNullOrEmpty(refPlaneName))
+                    {
+                        refPlaneName = "前视基准面";
+                    }
 
-                // 在这个基准面上插入一个草图，进入编辑草图模式
-                skeMgr.InsertSketch(true);
+                    // 选中基准面
+                    if (!curDocExt.SelectByID2(refPlaneName, "PLANE", 0, 0, 0, false, 0, null, 0))
+                    {
+                        return RespVoLogExt.genOk("基准面不存在");
+                    }
+
+                    // 在这个基准面上插入一个草图，进入编辑草图模式
+                    skeMgr.InsertSketch(true);
+
+                    // 设置草图名称
+                    Sketch activeSketch = skeMgr.ActiveSketch;
+                    Feature feature = SketchManagerUtils.getFeatureBySketch(swModelDoc, activeSketch);
+                    if (feature != null)
+                    {
+                        feature.Name = oInVo.SketchName;
+                    }
+                }
             }
 
-            return RespVoLogExt.genOk("进入草图绘制模式");
+            // 获取当前激活草图名称
+            string strFeatureName = "";
+            Feature activeFeature = SketchManagerUtils.getFeatureBySketch(swModelDoc, skeMgr.ActiveSketch);
+            if (activeFeature != null)
+            {
+                strFeatureName = activeFeature.Name;
+            }
+            return RespVoLogExt.genOk($"进入草图绘制：{strFeatureName}");
         }
     }
 }

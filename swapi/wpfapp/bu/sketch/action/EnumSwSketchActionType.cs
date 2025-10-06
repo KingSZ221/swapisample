@@ -128,7 +128,10 @@ namespace wpfapp.bu.sketch.action
         [SwSketchAction("完全草图定义", typeof(FullyDefineSketchInVo))]
         FullyDefineSketch,
 
-        [SwSketchAction("薄壁拉伸", typeof(FeatureExtrusionThinInVo))]
+        [SwSketchAction("拉伸基体", typeof(FeatureExtrusionThinInVo))]
+        FeatureExtrusion,
+
+        [SwSketchAction("拉伸薄壁", typeof(FeatureExtrusionThinInVo))]
         FeatureExtrusionThin,
 
         [SwSketchAction("绘制圆管", typeof(CreateCirclePipeInVo))]

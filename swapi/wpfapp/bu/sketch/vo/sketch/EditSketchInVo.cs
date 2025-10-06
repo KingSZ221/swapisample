@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace wpfapp.bu.sketch.vo.sketch
 {
     [DisplayName("草图绘制")]
+    [TypeConverter(typeof(ExpandableObjectConverter))]
     public class EditSketchInVo
     {
         #region Fields

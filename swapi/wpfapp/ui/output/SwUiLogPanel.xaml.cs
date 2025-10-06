@@ -100,7 +100,7 @@ namespace wpfapp.ui.output
                 LogTextBox.Document.Blocks.Add(paragraph);
 
                 // 自动滚动到底部
-                if (AutoScrollCheckBox.IsChecked == true)
+                //if (AutoScrollCheckBox.IsChecked == true)
                 {
                     LogTextBox.ScrollToEnd();
                 }

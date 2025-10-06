@@ -9,6 +9,9 @@ using wpfapp.bu.sketch.vo.compose.ladder;
 using wpfapp.bu.sketch.vo.draw.circle;
 using wpfapp.bu.sketch.vo.draw.define;
 using wpfapp.bu.sketch.vo.draw.line;
+using wpfapp.bu.sketch.vo.entity;
+using wpfapp.bu.sketch.vo.feature.extrusion;
+using wpfapp.bu.sketch.vo.sketch;
 using wpfapp.bu.vo;
 
 namespace wpfapp.bu.sketch.action.compose.ladder
@@ -33,10 +36,10 @@ namespace wpfapp.bu.sketch.action.compose.ladder
 
         protected override RespVo onExecute()
         {
-            return createMethod2();
+            return createWith6Steps();
         }
 
-        protected RespVo createMethod2()
+        protected RespVo createWith6Steps()
         {
             // 获取绘制参数
             CreateLadderInVo oInVo = this.actionInVo<CreateLadderInVo>();
@@ -45,428 +48,473 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 return RespVoLogExt.genError("获取绘制参数错误");
             }
 
-            //Step1 绘制草图1
+            // 构造返回结果参数
+            CreateLadderOutVo oOutVo = new CreateLadderOutVo();
+
+            #region Step1 绘制横杆草图
+
             //1.面管1截面圆
             //2.面管2截面圆
             //3.横杆1截面圆
             //4.横杆2截面圆
-            RespVo oRespVo = this.step1(oInVo);
+            RespVo oRespVo = this.step1(oInVo, oOutVo);
             if(!oRespVo.ok)
             {
                 return oRespVo;
             }
 
-            //Step2 绘制草图2
+            #endregion
+
+            #region Step2 绘制竖杆草图
+
             //1.立柱1截面圆
             //2.立柱2截面圆
             //3.竖杆1截面圆
             //4.竖杆1截面圆整列
-            oRespVo = this.step2(oInVo);
+            oRespVo = this.step2(oInVo, oOutVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
             }
 
-            //Step3 创建面管
+            #endregion
+
+            #region Step3 创建面管
+
             //1.拉伸薄壁-面管1
             //2.拉伸薄壁-面管2
-            oRespVo = this.step3(oInVo);
+            oRespVo = this.step3(oInVo, oOutVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
             }
 
-            //Step4 创建立柱
+            #endregion
+
+            #region Step4 创建立柱
+
             //1.拉伸薄壁-立柱1
             //2.拉伸薄壁-立柱2
-            oRespVo = this.step4(oInVo);
+            oRespVo = this.step4(oInVo, oOutVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
             }
 
-            //Step5 创建横杆
+            #endregion
+
+            #region Step5 创建横杆
+
             //1.拉伸薄壁-横杆1
             //2.拉伸薄壁-横杆2
-            oRespVo = this.step5(oInVo);
+            oRespVo = this.step5(oInVo, oOutVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
             }
 
-            //Step6 创建竖杆
+            #endregion
+
+            #region Step6 创建竖杆
+
             //1.拉伸薄壁-竖杆1
             //2.拉伸薄壁-竖杆N
-            oRespVo = this.step6(oInVo);
+            oRespVo = this.step6(oInVo, oOutVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
             }
             else
             {
-                return RespVoLogExt.genOk("绘制扶梯成功");
+                return RespVoLogExt.genOk("绘制扶梯成功", oOutVo);
             }
+
+            #endregion
         }
 
         /// <summary>
-        /// Step1 绘制草图1
+        /// Step1 绘制横杆草图
+        /// 1.面管1截面圆
+        /// 2.面管2截面圆
+        /// 3.横杆1截面圆
+        /// 4.横杆2截面圆
         /// </summary>
-        private RespVo step1(CreateLadderInVo oInVo)
+        private RespVo step1(CreateLadderInVo oInVo, CreateLadderOutVo oOutVo)
         {
-            //Step1 绘制草图1
+            //Step1 绘制右视草图
             //1.面管1截面圆
             //2.面管2截面圆
             //3.横杆1截面圆
             //4.横杆2截面圆
 
             //Step1 绘制草图1
+            SwBuLogService.SInfo("Step1 绘制横杆草图开始");
 
-            // 获取草图管理器
-            var skeMgr = curDoc.SketchManager;
-            // 选中基准面
-            RespVo oRespVo = priSelectRefPlane(curDoc, "右视基准面");
+            //0.创建草图
+            RespVo oRespVo;
+            oOutVo.SketchHengGanEditInVo = new EditSketchInVo();
+            oOutVo.SketchHengGanEditInVo.SketchName = "横杆草图";
+            oOutVo.SketchHengGanEditInVo.RefPlaneName = "右视基准面";
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.EditSketch, oOutVo.SketchHengGanEditInVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
             }
 
-            // 在这个基准面上插入一个草图，进入编辑草图模式
-            skeMgr.InsertSketch(true);
-
             //1.面管1截面圆
-            // 获取绘制参数
-            CreateCircleInVo oCreateCircleInVo = new CreateCircleInVo();
-            oCreateCircleInVo.XC = 0;
-            oCreateCircleInVo.YC = oInVo.LiZhuHeight / 2;
-            oCreateCircleInVo.XP = 0;
-            oCreateCircleInVo.YP = oInVo.LiZhuHeight / 2 + oInVo.MianGuanRadius;
+            // 构造绘制参数
+            oOutVo.ContourMianGuan1InVo = new CreateCircleInVo();
+            oOutVo.ContourMianGuan1InVo.XC = 0;
+            oOutVo.ContourMianGuan1InVo.YC = oInVo.LiZhuHeight / 2;
+            oOutVo.ContourMianGuan1InVo.XP = 0;
+            oOutVo.ContourMianGuan1InVo.YP = oInVo.LiZhuHeight / 2 + oInVo.MianGuanRadius;
             // 绘制图形
-            var sketchSegment = skeMgr.CreateCircle(oCreateCircleInVo.XC / 1000, oCreateCircleInVo.YC / 1000, oCreateCircleInVo.ZC / 1000,
-                oCreateCircleInVo.XP / 1000, oCreateCircleInVo.YP / 1000, oCreateCircleInVo.ZP / 1000) as ISketchSegment;
-            if (sketchSegment == null)
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourMianGuan1InVo);
+            if (!oRespVo.ok)
             {
-                return RespVoLogExt.genError("绘制面管1截面圆参数错误");
+                return oRespVo;
             }
+            // 获取绘制图形
+            oOutVo.ContourMianGuan1OutVo = oRespVo.obj as SketchArcInfo;
 
             //2.面管2截面圆
-            oCreateCircleInVo = new CreateCircleInVo();
-            oCreateCircleInVo.XC = 0;
-            oCreateCircleInVo.YC = -oInVo.LiZhuHeight / 2;
-            oCreateCircleInVo.XP = 0;
-            oCreateCircleInVo.YP = -oInVo.LiZhuHeight / 2 + oInVo.MianGuanRadius;
+            // 构造绘制参数
+            oOutVo.ContourMianGuan2InVo = new CreateCircleInVo();
+            oOutVo.ContourMianGuan2InVo.XC = 0;
+            oOutVo.ContourMianGuan2InVo.YC = -oInVo.LiZhuHeight / 2;
+            oOutVo.ContourMianGuan2InVo.XP = 0;
+            oOutVo.ContourMianGuan2InVo.YP = -oInVo.LiZhuHeight / 2 + oInVo.MianGuanRadius;
             // 绘制图形
-            sketchSegment = skeMgr.CreateCircle(oCreateCircleInVo.XC / 1000, oCreateCircleInVo.YC / 1000, oCreateCircleInVo.ZC / 1000,
-                oCreateCircleInVo.XP / 1000, oCreateCircleInVo.YP / 1000, oCreateCircleInVo.ZP / 1000) as ISketchSegment;
-            if (sketchSegment == null)
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourMianGuan2InVo);
+            if (!oRespVo.ok)
             {
-                return RespVoLogExt.genError("绘制面管2截面圆参数错误");
+                return oRespVo;
             }
+            // 获取绘制图形
+            oOutVo.ContourMianGuan2OutVo = oRespVo.obj as SketchArcInfo;
 
             //3.横杆1截面圆
-            oCreateCircleInVo = new CreateCircleInVo();
-            oCreateCircleInVo.XC = 0;
-            oCreateCircleInVo.YC = oInVo.ShuGanHeight / 2;
-            oCreateCircleInVo.XP = 0;
-            oCreateCircleInVo.YP = oInVo.ShuGanHeight / 2 + oInVo.HengGanRadius;
+            // 构造绘制参数
+            oOutVo.ContourHengGan1InVo = new CreateCircleInVo();
+            oOutVo.ContourHengGan1InVo.XC = 0;
+            oOutVo.ContourHengGan1InVo.YC = oInVo.ShuGanHeight / 2;
+            oOutVo.ContourHengGan1InVo.XP = 0;
+            oOutVo.ContourHengGan1InVo.YP = oInVo.ShuGanHeight / 2 + oInVo.HengGanRadius;
             // 绘制图形
-            sketchSegment = skeMgr.CreateCircle(oCreateCircleInVo.XC / 1000, oCreateCircleInVo.YC / 1000, oCreateCircleInVo.ZC / 1000,
-                oCreateCircleInVo.XP / 1000, oCreateCircleInVo.YP / 1000, oCreateCircleInVo.ZP / 1000) as ISketchSegment;
-            if (sketchSegment == null)
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourHengGan1InVo);
+            if (!oRespVo.ok)
             {
-                return RespVoLogExt.genError("绘制横杆1截面圆参数错误");
+                return oRespVo;
             }
+            // 获取绘制图形
+            oOutVo.ContourHengGan1OutVo = oRespVo.obj as SketchArcInfo;
 
             //4.横杆2截面圆
-            oCreateCircleInVo = new CreateCircleInVo();
-            oCreateCircleInVo.XC = 0;
-            oCreateCircleInVo.YC = -oInVo.ShuGanHeight / 2;
-            oCreateCircleInVo.XP = 0;
-            oCreateCircleInVo.YP = -oInVo.ShuGanHeight / 2 + oInVo.HengGanRadius;
+            // 构造绘制参数
+            oOutVo.ContourHengGan2InVo = new CreateCircleInVo();
+            oOutVo.ContourHengGan2InVo.XC = 0;
+            oOutVo.ContourHengGan2InVo.YC = -oInVo.ShuGanHeight / 2;
+            oOutVo.ContourHengGan2InVo.XP = 0;
+            oOutVo.ContourHengGan2InVo.YP = -oInVo.ShuGanHeight / 2 + oInVo.HengGanRadius;
             // 绘制图形
-            sketchSegment = skeMgr.CreateCircle(oCreateCircleInVo.XC / 1000, oCreateCircleInVo.YC / 1000, oCreateCircleInVo.ZC / 1000,
-                oCreateCircleInVo.XP / 1000, oCreateCircleInVo.YP / 1000, oCreateCircleInVo.ZP / 1000) as ISketchSegment;
-            if (sketchSegment == null)
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourHengGan2InVo);
+            if (!oRespVo.ok)
             {
-                return RespVoLogExt.genError("绘制横杆2截面圆参数错误");
+                return oRespVo;
+            }
+            // 获取绘制图形
+            oOutVo.ContourHengGan2OutVo = oRespVo.obj as SketchArcInfo;
+
+            // 5.退出编辑草图
+            oOutVo.SketchHengGanExitInVo = new ExitSketchInVo();
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.ExitSketch, oOutVo.SketchHengGanExitInVo);
+            if (!oRespVo.ok)
+            {
+                return oRespVo;
             }
 
-            // 退出编辑草图模式
-            skeMgr.InsertSketch(true);
-
-            return RespVoLogExt.genOk("Step1 绘制草图1成功");
+            return RespVoLogExt.genOk("Step1 绘制横杆草图成功");
         }
 
         /// <summary>
         /// Step2 绘制草图2
+        /// 1.立柱1截面圆
+        /// 2.立柱2截面圆
+        /// 3.竖杆1截面圆
+        /// 4.竖杆N截面圆
         /// </summary>
-        private RespVo step2(CreateLadderInVo oInVo)
+        private RespVo step2(CreateLadderInVo oInVo, CreateLadderOutVo oOutVo)
         {
-            //Step2 绘制草图2
+            //Step2 绘制竖杆草图
             //1.立柱1截面圆
             //2.立柱2截面圆
             //3.竖杆1截面圆
             //4.竖杆1截面圆整列
 
-            //Step1 绘制草图2
+            //Step2 绘制草图2
+            SwBuLogService.SInfo("Step2 绘制竖杆草图开始");
 
-            // 获取草图管理器
-            var skeMgr = curDoc.SketchManager;
-            // 选中基准面
-            RespVo oRespVo = priSelectRefPlane(curDoc, "上视基准面");
+            //0.创建草图
+            RespVo oRespVo;
+            oOutVo.SketchShuGanEditInVo = new EditSketchInVo();
+            oOutVo.SketchShuGanEditInVo.SketchName = "竖杆草图";
+            oOutVo.SketchShuGanEditInVo.RefPlaneName = "上视基准面";
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.EditSketch, oOutVo.SketchShuGanEditInVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
             }
 
-            // 在这个基准面上插入一个草图，进入编辑草图模式
-            skeMgr.InsertSketch(true);
-
             //1.立柱1截面圆
             // 获取绘制参数
-            CreateCircleInVo oCreateCircleInVo = new CreateCircleInVo();
-            oCreateCircleInVo.XC = -(oInVo.HengGanWidth / 2);
-            oCreateCircleInVo.YC = 0;
-            oCreateCircleInVo.XP = -(oInVo.HengGanWidth / 2) + oInVo.LiZhuRadius;
-            oCreateCircleInVo.YP = 0;
+            oOutVo.ContourLiZhu1InVo = new CreateCircleInVo();
+            oOutVo.ContourLiZhu1InVo.XC = -(oInVo.HengGanWidth / 2);
+            oOutVo.ContourLiZhu1InVo.YC = 0;
+            oOutVo.ContourLiZhu1InVo.XP = -(oInVo.HengGanWidth / 2) + oInVo.LiZhuRadius;
+            oOutVo.ContourLiZhu1InVo.YP = 0;
             // 绘制图形
-            var sketchSegment = skeMgr.CreateCircle(oCreateCircleInVo.XC / 1000, oCreateCircleInVo.YC / 1000, oCreateCircleInVo.ZC / 1000,
-                oCreateCircleInVo.XP / 1000, oCreateCircleInVo.YP / 1000, oCreateCircleInVo.ZP / 1000) as ISketchSegment;
-            if (sketchSegment == null)
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourLiZhu1InVo);
+            if (!oRespVo.ok)
             {
-                return RespVoLogExt.genError("绘制立柱1截面圆参数错误");
+                return oRespVo;
             }
+            // 获取绘制图形
+            oOutVo.ContourLiZhu1OutVo = oRespVo.obj as SketchArcInfo;
 
             //2.立柱2截面圆
-            oCreateCircleInVo = new CreateCircleInVo();
-            oCreateCircleInVo.XC = oInVo.HengGanWidth / 2;
-            oCreateCircleInVo.YC = 0;
-            oCreateCircleInVo.XP = oInVo.HengGanWidth / 2 + oInVo.LiZhuRadius;
-            oCreateCircleInVo.YP = 0;
+            oOutVo.ContourLiZhu2InVo = new CreateCircleInVo();
+            oOutVo.ContourLiZhu2InVo.XC = oInVo.HengGanWidth / 2;
+            oOutVo.ContourLiZhu2InVo.YC = 0;
+            oOutVo.ContourLiZhu2InVo.XP = oInVo.HengGanWidth / 2 + oInVo.LiZhuRadius;
+            oOutVo.ContourLiZhu2InVo.YP = 0;
             // 绘制图形
-            sketchSegment = skeMgr.CreateCircle(oCreateCircleInVo.XC / 1000, oCreateCircleInVo.YC / 1000, oCreateCircleInVo.ZC / 1000,
-                oCreateCircleInVo.XP / 1000, oCreateCircleInVo.YP / 1000, oCreateCircleInVo.ZP / 1000) as ISketchSegment;
-            if (sketchSegment == null)
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourLiZhu2InVo);
+            if (!oRespVo.ok)
             {
-                return RespVoLogExt.genError("绘制立柱2截面圆参数错误");
+                return oRespVo;
+            }
+            // 获取绘制图形
+            oOutVo.ContourLiZhu2OutVo = oRespVo.obj as SketchArcInfo;
+
+            //3.竖杆截面圆
+            oOutVo.ContourShuGanListInVo = new List<CreateCircleInVo>();
+            oOutVo.ContourShuGanListOutVo = new List<SketchArcInfo>();
+            double xMin = -(oInVo.HengGanWidth / 2) + 100;
+            double xMax = oInVo.HengGanWidth / 2 - 100;
+            double xSpace = (xMax - xMin) / (oInVo.ShuGanCount - 1);
+            for (int i = 0; i < oInVo.ShuGanCount; i++)
+            {
+                CreateCircleInVo oCreateCircleInVo = new CreateCircleInVo();
+                oCreateCircleInVo.XC = xMin + i * xSpace;
+                oCreateCircleInVo.YC = 0;
+                oCreateCircleInVo.XP = xMin + i * xSpace + oInVo.ShuGanRadius;
+                oCreateCircleInVo.YP = 0;
+                oOutVo.ContourShuGanListInVo.Add(oCreateCircleInVo);
+                // 绘制图形
+                oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oCreateCircleInVo);
+                if (!oRespVo.ok)
+                {
+                    return oRespVo;
+                }
+                // 获取绘制图形
+                SketchArcInfo oContourShuGan = oRespVo.obj as SketchArcInfo;
+                oOutVo.ContourShuGanListOutVo.Add(oContourShuGan);
             }
 
-            //3.竖杆1截面圆
-            oCreateCircleInVo = new CreateCircleInVo();
-            oCreateCircleInVo.XC = -(oInVo.HengGanWidth / 2) + 100;
-            oCreateCircleInVo.YC = 0;
-            oCreateCircleInVo.XP = -(oInVo.HengGanWidth / 2) + 100 + oInVo.ShuGanRadius;
-            oCreateCircleInVo.YP = 0;
-            // 绘制图形
-            sketchSegment = skeMgr.CreateCircle(oCreateCircleInVo.XC / 1000, oCreateCircleInVo.YC / 1000, oCreateCircleInVo.ZC / 1000,
-                oCreateCircleInVo.XP / 1000, oCreateCircleInVo.YP / 1000, oCreateCircleInVo.ZP / 1000) as ISketchSegment;
-            if (sketchSegment == null)
+            // 5.退出编辑草图
+            oOutVo.SketchShuGanExitInVo = new ExitSketchInVo();
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.ExitSketch, oOutVo.SketchShuGanExitInVo);
+            if (!oRespVo.ok)
             {
-                return RespVoLogExt.genError("绘制竖杆1截面圆参数错误");
+                return oRespVo;
             }
 
-            //4.竖杆1截面圆整列
-            //oCreateCircleInVo = new CreateCircleInVo();
-            //oCreateCircleInVo.XC = 0;
-            //oCreateCircleInVo.YC = -oInVo.ShuGanHeight / 2;
-            //oCreateCircleInVo.XP = 0;
-            //oCreateCircleInVo.YP = -oInVo.ShuGanHeight / 2 + oInVo.HengGanRadius;
-            //// 绘制图形
-            //sketchSegment = skeMgr.CreateCircle(oCreateCircleInVo.XC / 1000, oCreateCircleInVo.YC / 1000, oCreateCircleInVo.ZC / 1000,
-            //    oCreateCircleInVo.XP / 1000, oCreateCircleInVo.YP / 1000, oCreateCircleInVo.ZP / 1000) as ISketchSegment;
-            //if (sketchSegment == null)
-            //{
-            //    return RespVoLogExt.genError("绘制横杆2截面圆参数错误");
-            //}
+            curDoc.ShowNamedView2("*等轴测", 7);
+            curDoc.ViewZoomtofit2();
 
-            // 退出编辑草图模式
-            skeMgr.InsertSketch(true);
-
-            return RespVoLogExt.genOk("Step2 绘制草图2成功");
+            return RespVoLogExt.genOk("Step2 绘制竖杆草图成功");
         }
 
         /// <summary>
         /// Step3 创建面管
+        /// 1.拉伸薄壁-面管1
+        /// 2.拉伸薄壁-面管2
         /// </summary>
-        private RespVo step3(CreateLadderInVo oInVo)
+        private RespVo step3(CreateLadderInVo oInVo, CreateLadderOutVo oOutVo)
         {
             //Step3 创建面管
+            RespVo oRespVo;
+            SwBuLogService.SInfo("Step3 创建面管开始");
+
             //1.拉伸薄壁-面管1
+            // 获取绘制参数
+            oOutVo.FeatureMianGuan1 = new FeatureExtrusionThinInVo();
+            oOutVo.FeatureMianGuan1.SketchName = oOutVo.SketchHengGanEditInVo.SketchName;
+            oOutVo.FeatureMianGuan1.ContourName = oOutVo.ContourMianGuan1OutVo.Name;
+            oOutVo.FeatureMianGuan1.FeatrueName = "面管1";
+            oOutVo.FeatureMianGuan1.Sd = false;
+            oOutVo.FeatureMianGuan1.D1 = oInVo.MianGuanWidth / 2;
+            oOutVo.FeatureMianGuan1.D2 = oInVo.MianGuanWidth / 2;
+            oOutVo.FeatureMianGuan1.Thk1 = oInVo.MianGuanThickness;
+            // 绘制图形
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureMianGuan1);
+            if (!oRespVo.ok)
+            {
+                return oRespVo;
+            }
+
             //2.拉伸薄壁-面管2
+            // 获取绘制参数
+            oOutVo.FeatureMianGuan2 = new FeatureExtrusionThinInVo();
+            oOutVo.FeatureMianGuan2.SketchName = oOutVo.SketchHengGanEditInVo.SketchName;
+            oOutVo.FeatureMianGuan2.ContourName = oOutVo.ContourMianGuan2OutVo.Name;
+            oOutVo.FeatureMianGuan2.FeatrueName = "面管2";
+            oOutVo.FeatureMianGuan2.Sd = false;
+            oOutVo.FeatureMianGuan2.D1 = oInVo.MianGuanWidth / 2;
+            oOutVo.FeatureMianGuan2.D2 = oInVo.MianGuanWidth / 2;
+            oOutVo.FeatureMianGuan2.Thk1 = oInVo.MianGuanThickness;
+            // 绘制图形
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureMianGuan2);
+            if (!oRespVo.ok)
+            {
+                return oRespVo;
+            }
 
             return RespVoLogExt.genOk("Step3 创建面管成功");
         }
 
         /// <summary>
         /// Step4 创建立柱
+        /// 1.拉伸薄壁-立柱1
+        /// 2.拉伸薄壁-立柱2
         /// </summary>
-        private RespVo step4(CreateLadderInVo oInVo)
+        private RespVo step4(CreateLadderInVo oInVo, CreateLadderOutVo oOutVo)
         {
             //Step4 创建立柱
+            RespVo oRespVo;
+            SwBuLogService.SInfo("Step4 创建立柱开始");
+
             //1.拉伸薄壁-立柱1
+            // 获取绘制参数
+            oOutVo.FeatureLiZhu1 = new FeatureExtrusionThinInVo();
+            oOutVo.FeatureLiZhu1.SketchName = oOutVo.SketchShuGanEditInVo.SketchName;
+            oOutVo.FeatureLiZhu1.ContourName = oOutVo.ContourLiZhu1OutVo.Name;
+            oOutVo.FeatureLiZhu1.FeatrueName = "立柱1";
+            oOutVo.FeatureLiZhu1.Sd = false;
+            oOutVo.FeatureLiZhu1.D1 = oInVo.LiZhuHeight / 2;
+            oOutVo.FeatureLiZhu1.D2 = oInVo.LiZhuHeight / 2;
+            oOutVo.FeatureLiZhu1.Thk1 = oInVo.LiZhuThickness;
+            // 绘制图形
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureLiZhu1);
+            if (!oRespVo.ok)
+            {
+                return oRespVo;
+            }
+
             //2.拉伸薄壁-立柱2
+            // 获取绘制参数
+            oOutVo.FeatureLiZhu2 = new FeatureExtrusionThinInVo();
+            oOutVo.FeatureLiZhu2.SketchName = oOutVo.SketchShuGanEditInVo.SketchName;
+            oOutVo.FeatureLiZhu2.ContourName = oOutVo.ContourLiZhu2OutVo.Name;
+            oOutVo.FeatureLiZhu2.FeatrueName = "立柱2";
+            oOutVo.FeatureLiZhu2.Sd = false;
+            oOutVo.FeatureLiZhu2.D1 = oInVo.LiZhuHeight / 2;
+            oOutVo.FeatureLiZhu2.D2 = oInVo.LiZhuHeight / 2;
+            oOutVo.FeatureLiZhu2.Thk1 = oInVo.LiZhuThickness;
+            // 绘制图形
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureLiZhu2);
+            if (!oRespVo.ok)
+            {
+                return oRespVo;
+            }
 
             return RespVoLogExt.genOk("Step4 创建立柱成功");
         }
 
         /// <summary>
         /// Step5 创建横杆
+        /// 1.拉伸薄壁-横杆1
+        /// 2.拉伸薄壁-横杆2
         /// </summary>
-        private RespVo step5(CreateLadderInVo oInVo)
+        private RespVo step5(CreateLadderInVo oInVo, CreateLadderOutVo oOutVo)
         {
             //Step5 创建横杆
+            RespVo oRespVo;
+            SwBuLogService.SInfo("Step5 创建横杆开始");
+
             //1.拉伸薄壁-横杆1
+            // 获取绘制参数
+            oOutVo.FeatureHengGan1 = new FeatureExtrusionThinInVo();
+            oOutVo.FeatureHengGan1.SketchName = oOutVo.SketchHengGanEditInVo.SketchName;
+            oOutVo.FeatureHengGan1.ContourName = oOutVo.ContourHengGan1OutVo.Name;
+            oOutVo.FeatureHengGan1.FeatrueName = "横杆1";
+            oOutVo.FeatureHengGan1.Sd = false;
+            oOutVo.FeatureHengGan1.D1 = oInVo.HengGanWidth / 2;
+            oOutVo.FeatureHengGan1.D2 = oInVo.HengGanWidth / 2;
+            oOutVo.FeatureHengGan1.Thk1 = oInVo.HengGanThickness;
+            // 绘制图形
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureHengGan1);
+            if (!oRespVo.ok)
+            {
+                return oRespVo;
+            }
+
             //2.拉伸薄壁-横杆2
+            // 获取绘制参数
+            oOutVo.FeatureHengGan2 = new FeatureExtrusionThinInVo();
+            oOutVo.FeatureHengGan2.SketchName = oOutVo.SketchHengGanEditInVo.SketchName;
+            oOutVo.FeatureHengGan2.ContourName = oOutVo.ContourHengGan2OutVo.Name;
+            oOutVo.FeatureHengGan2.FeatrueName = "横杆2";
+            oOutVo.FeatureHengGan2.Sd = false;
+            oOutVo.FeatureHengGan2.D1 = oInVo.HengGanWidth / 2;
+            oOutVo.FeatureHengGan2.D2 = oInVo.HengGanWidth / 2;
+            oOutVo.FeatureHengGan2.Thk1 = oInVo.HengGanThickness;
+            // 绘制图形
+            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureHengGan2);
+            if (!oRespVo.ok)
+            {
+                return oRespVo;
+            }
 
             return RespVoLogExt.genOk("Step5 创建横杆成功");
         }
 
         /// <summary>
         /// Step6 创建竖杆
+        /// 1.拉伸薄壁-竖杆1
+        /// 2.拉伸薄壁-竖杆N
         /// </summary>
-        private RespVo step6(CreateLadderInVo oInVo)
+        private RespVo step6(CreateLadderInVo oInVo, CreateLadderOutVo oOutVo)
         {
             //Step6 创建竖杆
+            RespVo oRespVo;
+            SwBuLogService.SInfo("Step6 创建竖杆开始");
+
             //1.拉伸薄壁-竖杆1
             //2.拉伸薄壁-竖杆N
+            oOutVo.FeatureShuGanList = new List<FeatureExtrusionThinInVo>();
+            for (int i = 0; i < oOutVo.ContourShuGanListOutVo.Count; i ++)
+            {
+                SketchArcInfo oContourShuGan = oOutVo.ContourShuGanListOutVo[i];
+                // 获取绘制参数
+                FeatureExtrusionThinInVo oFeatureShuGan = new FeatureExtrusionThinInVo();
+                oFeatureShuGan.SketchName = oOutVo.SketchShuGanEditInVo.SketchName;
+                oFeatureShuGan.ContourName = oContourShuGan.Name;
+                oFeatureShuGan.FeatrueName = $"竖杆{i+1}";
+                oFeatureShuGan.Sd = false;
+                oFeatureShuGan.D1 = oInVo.ShuGanHeight / 2;
+                oFeatureShuGan.D2 = oInVo.ShuGanHeight / 2;
+                oFeatureShuGan.Thk1 = oInVo.ShuGanThickness;
+                // 绘制图形
+                oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oFeatureShuGan);
+                if (!oRespVo.ok)
+                {
+                    return oRespVo;
+                }
+                oOutVo.FeatureShuGanList.Add(oFeatureShuGan);
+            }
 
             return RespVoLogExt.genOk("Step6 创建竖杆成功");
-        }
-
-        protected RespVo createMethod1()
-        {
-            // 获取绘制参数
-            CreateLadderInVo oInVo = this.actionInVo<CreateLadderInVo>();
-
-            // 获取草图管理器
-            var skeMgr = curDoc.SketchManager;
-
-            //子步骤 起点  终点
-            //1.绘制面管1中心直线(0, 0)(2000, 0)
-            //2.绘制面管2中心直线(0, -1500)(2000, -1500)
-            //3.绘制立柱1中心直线(500, 0)(500, -1500)
-            //4.绘制立柱2中心直线(1500, 0)(1500, -1500)
-            //5.绘制横杆1中心直线(500, -250)(1500, -250)
-            //6.绘制横杆2中心直线(500, -1250)(1500, -1250)
-            //7.绘制竖杆1中心直线(600, -250)(600, -1250)
-            //8.绘制竖杆2中心直线(1400, -250)(1400, -1250)
-            //9.完全草图定义
-
-            //1.绘制面管1中心直线(0, 0)(2000, 0)
-            CreateLineInVo oCreateLineInVo = new CreateLineInVo();
-            oCreateLineInVo.X1 = 0;
-            oCreateLineInVo.Y1 = 0;
-            oCreateLineInVo.X2 = oInVo.MianGuanWidth;
-            oCreateLineInVo.Y2 = 0;
-            RespVo oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateLine, oCreateLineInVo);
-            if (!oRespVo.ok)
-            {
-                return RespVoLogExt.genError("绘制面管1中心直线参数错误");
-            }
-
-            //2.绘制面管2中心直线(0, -1500)(2000, -1500)
-            oCreateLineInVo = new CreateLineInVo();
-            oCreateLineInVo.X1 = 0;
-            oCreateLineInVo.Y1 = -oInVo.LiZhuHeight;
-            oCreateLineInVo.X2 = oInVo.MianGuanWidth;
-            oCreateLineInVo.Y2 = -oInVo.LiZhuHeight;
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateLine, oCreateLineInVo);
-            if (!oRespVo.ok)
-            {
-                return RespVoLogExt.genError("绘制面管2中心直线参数错误");
-            }
-
-            //3.绘制立柱1中心直线(500, 0)(500, -1500)
-            oCreateLineInVo = new CreateLineInVo();
-            oCreateLineInVo.X1 = (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2;
-            oCreateLineInVo.Y1 = 0;
-            oCreateLineInVo.X2 = (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2;
-            oCreateLineInVo.Y2 = -oInVo.LiZhuHeight;
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateLine, oCreateLineInVo);
-            if (!oRespVo.ok)
-            {
-                return RespVoLogExt.genError("绘制立柱1中心直线参数错误");
-            }
-
-            //4.绘制立柱2中心直线(1500, 0)(1500, -1500)
-            oCreateLineInVo = new CreateLineInVo();
-            oCreateLineInVo.X1 = oInVo.MianGuanWidth - (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2;
-            oCreateLineInVo.Y1 = 0;
-            oCreateLineInVo.X2 = oInVo.MianGuanWidth - (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2;
-            oCreateLineInVo.Y2 = -oInVo.LiZhuHeight;
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateLine, oCreateLineInVo);
-            if (!oRespVo.ok)
-            {
-                return RespVoLogExt.genError("绘制立柱2中心直线参数错误");
-            }
-
-            //5.绘制横杆1中心直线(500, -250)(1500, -250)
-            oCreateLineInVo = new CreateLineInVo();
-            oCreateLineInVo.X1 = (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2;
-            oCreateLineInVo.Y1 = -(oInVo.LiZhuHeight - oInVo.ShuGanHeight) / 2;
-            oCreateLineInVo.X2 = oInVo.MianGuanWidth - (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2;
-            oCreateLineInVo.Y2 = -(oInVo.LiZhuHeight - oInVo.ShuGanHeight) / 2;
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateLine, oCreateLineInVo);
-            if (!oRespVo.ok)
-            {
-                return RespVoLogExt.genError("绘制立柱2中心直线参数错误");
-            }
-
-            //6.绘制横杆2中心直线(500, -1250)(1500, -1250)
-            oCreateLineInVo = new CreateLineInVo();
-            oCreateLineInVo.X1 = (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2;
-            oCreateLineInVo.Y1 = -oInVo.LiZhuHeight + (oInVo.LiZhuHeight - oInVo.ShuGanHeight) / 2;
-            oCreateLineInVo.X2 = oInVo.MianGuanWidth - (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2;
-            oCreateLineInVo.Y2 = -oInVo.LiZhuHeight + (oInVo.LiZhuHeight - oInVo.ShuGanHeight) / 2;
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateLine, oCreateLineInVo);
-            if (!oRespVo.ok)
-            {
-                return RespVoLogExt.genError("绘制立柱2中心直线参数错误");
-            }
-
-            //7.绘制竖杆1中心直线(600, -250)(600, -1250)
-            oCreateLineInVo = new CreateLineInVo();
-            oCreateLineInVo.X1 = (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2 + oInVo.ShuGanJianGuangWidth;
-            oCreateLineInVo.Y1 = -(oInVo.LiZhuHeight - oInVo.ShuGanHeight) / 2;
-            oCreateLineInVo.X2 = (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2 + oInVo.ShuGanJianGuangWidth;
-            oCreateLineInVo.Y2 = -oInVo.LiZhuHeight + (oInVo.LiZhuHeight - oInVo.ShuGanHeight) / 2;
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateLine, oCreateLineInVo);
-            if (!oRespVo.ok)
-            {
-                return RespVoLogExt.genError("绘制立柱2中心直线参数错误");
-            }
-
-            //8.绘制竖杆2中心直线(1400, -250)(1400, -1250)
-            oCreateLineInVo = new CreateLineInVo();
-            oCreateLineInVo.X1 = oInVo.MianGuanWidth - (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2 - oInVo.ShuGanJianGuangWidth;
-            oCreateLineInVo.Y1 = -(oInVo.LiZhuHeight - oInVo.ShuGanHeight) / 2;
-            oCreateLineInVo.X2 = oInVo.MianGuanWidth - (oInVo.MianGuanWidth - oInVo.HengGanWidth) / 2 - oInVo.ShuGanJianGuangWidth;
-            oCreateLineInVo.Y2 = -oInVo.LiZhuHeight + (oInVo.LiZhuHeight - oInVo.ShuGanHeight) / 2;
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateLine, oCreateLineInVo);
-            if (!oRespVo.ok)
-            {
-                return RespVoLogExt.genError("绘制立柱2中心直线参数错误");
-            }
-
-            //9.完全草图定义
-            //FullyDefineSketchInVo oFullyDefineSketchInVo = new FullyDefineSketchInVo();
-            //oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FullyDefineSketch, oFullyDefineSketchInVo);
-            //if (!oRespVo.ok)
-            //{
-            //    return RespVoLogExt.genError("完全草图定义参数错误");
-            //}
-
-            //子步骤 起点  终点
-            //1.绘制面管1中心直线(0, 0)(2000, 0)
-            //2.绘制面管2中心直线(0, -1500)(2000, -1500)
-            //3.绘制立柱1中心直线(500, 0)(500, -1500)
-            //4.绘制立柱2中心直线(1500, 0)(1500, -1500)
-            //5.绘制横杆1中心直线(500, -250)(1500, -250)
-            //6.绘制横杆2中心直线(500, -1250)(1500, -1250)
-            //7.绘制竖杆1中心直线(600, -250)(600, -1250)
-            //8.绘制竖杆2中心直线(1400, -250)(1400, -1250)
-            //9.完全草图定义
-
-            return RespVoLogExt.genOk("绘制扶梯成功");
         }
 
     }

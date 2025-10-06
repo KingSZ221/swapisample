@@ -12,16 +12,16 @@ using wpfapp.bu.vo;
 namespace wpfapp.bu.sketch.action.feature.extrusion
 {
     /// <summary>
-    /// 薄壁拉伸
+    /// 拉伸基体
     /// </summary>
-    public class FeatureExtrusionThinAction : SwSketchFeatureActionBase
+    public class FeatureExtrusionAction : SwSketchFeatureActionBase
     {
         #region Fields
         #endregion
 
         #region Construction
 
-        public FeatureExtrusionThinAction(object oInVo) : base(oInVo)
+        public FeatureExtrusionAction(object oInVo) : base(oInVo)
         {
 
         }
@@ -41,64 +41,15 @@ namespace wpfapp.bu.sketch.action.feature.extrusion
             // 清除选择
             curDoc.ClearSelection2(true);
 
+            //selMgr.EnableContourSelection = true;
+
             // 选中草图轮廓
-            //bool bSel = curDocExt.SelectByID2("圆弧1@草图2", "EXTSKETCHSEGMENT", 0, 0, 0, true, 4, null, 0);
-            //bool bSel1 = curDocExt.SelectByID2("横杆草图", "SKETCH", 0, 0, 0, false, 0, null, 0);
-            //if (!bSel1)
-            //{
-            //    return RespVoLogExt.genError("薄壁拉伸参数错误");
-            //}
             bool bSelContour = priSelectContourBySegmentName(oInVo.SketchName, oInVo.ContourName, 4);//"圆弧1"
+            //bool bSelContour = curDocExt.SelectByID2($"{oInVo.ContourName}@{oInVo.SketchName}", "EXTSKETCHSEGMENT", 0, 0, 0, true, 4, null, 0);
             if (!bSelContour)
             {
                 return RespVoLogExt.genError("选中轮廓错误");
             }
-            //selMgr.EnableContourSelection = true;
-            //bool bSel = curDocExt.SelectByID2("Arc1", "SKETCHCONTOUR", 0, 0, 0, true, 4, null, 0); //EXTSKETCHSEGMENT
-            //if (!bSel)
-            //{
-            //    return RespVoLogExt.genError("薄壁拉伸参数错误");
-            //}
-
-            //FeatureExtrusionThin2(False, False, False, 0, 0, 0.1, 0.1, False, False, False, False, 1.74532925199433E-02, 1.74532925199433E-02,
-            //False, False, False, False, True, 0.002, 0.001, 0.002, 0, 0, False, 0.005, True, True, 0, 0, False)
-            // 薄壁拉伸
-            //Feature oFeature = featMgr.FeatureExtrusionThin2(
-            //    Sd: oInVo.Sd, //拉伸方向
-            //    Flip: false,
-            //    Dir: false,
-            //    T1: (int)swEndConditions_e.swEndCondBlind,
-            //    T2: (int)swEndConditions_e.swEndCondBlind,
-            //    D1: oInVo.D1 / 1000, //拉伸深度
-            //    D2: oInVo.D2 / 1000, //拉伸深度
-            //    //拔模参数
-            //    Dchk1: false,
-            //    Dchk2: false,
-            //    Ddir1: false,
-            //    Ddir2: false,
-            //    Dang1: 0,
-            //    Dang2: 0,
-            //    //
-            //    OffsetReverse1: false,
-            //    OffsetReverse2: false,
-            //    TranslateSurface1: false,
-            //    TranslateSurface2: false,
-            //    //实体和选择
-            //    Merge: false,
-            //    Thk1: oInVo.Thk1 / 1000, //壁厚
-            //    Thk2: 0,
-            //    EndThk: 0,
-            //    RevThinDir: 0,
-            //    CapEnds: 0,
-            //    AddBends: false,
-            //    BendRad: 0,
-            //    UseFeatScope: true,
-            //    UseAutoSelect: true,
-            //    //起始条件
-            //    T0: (int)swStartConditions_e.swStartSketchPlane,
-            //    StartOffset: 0,
-            //    FlipStartOffset: false
-            //    );
 
             //selMgr.EnableContourSelection = false;
 
@@ -123,7 +74,7 @@ namespace wpfapp.bu.sketch.action.feature.extrusion
                 TranslateSurface1: false,
                 TranslateSurface2: false,
                 //实体和选择
-                Merge: true,
+                Merge: false,
                 UseFeatScope: true,
                 UseAutoSelect: true,
                 //起始条件
@@ -134,21 +85,21 @@ namespace wpfapp.bu.sketch.action.feature.extrusion
 
             if (oFeature == null)
             {
-                return RespVoLogExt.genError("薄壁拉伸参数错误");
+                return RespVoLogExt.genError("拉伸参数错误");
             }
-            
-            if(!string.IsNullOrEmpty(oInVo.FeatrueName))
+
+            if (!string.IsNullOrEmpty(oInVo.FeatrueName))
             {
                 oFeature.Name = oInVo.FeatrueName;
             }
 
-            return RespVoLogExt.genOk($"薄壁拉伸成功:{oFeature.Name}");
+            return RespVoLogExt.genOk($"拉伸基体成功：{oFeature.Name}");
         }
 
         private bool priSelectContourBySegmentName(string strSketchName, string strSegmentName, int mark)
         {
             Sketch oSketch = priGetSketchByName(strSketchName);
-            if(oSketch == null)
+            if (oSketch == null)
             {
                 return false;
             }
@@ -200,9 +151,9 @@ namespace wpfapp.bu.sketch.action.feature.extrusion
             {
                 SketchContour sketchContour = (SketchContour)objContour;
                 object[] sketchSegments = (object[])sketchContour.GetSketchSegments();
-                if(sketchSegments != null)
+                if (sketchSegments != null)
                 {
-                    foreach(object objSegment in sketchSegments)
+                    foreach (object objSegment in sketchSegments)
                     {
                         SketchSegment sketchSegment = (SketchSegment)objSegment;
                         string segmentName = sketchSegment.GetName();

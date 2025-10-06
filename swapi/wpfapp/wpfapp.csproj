@@ -174,6 +174,7 @@
     <Compile Include="bu\sketch\action\draw\rect\CreateCenterRectangleAction.cs" />
     <Compile Include="bu\sketch\action\draw\rect\CreateCornerRectangleAction.cs" />
     <Compile Include="bu\sketch\action\draw\rect\CreateParallelogramAction.cs" />
+    <Compile Include="bu\sketch\action\feature\extrusion\FeatureExtrusionAction.cs" />
     <Compile Include="bu\sketch\action\feature\extrusion\FeatureExtrusionThinAction.cs" />
     <Compile Include="bu\sketch\action\feature\SwSketchFeatureActionBase.cs" />
     <Compile Include="bu\sketch\action\sketch\ExitSketchAction.cs" />
@@ -191,6 +192,8 @@
     <Compile Include="bu\sketch\action\draw\SwSketchDrawActionBase.cs" />
     <Compile Include="bu\sketch\action\edit\SwSketchEditActionBase.cs" />
     <Compile Include="bu\sketch\action\draw\text\InsertSketchTextAction.cs" />
+    <Compile Include="bu\sketch\utils\SketchManagerUtils.cs" />
+    <Compile Include="bu\sketch\vo\compose\ladder\CreateLadderOutVo.cs" />
     <Compile Include="bu\sketch\vo\draw\define\FullyDefineSketchInVo.cs" />
     <Compile Include="bu\sketch\vo\compose\ladder\CreateLadderInVo.cs" />
     <Compile Include="bu\sketch\vo\edit\trim\SketchTrimInVo.cs" />

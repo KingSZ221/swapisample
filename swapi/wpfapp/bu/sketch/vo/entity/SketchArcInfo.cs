@@ -11,6 +11,7 @@ namespace wpfapp.bu.sketch.vo.entity
     /// 草图弧线
     /// </summary>
     [DisplayName("草图弧线")]
+    [TypeConverter(typeof(ExpandableObjectConverter))]
     public class SketchArcInfo : SketchSegmentInfo
     {
         #region Fields

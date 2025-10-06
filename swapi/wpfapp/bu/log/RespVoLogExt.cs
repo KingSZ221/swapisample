@@ -24,7 +24,7 @@ namespace wpfapp.bu.log
         public static RespVo genOk(string strMsg)
         {
             SwBuLogService.SInfo(strMsg);
-            return RespVo.genOk(strMsg); ;
+            return RespVo.genOk(strMsg);
         }
 
         public static RespVo genOk(string strMsg, object obj)

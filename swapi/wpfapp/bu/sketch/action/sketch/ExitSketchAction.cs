@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
+using wpfapp.bu.sketch.utils;
 using wpfapp.bu.sketch.vo.sketch;
 using wpfapp.bu.vo;
 
@@ -43,13 +44,21 @@ namespace wpfapp.bu.sketch.action.sketch
             // 获取草图管理器
             var skeMgr = curDoc.SketchManager;
 
+            // 获取当前激活草图名称
+            string strFeatureName = "";
             if (skeMgr.ActiveSketch != null)
             {
+                Feature activeFeature = SketchManagerUtils.getFeatureBySketch(swModelDoc, skeMgr.ActiveSketch);
+                if (activeFeature != null)
+                {
+                    strFeatureName = activeFeature.Name;
+                }
+
                 // 退出编辑草图模式
                 skeMgr.InsertSketch(true);
             }
 
-            return RespVoLogExt.genOk("退出草图绘制模式");
+            return RespVoLogExt.genOk($"退出草图绘制：{strFeatureName}");
         }
     }
 }

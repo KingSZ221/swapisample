@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace wpfapp.bu.sketch.vo.feature.extrusion
 {
     [DisplayName("薄壁拉伸")]
+    [TypeConverter(typeof(ExpandableObjectConverter))]
     public class FeatureExtrusionThinInVo
     {
         #region Fields
@@ -45,20 +46,28 @@ namespace wpfapp.bu.sketch.vo.feature.extrusion
         public double Thk1 { get; set; } = 2;
 
         /// <summary>
+        /// 拉伸草图名称
+        /// </summary>
+        [DisplayName("拉伸草图名称")]
+        [Description("草图1")]
+        [Category("Misc")]
+        public string SketchName { get; set; } = "横杆草图";
+
+        /// <summary>
         /// 拉伸草图轮廓
         /// </summary>
         [DisplayName("拉伸草图轮廓名称")]
-        [Description("Arc1@草图2")]
+        [Description("圆弧1")]
         [Category("Misc")]
-        public string ContourName { get; set; } = "";
+        public string ContourName { get; set; } = "圆弧1";
 
         /// <summary>
         /// 拉伸草图轮廓
         /// </summary>
         [DisplayName("拉伸特征名称")]
-        [Description("Arc1@草图2")]
+        [Description("拉伸特征名称")]
         [Category("Misc")]
-        public string FeatrueName { get; set; } = "";
+        public string FeatrueName { get; set; } = "面管1";
 
         #endregion
     }

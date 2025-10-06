@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.draw.circle;
+using wpfapp.bu.sketch.vo.entity;
 using wpfapp.bu.vo;
 
 namespace wpfapp.bu.sketch.action.draw.circle
@@ -46,7 +47,10 @@ namespace wpfapp.bu.sketch.action.draw.circle
             // 添加固定约束关系
             curDoc.SketchAddConstraints("sgFIXED");
 
-            return RespVoLogExt.genOk("绘制圆成功");
+            // 获取图形信息
+            SketchArcInfo oSketchEntity = SketchEntityConverter.ToArc(sketchSegment);
+
+            return RespVoLogExt.genOk("绘制圆成功", oSketchEntity);
         }
     }
 }

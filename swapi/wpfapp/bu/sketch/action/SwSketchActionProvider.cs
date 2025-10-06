@@ -90,6 +90,7 @@ namespace wpfapp.bu.sketch.action
             actionTypeMap[EnumSwSketchActionType.CreateChamfer] = typeof(CreateChamferAction);
             actionTypeMap[EnumSwSketchActionType.SketchTrim] = typeof(SketchTrimAction);
             actionTypeMap[EnumSwSketchActionType.FullyDefineSketch] = typeof(FullyDefineSketchAction);
+            actionTypeMap[EnumSwSketchActionType.FeatureExtrusion] = typeof(FeatureExtrusionAction);
             actionTypeMap[EnumSwSketchActionType.FeatureExtrusionThin] = typeof(FeatureExtrusionThinAction); 
             actionTypeMap[EnumSwSketchActionType.CreateCirclePipe] = typeof(CreateCirclePipeAction);
             actionTypeMap[EnumSwSketchActionType.CreateLadder] = typeof(CreateLadderAction); 
