@@ -1,0 +1,15 @@
+﻿<Window x:Class="wpfapp.ui.ai.ladder.CreateLadderDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfapp.ui.ai.ladder"
+        mc:Ignorable="d"
+        Title="AI调用SW" Height="593" Width="240">
+    <Grid Margin="0,0,345.6,-20">
+        <Label Content="请输入SW建模详细需求：" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Margin="10,6,-224,0"/>
+        <TextBox x:Name="txtContent" HorizontalAlignment="Left" Height="463" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" AcceptsReturn="True" Margin="16,40,-216,0"/>
+        <Button x:Name="btnSend" Content="发送" Click="btnSend_Click" HorizontalAlignment="Left" Margin="143,519,-214,0" VerticalAlignment="Top" Width="71" Height="25"/>
+
+    </Grid>
+</Window>

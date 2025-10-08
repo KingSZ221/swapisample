@@ -63,6 +63,8 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 return oRespVo;
             }
 
+            Task.Delay(1); // 短暂延迟，让UI更新
+
             #endregion
 
             #region Step2 绘制竖杆草图
@@ -77,6 +79,8 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 return oRespVo;
             }
 
+            Task.Delay(1); // 短暂延迟，让UI更新
+
             #endregion
 
             #region Step3 创建面管
@@ -88,6 +92,8 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             {
                 return oRespVo;
             }
+
+            Task.Delay(1); // 短暂延迟，让UI更新
 
             #endregion
 
@@ -101,6 +107,8 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 return oRespVo;
             }
 
+            Task.Delay(1); // 短暂延迟，让UI更新
+
             #endregion
 
             #region Step5 创建横杆
@@ -112,6 +120,8 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             {
                 return oRespVo;
             }
+
+            Task.Delay(1); // 短暂延迟，让UI更新
 
             #endregion
 

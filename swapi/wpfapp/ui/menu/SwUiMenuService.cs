@@ -14,6 +14,7 @@ using wpfapp.bu.sketch;
 using wpfapp.bu.sketch.action;
 using wpfapp.bu.sketch.vo.draw.spline;
 using wpfapp.bu.vo;
+using wpfapp.ui.ai;
 using wpfapp.ui.prop;
 using wpfapp.utils.reflect;
 
@@ -50,12 +51,12 @@ namespace wpfapp.ui.menu
         public void init(Menu mainMenu, ToolBarTray mainToolbar)
         {
             priCreateMenu4App(mainMenu);
-            priCreateMenu4File(mainMenu);
-            priCreateMenu4Sketch(mainMenu);
+            //priCreateMenu4File(mainMenu);
+            //priCreateMenu4Sketch(mainMenu);
 
             priCreateToolbar4App(mainToolbar);
-            priCreateToolbar4File(mainToolbar);
-            priCreateToolbar4Sketch(mainToolbar);
+            //priCreateToolbar4File(mainToolbar);
+            //priCreateToolbar4Sketch(mainToolbar);
         }
 
         public void destroy()
@@ -70,6 +71,7 @@ namespace wpfapp.ui.menu
             mainMenu.Items.Add(menu);
 
             menu.Items.Add(priCreateMenuItem("连接SW", Button_Click_ConnectSw));
+            menu.Items.Add(priCreateMenuItem("AI调用SW", Button_Click_AiInvokeSw));
         }
 
         private void priCreateMenu4File(Menu mainMenu)
@@ -245,6 +247,7 @@ namespace wpfapp.ui.menu
 
             // 添加按钮
             toolBar.Items.Add(priCreateToolBarBtn("连接SW", Button_Click_ConnectSw));
+            toolBar.Items.Add(priCreateToolBarBtn("AI调用SW", Button_Click_AiInvokeSw));
         }
 
         private void priCreateToolbar4File(ToolBarTray mainToolbar)
@@ -309,6 +312,15 @@ namespace wpfapp.ui.menu
         {
             SwBuAppService.getInstance().connectSw();
         }
+
+        /// <summary>
+        /// AI调用SW
+        /// </summary>
+        private void Button_Click_AiInvokeSw(object sender, RoutedEventArgs e)
+        {
+            SwAiWrapService.getInstance().CreateLadder();
+        }
+        
 
         #endregion
 

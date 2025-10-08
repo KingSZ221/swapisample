@@ -47,6 +47,7 @@ namespace wpfapp.ui.output
         public void Log(string message, LogLevel level = LogLevel.Info, object obj = null)
         {
             //Dispatcher.Invoke(() =>
+            Dispatcher.InvokeAsync(() =>
             {
                 var paragraph = new Paragraph();
 
@@ -104,7 +105,7 @@ namespace wpfapp.ui.output
                 {
                     LogTextBox.ScrollToEnd();
                 }
-            }//);
+            });
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)

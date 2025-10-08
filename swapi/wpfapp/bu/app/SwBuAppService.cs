@@ -111,6 +111,15 @@ namespace wpfapp.bu.app
             return Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
         }
 
+        public static MainWindow getMainWindow2()
+        {
+            if (Application.Current == null)
+                return null;
+
+            // 如果没有设置主窗口，尝试查找
+            return Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+        }
+
         public static string getAppPath()
         {
             string strAppPath = Path.GetDirectoryName(typeof(MainWindow).Assembly.Location);

@@ -1256,6 +1256,36 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "绘制扶梯",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"MianGuanWidth\": 2000,\r\n    \"MianGuanRadius\": 50,\r\n    \"MianGuanThickness\": 2,\r\n    \"LiZhuHeight\": 1500,\r\n    \"LiZhuRadius\": 40,\r\n    \"LiZhuThickness\": 2,\r\n    \"HengGanWidth\": 1000,\r\n    \"HengGanRadius\": 25,\r\n    \"HengGanThickness\": 2,\r\n    \"ShuGanHeight\": 1000,\r\n    \"ShuGanRadius\": 20,\r\n    \"ShuGanThickness\": 2,\r\n    \"ShuGanJianGuangWidth\": 100,\r\n    \"ShuGanCount\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/sw/CreateLadder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sw",
+						"CreateLadder"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

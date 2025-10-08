@@ -26,6 +26,8 @@ using wpfapp.bu.sketch.vo.draw.text;
 using wpfapp.bu.vo;
 using wpfapp.bu.sketch.vo.draw.line;
 using wpfapp.bu.vo.draw.pipe;
+using wpfapp.bu.sketch.vo.compose.ladder;
+using Newtonsoft.Json;
 
 namespace wpfapp.nbi
 {
@@ -522,6 +524,24 @@ namespace wpfapp.nbi
                 return Ok(RespVo.genError("请求参数错误"));
             }
             return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCirclePipe, oInVo));
+        }
+
+        #endregion
+
+        #region 绘制扶梯
+
+        [HttpPost]
+        [Route("CreateLadder")]  // 对应 对应 api/sw/CreateLadder
+        public IHttpActionResult CreateLadder([FromBody] CreateLadderInVo oInVo)
+        {
+            if (oInVo == null)
+            {
+                return Ok(RespVo.genError("请求参数错误"));
+            }
+            CreateLadderOutVo oOutVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateLadder, oInVo).obj as CreateLadderOutVo;
+            string strJson = JsonConvert.SerializeObject(oOutVo);
+            return Ok(strJson);
+            //return Ok(SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateLadder, oInVo));
         }
 
         #endregion
