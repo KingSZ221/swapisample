@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace wpfapp.bu.sketch.vo.entity
     /// </summary>
     [DisplayName("草图实体选择ID")]
     [TypeConverter(typeof(ExpandableObjectConverter))]
+    [JsonObject]
     public class EntitySelectId
     {
         #region Fields

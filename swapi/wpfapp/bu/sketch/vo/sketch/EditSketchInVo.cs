@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace wpfapp.bu.sketch.vo.sketch
 {
     [DisplayName("草图绘制")]
     [TypeConverter(typeof(ExpandableObjectConverter))]
+    [JsonObject]
     public class EditSketchInVo
     {
         #region Fields

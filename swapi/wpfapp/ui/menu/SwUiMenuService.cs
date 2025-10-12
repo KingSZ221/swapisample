@@ -51,8 +51,8 @@ namespace wpfapp.ui.menu
         public void init(Menu mainMenu, ToolBarTray mainToolbar)
         {
             priCreateMenu4App(mainMenu);
-            //priCreateMenu4File(mainMenu);
-            //priCreateMenu4Sketch(mainMenu);
+            priCreateMenu4File(mainMenu);
+            priCreateMenu4Sketch(mainMenu);
 
             priCreateToolbar4App(mainToolbar);
             //priCreateToolbar4File(mainToolbar);

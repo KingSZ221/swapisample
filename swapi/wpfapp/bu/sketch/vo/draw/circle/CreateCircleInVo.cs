@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace wpfapp.bu.sketch.vo.draw.circle
 {
     [DisplayName("绘制圆")]
     [TypeConverter(typeof(ExpandableObjectConverter))]
+    [JsonObject]
     public class CreateCircleInVo : SketchDrawInVoBase
     {
         #region Fields
