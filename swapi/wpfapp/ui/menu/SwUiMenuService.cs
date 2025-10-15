@@ -192,6 +192,8 @@ namespace wpfapp.ui.menu
 
             MenuItem menuTrim = priCreateMenuItem("裁剪实体", null);
             menuTrim.Items.Add(priCreateMenuItem("裁剪实体", Button_Click_SketchTrim));
+            menuTrim.Items.Add(priCreateMenuItem("延伸实体", Button_Click_SketchExtend));
+            menuTrim.Items.Add(priCreateMenuItem("偏移实体", Button_Click_SketchOffset));
 
             MenuItem menuPipe = priCreateMenuItem("绘制管材", null);
             menuPipe.Items.Add(priCreateMenuItem("绘制圆管", Button_Click_CreateCirclePipe));
@@ -742,7 +744,30 @@ namespace wpfapp.ui.menu
         }
 
         #endregion
+
+        #region 延伸实体
+
+        /// <summary>
+        /// 裁剪实体
+        /// </summary>
+        private void Button_Click_SketchExtend(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.SketchExtend);
+        }
+
+        #endregion
+
+        #region 偏移实体
+
+        /// <summary>
+        /// 偏移实体
+        /// </summary>
+        private void Button_Click_SketchOffset(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.SketchOffset);
+        }
         
+        #endregion
 
         /// <summary>
         /// 绘制圆管
@@ -783,7 +808,7 @@ namespace wpfapp.ui.menu
             string strActionName = attribute.ActionName;
             if(actionInVo == null)
             {
-                actionInVo = Activator.CreateInstance(attribute.ActionType);
+                actionInVo = Activator.CreateInstance(attribute.ActionInVoType);
             }
             if (SwUiPropService.getInstance().showPropObjDlg(strActionName, "请输入绘制参数:", actionInVo))
             {

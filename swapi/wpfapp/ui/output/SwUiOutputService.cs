@@ -86,7 +86,7 @@ namespace wpfapp.ui.output
         void ILogService.Resp(RespVo oRespVo)
         {
 
-            _swUiLogPanel.Log(oRespVo.msg, oRespVo.ok ? LogLevel.Info : LogLevel.Error, oRespVo.obj);
+            _swUiLogPanel.Log(oRespVo.msg, oRespVo.ok ? LogLevel.Info : LogLevel.Error, oRespVo.resultObj);
         }
 
         #endregion

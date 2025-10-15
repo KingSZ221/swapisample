@@ -32,11 +32,11 @@ namespace wpfapp.bu.sketch.vo.edit
         public bool ClearSelectionBeforeEdit { get; set; } = true;
 
         /// <summary>
-        /// 角点
+        /// 选择实体
         /// </summary>
         [DisplayName("选择实体")]
         [Category("选择")]
-        [Description("选择一个顶点或两条边")]
+        [Description("选择一个顶点或边")]
         public List<EntitySelectId> SelectIds { get; set; }
 
         /// <summary>

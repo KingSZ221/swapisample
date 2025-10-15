@@ -24,6 +24,7 @@ using wpfapp.bu.sketch.action.edit.trim;
 using wpfapp.bu.sketch.action.draw.define;
 using wpfapp.bu.sketch.action.compose.ladder;
 using wpfapp.bu.sketch.action.feature.extrusion;
+using wpfapp.bu.sketch.action.edit.extend;
 
 namespace wpfapp.bu.sketch.action
 {
@@ -58,42 +59,21 @@ namespace wpfapp.bu.sketch.action
 
         private void priInitActions()
         {
-            actionTypeMap[EnumSwSketchActionType.EditSketch] = typeof(EditSketchAction);
-            actionTypeMap[EnumSwSketchActionType.ExitSketch] = typeof(ExitSketchAction);
-            actionTypeMap[EnumSwSketchActionType.GetSketchEntityInfo] = typeof(GetSketchEntityInfoAction);
-            actionTypeMap[EnumSwSketchActionType.CreateLine] = typeof(CreateLineAction);
-            actionTypeMap[EnumSwSketchActionType.CreateCenterLine] = typeof(CreateCenterLineAction);
-            actionTypeMap[EnumSwSketchActionType.CreateCornerRectangle] = typeof(CreateCornerRectangleAction);
-            actionTypeMap[EnumSwSketchActionType.CreateCenterRectangle] = typeof(CreateCenterRectangleAction);
-            actionTypeMap[EnumSwSketchActionType.Create3PointCornerRectangle] = typeof(Create3PointCornerRectangleAction);
-            actionTypeMap[EnumSwSketchActionType.Create3PointCenterRectangle] = typeof(Create3PointCenterRectangleAction);
-            actionTypeMap[EnumSwSketchActionType.CreateParallelogram] = typeof(CreateParallelogramAction);
-            actionTypeMap[EnumSwSketchActionType.CreateSketchSlot_line] = typeof(CreateSketchSlotLineAction);
-            actionTypeMap[EnumSwSketchActionType.CreateSketchSlot_center_line] = typeof(CreateSketchSlotCenterLineAction);
-            actionTypeMap[EnumSwSketchActionType.CreateSketchSlot_3pointarc] = typeof(CreateSketchSlot3PointArcAction);
-            actionTypeMap[EnumSwSketchActionType.CreateSketchSlot_arc] = typeof(CreateSketchSlotArcAction);
-            actionTypeMap[EnumSwSketchActionType.CreateCircle] = typeof(CreateCircleAction);
-            actionTypeMap[EnumSwSketchActionType.PerimeterCircle] = typeof(PerimeterCircleAction);
-            actionTypeMap[EnumSwSketchActionType.CreateArc] = typeof(CreateArcAction);
-            actionTypeMap[EnumSwSketchActionType.CreateTangentArc] = typeof(CreateTangentArcAction);
-            actionTypeMap[EnumSwSketchActionType.Create3PointArc] = typeof(Create3PointArcAction);
-            actionTypeMap[EnumSwSketchActionType.CreatePolygon] = typeof(CreatePolygonAction);
-            actionTypeMap[EnumSwSketchActionType.CreateSpline] = typeof(CreateSplineAction);
-            actionTypeMap[EnumSwSketchActionType.CreateEquationSpline] = typeof(CreateEquationSplineAction);
-            actionTypeMap[EnumSwSketchActionType.CreateEllipse] = typeof(CreateEllipseAction);
-            actionTypeMap[EnumSwSketchActionType.CreateEllipticalArc] = typeof(CreateEllipticalArcAction);
-            actionTypeMap[EnumSwSketchActionType.CreateParabola] = typeof(CreateParabolaAction);
-            actionTypeMap[EnumSwSketchActionType.CreateConic] = typeof(CreateConicAction);
-            actionTypeMap[EnumSwSketchActionType.InsertSketchText] = typeof(InsertSketchTextAction); 
-            actionTypeMap[EnumSwSketchActionType.CreatePoint] = typeof(CreatePointAction);
-            actionTypeMap[EnumSwSketchActionType.CreateFillet] = typeof(CreateFilletAction);
-            actionTypeMap[EnumSwSketchActionType.CreateChamfer] = typeof(CreateChamferAction);
-            actionTypeMap[EnumSwSketchActionType.SketchTrim] = typeof(SketchTrimAction);
-            actionTypeMap[EnumSwSketchActionType.FullyDefineSketch] = typeof(FullyDefineSketchAction);
-            actionTypeMap[EnumSwSketchActionType.FeatureExtrusion] = typeof(FeatureExtrusionAction);
-            actionTypeMap[EnumSwSketchActionType.FeatureExtrusionThin] = typeof(FeatureExtrusionThinAction); 
-            actionTypeMap[EnumSwSketchActionType.CreateCirclePipe] = typeof(CreateCirclePipeAction);
-            actionTypeMap[EnumSwSketchActionType.CreateLadder] = typeof(CreateLadderAction); 
+            Type enumType = typeof(EnumSwSketchActionType);
+            var fields = enumType.GetFields(BindingFlags.Public | BindingFlags.Static);
+            foreach (var field in fields)
+            {
+                object rawValue = field.GetValue(null);
+                int intValue = (int)rawValue;
+                string name = field.Name;
+
+                // 获取自定义特性
+                SwSketchActionAttribute attribute = field.GetCustomAttribute<SwSketchActionAttribute>();
+                if (attribute.ActionType != null)
+                {
+                    actionTypeMap[(EnumSwSketchActionType)intValue] = attribute.ActionType;
+                }
+            }
         }
 
         private Type getActionType(EnumSwSketchActionType actionType)

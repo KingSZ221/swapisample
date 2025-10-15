@@ -185,7 +185,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 return oRespVo;
             }
             // 获取绘制图形
-            oOutVo.ContourMianGuan1OutVo = oRespVo.obj as SketchArcInfo;
+            oOutVo.ContourMianGuan1OutVo = oRespVo.resultObj as SketchArcInfo;
 
             //2.面管2截面圆
             // 构造绘制参数
@@ -201,7 +201,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 return oRespVo;
             }
             // 获取绘制图形
-            oOutVo.ContourMianGuan2OutVo = oRespVo.obj as SketchArcInfo;
+            oOutVo.ContourMianGuan2OutVo = oRespVo.resultObj as SketchArcInfo;
 
             //3.横杆1截面圆
             // 构造绘制参数
@@ -217,7 +217,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 return oRespVo;
             }
             // 获取绘制图形
-            oOutVo.ContourHengGan1OutVo = oRespVo.obj as SketchArcInfo;
+            oOutVo.ContourHengGan1OutVo = oRespVo.resultObj as SketchArcInfo;
 
             //4.横杆2截面圆
             // 构造绘制参数
@@ -233,7 +233,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 return oRespVo;
             }
             // 获取绘制图形
-            oOutVo.ContourHengGan2OutVo = oRespVo.obj as SketchArcInfo;
+            oOutVo.ContourHengGan2OutVo = oRespVo.resultObj as SketchArcInfo;
 
             // 5.退出编辑草图
             oOutVo.SketchHengGanExitInVo = new ExitSketchInVo();
@@ -289,7 +289,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 return oRespVo;
             }
             // 获取绘制图形
-            oOutVo.ContourLiZhu1OutVo = oRespVo.obj as SketchArcInfo;
+            oOutVo.ContourLiZhu1OutVo = oRespVo.resultObj as SketchArcInfo;
 
             //2.立柱2截面圆
             oOutVo.ContourLiZhu2InVo = new CreateCircleInVo();
@@ -304,7 +304,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 return oRespVo;
             }
             // 获取绘制图形
-            oOutVo.ContourLiZhu2OutVo = oRespVo.obj as SketchArcInfo;
+            oOutVo.ContourLiZhu2OutVo = oRespVo.resultObj as SketchArcInfo;
 
             //3.竖杆截面圆
             oOutVo.ContourShuGanListInVo = new List<CreateCircleInVo>();
@@ -327,7 +327,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                     return oRespVo;
                 }
                 // 获取绘制图形
-                SketchArcInfo oContourShuGan = oRespVo.obj as SketchArcInfo;
+                SketchArcInfo oContourShuGan = oRespVo.resultObj as SketchArcInfo;
                 oOutVo.ContourShuGanListOutVo.Add(oContourShuGan);
             }
 

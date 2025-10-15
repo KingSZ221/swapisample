@@ -161,6 +161,8 @@
     <Compile Include="bu\sketch\action\draw\ellipse\CreateEllipticalArcAction.cs" />
     <Compile Include="bu\sketch\action\draw\ellipse\CreateParabolaAction.cs" />
     <Compile Include="bu\sketch\action\compose\ladder\CreateLadderAction.cs" />
+    <Compile Include="bu\sketch\action\edit\extend\SketchExtendAction.cs" />
+    <Compile Include="bu\sketch\action\edit\offset\SketchOffsetAction.cs" />
     <Compile Include="bu\sketch\action\edit\trim\SketchTrimAction.cs" />
     <Compile Include="bu\sketch\action\entity\GetSketchEntityInfoAction.cs" />
     <Compile Include="bu\sketch\action\EnumSwSketchActionType.cs" />
@@ -197,6 +199,8 @@
     <Compile Include="bu\sketch\vo\compose\ladder\CreateLadderOutVo.cs" />
     <Compile Include="bu\sketch\vo\draw\define\FullyDefineSketchInVo.cs" />
     <Compile Include="bu\sketch\vo\compose\ladder\CreateLadderInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\extend\SketchExtendInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\offset\SketchOffsetInVo.cs" />
     <Compile Include="bu\sketch\vo\edit\trim\SketchTrimInVo.cs" />
     <Compile Include="bu\sketch\vo\entity\EntitySelectId.cs" />
     <Compile Include="bu\sketch\vo\entity\SketchArcInfo.cs" />
@@ -259,6 +263,8 @@
       <DependentUpon>SwUiPropDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="ui\prop\SwUiPropService.cs" />
+    <Compile Include="utils\io\RespErrItemVo.cs" />
+    <Compile Include="utils\io\RespErrVo.cs" />
     <Compile Include="utils\reflect\ReflectUtils.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -26,7 +26,12 @@ namespace wpfapp.bu.vo
         /// <summary>
         /// 操作返回对象
         /// </summary>
-        public object obj = null;
+        public object resultObj = null;
+
+        /// <summary>
+        /// 操作返回对象
+        /// </summary>
+        public RespErrVo errorObj = null;
 
         #endregion
 
@@ -41,11 +46,23 @@ namespace wpfapp.bu.vo
         /// 构造函数
         /// </summary>
         /// <param name="bOk"></param>
+        public RespVo(bool bOk)
+        {
+            this.ok = bOk;
+            this.msg = "";
+            this.errorObj = new RespErrVo();
+        }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="bOk"></param>
         /// <param name="strMsg"></param>
         public RespVo(bool bOk, string strMsg)
         {
             this.ok = bOk;
             this.msg = strMsg;
+            this.errorObj = new RespErrVo(strMsg);
         }
 
         /// <summary>
@@ -58,7 +75,8 @@ namespace wpfapp.bu.vo
         {
             this.ok = bOk;
             this.msg = strMsg;
-            this.obj = oObj;
+            this.resultObj = oObj;
+            this.errorObj = new RespErrVo(strMsg);
         }
 
         #endregion
@@ -71,7 +89,7 @@ namespace wpfapp.bu.vo
         /// <returns>RespVo</returns>
         public static RespVo genOk()
         {
-            return new RespVo(true, "");
+            return new RespVo(true);
         }
 
         /// <summary>
