@@ -195,6 +195,10 @@ namespace wpfapp.ui.menu
             menuTrim.Items.Add(priCreateMenuItem("延伸实体", Button_Click_SketchExtend));
             menuTrim.Items.Add(priCreateMenuItem("偏移实体", Button_Click_SketchOffset));
 
+            MenuItem menuRepeat = priCreateMenuItem("草图阵列", null);
+            menuRepeat.Items.Add(priCreateMenuItem("线性草图阵列", Button_Click_CreateLinearSketchStepAndRepeat));
+            menuRepeat.Items.Add(priCreateMenuItem("圆周草图阵列", Button_Click_CreateCircularSketchStepAndRepeat));
+
             MenuItem menuPipe = priCreateMenuItem("绘制管材", null);
             menuPipe.Items.Add(priCreateMenuItem("绘制圆管", Button_Click_CreateCirclePipe));
             menuPipe.Items.Add(priCreateMenuItem("绘制扶梯", Button_Click_CreateLadder));
@@ -215,6 +219,7 @@ namespace wpfapp.ui.menu
             menuItems.Add(menuPoint);
             menuItems.Add(menuFillet);
             menuItems.Add(menuTrim);
+            menuItems.Add(menuRepeat);
             menuItems.Add(menuPipe);
         }
 
@@ -766,8 +771,28 @@ namespace wpfapp.ui.menu
         {
             priExecuteSketchActon(EnumSwSketchActionType.SketchOffset);
         }
-        
+
         #endregion
+
+        #region 草图阵列
+
+        /// <summary>
+        /// 线性草图阵列
+        /// </summary>
+        private void Button_Click_CreateLinearSketchStepAndRepeat(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateLinearSketchStepAndRepeat);
+        }
+
+        /// <summary>
+        /// 圆周草图阵列
+        /// </summary>
+        private void Button_Click_CreateCircularSketchStepAndRepeat(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateCircularSketchStepAndRepeat);
+        }
+
+        #endregion        
 
         /// <summary>
         /// 绘制圆管

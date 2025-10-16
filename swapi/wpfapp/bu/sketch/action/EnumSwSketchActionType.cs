@@ -46,6 +46,8 @@ using wpfapp.bu.sketch.action.draw.pipe;
 using wpfapp.bu.sketch.action.compose.ladder;
 using wpfapp.bu.sketch.vo.edit.offset;
 using wpfapp.bu.sketch.action.edit.offset;
+using wpfapp.bu.sketch.vo.edit.repeat;
+using wpfapp.bu.sketch.action.edit.repeat;
 
 namespace wpfapp.bu.sketch.action
 {
@@ -154,6 +156,14 @@ namespace wpfapp.bu.sketch.action
         [SwSketchAction("偏移实体", "偏移实体", typeof(SketchOffsetInVo), typeof(SketchOffsetAction))]
         [Description("对所选的草图实体进行偏移操作")]
         SketchOffset,
+
+        [SwSketchAction("线性阵列", "线性阵列", typeof(CreateLinearSketchStepAndRepeatInVo), typeof(CreateLinearSketchStepAndRepeatAction))]
+        [Description("对所选的草图实体进行线性阵列")]
+        CreateLinearSketchStepAndRepeat,
+
+        [SwSketchAction("圆周阵列", "圆周阵列", typeof(CreateCircularSketchStepAndRepeatInVo), typeof(CreateCircularSketchStepAndRepeatAction))]
+        [Description("对所选的草图实体进行圆周阵列")]
+        CreateCircularSketchStepAndRepeat,
 
         [SwSketchAction("完全草图定义", "完全草图定义", typeof(FullyDefineSketchInVo), typeof(FullyDefineSketchAction))]
         FullyDefineSketch,
