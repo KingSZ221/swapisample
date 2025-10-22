@@ -195,6 +195,13 @@ namespace wpfapp.ui.menu
             menuTrim.Items.Add(priCreateMenuItem("延伸实体", Button_Click_SketchExtend));
             menuTrim.Items.Add(priCreateMenuItem("偏移实体", Button_Click_SketchOffset));
 
+            MenuItem menuMirror = priCreateMenuItem("镜像实体", null);
+            menuMirror.Items.Add(priCreateMenuItem("镜像实体", Button_Click_SketchMirror));
+
+            MenuItem menuCopy = priCreateMenuItem("复制实体", null);
+            menuCopy.Items.Add(priCreateMenuItem("移动复制实体", Button_Click_MoveOrCopy));
+            menuCopy.Items.Add(priCreateMenuItem("旋转复制实体", Button_Click_RotateOrCopy));
+
             MenuItem menuRepeat = priCreateMenuItem("草图阵列", null);
             menuRepeat.Items.Add(priCreateMenuItem("线性草图阵列", Button_Click_CreateLinearSketchStepAndRepeat));
             menuRepeat.Items.Add(priCreateMenuItem("圆周草图阵列", Button_Click_CreateCircularSketchStepAndRepeat));
@@ -770,6 +777,39 @@ namespace wpfapp.ui.menu
         private void Button_Click_SketchOffset(object arg1, RoutedEventArgs arg2)
         {
             priExecuteSketchActon(EnumSwSketchActionType.SketchOffset);
+        }
+
+        #endregion
+
+        #region 镜像实体
+
+        /// <summary>
+        /// 偏移实体
+        /// </summary>
+        private void Button_Click_SketchMirror(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.SketchMirror);
+        }
+
+        #endregion
+
+        #region 复制实体
+
+        /// <summary>
+        /// 移动复制实体
+        /// </summary>
+        private void Button_Click_MoveOrCopy(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.MoveOrCopy);
+        }
+
+
+        /// <summary>
+        /// 旋转复制实体
+        /// </summary>
+        private void Button_Click_RotateOrCopy(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.RotateOrCopy);
         }
 
         #endregion

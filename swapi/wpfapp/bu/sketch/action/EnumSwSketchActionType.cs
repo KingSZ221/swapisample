@@ -48,6 +48,10 @@ using wpfapp.bu.sketch.vo.edit.offset;
 using wpfapp.bu.sketch.action.edit.offset;
 using wpfapp.bu.sketch.vo.edit.repeat;
 using wpfapp.bu.sketch.action.edit.repeat;
+using wpfapp.bu.sketch.vo.edit.mirror;
+using wpfapp.bu.sketch.vo.edit.copy;
+using wpfapp.bu.sketch.action.edit.mirror;
+using wpfapp.bu.sketch.action.edit.copy;
 
 namespace wpfapp.bu.sketch.action
 {
@@ -164,6 +168,18 @@ namespace wpfapp.bu.sketch.action
         [SwSketchAction("圆周阵列", "圆周阵列", typeof(CreateCircularSketchStepAndRepeatInVo), typeof(CreateCircularSketchStepAndRepeatAction))]
         [Description("对所选的草图实体进行圆周阵列")]
         CreateCircularSketchStepAndRepeat,
+
+        [SwSketchAction("镜像实体", "镜像实体", typeof(SketchMirrorInVo), typeof(SketchMirrorAction))]
+        [Description("对所选的草图实体进行镜像操作")]
+        SketchMirror,
+
+        [SwSketchAction("移动复制实体", "移动复制实体", typeof(MoveOrCopyInVo), typeof(MoveOrCopyAction))]
+        [Description("对所选的草图实体进行移动或复制操作")]
+        MoveOrCopy,
+
+        [SwSketchAction("旋转复制实体", "旋转复制实体", typeof(RotateOrCopyInVo), typeof(RotateOrCopyAction))]
+        [Description("对所选的草图实体进行旋转或复制操作")]
+        RotateOrCopy,
 
         [SwSketchAction("完全草图定义", "完全草图定义", typeof(FullyDefineSketchInVo), typeof(FullyDefineSketchAction))]
         FullyDefineSketch,
