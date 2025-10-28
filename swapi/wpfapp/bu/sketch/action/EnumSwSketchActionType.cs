@@ -52,6 +52,8 @@ using wpfapp.bu.sketch.vo.edit.mirror;
 using wpfapp.bu.sketch.vo.edit.copy;
 using wpfapp.bu.sketch.action.edit.mirror;
 using wpfapp.bu.sketch.action.edit.copy;
+using wpfapp.bu.sketch.vo.edit.relation;
+using wpfapp.bu.sketch.action.edit.relation;
 
 namespace wpfapp.bu.sketch.action
 {
@@ -180,6 +182,18 @@ namespace wpfapp.bu.sketch.action
         [SwSketchAction("旋转复制实体", "旋转复制实体", typeof(RotateOrCopyInVo), typeof(RotateOrCopyAction))]
         [Description("对所选的草图实体进行旋转或复制操作")]
         RotateOrCopy,
+
+        [SwSketchAction("显示隐藏草图约束关系", "显示隐藏草图约束关系", typeof(ShowSketchRelationsInVo), typeof(ShowSketchRelationsAction))]
+        [Description("显示隐藏草图约束关系")]
+        ShowSketchRelations,
+
+        [SwSketchAction("添加草图约束关系", "添加草图约束关系", typeof(SketchAddConstraintsInVo), typeof(SketchAddConstraintsAction))]
+        [Description("添加草图约束关系")]
+        SketchAddConstraints,
+
+        [SwSketchAction("标注草图尺寸", "标注草图尺寸", typeof(AddDimensionInVo), typeof(AddDimensionAction))]
+        [Description("标注草图尺寸")]
+        AddDimension,
 
         [SwSketchAction("完全草图定义", "完全草图定义", typeof(FullyDefineSketchInVo), typeof(FullyDefineSketchAction))]
         FullyDefineSketch,

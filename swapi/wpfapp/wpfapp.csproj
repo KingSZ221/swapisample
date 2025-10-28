@@ -165,6 +165,9 @@
     <Compile Include="bu\sketch\action\edit\copy\RotateOrCopyAction.cs" />
     <Compile Include="bu\sketch\action\edit\extend\SketchExtendAction.cs" />
     <Compile Include="bu\sketch\action\edit\mirror\SketchMirrorAction.cs" />
+    <Compile Include="bu\sketch\action\edit\relation\AddDimensionAction.cs" />
+    <Compile Include="bu\sketch\action\edit\relation\ShowSketchRelationsAction.cs" />
+    <Compile Include="bu\sketch\action\edit\relation\SketchAddConstraintsAction.cs" />
     <Compile Include="bu\sketch\action\edit\repeat\CreateCircularSketchStepAndRepeatAction.cs" />
     <Compile Include="bu\sketch\action\edit\repeat\CreateLinearSketchStepAndRepeatAction.cs" />
     <Compile Include="bu\sketch\action\edit\offset\SketchOffsetAction.cs" />
@@ -208,6 +211,9 @@
     <Compile Include="bu\sketch\vo\edit\copy\RotateOrCopyInVo.cs" />
     <Compile Include="bu\sketch\vo\edit\extend\SketchExtendInVo.cs" />
     <Compile Include="bu\sketch\vo\edit\mirror\SketchMirrorInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\relation\AddDimensionInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\relation\ShowSketchRelationsInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\relation\SketchAddConstraintsInVo.cs" />
     <Compile Include="bu\sketch\vo\edit\repeat\CreateCircularSketchStepAndRepeatInVo.cs" />
     <Compile Include="bu\sketch\vo\edit\repeat\CreateLinearSketchStepAndRepeatInVo.cs" />
     <Compile Include="bu\sketch\vo\edit\offset\SketchOffsetInVo.cs" />

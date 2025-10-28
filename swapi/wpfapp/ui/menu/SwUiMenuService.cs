@@ -206,6 +206,11 @@ namespace wpfapp.ui.menu
             menuRepeat.Items.Add(priCreateMenuItem("线性草图阵列", Button_Click_CreateLinearSketchStepAndRepeat));
             menuRepeat.Items.Add(priCreateMenuItem("圆周草图阵列", Button_Click_CreateCircularSketchStepAndRepeat));
 
+            MenuItem menuRelation = priCreateMenuItem("草图约束", null);
+            menuRelation.Items.Add(priCreateMenuItem("显示隐藏草图约束关系", Button_Click_ShowSketchRelations));
+            menuRelation.Items.Add(priCreateMenuItem("添加草图约束关系", Button_Click_SketchAddConstraints));
+            menuRelation.Items.Add(priCreateMenuItem("标注草图尺寸", Button_Click_AddDimension));
+
             MenuItem menuPipe = priCreateMenuItem("绘制管材", null);
             menuPipe.Items.Add(priCreateMenuItem("绘制圆管", Button_Click_CreateCirclePipe));
             menuPipe.Items.Add(priCreateMenuItem("绘制扶梯", Button_Click_CreateLadder));
@@ -226,7 +231,10 @@ namespace wpfapp.ui.menu
             menuItems.Add(menuPoint);
             menuItems.Add(menuFillet);
             menuItems.Add(menuTrim);
+            menuItems.Add(menuMirror);
+            menuItems.Add(menuCopy);
             menuItems.Add(menuRepeat);
+            menuItems.Add(menuRelation);
             menuItems.Add(menuPipe);
         }
 
@@ -832,7 +840,35 @@ namespace wpfapp.ui.menu
             priExecuteSketchActon(EnumSwSketchActionType.CreateCircularSketchStepAndRepeat);
         }
 
-        #endregion        
+        #endregion
+
+        #region 草图约束关系
+
+        /// <summary>
+        /// 显示隐藏草图约束关系
+        /// </summary>
+        private void Button_Click_ShowSketchRelations(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.ShowSketchRelations);
+        }
+
+        /// <summary>
+        /// 添加草图约束关系
+        /// </summary>
+        private void Button_Click_SketchAddConstraints(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.SketchAddConstraints);
+        }
+
+        /// <summary>
+        /// 标注草图尺寸
+        /// </summary>
+        private void Button_Click_AddDimension(object arg1, RoutedEventArgs arg2)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.AddDimension);
+        }
+
+        #endregion       
 
         /// <summary>
         /// 绘制圆管
