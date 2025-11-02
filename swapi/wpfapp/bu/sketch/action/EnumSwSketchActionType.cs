@@ -54,6 +54,8 @@ using wpfapp.bu.sketch.action.edit.mirror;
 using wpfapp.bu.sketch.action.edit.copy;
 using wpfapp.bu.sketch.vo.edit.relation;
 using wpfapp.bu.sketch.action.edit.relation;
+using wpfapp.bu.sketch.vo.feature.revolve;
+using wpfapp.bu.sketch.action.feature.revolve;
 
 namespace wpfapp.bu.sketch.action
 {
@@ -203,6 +205,10 @@ namespace wpfapp.bu.sketch.action
 
         [SwSketchAction("拉伸薄壁", "拉伸薄壁", typeof(FeatureExtrusionThinInVo), typeof(FeatureExtrusionThinAction))]
         FeatureExtrusionThin,
+
+        [SwSketchAction("创建旋转基体/凸台", "旋转基体", typeof(FeatureRevolveInVo), typeof(FeatureRevolveAction))]
+        [Description("创建旋转基体、凸台或切除特征")]
+        FeatureRevolve,
 
         [SwSketchAction("绘制圆管", "绘制圆管", typeof(CreateCirclePipeInVo), typeof(CreateCirclePipeAction))]
         CreateCirclePipe,

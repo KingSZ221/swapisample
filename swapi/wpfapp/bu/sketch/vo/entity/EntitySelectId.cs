@@ -19,6 +19,14 @@ namespace wpfapp.bu.sketch.vo.entity
         #region Fields
 
         /// <summary>
+        /// 草图名称
+        /// </summary>
+        [DisplayName("草图名称")]
+        [Category("基础")]
+        [Description("草图名称")]
+        public string SketchName { get; set; } = "";
+
+        /// <summary>
         /// 名称
         /// </summary>
         [DisplayName("名称")]

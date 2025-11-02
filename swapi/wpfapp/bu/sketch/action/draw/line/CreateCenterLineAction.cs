@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.draw.line;
+using wpfapp.bu.sketch.vo.entity;
 using wpfapp.bu.vo;
 
 namespace wpfapp.bu.sketch.action.draw.line
@@ -43,7 +44,10 @@ namespace wpfapp.bu.sketch.action.draw.line
                 return RespVoLogExt.genError("绘制参数错误");
             }
 
-            return RespVoLogExt.genOk("绘制中心直线成功");
+            // 获取图形信息
+            SketchLineInfo oSketchEntity = SketchEntityConverter.ToLine(sketchSegment);
+
+            return RespVoLogExt.genOk("绘制中心直线成功", oSketchEntity);
         }
     }
 }

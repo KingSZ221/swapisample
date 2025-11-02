@@ -53,6 +53,8 @@ namespace wpfapp.ui.menu
             priCreateMenu4App(mainMenu);
             priCreateMenu4File(mainMenu);
             priCreateMenu4Sketch(mainMenu);
+            priCreateMenu4Feature(mainMenu);
+            priCreateMenu4Part(mainMenu);
 
             priCreateToolbar4App(mainToolbar);
             //priCreateToolbar4File(mainToolbar);
@@ -134,6 +136,24 @@ namespace wpfapp.ui.menu
             priCreateSubMenu4Sketch(null, menu);
         }
 
+        private void priCreateMenu4Feature(Menu mainMenu)
+        {
+            MenuItem menu = new MenuItem();
+            menu.Header = "特征";
+            mainMenu.Items.Add(menu);
+
+            priCreateSubMenu4Feature(null, menu);
+        }
+
+        private void priCreateMenu4Part(Menu mainMenu)
+        {
+            MenuItem menu = new MenuItem();
+            menu.Header = "零件";
+            mainMenu.Items.Add(menu);
+
+            priCreateSubMenu4Part(null, menu);
+        }
+
         private void priCreateSubMenu4Sketch(Menu menu1, MenuItem menu2)
         {
             MenuItem menuEdit = priCreateMenuItem("绘制草图", null);
@@ -210,12 +230,7 @@ namespace wpfapp.ui.menu
             menuRelation.Items.Add(priCreateMenuItem("显示隐藏草图约束关系", Button_Click_ShowSketchRelations));
             menuRelation.Items.Add(priCreateMenuItem("添加草图约束关系", Button_Click_SketchAddConstraints));
             menuRelation.Items.Add(priCreateMenuItem("标注草图尺寸", Button_Click_AddDimension));
-
-            MenuItem menuPipe = priCreateMenuItem("绘制管材", null);
-            menuPipe.Items.Add(priCreateMenuItem("绘制圆管", Button_Click_CreateCirclePipe));
-            menuPipe.Items.Add(priCreateMenuItem("绘制扶梯", Button_Click_CreateLadder));
-            menuPipe.Items.Add(priCreateMenuItem("完全草图定义", Button_Click_FullyDefineSketch));
-            menuPipe.Items.Add(priCreateMenuItem("薄壁拉伸", Button_Click_FeatureExtrusionThin));
+            menuRelation.Items.Add(priCreateMenuItem("完全草图定义", Button_Click_FullyDefineSketch));
 
             ItemCollection menuItems = (menu1 != null) ? menu1.Items : menu2.Items;
             menuItems.Add(menuEdit);
@@ -235,7 +250,26 @@ namespace wpfapp.ui.menu
             menuItems.Add(menuCopy);
             menuItems.Add(menuRepeat);
             menuItems.Add(menuRelation);
-            menuItems.Add(menuPipe);
+        }
+
+        private void priCreateSubMenu4Feature(Menu menu1, MenuItem menu2)
+        {
+            MenuItem menuFeture = priCreateMenuItem("绘制特征", null);
+            menuFeture.Items.Add(priCreateMenuItem("薄壁拉伸", Button_Click_FeatureExtrusionThin));
+            menuFeture.Items.Add(priCreateMenuItem("创建旋转基体/凸台", Button_Click_FeatureRevolve));
+
+            ItemCollection menuItems = (menu1 != null) ? menu1.Items : menu2.Items;
+            menuItems.Add(menuFeture);
+        }
+
+        private void priCreateSubMenu4Part(Menu menu1, MenuItem menu2)
+        {
+            MenuItem menuPart= priCreateMenuItem("绘制零件", null);
+            menuPart.Items.Add(priCreateMenuItem("绘制圆管", Button_Click_CreateCirclePipe));
+            menuPart.Items.Add(priCreateMenuItem("绘制扶梯", Button_Click_CreateLadder));
+
+            ItemCollection menuItems = (menu1 != null) ? menu1.Items : menu2.Items;
+            menuItems.Add(menuPart);
         }
 
         private MenuItem priCreateMenuItem(string strHeader, Action<object, RoutedEventArgs> clickHandler = null)
@@ -900,6 +934,14 @@ namespace wpfapp.ui.menu
         private void Button_Click_FeatureExtrusionThin(object sender, RoutedEventArgs e)
         {
             priExecuteSketchActon(EnumSwSketchActionType.FeatureExtrusionThin);
+        }
+
+        /// <summary>
+        /// 旋转基体
+        /// </summary>
+        private void Button_Click_FeatureRevolve(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.FeatureRevolve);
         }
 
         private RespVo priExecuteSketchActon(EnumSwSketchActionType actionType, object actionInVo = null)
