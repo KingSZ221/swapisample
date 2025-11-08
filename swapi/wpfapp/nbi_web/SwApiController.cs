@@ -25,7 +25,7 @@ using wpfapp.bu.sketch.vo.draw.spline;
 using wpfapp.bu.sketch.vo.draw.text;
 using wpfapp.bu.vo;
 using wpfapp.bu.sketch.vo.draw.line;
-using wpfapp.bu.vo.draw.pipe;
+using wpfapp.bu.vo.compose.pipe;
 using wpfapp.bu.sketch.vo.compose.ladder;
 using Newtonsoft.Json;
 using wpfapp.bu.sketch.vo.feature.extrusion;

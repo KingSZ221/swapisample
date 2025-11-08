@@ -64,7 +64,7 @@ namespace wpfapp.bu.sketch.action.feature.revolve
                 SingleDir: oInVo.SingleDir, //拉伸方向
                 IsSolid: oInVo.IsSolid,
                 IsThin: oInVo.IsThin,
-                IsCut: oInVo.IsCut,
+                IsCut: false,
                 ReverseDir: oInVo.ReverseDir,
                 BothDirectionUpToSameEntity: oInVo.BothDirectionUpToSameEntity,
                 Dir1Type: oInVo.Dir1Type,

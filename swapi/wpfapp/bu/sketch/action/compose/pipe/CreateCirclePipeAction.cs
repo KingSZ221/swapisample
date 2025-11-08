@@ -6,10 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.vo;
-using wpfapp.bu.vo.draw.pipe;
+using wpfapp.bu.vo.compose.pipe;
 
-namespace wpfapp.bu.sketch.action.draw.pipe
+namespace wpfapp.bu.sketch.action.compose.pipe
 {
+    /// <summary>
+    /// 创建圆管
+    /// </summary>
     public class CreateCirclePipeAction : SwSketchActionBase
     {
         #region Fields

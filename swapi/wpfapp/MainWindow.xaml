@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpfapp"
         mc:Ignorable="d"
-        Title="SolidWorks AI Demo" Height="800" Width="500">
+        Title="智能化工业建模软件" Height="800" Width="500">
     <DockPanel LastChildFill="True">
         <!-- 顶部区域 -->
         <DockPanel DockPanel.Dock="Top">

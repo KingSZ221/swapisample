@@ -255,8 +255,10 @@ namespace wpfapp.ui.menu
         private void priCreateSubMenu4Feature(Menu menu1, MenuItem menu2)
         {
             MenuItem menuFeture = priCreateMenuItem("绘制特征", null);
-            menuFeture.Items.Add(priCreateMenuItem("薄壁拉伸", Button_Click_FeatureExtrusionThin));
-            menuFeture.Items.Add(priCreateMenuItem("创建旋转基体/凸台", Button_Click_FeatureRevolve));
+            menuFeture.Items.Add(priCreateMenuItem("拉伸薄壁", Button_Click_FeatureExtrusionThin));
+            menuFeture.Items.Add(priCreateMenuItem("旋转基体/凸台", Button_Click_FeatureRevolve));
+            menuFeture.Items.Add(priCreateMenuItem("拉伸切除", Button_Click_FeatureExtrusionCut));
+            menuFeture.Items.Add(priCreateMenuItem("旋转切除", Button_Click_FeatureRevolveCut)); 
 
             ItemCollection menuItems = (menu1 != null) ? menu1.Items : menu2.Items;
             menuItems.Add(menuFeture);
@@ -266,6 +268,7 @@ namespace wpfapp.ui.menu
         {
             MenuItem menuPart= priCreateMenuItem("绘制零件", null);
             menuPart.Items.Add(priCreateMenuItem("绘制圆管", Button_Click_CreateCirclePipe));
+            menuPart.Items.Add(priCreateMenuItem("绘制立方体", Button_Click_CreateCube)); 
             menuPart.Items.Add(priCreateMenuItem("绘制扶梯", Button_Click_CreateLadder));
 
             ItemCollection menuItems = (menu1 != null) ? menu1.Items : menu2.Items;
@@ -913,6 +916,14 @@ namespace wpfapp.ui.menu
         }
 
         /// <summary>
+        /// 绘制立方体
+        /// </summary>
+        private void Button_Click_CreateCube(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.CreateCube);
+        }
+
+        /// <summary>
         /// 绘制扶梯
         /// </summary>
         private void Button_Click_CreateLadder(object sender, RoutedEventArgs e)
@@ -942,6 +953,22 @@ namespace wpfapp.ui.menu
         private void Button_Click_FeatureRevolve(object sender, RoutedEventArgs e)
         {
             priExecuteSketchActon(EnumSwSketchActionType.FeatureRevolve);
+        }
+
+        /// <summary>
+        /// 拉伸切除
+        /// </summary>
+        private void Button_Click_FeatureExtrusionCut(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.FeatureExtrusionCut);
+        }
+
+        /// <summary>
+        /// 旋转切除
+        /// </summary>
+        private void Button_Click_FeatureRevolveCut(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.FeatureRevolveCut);
         }
 
         private RespVo priExecuteSketchActon(EnumSwSketchActionType actionType, object actionInVo = null)

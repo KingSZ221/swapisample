@@ -19,7 +19,7 @@ using wpfapp.bu.sketch.vo.draw.spline;
 using wpfapp.bu.sketch.vo.draw.text;
 using wpfapp.bu.vo;
 using wpfapp.bu.sketch.vo.draw.line;
-using wpfapp.bu.vo.draw.pipe;
+using wpfapp.bu.vo.compose.pipe;
 using wpfapp.bu.sketch.vo.edit.trim;
 using wpfapp.bu.sketch.vo.draw.define;
 using wpfapp.bu.sketch.vo.compose.ladder;
@@ -42,7 +42,7 @@ using wpfapp.bu.sketch.action.edit.trim;
 using wpfapp.bu.sketch.action.edit.extend;
 using wpfapp.bu.sketch.action.draw.define;
 using wpfapp.bu.sketch.action.feature.extrusion;
-using wpfapp.bu.sketch.action.draw.pipe;
+using wpfapp.bu.sketch.action.compose.pipe;
 using wpfapp.bu.sketch.action.compose.ladder;
 using wpfapp.bu.sketch.vo.edit.offset;
 using wpfapp.bu.sketch.action.edit.offset;
@@ -56,6 +56,8 @@ using wpfapp.bu.sketch.vo.edit.relation;
 using wpfapp.bu.sketch.action.edit.relation;
 using wpfapp.bu.sketch.vo.feature.revolve;
 using wpfapp.bu.sketch.action.feature.revolve;
+using wpfapp.bu.sketch.vo.compose.cube;
+using wpfapp.bu.sketch.action.compose.cube;
 
 namespace wpfapp.bu.sketch.action
 {
@@ -210,8 +212,17 @@ namespace wpfapp.bu.sketch.action
         [Description("创建旋转基体、凸台或切除特征")]
         FeatureRevolve,
 
+        [SwSketchAction("拉伸切除", "拉伸切除", typeof(FeatureExtrusionCutInVo), typeof(FeatureExtrusionCutAction))]
+        FeatureExtrusionCut,
+
+        [SwSketchAction("旋转切除", "旋转切除", typeof(FeatureExtrusionCutInVo), typeof(FeatureExtrusionCutAction))]
+        FeatureRevolveCut,
+
         [SwSketchAction("绘制圆管", "绘制圆管", typeof(CreateCirclePipeInVo), typeof(CreateCirclePipeAction))]
         CreateCirclePipe,
+
+        [SwSketchAction("绘制立方体", "绘制立方体", typeof(CreateCubeInVo), typeof(CreateCubeAction))]
+        CreateCube,
 
         [SwSketchAction("绘制扶梯", "绘制扶梯", typeof(CreateLadderInVo), typeof(CreateLadderAction))]
         CreateLadder

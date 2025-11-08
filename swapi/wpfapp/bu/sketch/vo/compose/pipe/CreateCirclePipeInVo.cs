@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpfapp.bu.vo.draw.pipe
+namespace wpfapp.bu.vo.compose.pipe
 {
     [DisplayName("创建圆管")]
     public class CreateCirclePipeInVo

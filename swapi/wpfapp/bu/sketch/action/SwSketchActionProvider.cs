@@ -11,7 +11,7 @@ using wpfapp.bu.sketch.action.draw.ellipse;
 using wpfapp.bu.sketch.action.entity;
 using wpfapp.bu.sketch.action.edit.fillet;
 using wpfapp.bu.sketch.action.draw.line;
-using wpfapp.bu.sketch.action.draw.pipe;
+using wpfapp.bu.sketch.action.compose.pipe;
 using wpfapp.bu.sketch.action.draw.point;
 using wpfapp.bu.sketch.action.draw.polygon;
 using wpfapp.bu.sketch.action.draw.rect;

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using SolidWorks.Interop.sldworks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.draw.rect;
+using wpfapp.bu.sketch.vo.entity;
 using wpfapp.bu.vo;
 
 namespace wpfapp.bu.sketch.action.draw.rect
@@ -41,6 +43,9 @@ namespace wpfapp.bu.sketch.action.draw.rect
             {
                 return RespVoLogExt.genError("绘制参数错误");
             }
+
+            // 获取图形信息
+            //SketchSegmentInfo oSketchEntity = SketchEntityConverter.ToSegment(sketchSegment);
 
             return RespVoLogExt.genOk("绘制中心矩形成功");
         }

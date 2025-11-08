@@ -1,5 +1,4 @@
 ﻿using SolidWorks.Interop.sldworks;
-using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +11,16 @@ using wpfapp.bu.vo;
 namespace wpfapp.bu.sketch.action.feature.extrusion
 {
     /// <summary>
-    /// 拉伸凸台基体
+    /// 创建拉伸切除特征
     /// </summary>
-    public class FeatureExtrusionAction : SwSketchFeatureActionBase
+    public class FeatureExtrusionCutAction : SwSketchFeatureActionBase
     {
         #region Fields
         #endregion
 
         #region Construction
 
-        public FeatureExtrusionAction(object oInVo) : base(oInVo)
+        public FeatureExtrusionCutAction(object oInVo) : base(oInVo)
         {
 
         }
@@ -31,7 +30,7 @@ namespace wpfapp.bu.sketch.action.feature.extrusion
         protected override RespVo onExecute()
         {
             // 获取绘制参数
-            FeatureExtrusionThinInVo oInVo = this.actionInVo<FeatureExtrusionThinInVo>();
+            FeatureExtrusionCutInVo oInVo = this.actionInVo<FeatureExtrusionCutInVo>();
 
             // 获取草图管理器
             var skeMgr = curDoc.SketchManager;
@@ -44,48 +43,54 @@ namespace wpfapp.bu.sketch.action.feature.extrusion
             //selMgr.EnableContourSelection = true;
 
             // 选中草图轮廓
-            bool bSelContour = priSelectContourBySegmentName(oInVo.SketchName, oInVo.ContourName, 4);//"圆弧1"
-            //bool bSelContour = curDocExt.SelectByID2($"{oInVo.ContourName}@{oInVo.SketchName}", "EXTSKETCHSEGMENT", 0, 0, 0, true, 4, null, 0);
-            if (!bSelContour)
-            {
-                return RespVoLogExt.genError("选中轮廓错误");
-            }
+            //bool bSelContour = priSelectContourBySegmentName(oInVo.SketchName, oInVo.ContourName, 4);//"圆弧1"
+            ////bool bSelContour = curDocExt.SelectByID2($"{oInVo.ContourName}@{oInVo.SketchName}", "EXTSKETCHSEGMENT", 0, 0, 0, true, 4, null, 0);
+            //if (!bSelContour)
+            //{
+            //    return RespVoLogExt.genError("选中轮廓错误");
+            //}
 
             //selMgr.EnableContourSelection = false;
 
-            Feature oFeature = featMgr.FeatureExtrusion3(
+            Feature oFeature = featMgr.FeatureCut4(
                 Sd: oInVo.Sd, //拉伸方向
-                Flip: false,
-                Dir: false,
-                T1: (int)swEndConditions_e.swEndCondBlind,
-                T2: (int)swEndConditions_e.swEndCondBlind,
+                Flip: oInVo.Flip,
+                Dir: oInVo.Dir,
+                T1: oInVo.T1,
+                T2: oInVo.T2,
                 D1: oInVo.D1 / 1000, //拉伸深度
                 D2: oInVo.D2 / 1000,
                 //拔模参数
-                Dchk1: false,
-                Dchk2: false,
-                Ddir1: false,
-                Ddir2: false,
-                Dang1: 0,
-                Dang2: 0,
-                //
-                OffsetReverse1: false,
-                OffsetReverse2: false,
-                TranslateSurface1: false,
-                TranslateSurface2: false,
-                //实体和选择
-                Merge: false,
-                UseFeatScope: true,
-                UseAutoSelect: true,
+                Dchk1: oInVo.Dchk1,
+                Dchk2: oInVo.Dchk2,
+                Ddir1: oInVo.Ddir1,
+                Ddir2: oInVo.Ddir2,
+                Dang1: oInVo.Dang1,
+                Dang2: oInVo.Dang2,
+                //等距反向
+                OffsetReverse1: oInVo.OffsetReverse1,
+                OffsetReverse2: oInVo.OffsetReverse2,
+                TranslateSurface1: oInVo.TranslateSurface1,
+                TranslateSurface2: oInVo.TranslateSurface2,
+                //正交切除
+                NormalCut: oInVo.NormalCut,
+                //选择
+                UseFeatScope: oInVo.UseFeatScope,
+                UseAutoSelect: oInVo.UseAutoSelect,
+                AssemblyFeatureScope: oInVo.AssemblyFeatureScope,
+                AutoSelectComponents: oInVo.AutoSelectComponents,
+                PropagateFeatureToParts: oInVo.PropagateFeatureToParts,
                 //起始条件
-                T0: (int)swStartConditions_e.swStartSketchPlane,
-                StartOffset: 0,
-                FlipStartOffset: false
+                T0: oInVo.T0,
+                StartOffset: oInVo.StartOffset,
+                FlipStartOffset: oInVo.FlipStartOffset,
+                //正交切除
+                OptimizeGeometry: oInVo.OptimizeGeometry
                 );
 
             if (oFeature == null)
             {
-                return RespVoLogExt.genError("拉伸参数错误");
+                return RespVoLogExt.genError("创建拉伸切除特征参数错误");
             }
 
             if (!string.IsNullOrEmpty(oInVo.FeatrueName))
@@ -93,7 +98,7 @@ namespace wpfapp.bu.sketch.action.feature.extrusion
                 oFeature.Name = oInVo.FeatrueName;
             }
 
-            return RespVoLogExt.genOk($"拉伸凸台基体成功：{oFeature.Name}");
+            return RespVoLogExt.genOk($"创建拉伸切除特征成功：{oFeature.Name}");
         }
 
         private bool priSelectContourBySegmentName(string strSketchName, string strSegmentName, int mark)
