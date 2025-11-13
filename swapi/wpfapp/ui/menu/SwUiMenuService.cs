@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using wpfapp.bu.app;
+using wpfapp.bu.cmd.usecase.design;
+using wpfapp.bu.cmd.usecase.excute;
 using wpfapp.bu.file;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch;
 using wpfapp.bu.sketch.action;
 using wpfapp.bu.sketch.vo.draw.spline;
+using wpfapp.bu.usecase.vo;
 using wpfapp.bu.vo;
 using wpfapp.ui.ai;
 using wpfapp.ui.prop;
@@ -25,6 +28,8 @@ namespace wpfapp.ui.menu
         #region Fields
 
         private static SwUiMenuService _instance = new SwUiMenuService();
+
+        private MenuItem menuUseCase;
 
         #endregion
 
@@ -55,8 +60,10 @@ namespace wpfapp.ui.menu
             priCreateMenu4Sketch(mainMenu);
             priCreateMenu4Feature(mainMenu);
             priCreateMenu4Part(mainMenu);
+            priCreateMenu4UseCase(mainMenu);
 
             priCreateToolbar4App(mainToolbar);
+            priCreateToolbar4UseCase(mainToolbar);
             //priCreateToolbar4File(mainToolbar);
             //priCreateToolbar4Sketch(mainToolbar);
         }
@@ -127,6 +134,7 @@ namespace wpfapp.ui.menu
             }
         }
 
+
         private void priCreateMenu4Sketch(Menu mainMenu)
         {
             MenuItem menu = new MenuItem();
@@ -152,6 +160,30 @@ namespace wpfapp.ui.menu
             mainMenu.Items.Add(menu);
 
             priCreateSubMenu4Part(null, menu);
+        }
+
+        private void priCreateMenu4UseCase(Menu mainMenu)
+        {
+            MenuItem menu = new MenuItem();
+            menu.Header = "用例";
+            mainMenu.Items.Add(menu);
+
+            menuUseCase = menu;
+        }
+
+        internal void updateUseCaseSubMenu()
+        {
+            priCreateSubMenu4UseCase(menuUseCase);
+        }
+
+
+        private void priCreateSubMenu4UseCase(MenuItem menu1)
+        {
+            menu1.Items.Clear();
+            foreach(SwUseCaseInfo oSwUseCaseInfo in SwUseCaseDesignService.getInstance().getAll())
+            {
+                menu1.Items.Add(priCreateMenuItem(oSwUseCaseInfo.Name, Button_Click_ExcuteUseCase, oSwUseCaseInfo.Id));
+            }
         }
 
         private void priCreateSubMenu4Sketch(Menu menu1, MenuItem menu2)
@@ -255,10 +287,14 @@ namespace wpfapp.ui.menu
         private void priCreateSubMenu4Feature(Menu menu1, MenuItem menu2)
         {
             MenuItem menuFeture = priCreateMenuItem("绘制特征", null);
-            menuFeture.Items.Add(priCreateMenuItem("拉伸薄壁", Button_Click_FeatureExtrusionThin));
-            menuFeture.Items.Add(priCreateMenuItem("旋转基体/凸台", Button_Click_FeatureRevolve));
+            menuFeture.Items.Add(priCreateMenuItem("拉伸特征", Button_Click_FeatureExtrusionThin));
+            menuFeture.Items.Add(priCreateMenuItem("旋转特征", Button_Click_FeatureRevolve));
+            menuFeture.Items.Add(priCreateMenuItem("扫描特征", Button_Click_FeatureSweep));
+            menuFeture.Items.Add(priCreateMenuItem("放样特征", Button_Click_FeatureLoft));
             menuFeture.Items.Add(priCreateMenuItem("拉伸切除", Button_Click_FeatureExtrusionCut));
-            menuFeture.Items.Add(priCreateMenuItem("旋转切除", Button_Click_FeatureRevolveCut)); 
+            menuFeture.Items.Add(priCreateMenuItem("旋转切除", Button_Click_FeatureRevolveCut));
+            menuFeture.Items.Add(priCreateMenuItem("扫描切除", Button_Click_FeatureSweepCut));
+            menuFeture.Items.Add(priCreateMenuItem("放样切除", Button_Click_FeatureLoftCut));
 
             ItemCollection menuItems = (menu1 != null) ? menu1.Items : menu2.Items;
             menuItems.Add(menuFeture);
@@ -275,10 +311,14 @@ namespace wpfapp.ui.menu
             menuItems.Add(menuPart);
         }
 
-        private MenuItem priCreateMenuItem(string strHeader, Action<object, RoutedEventArgs> clickHandler = null)
+        private MenuItem priCreateMenuItem(string strHeader, Action<object, RoutedEventArgs> clickHandler = null, object tag = null)
         {
             MenuItem menuItem = new MenuItem();
             menuItem.Header = strHeader;
+            if(tag != null)
+            {
+                menuItem.Tag = tag;
+            }
 
             // 事件绑定
             if (clickHandler != null)
@@ -308,6 +348,26 @@ namespace wpfapp.ui.menu
             toolBar.Items.Add(priCreateToolBarBtn("连接SW", Button_Click_ConnectSw));
             toolBar.Items.Add(priCreateToolBarBtn("AI调用SW", Button_Click_AiInvokeSw));
         }
+
+        private void priCreateToolbar4UseCase(ToolBarTray mainToolbar)
+        {
+            // 创建ToolBar
+            ToolBar toolBar = new ToolBar();
+
+            // 添加到ToolBarTray
+            mainToolbar.ToolBars.Add(toolBar);
+
+            // 设置ItemsPanelTemplate为WrapPanel
+            var itemsPanelTemplate = new ItemsPanelTemplate();
+            var wrapPanelFactory = new FrameworkElementFactory(typeof(WrapPanel));
+            wrapPanelFactory.SetValue(WrapPanel.OrientationProperty, Orientation.Horizontal);
+            itemsPanelTemplate.VisualTree = wrapPanelFactory;
+            toolBar.ItemsPanel = itemsPanelTemplate;
+
+            // 添加按钮
+            toolBar.Items.Add(priCreateToolBarBtn("用例设计", Button_Click_DesignUseCase)); 
+        }
+        
 
         private void priCreateToolbar4File(ToolBarTray mainToolbar)
         {
@@ -379,7 +439,23 @@ namespace wpfapp.ui.menu
         {
             SwAiWrapService.getInstance().CreateLadder();
         }
-        
+
+        #endregion
+
+        #region 用例
+        private void Button_Click_DesignUseCase(object sender, RoutedEventArgs e)
+        {
+            SwUseCaseDesignService.getInstance().showUseCaseListDialog();
+        }
+
+        private void Button_Click_ExcuteUseCase(object sender, RoutedEventArgs arg2)
+        {
+            if (sender is MenuItem menuItem && menuItem.Tag is string useCaseId)
+            {
+                SwUseCaseExcuteService.getInstance().excuteUseCase(useCaseId);
+            }
+        }
+
 
         #endregion
 
@@ -956,6 +1032,22 @@ namespace wpfapp.ui.menu
         }
 
         /// <summary>
+        /// 扫描特征
+        /// </summary>
+        private void Button_Click_FeatureSweep(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.FeatureSweep);
+        }
+
+        /// <summary>
+        /// 放样特征
+        /// </summary>
+        private void Button_Click_FeatureLoft(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.FeatureLoft);
+        }
+
+        /// <summary>
         /// 拉伸切除
         /// </summary>
         private void Button_Click_FeatureExtrusionCut(object sender, RoutedEventArgs e)
@@ -969,6 +1061,22 @@ namespace wpfapp.ui.menu
         private void Button_Click_FeatureRevolveCut(object sender, RoutedEventArgs e)
         {
             priExecuteSketchActon(EnumSwSketchActionType.FeatureRevolveCut);
+        }
+
+        /// <summary>
+        /// 扫描切除
+        /// </summary>
+        private void Button_Click_FeatureSweepCut(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.FeatureSweepCut);
+        }
+
+        /// <summary>
+        /// 放样切除
+        /// </summary>
+        private void Button_Click_FeatureLoftCut(object sender, RoutedEventArgs e)
+        {
+            priExecuteSketchActon(EnumSwSketchActionType.FeatureLoftCut);
         }
 
         private RespVo priExecuteSketchActon(EnumSwSketchActionType actionType, object actionInVo = null)

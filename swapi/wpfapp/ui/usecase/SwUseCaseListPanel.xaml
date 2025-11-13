@@ -1,0 +1,79 @@
+﻿<Window x:Class="wpfapp.ui.usecase.SwUseCaseListPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfapp.ui.usecase"
+        mc:Ignorable="d"
+        Title="用例列表" Height="750" Width="800">
+    <Grid>
+        <Button x:Name="btnOk" Content="确定" Click="btnOk_Click" HorizontalAlignment="Left" Margin="279,676,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnCancel" Content="取消" Click="btnCancel_Click" HorizontalAlignment="Left" Margin="462,676,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnAddUseCase" Content="添加用例" Click="btnAddUseCase_Click" HorizontalAlignment="Left" Margin="41,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnRemoveAllUseCase" Content="清空用例" Click="btnRemoveAllUseCase_Click" HorizontalAlignment="Left" Margin="121,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid x:Name="gridUseCase" HorizontalAlignment="Left" Height="619" Margin="41,39,0,0" VerticalAlignment="Top" Width="700" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
+                <DataGridTextColumn Header="用例名称" Binding="{Binding Name}" Width="120"/>
+                <DataGridTextColumn Header="用例描述" Binding="{Binding Desc}" Width="120"/>
+                <!-- 操作按钮列 -->
+                <DataGridTemplateColumn Header="操作" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="编辑" 
+                                        Click="btnEdit_Click" 
+                                        Padding="5,2"
+                                        Margin="2"
+                                        Tag="{Binding}"
+                                        Background="#3498DB"
+                                        Foreground="White"/>
+
+                                <Button Content="复制" 
+                                        Click="btnCopy_Click" 
+                                        Padding="5,2"
+                                        Margin="2"
+                                        Tag="{Binding}"
+                                        Background="#E74C3C"
+                                        Foreground="White"/>
+
+                                <Button Content="删除" 
+                                        Click="btnRemove_Click" 
+                                        Padding="5,2"
+                                        Margin="2"
+                                        Tag="{Binding}"
+                                        Background="#27AE60"
+                                        Foreground="White"/>
+
+                                <Button Content="上移" 
+                                        Click="btnMoveUp_Click" 
+                                        Padding="5,2"
+                                        Margin="2"
+                                        Tag="{Binding}"
+                                        Background="#27AE60"
+                                        Foreground="White"/>
+
+                                <Button Content="下移" 
+                                        Click="btnMoveDown_Click" 
+                                        Padding="5,2"
+                                        Margin="2"
+                                        Tag="{Binding}"
+                                        Background="#27AE60"
+                                        Foreground="White"/>
+
+                                <Button Content="执行" 
+                                        Click="btnDebug_Click" 
+                                        Padding="5,2"
+                                        Margin="2"
+                                        Tag="{Binding}"
+                                        Background="#27AE60"
+                                        Foreground="White"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

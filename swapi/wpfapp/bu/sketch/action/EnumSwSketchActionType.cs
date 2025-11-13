@@ -58,6 +58,10 @@ using wpfapp.bu.sketch.vo.feature.revolve;
 using wpfapp.bu.sketch.action.feature.revolve;
 using wpfapp.bu.sketch.vo.compose.cube;
 using wpfapp.bu.sketch.action.compose.cube;
+using wpfapp.bu.sketch.vo.feature.sweep;
+using wpfapp.bu.sketch.vo.feature.loft;
+using wpfapp.bu.sketch.action.feature.sweep;
+using wpfapp.bu.sketch.action.feature.loft;
 
 namespace wpfapp.bu.sketch.action
 {
@@ -66,6 +70,9 @@ namespace wpfapp.bu.sketch.action
     /// </summary>
     public enum EnumSwSketchActionType
     {
+        [SwSketchAction("None", "None", typeof(Object), typeof(Object))]
+        None = 0,
+
         [SwSketchAction("草图绘制", "编辑草图", typeof(EditSketchInVo), typeof(EditSketchAction))]
         EditSketch = 1,
 
@@ -202,21 +209,35 @@ namespace wpfapp.bu.sketch.action
         [SwSketchAction("完全草图定义", "完全草图定义", typeof(FullyDefineSketchInVo), typeof(FullyDefineSketchAction))]
         FullyDefineSketch,
 
-        [SwSketchAction("拉伸基体", "拉伸基体", typeof(FeatureExtrusionThinInVo), typeof(FeatureExtrusionThinAction))]
+        [SwSketchAction("基于选择的草图创建拉伸基体特征", "拉伸基体", typeof(FeatureExtrusionThinInVo), typeof(FeatureExtrusionThinAction))]
         FeatureExtrusion,
 
-        [SwSketchAction("拉伸薄壁", "拉伸薄壁", typeof(FeatureExtrusionThinInVo), typeof(FeatureExtrusionThinAction))]
+        [SwSketchAction("基于选择的草图创建拉伸薄壁特征", "拉伸薄壁", typeof(FeatureExtrusionThinInVo), typeof(FeatureExtrusionThinAction))]
         FeatureExtrusionThin,
 
-        [SwSketchAction("创建旋转基体/凸台", "旋转基体", typeof(FeatureRevolveInVo), typeof(FeatureRevolveAction))]
-        [Description("创建旋转基体、凸台或切除特征")]
+        [SwSketchAction("创建旋转基体/凸台特征", "旋转基体", typeof(FeatureRevolveInVo), typeof(FeatureRevolveAction))]
+        [Description("基于选择的草图创建旋转基体、凸台或切除特征")]
         FeatureRevolve,
+
+        [SwSketchAction("创建扫描基体/凸台特征", "创建扫描基体/凸台", typeof(FeatureSweepInVo), typeof(FeatureSweepAction))]
+        [Description("基于选择的草图、路径创建扫描基体/凸台特征")]
+        FeatureSweep,
+
+        [SwSketchAction("创建放样特征", "放样特征", typeof(FeatureLoftInVo), typeof(FeatureLoftAction))]
+        [Description("基于选择的草图、中心线、引导线创放样特征")]
+        FeatureLoft,
 
         [SwSketchAction("拉伸切除", "拉伸切除", typeof(FeatureExtrusionCutInVo), typeof(FeatureExtrusionCutAction))]
         FeatureExtrusionCut,
 
         [SwSketchAction("旋转切除", "旋转切除", typeof(FeatureExtrusionCutInVo), typeof(FeatureExtrusionCutAction))]
         FeatureRevolveCut,
+
+        [SwSketchAction("扫描切除", "扫描切除", typeof(FeatureSweepCutInVo), typeof(FeatureSweepCutAction))]
+        FeatureSweepCut,
+
+        [SwSketchAction("放样切除", "放样切除", typeof(FeatureLoftCutInVo), typeof(FeatureLoftCutAction))]
+        FeatureLoftCut,
 
         [SwSketchAction("绘制圆管", "绘制圆管", typeof(CreateCirclePipeInVo), typeof(CreateCirclePipeAction))]
         CreateCirclePipe,

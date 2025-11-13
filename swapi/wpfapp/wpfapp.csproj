@@ -116,6 +116,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="basic\io\PathUtilsEx.cs" />
+    <Compile Include="basic\io\JsonFileUtilsEx.cs" />
+    <Compile Include="bu\cmd\cmdtype\SwCmdGroupType.cs" />
+    <Compile Include="bu\cmd\cmdtype\SwCmdType.cs" />
+    <Compile Include="bu\cmd\cmdtype\SwCmdTypeManager.cs" />
+    <Compile Include="bu\usecase\design\SwUseCaseDesignService.cs" />
+    <Compile Include="bu\usecase\excute\SwUseCaseExcuteService.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseInfoManager.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseItem.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseStepCmdInfo.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseInfo.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseStepCmdItem.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseStepInfo.cs" />
     <Compile Include="bu\log\ILogService.cs" />
     <Compile Include="bu\log\RespVoLogExt.cs" />
     <Compile Include="bu\log\SwBuLogService.cs" />
@@ -159,8 +172,12 @@
     <Compile Include="bu\sketch\action\feature\extrusion\FeatureExtrusionCutAction.cs" />
     <Compile Include="bu\sketch\action\feature\extrusion\FeatureExtrusionAction.cs" />
     <Compile Include="bu\sketch\action\feature\extrusion\FeatureExtrusionThinAction.cs" />
+    <Compile Include="bu\sketch\action\feature\loft\FeatureLoftAction.cs" />
+    <Compile Include="bu\sketch\action\feature\loft\FeatureLoftCutAction.cs" />
     <Compile Include="bu\sketch\action\feature\revolve\FeatureRevolveAction.cs" />
     <Compile Include="bu\sketch\action\feature\revolve\FeatureRevolveCutAction.cs" />
+    <Compile Include="bu\sketch\action\feature\sweep\FeatureSweepAction.cs" />
+    <Compile Include="bu\sketch\action\feature\sweep\FeatureSweepCutAction.cs" />
     <Compile Include="bu\sketch\action\feature\SwSketchFeatureActionBase.cs" />
     <Compile Include="bu\sketch\action\sketch\ExitSketchAction.cs" />
     <Compile Include="bu\sketch\action\sketch\EditSketchAction.cs" />
@@ -232,13 +249,19 @@
     <Compile Include="bu\sketch\vo\draw\SketchDrawInVoBase.cs" />
     <Compile Include="bu\sketch\vo\edit\SketchEditInVoBase.cs" />
     <Compile Include="bu\sketch\vo\feature\consts\swEndConditions_ext.cs" />
+    <Compile Include="bu\sketch\vo\feature\consts\swGuideCurveInfluence_ext.cs" />
     <Compile Include="bu\sketch\vo\feature\consts\swStartConditions_ext.cs" />
     <Compile Include="bu\sketch\vo\feature\consts\swThinWallType_ext.cs" />
     <Compile Include="bu\sketch\vo\feature\extrusion\FeatureExtrusionCutInVo.cs" />
     <Compile Include="bu\sketch\vo\feature\extrusion\FeatureExtrusionThinInVo.cs" />
+    <Compile Include="bu\sketch\vo\feature\loft\FeatureLoftCutInVo.cs" />
+    <Compile Include="bu\sketch\vo\feature\loft\FeatureLoftInVo.cs" />
+    <Compile Include="bu\sketch\vo\feature\consts\swLoftStartEndMatchingType.cs" />
     <Compile Include="bu\sketch\vo\feature\revolve\FeatureRevolveBaseInVo.cs" />
     <Compile Include="bu\sketch\vo\feature\revolve\FeatureRevolveCutInVo.cs" />
     <Compile Include="bu\sketch\vo\feature\revolve\FeatureRevolveInVo.cs" />
+    <Compile Include="bu\sketch\vo\feature\sweep\FeatureSweepCutInVo.cs" />
+    <Compile Include="bu\sketch\vo\feature\sweep\FeatureSweepInVo.cs" />
     <Compile Include="bu\sketch\vo\sketch\EditSketchInVo.cs" />
     <Compile Include="bu\sketch\vo\sketch\ExitSketchInVo.cs" />
     <Compile Include="bu\sketch\vo\draw\slot\CreateSketchSlot3PointArcInVo.cs" />
@@ -249,6 +272,7 @@
     <Compile Include="bu\sketch\vo\draw\spline\CreateSplineInVo.cs" />
     <Compile Include="bu\sketch\vo\draw\spline\SplinePoint.cs" />
     <Compile Include="bu\sketch\vo\draw\text\InsertSketchTextInVo.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseStepItem.cs" />
     <Compile Include="ui\ai\ladder\CreateLadderDialog.xaml.cs">
       <DependentUpon>CreateLadderDialog.xaml</DependentUpon>
     </Compile>
@@ -262,6 +286,18 @@
       <DependentUpon>SwUiPropDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="ui\prop\SwUiPropService.cs" />
+    <Compile Include="ui\usecase\SwUseCaseCmdInfoPanel.xaml.cs">
+      <DependentUpon>SwUseCaseCmdInfoPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\usecase\SwUseCaseInfoPanel.xaml.cs">
+      <DependentUpon>SwUseCaseInfoPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\usecase\SwUseCaseListPanel.xaml.cs">
+      <DependentUpon>SwUseCaseListPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\usecase\SwUseCaseStepInfoPanel.xaml.cs">
+      <DependentUpon>SwUseCaseStepInfoPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="utils\io\RespErrItemVo.cs" />
     <Compile Include="utils\io\RespErrVo.cs" />
     <Compile Include="utils\reflect\ReflectUtils.cs" />
@@ -297,6 +333,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ui\prop\SwUiPropDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\usecase\SwUseCaseCmdInfoPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\usecase\SwUseCaseInfoPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\usecase\SwUseCaseListPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\usecase\SwUseCaseStepInfoPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

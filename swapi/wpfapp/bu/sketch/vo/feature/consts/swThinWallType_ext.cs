@@ -10,6 +10,7 @@ namespace wpfapp.bu.sketch.vo.feature.consts
     /// <summary>
     /// 薄壁类型
     /// </summary>
+    [Description("薄壁类型")]
     public enum swThinWallType_ext
     {
         [Description("两侧对称")]

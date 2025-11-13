@@ -1,0 +1,92 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using wpfapp.bu.sketch.action;
+
+namespace wpfapp.bu.cmd
+{
+    public class SwCmdTypeManager
+    {
+        #region Fields
+
+        private static SwCmdTypeManager _inst = null;
+
+        private List<SwCmdType> cmdTypeList = new List<SwCmdType>();
+
+        #endregion
+
+        #region Construction
+
+        public SwCmdTypeManager()
+        {
+            this.priInitSysCmd();
+        }
+
+        public static SwCmdTypeManager getInstance()
+        {
+            if (_inst == null)
+            {
+                _inst = new SwCmdTypeManager();
+            }
+            return _inst;
+        }
+
+        #endregion
+
+        #region init
+
+        private void priInitSysCmd()
+        {
+            this.cmdTypeList.Clear();
+            Type enumType = typeof(EnumSwSketchActionType);
+            var fields = enumType.GetFields(BindingFlags.Public | BindingFlags.Static);
+            foreach (var field in fields)
+            {
+                object rawValue = field.GetValue(null);
+                int intValue = (int)rawValue;
+                string name = field.Name;
+
+                // 获取自定义特性
+                SwSketchActionAttribute attribute = field.GetCustomAttribute<SwSketchActionAttribute>();
+                if (attribute.ActionType != null)
+                {
+                    SwCmdType oSwCmdType = new SwCmdType();
+                    oSwCmdType.CmdTypeId = intValue;
+                    oSwCmdType.CmdTypeName = attribute.ActionName;
+                    oSwCmdType.CdmDesc = attribute.ActionDesc;
+                    oSwCmdType.CmdGroupName = "All";
+                    oSwCmdType.ActionType = attribute.ActionType;
+                    oSwCmdType.ActionInVoType = attribute.ActionInVoType;
+                    cmdTypeList.Add(oSwCmdType);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 查询
+
+        public List<SwCmdType> getAll()
+        {
+            return this.cmdTypeList;
+        }
+
+        public SwCmdType getByTypeId(int id)
+        {
+            for (int i = 0; i < this.cmdTypeList.Count; i++)
+            {
+                SwCmdType oSwCmdType = this.cmdTypeList[i];
+                if (oSwCmdType.CmdTypeId == id)
+                {
+                    return oSwCmdType;
+                }
+            }
+            return null;
+        }
+
+        #endregion
+    }
+}
