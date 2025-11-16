@@ -1,11 +1,14 @@
 ﻿using SolidWorks.Interop.sldworks;
+using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using wpfapp.bu.app;
 using wpfapp.bu.log;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
+using Xarial.XCad.SolidWorks;
 
 namespace wpfapp.bu.sketch.action.compose
 {
@@ -14,18 +17,16 @@ namespace wpfapp.bu.sketch.action.compose
     /// </summary>
     public class SwSketchComposeActionBase : SwSketchActionBase
     {
-        #region Fields
-        #endregion
-
         #region Construction
 
-        public SwSketchComposeActionBase(object oInVo) : base(oInVo)
+        public SwSketchComposeActionBase() : base()
         {
 
         }
 
         #endregion
 
+        #region execute
 
         public override RespVo execute()
         {
@@ -49,5 +50,7 @@ namespace wpfapp.bu.sketch.action.compose
 
             return oRespVo;
         }
+
+        #endregion
     }
 }

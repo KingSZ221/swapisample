@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.edit.extend;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.edit.extend
 {
@@ -19,7 +19,7 @@ namespace wpfapp.bu.sketch.action.edit.extend
 
         #region Construction
 
-        public SketchExtendAction(object oInVo) : base(oInVo)
+        public SketchExtendAction() : base()
         {
 
         }

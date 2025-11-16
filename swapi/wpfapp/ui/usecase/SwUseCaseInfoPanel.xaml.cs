@@ -39,6 +39,7 @@ namespace wpfapp.ui.usecase
             this.txtId.Text = p_useCaseItem.Id;
             this.txtName.Text = p_useCaseItem.Name;
             this.txtDesc.Text = p_useCaseItem.Desc;
+            this.txtGroup.Text = p_useCaseItem.Group;
 
             this.priInitStepList();
         }
@@ -132,6 +133,7 @@ namespace wpfapp.ui.usecase
         {
             this.useCaseItem.Name = this.txtName.Text;
             this.useCaseItem.Desc = this.txtDesc.Text;
+            this.useCaseItem.Group = this.txtGroup.Text;
             this.DialogResult = true;
             this.Close();
         }

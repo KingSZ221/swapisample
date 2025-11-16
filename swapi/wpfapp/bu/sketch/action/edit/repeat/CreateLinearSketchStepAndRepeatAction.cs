@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.edit.repeat;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.edit.repeat
 {
@@ -19,7 +19,7 @@ namespace wpfapp.bu.sketch.action.edit.repeat
 
         #region Construction
 
-        public CreateLinearSketchStepAndRepeatAction(object oInVo) : base(oInVo)
+        public CreateLinearSketchStepAndRepeatAction() : base()
         {
 
         }

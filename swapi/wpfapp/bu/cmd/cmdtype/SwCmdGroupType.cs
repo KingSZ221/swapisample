@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpfapp.bu.cmd
+namespace wpfapp.bu.cmd.cmdtype
 {
     public class SwCmdGroupType
     {

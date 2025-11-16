@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using wpfapp.bu.app;
 using wpfapp.bu.file;
+using wpfapp.bu.file.cmd;
+using wpfapp.bu.file.vo;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch;
 using wpfapp.bu.sketch.action;
 using wpfapp.bu.sketch.vo.compose.ladder;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 using wpfapp.ui.ai.ladder;
 
 namespace wpfapp.ui.ai
@@ -68,10 +70,10 @@ namespace wpfapp.ui.ai
                 // 2.创建零件
                 NewDocInVo oInVo = new NewDocInVo();
                 oInVo.DocType = 1;
-                SwBuFileService.getInstance().newDoc(oInVo.getSwDefaultTemplateType());
+                SwBuFileService.getInstance().executeCmdWithInVo(EnumSwDocCmdType.NewDoc, oInVo);
 
                 // 3.绘制图形
-                SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateLadder, new CreateLadderInVo());
+                SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.CreateLadder, new CreateLadderInVo());
 
                 SwBuLogService.getInstance().Info("AI 调用SW完成");
                 SwBuLogService.getInstance().Info("");

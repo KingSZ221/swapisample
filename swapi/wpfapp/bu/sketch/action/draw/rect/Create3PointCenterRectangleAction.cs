@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.draw.rect;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.draw.rect
 {
@@ -20,7 +20,7 @@ namespace wpfapp.bu.sketch.action.draw.rect
 
         #region Construction
 
-        public Create3PointCenterRectangleAction(object oInVo) : base(oInVo)
+        public Create3PointCenterRectangleAction() : base()
         {
 
         }

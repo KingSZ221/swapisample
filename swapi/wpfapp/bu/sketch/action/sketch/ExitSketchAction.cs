@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.utils;
 using wpfapp.bu.sketch.vo.sketch;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.sketch
 {
@@ -21,7 +21,7 @@ namespace wpfapp.bu.sketch.action.sketch
 
         #region Construction
 
-        public ExitSketchAction(object oInVo) : base(oInVo)
+        public ExitSketchAction() : base()
         {
 
         }

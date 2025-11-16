@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 using wpfapp.bu.vo.compose.pipe;
 
 namespace wpfapp.bu.sketch.action.compose.pipe
@@ -20,7 +20,7 @@ namespace wpfapp.bu.sketch.action.compose.pipe
 
         #region Construction
 
-        public CreateCirclePipeAction(object oInVo) : base(oInVo)
+        public CreateCirclePipeAction() : base()
         {
 
         }

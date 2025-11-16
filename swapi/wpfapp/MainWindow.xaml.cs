@@ -17,7 +17,7 @@ using SolidWorks.Interop.swconst;
 using System.IO;
 using SolidWorks.Interop.sldworks;
 using wpfapp.bu;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 using Microsoft.Owin.Hosting;
 using wpfapp.nbi_web;
 using System.Configuration;
@@ -25,6 +25,9 @@ using wpfapp.bu.app;
 using wpfapp.ui.menu;
 using wpfapp.ui.output;
 using wpfapp.bu.log;
+using wpfapp.bu.file;
+using wpfapp.bu.feature;
+using wpfapp.bu.sketch;
 
 namespace wpfapp
 {
@@ -50,6 +53,9 @@ namespace wpfapp
             // 初始化Service
             SwBuLogService.createInstance(SwUiOutputService.getInstance());
             SwBuAppService.getInstance().init();
+            SwBuFileService.getInstance().init();
+            SwBuSketchService.getInstance().init();
+            SwBuFeatureService.getInstance().init();
         }
 
         #endregion

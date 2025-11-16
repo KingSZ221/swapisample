@@ -4,11 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpfapp.bu.cmd
+namespace wpfapp.bu.cmd.cmdtype
 {
+    /// <summary>
+    /// 命令类型:命令模块名称和命令类型ID作为唯一命令标识
+    /// </summary>
     public class SwCmdType
     {
         #region Fields
+
+        /// <summary>
+        /// 命令模块名称
+        /// </summary>
+        public string CmdModule { get; set; }
 
         /// <summary>
         /// 命令类型ID

@@ -47,19 +47,19 @@ namespace wpfapp.bu.cmd.usecase.excute
 
             SwUseCaseItem oSwUseCaseItem = new SwUseCaseItem(oSwUseCaseInfo);
 
-            SwBuLogService.getInstance().Info($"开始执行用例 {oSwUseCaseItem.Name}");
+            SwBuLogService.getInstance().Info($"用例开始 {oSwUseCaseItem.Name}");
 
             foreach(SwUseCaseStepItem oSwUseCaseStepItem in oSwUseCaseItem.Steps)
             {
                 excuteUseCaseStep(oSwUseCaseStepItem);
             }
 
-            SwBuLogService.getInstance().Info($"结束执行用例 {oSwUseCaseItem.Name}");
+            SwBuLogService.getInstance().Info($"用例结束 {oSwUseCaseItem.Name}");
         }
 
         private void excuteUseCaseStep(SwUseCaseStepItem oSwUseCaseStepItem)
         {
-            SwBuLogService.getInstance().Info($"开始执行步骤 {oSwUseCaseStepItem.Name}");
+            SwBuLogService.getInstance().Info($"步骤开始 {oSwUseCaseStepItem.Name}");
 
             foreach (SwUseCaseStepCmdItem oSwUseCaseStepCmdItem in oSwUseCaseStepItem.CmdInfos)
             {
@@ -69,16 +69,16 @@ namespace wpfapp.bu.cmd.usecase.excute
                 }
             }
 
-            SwBuLogService.getInstance().Info($"结束执行步骤 {oSwUseCaseStepItem.Name}");
+            SwBuLogService.getInstance().Info($"步骤结束 {oSwUseCaseStepItem.Name}");
         }
 
         private void excuteUseCaseStepCmd(SwUseCaseStepCmdItem oSwUseCaseStepCmdItem)
         {
-            SwBuLogService.getInstance().Info($"开始执行命令 {oSwUseCaseStepCmdItem.CmdName}");
+            SwBuLogService.getInstance().Info($"命令开始 {oSwUseCaseStepCmdItem.CmdName}");
 
-            SwSketchActionProvider.getInstance().execute((EnumSwSketchActionType)oSwUseCaseStepCmdItem.CmdTypeId, oSwUseCaseStepCmdItem.CmdInVoObj);
+            SwBuCmdService.getInstance().executeCmdWithInVo(oSwUseCaseStepCmdItem.CmdModule, oSwUseCaseStepCmdItem.CmdTypeId, oSwUseCaseStepCmdItem.CmdInVoObj);
 
-            SwBuLogService.getInstance().Info($"结束执行命令 {oSwUseCaseStepCmdItem.CmdName}");
+            SwBuLogService.getInstance().Info($"命令结束 {oSwUseCaseStepCmdItem.CmdName}");
         }
 
         #endregion

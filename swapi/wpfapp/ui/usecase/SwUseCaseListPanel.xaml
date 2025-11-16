@@ -15,6 +15,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
                 <DataGridTextColumn Header="用例名称" Binding="{Binding Name}" Width="120"/>
+                <DataGridTextColumn Header="用例组" Binding="{Binding Group}" Width="120"/>
                 <DataGridTextColumn Header="用例描述" Binding="{Binding Desc}" Width="120"/>
                 <!-- 操作按钮列 -->
                 <DataGridTemplateColumn Header="操作" Width="200">

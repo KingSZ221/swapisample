@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.entity;
 using wpfapp.bu.sketch.vo.edit.fillet;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.edit.fillet
 {
@@ -22,7 +22,7 @@ namespace wpfapp.bu.sketch.action.edit.fillet
 
         #region Construction
 
-        public CreateFilletAction(object oInVo) : base(oInVo)
+        public CreateFilletAction() : base()
         {
 
         }

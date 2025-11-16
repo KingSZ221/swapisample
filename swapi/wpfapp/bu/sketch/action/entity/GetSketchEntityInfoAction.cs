@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.action.edit;
 using wpfapp.bu.sketch.vo.entity;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.entity
 {
@@ -21,7 +21,7 @@ namespace wpfapp.bu.sketch.action.entity
 
         #region Construction
 
-        public GetSketchEntityInfoAction(object oInVo) : base(oInVo)
+        public GetSketchEntityInfoAction() : base()
         {
 
         }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using wpfapp.bu.cmd;
+using wpfapp.bu.cmd.cmdtype;
 using wpfapp.bu.sketch.vo.draw.arc;
 using wpfapp.bu.usecase.vo;
 
@@ -47,8 +48,10 @@ namespace wpfapp.ui.usecase
         private void priInitCmdType()
         {
             this.bInit = true;
-            this.comboBoxCmd.ItemsSource = SwCmdTypeManager.getInstance().getAll();
-            this.comboBoxCmd.SelectedItem = SwCmdTypeManager.getInstance().getByTypeId(this.useCaseStepCmdItem.CmdTypeId);
+            this.comboBoxModule.ItemsSource = SwCmdTypeManager.getInstance().getModules();
+            this.comboBoxModule.SelectedItem = useCaseStepCmdItem.CmdModule;
+            this.comboBoxCmd.ItemsSource = SwCmdTypeManager.getInstance().getCmdsByModule(useCaseStepCmdItem.CmdModule);
+            this.comboBoxCmd.SelectedItem = SwCmdTypeManager.getInstance().getByTypeId(useCaseStepCmdItem.CmdModule, useCaseStepCmdItem.CmdTypeId);
             this.propertyGridCmd.SelectedObject = useCaseStepCmdItem.CmdInVoObj;
             this.bInit = false;
         }
@@ -56,6 +59,31 @@ namespace wpfapp.ui.usecase
         private void priRefresPropertyGrid()
         {
             this.propertyGridCmd.SelectedObject = useCaseStepCmdItem.CmdInVoObj;
+        }
+
+        private void comboBoxModule_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (bInit)
+            {
+                return;
+            }
+
+            if (comboBoxModule.SelectedItem is string selectedModule)
+            {
+                useCaseStepCmdItem.CmdModule = selectedModule;
+
+                // 刷新命令列表
+                List<SwCmdType> cmds = SwCmdTypeManager.getInstance().getCmdsByModule(selectedModule);
+                this.comboBoxCmd.ItemsSource = cmds;
+                this.comboBoxCmd.SelectedItem = cmds[0];
+
+                // 刷新当前命令
+                useCaseStepCmdItem.CmdTypeId = cmds[0].CmdTypeId;
+                useCaseStepCmdItem.CmdName = cmds[0].CmdTypeName;
+                useCaseStepCmdItem.CmdInVoObj = Activator.CreateInstance(cmds[0].ActionInVoType);
+
+                priRefresPropertyGrid();
+            }
         }
 
         private void comboBoxCmd_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -87,5 +115,6 @@ namespace wpfapp.ui.usecase
             this.DialogResult = false;
             this.Close();
         }
+
     }
 }

@@ -8,18 +8,24 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using wpfapp.bu.app;
+using wpfapp.bu.cmd;
+using wpfapp.bu.cmd.cmdtype;
 using wpfapp.bu.cmd.usecase.design;
 using wpfapp.bu.cmd.usecase.excute;
+using wpfapp.bu.feature;
+using wpfapp.bu.feature.cmd;
 using wpfapp.bu.file;
+using wpfapp.bu.file.cmd;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch;
 using wpfapp.bu.sketch.action;
 using wpfapp.bu.sketch.vo.draw.spline;
 using wpfapp.bu.usecase.vo;
-using wpfapp.bu.vo;
+using wpfapp.bu.file.vo;
 using wpfapp.ui.ai;
 using wpfapp.ui.prop;
 using wpfapp.utils.reflect;
+using wpfapp.basic.io;
 
 namespace wpfapp.ui.menu
 {
@@ -169,6 +175,8 @@ namespace wpfapp.ui.menu
             mainMenu.Items.Add(menu);
 
             menuUseCase = menu;
+
+            priCreateSubMenu4UseCase(menuUseCase);
         }
 
         internal void updateUseCaseSubMenu()
@@ -180,9 +188,24 @@ namespace wpfapp.ui.menu
         private void priCreateSubMenu4UseCase(MenuItem menu1)
         {
             menu1.Items.Clear();
+
+            Dictionary<string, MenuItem> subMenuGroups = new Dictionary<string, MenuItem>();
             foreach(SwUseCaseInfo oSwUseCaseInfo in SwUseCaseDesignService.getInstance().getAll())
             {
-                menu1.Items.Add(priCreateMenuItem(oSwUseCaseInfo.Name, Button_Click_ExcuteUseCase, oSwUseCaseInfo.Id));
+                string strGroup = oSwUseCaseInfo.Group;
+                if (string.IsNullOrEmpty(strGroup))
+                {
+                    strGroup = "Default";
+                }
+                MenuItem subMenuGroup;
+                subMenuGroups.TryGetValue(strGroup, out subMenuGroup);
+                if(subMenuGroup == null)
+                {
+                    subMenuGroup = priCreateMenuItem(strGroup, null);
+                    subMenuGroups[strGroup] = subMenuGroup;
+                    menu1.Items.Add(subMenuGroup);
+                }
+                subMenuGroup.Items.Add(priCreateMenuItem(oSwUseCaseInfo.Name, Button_Click_ExcuteUseCase, oSwUseCaseInfo.Id));
             }
         }
 
@@ -442,7 +465,8 @@ namespace wpfapp.ui.menu
 
         #endregion
 
-        #region 用例
+        #region 用例操作
+
         private void Button_Click_DesignUseCase(object sender, RoutedEventArgs e)
         {
             SwUseCaseDesignService.getInstance().showUseCaseListDialog();
@@ -456,7 +480,6 @@ namespace wpfapp.ui.menu
             }
         }
 
-
         #endregion
 
         #region 文档操作
@@ -468,7 +491,9 @@ namespace wpfapp.ui.menu
         /// <param name="e"></param>
         private void Button_Click_NewPart(object sender, RoutedEventArgs e)
         {
-            newDoc(swUserPreferenceStringValue_e.swDefaultTemplatePart);
+            NewDocInVo oNewDocInVo = new NewDocInVo();
+            oNewDocInVo.DocType = 1;
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.NewDoc, oNewDocInVo);
         }
 
         /// <summary>
@@ -476,7 +501,9 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_NewAssembly(object sender, RoutedEventArgs e)
         {
-            newDoc(swUserPreferenceStringValue_e.swDefaultTemplateAssembly);
+            NewDocInVo oNewDocInVo = new NewDocInVo();
+            oNewDocInVo.DocType = 2;
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.NewDoc, oNewDocInVo);
         }
 
         /// <summary>
@@ -484,13 +511,9 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_NewDrawing(object sender, RoutedEventArgs e)
         {
-            newDoc(swUserPreferenceStringValue_e.swDefaultTemplateDrawing);
-        }
-
-        private void newDoc(swUserPreferenceStringValue_e docType)
-        {
-            SwBuFileService.getInstance().newDoc(docType);
-
+            NewDocInVo oNewDocInVo = new NewDocInVo();
+            oNewDocInVo.DocType = 3;
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.NewDoc, oNewDocInVo);
         }
 
         /// <summary>
@@ -498,7 +521,8 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_OpenPart(object sender, RoutedEventArgs e)
         {
-            openDoc("零件测试1.SLDPRT", swDocumentTypes_e.swDocPART);
+            OpenDocInVo oOpenDocInVo = OpenDocInVo.genTestOpenFileInVo(1);
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.OpenDoc, oOpenDocInVo);
         }
 
         /// <summary>
@@ -506,7 +530,8 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_OpenAssembly(object sender, RoutedEventArgs e)
         {
-            openDoc("装配体测试1.SLDASM", swDocumentTypes_e.swDocASSEMBLY);
+            OpenDocInVo oOpenDocInVo = OpenDocInVo.genTestOpenFileInVo(2);
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.OpenDoc, oOpenDocInVo);
         }
 
         /// <summary>
@@ -514,12 +539,8 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_OpenDrawing(object sender, RoutedEventArgs e)
         {
-            openDoc("工程图测试1.SLDDRW", swDocumentTypes_e.swDocDRAWING);
-        }
-
-        private void openDoc(string strDocFileName, swDocumentTypes_e docType)
-        {
-            SwBuFileService.getInstance().openDoc(strDocFileName, docType);
+            OpenDocInVo oOpenDocInVo = OpenDocInVo.genTestOpenFileInVo(3);
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.OpenDoc, oOpenDocInVo);
         }
 
         /// <summary>
@@ -527,7 +548,8 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_SaveCurDoc(object sender, RoutedEventArgs e)
         {
-            SwBuFileService.getInstance().saveCurDoc();
+            SaveDocInVo oSaveDocInVo = new SaveDocInVo();
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.SaveDoc, oSaveDocInVo);
         }
 
         /// <summary>
@@ -535,7 +557,9 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_SaveAsCurDoc(object sender, RoutedEventArgs e)
         {
-            SwBuFileService.getInstance().saveAsCurDoc(SwBuFileService.getInstance().getCurDocPath());
+            SaveAsDocInVo oSaveAsDocInVo = new SaveAsDocInVo();
+            oSaveAsDocInVo.SaveAsDocTitle = "SaveAsSample";
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.SaveAsDoc, oSaveAsDocInVo);
         }
 
         /// <summary>
@@ -543,7 +567,9 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CloseCurDoc(object sender, RoutedEventArgs e)
         {
-            SwBuFileService.getInstance().closeCurDoc();
+            CloseDocInVo oCloseDocInVo = new CloseDocInVo();
+            oCloseDocInVo.DocTitle = "";
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.CloseDoc, oCloseDocInVo);
         }
 
         /// <summary>
@@ -551,7 +577,9 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_ExportDxf(object sender, RoutedEventArgs e)
         {
-            SwBuFileService.getInstance().exportDxf();
+            ExportDocInVo oExportDocInVo = new ExportDocInVo();
+            oExportDocInVo.ExportFileType = 1;
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.ExportDoc, oExportDocInVo);
         }
 
         /// <summary>
@@ -559,7 +587,9 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_ExportSvg(object sender, RoutedEventArgs e)
         {
-            SwBuFileService.getInstance().exportSvg();
+            ExportDocInVo oExportDocInVo = new ExportDocInVo();
+            oExportDocInVo.ExportFileType = 2;
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.ExportDoc, oExportDocInVo);
         }
 
         /// <summary>
@@ -567,7 +597,9 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_ExportIges(object sender, RoutedEventArgs e)
         {
-            SwBuFileService.getInstance().exportIges();
+            ExportDocInVo oExportDocInVo = new ExportDocInVo();
+            oExportDocInVo.ExportFileType = 3;
+            priExecuteCmdWithInVo(SwBuFileService.MoudleName, (int)EnumSwDocCmdType.ExportDoc, oExportDocInVo);
         }
 
         #endregion
@@ -581,7 +613,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_EditSketch(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.EditSketch);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.EditSketch);
         }
 
         /// <summary>
@@ -591,7 +623,7 @@ namespace wpfapp.ui.menu
         /// <param name="arg2"></param>
         private void Button_Click_ExitSketch(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.ExitSketch);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.ExitSketch);
         }
 
         /// <summary>
@@ -601,7 +633,7 @@ namespace wpfapp.ui.menu
         /// <param name="arg2"></param>
         private void Button_Click_GetSketchEntityInfo(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.GetSketchEntityInfo);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.GetSketchEntityInfo);
         }
         
 
@@ -614,7 +646,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateLine(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateLine);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateLine);
         }
 
         /// <summary>
@@ -622,7 +654,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateCenterLine(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateCenterLine);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCenterLine);
         }
 
         #endregion
@@ -634,7 +666,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateCornerRectangle(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateCornerRectangle);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCornerRectangle);
         }
 
         /// <summary>
@@ -642,7 +674,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateCenterRectangle(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateCenterRectangle);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCenterRectangle);
         }
 
         /// <summary>
@@ -650,7 +682,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_Create3PointCornerRectangle(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.Create3PointCornerRectangle);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.Create3PointCornerRectangle);
         }
 
         /// <summary>
@@ -658,7 +690,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_Create3PointCenterRectangle(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.Create3PointCenterRectangle);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.Create3PointCenterRectangle);
         }
 
         /// <summary>
@@ -666,7 +698,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateParallelogram(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateParallelogram);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateParallelogram);
         }
 
         #endregion
@@ -678,7 +710,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateSketchSlot_line(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateSketchSlot_line);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateSketchSlot_line);
         }
 
         /// <summary>
@@ -686,7 +718,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateSketchSlot_center_line(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateSketchSlot_center_line);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateSketchSlot_center_line);
         }
 
         /// <summary>
@@ -694,7 +726,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateSketchSlot_3pointarc(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateSketchSlot_3pointarc);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateSketchSlot_3pointarc);
         }
 
         /// <summary>
@@ -702,7 +734,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateSketchSlot_arc(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateSketchSlot_arc);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateSketchSlot_arc);
         }
         #endregion
 
@@ -713,7 +745,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateCircle(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateCircle);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCircle);
         }
 
         /// <summary>
@@ -721,7 +753,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_PerimeterCircle(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.PerimeterCircle);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.PerimeterCircle);
         }
 
         #endregion
@@ -733,7 +765,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateArc(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateArc);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateArc);
         }
 
         /// <summary>
@@ -743,7 +775,7 @@ namespace wpfapp.ui.menu
         /// <param name="arg2"></param>
         private void Button_Click_CreateTangentArc(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateTangentArc);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateTangentArc);
         }
 
         /// <summary>
@@ -751,7 +783,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_Create3PointArc(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.Create3PointArc);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.Create3PointArc);
         }
 
         #endregion
@@ -763,7 +795,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreatePolygon(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreatePolygon);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreatePolygon);
         }
 
         #endregion
@@ -775,7 +807,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateSpline(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateSpline, CreateSplineInVo.Default());
+            priExecuteCmdWithInVo(SwBuSketchService.MoudleName, (int)EnumSwSketchCmdType.CreateSpline, CreateSplineInVo.Default());
         }
 
         /// <summary>
@@ -783,7 +815,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateEquationSpline(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateEquationSpline);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateEquationSpline);
         }
 
         #endregion
@@ -796,7 +828,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateEllipse(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateEllipse);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateEllipse);
         }
 
         /// <summary>
@@ -804,7 +836,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateEllipticalArc(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateEllipticalArc);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateEllipticalArc);
         }
 
         /// <summary>
@@ -812,7 +844,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateParabola(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateParabola);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateParabola);
         }
 
         /// <summary>
@@ -820,7 +852,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateConic(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateConic);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateConic);
         }
 
         #endregion
@@ -829,7 +861,7 @@ namespace wpfapp.ui.menu
 
         private void Button_Click_InsertSketchText(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.InsertSketchText);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.InsertSketchText);
         }
 
         #endregion
@@ -841,7 +873,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreatePoint(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreatePoint);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreatePoint);
         }
 
         #endregion
@@ -853,7 +885,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateFillet(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateFillet);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateFillet);
         }
 
         /// <summary>
@@ -861,7 +893,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateChamfer(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateChamfer);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateChamfer);
         }
 
         #endregion
@@ -873,7 +905,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_SketchTrim(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.SketchTrim);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.SketchTrim);
         }
 
         #endregion
@@ -885,7 +917,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_SketchExtend(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.SketchExtend);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.SketchExtend);
         }
 
         #endregion
@@ -897,7 +929,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_SketchOffset(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.SketchOffset);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.SketchOffset);
         }
 
         #endregion
@@ -909,7 +941,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_SketchMirror(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.SketchMirror);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.SketchMirror);
         }
 
         #endregion
@@ -921,7 +953,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_MoveOrCopy(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.MoveOrCopy);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.MoveOrCopy);
         }
 
 
@@ -930,7 +962,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_RotateOrCopy(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.RotateOrCopy);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.RotateOrCopy);
         }
 
         #endregion
@@ -942,7 +974,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateLinearSketchStepAndRepeat(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateLinearSketchStepAndRepeat);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateLinearSketchStepAndRepeat);
         }
 
         /// <summary>
@@ -950,7 +982,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateCircularSketchStepAndRepeat(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateCircularSketchStepAndRepeat);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCircularSketchStepAndRepeat);
         }
 
         #endregion
@@ -962,7 +994,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_ShowSketchRelations(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.ShowSketchRelations);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.ShowSketchRelations);
         }
 
         /// <summary>
@@ -970,7 +1002,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_SketchAddConstraints(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.SketchAddConstraints);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.SketchAddConstraints);
         }
 
         /// <summary>
@@ -978,7 +1010,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_AddDimension(object arg1, RoutedEventArgs arg2)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.AddDimension);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.AddDimension);
         }
 
         #endregion       
@@ -988,7 +1020,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateCirclePipe(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateCirclePipe);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCirclePipe);
         }
 
         /// <summary>
@@ -996,7 +1028,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateCube(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateCube);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCube);
         }
 
         /// <summary>
@@ -1004,7 +1036,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_CreateLadder(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.CreateLadder);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateLadder);
         }
 
         /// <summary>
@@ -1012,15 +1044,19 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_FullyDefineSketch(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.FullyDefineSketch);
+            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.FullyDefineSketch);
         }
+
+        #endregion
+
+        #region 特征操作
 
         /// <summary>
         /// 薄壁拉伸
         /// </summary>
         private void Button_Click_FeatureExtrusionThin(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.FeatureExtrusionThin);
+            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureExtrusionThin);
         }
 
         /// <summary>
@@ -1028,7 +1064,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_FeatureRevolve(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.FeatureRevolve);
+            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureRevolve);
         }
 
         /// <summary>
@@ -1036,7 +1072,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_FeatureSweep(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.FeatureSweep);
+            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureSweep);
         }
 
         /// <summary>
@@ -1044,7 +1080,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_FeatureLoft(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.FeatureLoft);
+            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureLoft);
         }
 
         /// <summary>
@@ -1052,7 +1088,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_FeatureExtrusionCut(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.FeatureExtrusionCut);
+            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureExtrusionCut);
         }
 
         /// <summary>
@@ -1060,7 +1096,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_FeatureRevolveCut(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.FeatureRevolveCut);
+            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureRevolveCut);
         }
 
         /// <summary>
@@ -1068,7 +1104,7 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_FeatureSweepCut(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.FeatureSweepCut);
+            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureSweepCut);
         }
 
         /// <summary>
@@ -1076,26 +1112,84 @@ namespace wpfapp.ui.menu
         /// </summary>
         private void Button_Click_FeatureLoftCut(object sender, RoutedEventArgs e)
         {
-            priExecuteSketchActon(EnumSwSketchActionType.FeatureLoftCut);
+            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureLoftCut);
         }
 
-        private RespVo priExecuteSketchActon(EnumSwSketchActionType actionType, object actionInVo = null)
+        #endregion
+
+        #region 执行命令
+
+        /// <summary>
+        /// 执行文档命令，弹出命令参数设置对话框
+        /// </summary>
+        /// <param name="cmdTypeId">命令类型ID</param>
+        /// <returns>RespVo</returns>
+        private RespVo priExecuteDocCmdAndConfigInVo(EnumSwDocCmdType cmdTypeId)
         {
-            FieldInfo field = actionType.GetType().GetField(actionType.ToString());
-            SwSketchActionAttribute attribute = field.GetCustomAttribute<SwSketchActionAttribute>();
-            string strActionName = attribute.ActionName;
-            if(actionInVo == null)
+            return priExecuteCmdAndConfigInVo(SwBuFileService.MoudleName, (int)cmdTypeId);
+        }
+
+        /// <summary>
+        /// 执行草图命令，弹出命令参数设置对话框
+        /// </summary>
+        /// <param name="cmdTypeId">命令类型ID</param>
+        /// <returns>RespVo</returns>
+        private RespVo priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType cmdTypeId)
+        {
+            return priExecuteCmdAndConfigInVo(SwBuSketchService.MoudleName, (int)cmdTypeId);
+        }
+
+        /// <summary>
+        /// 执行特征命令，弹出命令参数设置对话框
+        /// </summary>
+        /// <param name="cmdTypeId">命令类型ID</param>
+        /// <returns>RespVo</returns>
+        private RespVo priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType cmdTypeId)
+        {
+            return priExecuteCmdAndConfigInVo(SwBuFeatureService.MoudleName, (int)cmdTypeId);
+        }
+
+        /// <summary>
+        /// 执行命令，弹出命令参数设置对话框
+        /// </summary>
+        /// <param name="cmdModule">命令模块</param>
+        /// <param name="cmdTypeId">命令类型ID</param>
+        /// <returns>RespVo</returns>
+        private RespVo priExecuteCmdAndConfigInVo(string moduleName, int cmdTypeId)
+        {
+            // 获取命令类型
+            SwCmdType cmdType = SwCmdTypeManager.getInstance().getByTypeId(moduleName, cmdTypeId);
+            if (cmdType == null)
             {
-                actionInVo = Activator.CreateInstance(attribute.ActionInVoType);
+                return RespVoLogExt.genError($"未找到命令: {SwBuSketchService.MoudleName} {cmdTypeId}");
             }
-            if (SwUiPropService.getInstance().showPropObjDlg(strActionName, "请输入绘制参数:", actionInVo))
+
+            // 弹出命令参数设置对话框
+            object cmdInVo = null;
+            if (cmdType.ActionInVoType != null)
             {
-                return SwBuSketchService.getInstance().executeSketchAction(actionType, actionInVo);
+                cmdInVo = Activator.CreateInstance(cmdType.ActionInVoType);
+                if (!SwUiPropService.getInstance().showPropObjDlg(cmdType.CmdTypeName, "请输入命令参数:", cmdInVo))
+                {
+                    return RespVoLogExt.genOk($"命令取消, {cmdType.CmdTypeName}");
+
+                }
             }
-            else
-            {
-                return RespVoLogExt.genOk($"绘制草图操作取消, {strActionName}");
-            }
+
+            // 执行命令
+            return SwBuCmdService.getInstance().executeCmdWithInVo(cmdType, cmdInVo);
+        }
+
+        /// <summary>
+        /// 执行命令
+        /// </summary>
+        /// <param name="cmdModule">命令模块</param>
+        /// <param name="cmdTypeId">命令类型ID</param>
+        /// <returns>RespVo</returns>
+        private RespVo priExecuteCmdWithInVo(string moduleName, int cmdTypeId, object cmdInVo)
+        {
+            // 执行命令
+            return SwBuCmdService.getInstance().executeCmdWithInVo(moduleName, cmdTypeId, cmdInVo);
         }
 
         #endregion

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.draw.polygon;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.draw.polygon
 {
@@ -20,7 +20,7 @@ namespace wpfapp.bu.sketch.action.draw.polygon
 
         #region Construction
 
-        public CreatePolygonAction(object oInVo) : base(oInVo)
+        public CreatePolygonAction() : base()
         {
 
         }

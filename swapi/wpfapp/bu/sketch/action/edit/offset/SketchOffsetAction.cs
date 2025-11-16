@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.edit.offset;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.edit.offset
 {
@@ -19,7 +19,7 @@ namespace wpfapp.bu.sketch.action.edit.offset
 
         #region Construction
 
-        public SketchOffsetAction(object oInVo) : base(oInVo)
+        public SketchOffsetAction() : base()
         {
 
         }

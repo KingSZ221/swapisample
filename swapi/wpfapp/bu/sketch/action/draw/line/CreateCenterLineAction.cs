@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.draw.line;
 using wpfapp.bu.sketch.vo.entity;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.draw.line
 {
@@ -21,7 +21,7 @@ namespace wpfapp.bu.sketch.action.draw.line
 
         #region Construction
 
-        public CreateCenterLineAction(object oInVo) : base(oInVo)
+        public CreateCenterLineAction() : base()
         {
 
         }

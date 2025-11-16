@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.draw.arc;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.draw.arc
 {
@@ -20,7 +20,7 @@ namespace wpfapp.bu.sketch.action.draw.arc
 
         #region Construction
 
-        public CreateArcAction(object oInVo) : base(oInVo)
+        public CreateArcAction() : base()
         {
 
         }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.edit.mirror;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.edit.mirror
 {
@@ -20,7 +20,7 @@ namespace wpfapp.bu.sketch.action.edit.mirror
 
         #region Construction
 
-        public SketchMirrorAction(object oInVo) : base(oInVo)
+        public SketchMirrorAction() : base()
         {
 
         }

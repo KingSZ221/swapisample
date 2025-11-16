@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.entity;
 using wpfapp.bu.sketch.vo.draw.rect;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.draw.rect
 {
@@ -21,7 +21,7 @@ namespace wpfapp.bu.sketch.action.draw.rect
 
         #region Construction
 
-        public CreateCornerRectangleAction(object oInVo) : base(oInVo)
+        public CreateCornerRectangleAction() : base()
         {
 
         }

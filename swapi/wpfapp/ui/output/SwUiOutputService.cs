@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using wpfapp.bu.log;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.ui.output
 {

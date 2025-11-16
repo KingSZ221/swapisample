@@ -5,12 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.cmd;
+using wpfapp.bu.cmd.cmdtype;
 
 namespace wpfapp.bu.usecase.vo
 {
     public class SwUseCaseStepCmdItem
     {
         #region Fields
+
+        /// <summary>
+        /// 命令模块
+        /// </summary>
+        public string CmdModule { get; set; } = "";
 
         /// <summary>
         /// 命令类型ID
@@ -42,6 +48,7 @@ namespace wpfapp.bu.usecase.vo
 
         public SwUseCaseStepCmdItem(SwUseCaseStepCmdInfo oCmdInfo)
         {
+            this.CmdModule = oCmdInfo.CmdModule;
             this.CmdTypeId = oCmdInfo.CmdTypeId;
             this.CmdInVoJson = oCmdInfo.CmdInVoJson;
 
@@ -50,6 +57,7 @@ namespace wpfapp.bu.usecase.vo
 
         internal void copyFrom(SwUseCaseStepCmdItem oCmdInfo)
         {
+            this.CmdModule = oCmdInfo.CmdModule;
             this.CmdTypeId = oCmdInfo.CmdTypeId;
             this.CmdInVoJson = oCmdInfo.CmdInVoJson;
 
@@ -58,7 +66,7 @@ namespace wpfapp.bu.usecase.vo
 
         public void resolve()
         {
-            SwCmdType oSwCmdType = SwCmdTypeManager.getInstance().getByTypeId(this.CmdTypeId);
+            SwCmdType oSwCmdType = SwCmdTypeManager.getInstance().getByTypeId(this.CmdModule, this.CmdTypeId);
             if(oSwCmdType == null)
             {
                 this.CmdName = "None";

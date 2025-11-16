@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpfapp.bu.vo
+namespace wpfapp.bu.file.vo
 {
     /// <summary>
     /// 关闭文档参数

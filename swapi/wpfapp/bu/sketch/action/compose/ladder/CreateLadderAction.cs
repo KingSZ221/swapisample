@@ -10,9 +10,11 @@ using wpfapp.bu.sketch.vo.draw.circle;
 using wpfapp.bu.sketch.vo.draw.define;
 using wpfapp.bu.sketch.vo.draw.line;
 using wpfapp.bu.sketch.vo.entity;
-using wpfapp.bu.sketch.vo.feature.extrusion;
+using wpfapp.bu.feature.vo.feature.extrusion;
 using wpfapp.bu.sketch.vo.sketch;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
+using wpfapp.bu.feature.cmd;
+using wpfapp.bu.feature;
 
 namespace wpfapp.bu.sketch.action.compose.ladder
 {
@@ -27,7 +29,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
 
         #region Construction
 
-        public CreateLadderAction(object oInVo) : base(oInVo)
+        public CreateLadderAction() : base()
         {
 
         }
@@ -165,7 +167,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.SketchHengGanEditInVo = new EditSketchInVo();
             oOutVo.SketchHengGanEditInVo.SketchName = "横杆草图";
             oOutVo.SketchHengGanEditInVo.RefPlaneName = "右视基准面";
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.EditSketch, oOutVo.SketchHengGanEditInVo);
+            oRespVo = SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.EditSketch, oOutVo.SketchHengGanEditInVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -179,7 +181,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.ContourMianGuan1InVo.XP = 0;
             oOutVo.ContourMianGuan1InVo.YP = oInVo.LiZhuHeight / 2 + oInVo.MianGuanRadius;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourMianGuan1InVo);
+            oRespVo = SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.CreateCircle, oOutVo.ContourMianGuan1InVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -195,7 +197,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.ContourMianGuan2InVo.XP = 0;
             oOutVo.ContourMianGuan2InVo.YP = -oInVo.LiZhuHeight / 2 + oInVo.MianGuanRadius;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourMianGuan2InVo);
+            oRespVo = SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.CreateCircle, oOutVo.ContourMianGuan2InVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -211,7 +213,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.ContourHengGan1InVo.XP = 0;
             oOutVo.ContourHengGan1InVo.YP = oInVo.ShuGanHeight / 2 + oInVo.HengGanRadius;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourHengGan1InVo);
+            oRespVo = SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.CreateCircle, oOutVo.ContourHengGan1InVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -227,7 +229,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.ContourHengGan2InVo.XP = 0;
             oOutVo.ContourHengGan2InVo.YP = -oInVo.ShuGanHeight / 2 + oInVo.HengGanRadius;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourHengGan2InVo);
+            oRespVo = SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.CreateCircle, oOutVo.ContourHengGan2InVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -237,7 +239,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
 
             // 5.退出编辑草图
             oOutVo.SketchHengGanExitInVo = new ExitSketchInVo();
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.ExitSketch, oOutVo.SketchHengGanExitInVo);
+            oRespVo = SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.ExitSketch, oOutVo.SketchHengGanExitInVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -269,7 +271,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.SketchShuGanEditInVo = new EditSketchInVo();
             oOutVo.SketchShuGanEditInVo.SketchName = "竖杆草图";
             oOutVo.SketchShuGanEditInVo.RefPlaneName = "上视基准面";
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.EditSketch, oOutVo.SketchShuGanEditInVo);
+            oRespVo = SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.EditSketch, oOutVo.SketchShuGanEditInVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -283,7 +285,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.ContourLiZhu1InVo.XP = -(oInVo.HengGanWidth / 2) + oInVo.LiZhuRadius;
             oOutVo.ContourLiZhu1InVo.YP = 0;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourLiZhu1InVo);
+            oRespVo = SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.CreateCircle, oOutVo.ContourLiZhu1InVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -298,7 +300,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.ContourLiZhu2InVo.XP = oInVo.HengGanWidth / 2 + oInVo.LiZhuRadius;
             oOutVo.ContourLiZhu2InVo.YP = 0;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oOutVo.ContourLiZhu2InVo);
+            oRespVo = SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.CreateCircle, oOutVo.ContourLiZhu2InVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -321,7 +323,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 oCreateCircleInVo.YP = 0;
                 oOutVo.ContourShuGanListInVo.Add(oCreateCircleInVo);
                 // 绘制图形
-                oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.CreateCircle, oCreateCircleInVo);
+                oRespVo = SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.CreateCircle, oCreateCircleInVo);
                 if (!oRespVo.ok)
                 {
                     return oRespVo;
@@ -333,7 +335,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
 
             // 5.退出编辑草图
             oOutVo.SketchShuGanExitInVo = new ExitSketchInVo();
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.ExitSketch, oOutVo.SketchShuGanExitInVo);
+            oRespVo = SwBuSketchService.getInstance().executeCmdWithInVo(EnumSwSketchCmdType.ExitSketch, oOutVo.SketchShuGanExitInVo);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -367,7 +369,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.FeatureMianGuan1.D2 = oInVo.MianGuanWidth / 2;
             oOutVo.FeatureMianGuan1.Thk1 = oInVo.MianGuanThickness;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureMianGuan1);
+            oRespVo = SwBuFeatureService.getInstance().executeCmdWithInVo(EnumSwFeatureCmdType.FeatureExtrusionThin, oOutVo.FeatureMianGuan1);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -384,7 +386,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.FeatureMianGuan2.D2 = oInVo.MianGuanWidth / 2;
             oOutVo.FeatureMianGuan2.Thk1 = oInVo.MianGuanThickness;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureMianGuan2);
+            oRespVo = SwBuFeatureService.getInstance().executeCmdWithInVo(EnumSwFeatureCmdType.FeatureExtrusionThin, oOutVo.FeatureMianGuan2);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -415,7 +417,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.FeatureLiZhu1.D2 = oInVo.LiZhuHeight / 2;
             oOutVo.FeatureLiZhu1.Thk1 = oInVo.LiZhuThickness;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureLiZhu1);
+            oRespVo = SwBuFeatureService.getInstance().executeCmdWithInVo(EnumSwFeatureCmdType.FeatureExtrusionThin, oOutVo.FeatureLiZhu1);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -432,7 +434,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.FeatureLiZhu2.D2 = oInVo.LiZhuHeight / 2;
             oOutVo.FeatureLiZhu2.Thk1 = oInVo.LiZhuThickness;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureLiZhu2);
+            oRespVo = SwBuFeatureService.getInstance().executeCmdWithInVo(EnumSwFeatureCmdType.FeatureExtrusionThin, oOutVo.FeatureLiZhu2);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -463,7 +465,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.FeatureHengGan1.D2 = oInVo.HengGanWidth / 2;
             oOutVo.FeatureHengGan1.Thk1 = oInVo.HengGanThickness;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureHengGan1);
+            oRespVo = SwBuFeatureService.getInstance().executeCmdWithInVo(EnumSwFeatureCmdType.FeatureExtrusionThin, oOutVo.FeatureHengGan1);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -480,7 +482,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
             oOutVo.FeatureHengGan2.D2 = oInVo.HengGanWidth / 2;
             oOutVo.FeatureHengGan2.Thk1 = oInVo.HengGanThickness;
             // 绘制图形
-            oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oOutVo.FeatureHengGan2);
+            oRespVo = SwBuFeatureService.getInstance().executeCmdWithInVo(EnumSwFeatureCmdType.FeatureExtrusionThin, oOutVo.FeatureHengGan2);
             if (!oRespVo.ok)
             {
                 return oRespVo;
@@ -516,7 +518,7 @@ namespace wpfapp.bu.sketch.action.compose.ladder
                 oFeatureShuGan.D2 = oInVo.ShuGanHeight / 2;
                 oFeatureShuGan.Thk1 = oInVo.ShuGanThickness;
                 // 绘制图形
-                oRespVo = SwBuSketchService.getInstance().executeSketchAction(EnumSwSketchActionType.FeatureExtrusion, oFeatureShuGan);
+                oRespVo = SwBuFeatureService.getInstance().executeCmdWithInVo(EnumSwFeatureCmdType.FeatureExtrusionThin, oFeatureShuGan);
                 if (!oRespVo.ok)
                 {
                     return oRespVo;

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.sketch.vo.draw.rect;
 using wpfapp.bu.sketch.vo.entity;
-using wpfapp.bu.sketch.vo.feature.extrusion;
+using wpfapp.bu.feature.vo.feature.extrusion;
 using wpfapp.bu.sketch.vo.sketch;
 
 namespace wpfapp.bu.sketch.vo.compose.cube

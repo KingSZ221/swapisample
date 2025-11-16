@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpfapp.ui.usecase"
         mc:Ignorable="d"
-        Title="新增步骤" Height="750" Width="800">
+        Title="新增步骤" Height="710" Width="760">
     <Grid>
-        <Label Content="名称:" HorizontalAlignment="Left" Margin="45,11,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="121,11,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="629"/>
-        <Label Content="命令:" HorizontalAlignment="Left" Margin="46,42,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnAddCmd" Content="添加命令" Click="btnAddCmd_Click" HorizontalAlignment="Left" Margin="121,48,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnRemoveAllCmd" Content="清空命令" Click="btnRemoveAllCmd_Click" HorizontalAlignment="Left" Margin="201,48,0,0" VerticalAlignment="Top" Width="75"/>
-        <DataGrid x:Name="gridCmds" HorizontalAlignment="Left" Height="268" Margin="121,74,0,0" VerticalAlignment="Top" Width="641" AutoGenerateColumns="False">
+        <Label Content="名称:" HorizontalAlignment="Left" Margin="9,11,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="85,11,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="629"/>
+        <Label Content="命令:" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnAddCmd" Content="添加命令" Click="btnAddCmd_Click" HorizontalAlignment="Left" Margin="85,48,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnRemoveAllCmd" Content="清空命令" Click="btnRemoveAllCmd_Click" HorizontalAlignment="Left" Margin="165,48,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid x:Name="gridCmds" HorizontalAlignment="Left" Height="243" Margin="85,74,0,0" VerticalAlignment="Top" Width="641" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="命令名称" Binding="{Binding CmdName}" Width="100"/>
                 <DataGridTextColumn Header="命令参数" Binding="{Binding CmdInVoJson}" Width="200"/>
@@ -74,10 +74,10 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="子步骤:" HorizontalAlignment="Left" Margin="46,357,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnAddStep" Content="添加步骤" Click="btnAddStep_Click" HorizontalAlignment="Left" Margin="121,361,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnRemoveAllStep" Content="清空步骤" Click="btnRemoveAllStep_Click" HorizontalAlignment="Left" Margin="201,361,0,0" VerticalAlignment="Top" Width="75"/>
-        <DataGrid x:Name="gridSteps" HorizontalAlignment="Left" Height="264" Margin="121,391,0,0" VerticalAlignment="Top" Width="641" AutoGenerateColumns="False">
+        <Label Content="子步骤:" HorizontalAlignment="Left" Margin="10,325,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnAddStep" Content="添加步骤" Click="btnAddStep_Click" HorizontalAlignment="Left" Margin="85,329,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnRemoveAllStep" Content="清空步骤" Click="btnRemoveAllStep_Click" HorizontalAlignment="Left" Margin="165,329,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid x:Name="gridSteps" HorizontalAlignment="Left" Height="264" Margin="85,359,0,0" VerticalAlignment="Top" Width="641" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="步骤名称" Binding="{Binding Name}" Width="200"/>
                 <!-- 操作按钮列 -->
@@ -138,7 +138,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnOk" Content="确定" Click="btnOk_Click" HorizontalAlignment="Left" Margin="253,675,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnCancel" Content="取消" Click="btnCancel_Click" HorizontalAlignment="Left" Margin="436,675,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnOk" Content="确定" Click="btnOk_Click" HorizontalAlignment="Left" Margin="217,643,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnCancel" Content="取消" Click="btnCancel_Click" HorizontalAlignment="Left" Margin="400,643,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

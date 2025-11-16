@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.draw.slot;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.draw.slot
 {
@@ -20,7 +20,7 @@ namespace wpfapp.bu.sketch.action.draw.slot
 
         #region Construction
 
-        public CreateSketchSlot3PointArcAction(object oInVo) : base(oInVo)
+        public CreateSketchSlot3PointArcAction() : base()
         {
 
         }

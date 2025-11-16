@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpfapp.bu.vo
+namespace wpfapp.bu.file.vo
 {
     public class OpenDocInVo
     {
@@ -16,6 +16,11 @@ namespace wpfapp.bu.vo
         /// 工程图 = 3,
         /// </summary>
         public int DocType { get; set; }
+
+        /// <summary>
+        /// 文档名称
+        /// </summary>
+        public string DocFileName { get; set; }
 
         public swDocumentTypes_e getSwDocType()
         {
@@ -32,9 +37,9 @@ namespace wpfapp.bu.vo
             }
         }
 
-        public string getTestDocName()
+        public static string getTestDocName(int docType)
         {
-            switch (DocType)
+            switch (docType)
             {
                 case 1:
                     return "零件测试1.SLDPRT";
@@ -45,6 +50,14 @@ namespace wpfapp.bu.vo
                 default:
                     return "零件测试1.SLDPRT";
             }
+        }
+
+        public static OpenDocInVo genTestOpenFileInVo(int docType)
+        {
+            OpenDocInVo oOpenDocInVo = new OpenDocInVo();
+            oOpenDocInVo.DocType = docType;
+            oOpenDocInVo.DocFileName = getTestDocName(docType);
+            return oOpenDocInVo;
         }
     }
 }

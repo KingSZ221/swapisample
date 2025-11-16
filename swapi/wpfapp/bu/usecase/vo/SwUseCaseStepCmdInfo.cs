@@ -15,6 +15,11 @@ namespace wpfapp.bu.usecase.vo
         #region Fields
 
         /// <summary>
+        /// 命令模块
+        /// </summary>
+        public string CmdModule { get; set; } = "";
+
+        /// <summary>
         /// 命令类型ID
         /// </summary>
         public int CmdTypeId { get; set; } = 0;
@@ -35,12 +40,14 @@ namespace wpfapp.bu.usecase.vo
 
         public SwUseCaseStepCmdInfo(SwUseCaseStepCmdInfo oCmd)
         {
+            this.CmdModule = oCmd.CmdModule;
             this.CmdTypeId = oCmd.CmdTypeId;
             this.CmdInVoJson = oCmd.CmdInVoJson;
         }
 
         public SwUseCaseStepCmdInfo(SwUseCaseStepCmdItem oCmd)
         {
+            this.CmdModule = oCmd.CmdModule;
             this.CmdTypeId = oCmd.CmdTypeId;
             this.CmdInVoJson = JsonConvert.SerializeObject(oCmd.CmdInVoObj, Formatting.Indented); 
         }

@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.app;
+using wpfapp.bu.cmd.action;
 using wpfapp.bu.log;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 using Xarial.XCad.SolidWorks;
 
 namespace wpfapp.bu.sketch.action
@@ -15,14 +16,9 @@ namespace wpfapp.bu.sketch.action
     /// <summary>
     /// 绘制操作基类
     /// </summary>
-    public class SwSketchActionBase
+    public class SwSketchActionBase : SwCmdActionBase
     {
         #region Fields
-
-        /// <summary>
-        /// 操作参数
-        /// </summary>
-        private object _actionInVo = null;
 
         /// <summary>
         /// SwApp
@@ -38,9 +34,8 @@ namespace wpfapp.bu.sketch.action
 
         #region Construction
 
-        public SwSketchActionBase(object oInVo)
+        public SwSketchActionBase() : base()
         {
-            _actionInVo = oInVo;
         }
 
         ~SwSketchActionBase()
@@ -51,7 +46,9 @@ namespace wpfapp.bu.sketch.action
 
         #endregion
 
-        public virtual RespVo execute()
+        #region execute
+
+        public override RespVo execute()
         {
             // 检查当前激活文档是否零件
             ModelDoc2 doc = null;
@@ -101,9 +98,9 @@ namespace wpfapp.bu.sketch.action
             return RespVoLogExt.genError("未实现");
         }
 
-        #region get
+        #endregion
 
-        #region app
+        #region get
 
         protected ISwApplication swApp
         {
@@ -145,12 +142,10 @@ namespace wpfapp.bu.sketch.action
         {
             if (curDoc != null)
             {
-                return (T)_actionInVo;
+                return (T)CmdInVo;
             }
             return default(T);
         }
-
-        #endregion
 
         #endregion
 

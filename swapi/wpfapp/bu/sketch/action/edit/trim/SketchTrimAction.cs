@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.edit.trim;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.edit.trim
 {
@@ -19,7 +19,7 @@ namespace wpfapp.bu.sketch.action.edit.trim
 
         #region Construction
 
-        public SketchTrimAction(object oInVo) : base(oInVo)
+        public SketchTrimAction() : base()
         {
 
         }

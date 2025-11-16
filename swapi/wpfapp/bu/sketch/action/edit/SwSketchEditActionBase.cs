@@ -5,9 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using wpfapp.bu.app;
+using wpfapp.bu.cmd.action;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.edit;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
+using Xarial.XCad.SolidWorks;
 
 namespace wpfapp.bu.sketch.action.edit
 {
@@ -16,18 +19,20 @@ namespace wpfapp.bu.sketch.action.edit
     /// </summary>
     public class SwSketchEditActionBase : SwSketchActionBase
     {
-        #region Fields
-        #endregion
-
         #region Construction
 
-        public SwSketchEditActionBase(object oInVo) : base(oInVo)
+        public SwSketchEditActionBase() : base()
         {
 
         }
 
+        ~SwSketchEditActionBase()
+        {
+        }
+
         #endregion
 
+        #region execute
 
         public override RespVo execute()
         {
@@ -124,5 +129,7 @@ namespace wpfapp.bu.sketch.action.edit
 
             return oRespVo;
         }
+
+        #endregion
     }
 }

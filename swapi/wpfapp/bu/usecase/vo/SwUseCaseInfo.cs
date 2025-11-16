@@ -29,6 +29,11 @@ namespace wpfapp.bu.usecase.vo
         public string Desc { get; set; }
 
         /// <summary>
+        /// 用例组
+        /// </summary>
+        public string Group { get; set; }
+
+        /// <summary>
         /// 用例步骤
         /// </summary>
         public List<SwUseCaseStepInfo> Steps { get; set; } = new List<SwUseCaseStepInfo>();
@@ -47,6 +52,7 @@ namespace wpfapp.bu.usecase.vo
             this.Id = oUseCase.Id;
             this.Name = oUseCase.Name;
             this.Desc = oUseCase.Desc;
+            this.Group = oUseCase.Group;
             this.Steps = new List<SwUseCaseStepInfo>();
             foreach (SwUseCaseStepInfo oStep in oUseCase.Steps)
             {
@@ -59,6 +65,7 @@ namespace wpfapp.bu.usecase.vo
             this.Id = oUseCase.Id;
             this.Name = oUseCase.Name;
             this.Desc = oUseCase.Desc;
+            this.Group = oUseCase.Group;
             this.Steps = new List<SwUseCaseStepInfo>();
             foreach (SwUseCaseStepItem oStep in oUseCase.Steps)
             {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.draw.circle;
 using wpfapp.bu.sketch.vo.entity;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.draw.circle
 {
@@ -21,7 +21,7 @@ namespace wpfapp.bu.sketch.action.draw.circle
 
         #region Construction
 
-        public CreateCircleAction(object oInVo) : base(oInVo)
+        public CreateCircleAction() : base()
         {
 
         }

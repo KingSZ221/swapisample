@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.draw;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.draw
 {
@@ -21,7 +21,7 @@ namespace wpfapp.bu.sketch.action.draw
 
         #region Construction
 
-        public SwSketchDrawActionBase(object oInVo) : base(oInVo)
+        public SwSketchDrawActionBase() : base()
         {
 
         }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.draw.ellipse;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.sketch.action.draw.ellipse
 {
@@ -20,7 +20,7 @@ namespace wpfapp.bu.sketch.action.draw.ellipse
 
         #region Construction
 
-        public CreateEllipticalArcAction(object oInVo) : base(oInVo)
+        public CreateEllipticalArcAction() : base()
         {
 
         }

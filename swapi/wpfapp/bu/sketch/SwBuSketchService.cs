@@ -3,13 +3,17 @@ using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.app;
+using wpfapp.bu.cmd;
+using wpfapp.bu.cmd.cmdtype;
+using wpfapp.bu.feature.cmd;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.action;
 using wpfapp.bu.sketch.vo;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 using Xarial.XCad.SolidWorks;
 
 namespace wpfapp.bu.sketch
@@ -23,6 +27,11 @@ namespace wpfapp.bu.sketch
 
         private static SwBuSketchService _instance = new SwBuSketchService();
 
+        /// <summary>
+        /// 模块名称
+        /// </summary>
+        public const string MoudleName = "sketch";
+
         #endregion
 
         #region Construction
@@ -30,7 +39,10 @@ namespace wpfapp.bu.sketch
         /// <summary>
         /// 构造函数
         /// </summary>
-        public SwBuSketchService() { }
+        public SwBuSketchService() 
+        {
+            
+        }
 
         /// <summary>
         /// 获取单例
@@ -39,6 +51,16 @@ namespace wpfapp.bu.sketch
         public static SwBuSketchService getInstance()
         {
             return _instance;
+        }
+
+        #endregion
+
+        #region init
+
+        public void init()
+        {
+            // 注册命令
+            SwCmdTypeManager.getInstance().registCmds(MoudleName, typeof(EnumSwSketchCmdType));
         }
 
         #endregion
@@ -54,11 +76,11 @@ namespace wpfapp.bu.sketch
 
         #region 草图绘制操作
 
-        public RespVo executeSketchAction(EnumSwSketchActionType actionType, object actionInVo)
+        public RespVo executeCmdWithInVo(EnumSwSketchCmdType cmdType, object cmdInVo)
         {
-            return SwSketchActionProvider.getInstance().execute(actionType, actionInVo);
+            return SwBuCmdService.getInstance().executeCmdWithInVo(MoudleName, (int)cmdType, cmdInVo);
         }
-        
+
         #endregion
 
     }

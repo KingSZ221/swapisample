@@ -118,9 +118,27 @@
     </ApplicationDefinition>
     <Compile Include="basic\io\PathUtilsEx.cs" />
     <Compile Include="basic\io\JsonFileUtilsEx.cs" />
+    <Compile Include="bu\cmd\action\SwCmdActionBase.cs" />
     <Compile Include="bu\cmd\cmdtype\SwCmdGroupType.cs" />
     <Compile Include="bu\cmd\cmdtype\SwCmdType.cs" />
+    <Compile Include="bu\cmd\cmdtype\SwCmdTypeAttribute.cs" />
     <Compile Include="bu\cmd\cmdtype\SwCmdTypeManager.cs" />
+    <Compile Include="bu\cmd\SwBuCmdService.cs" />
+    <Compile Include="bu\feature\cmd\EnumSwFeatureCmdType.cs" />
+    <Compile Include="bu\feature\SwBuFeatureService.cs" />
+    <Compile Include="bu\file\action\CloseDocAction.cs" />
+    <Compile Include="bu\file\action\ExportDocAction.cs" />
+    <Compile Include="bu\file\action\NewDocAction.cs" />
+    <Compile Include="bu\file\action\OpenDocAction.cs" />
+    <Compile Include="bu\file\action\SaveAsDocAction.cs" />
+    <Compile Include="bu\file\action\SaveDocAction.cs" />
+    <Compile Include="bu\file\action\SwDocActionBase.cs" />
+    <Compile Include="bu\file\cmd\EnumSwDocCmdType.cs" />
+    <Compile Include="bu\file\export\SwDocExportUtils.cs" />
+    <Compile Include="bu\file\vo\SaveAsDocInVo.cs" />
+    <Compile Include="bu\sketch\action\sketch\InsertSketchAction.cs" />
+    <Compile Include="bu\sketch\vo\select\SelectByRayInVo.cs" />
+    <Compile Include="bu\sketch\vo\sketch\InsertSketchInVo.cs" />
     <Compile Include="bu\usecase\design\SwUseCaseDesignService.cs" />
     <Compile Include="bu\usecase\excute\SwUseCaseExcuteService.cs" />
     <Compile Include="bu\usecase\vo\SwUseCaseInfoManager.cs" />
@@ -157,7 +175,7 @@
     <Compile Include="bu\sketch\action\edit\offset\SketchOffsetAction.cs" />
     <Compile Include="bu\sketch\action\edit\trim\SketchTrimAction.cs" />
     <Compile Include="bu\sketch\action\entity\GetSketchEntityInfoAction.cs" />
-    <Compile Include="bu\sketch\action\EnumSwSketchActionType.cs" />
+    <Compile Include="bu\sketch\cmd\EnumSwSketchCmdType.cs" />
     <Compile Include="bu\sketch\action\edit\fillet\CreateChamferAction.cs" />
     <Compile Include="bu\sketch\action\edit\fillet\CreateFilletAction.cs" />
     <Compile Include="bu\sketch\action\draw\line\CreateCenterLineAction.cs" />
@@ -169,16 +187,16 @@
     <Compile Include="bu\sketch\action\draw\rect\CreateCenterRectangleAction.cs" />
     <Compile Include="bu\sketch\action\draw\rect\CreateCornerRectangleAction.cs" />
     <Compile Include="bu\sketch\action\draw\rect\CreateParallelogramAction.cs" />
-    <Compile Include="bu\sketch\action\feature\extrusion\FeatureExtrusionCutAction.cs" />
-    <Compile Include="bu\sketch\action\feature\extrusion\FeatureExtrusionAction.cs" />
-    <Compile Include="bu\sketch\action\feature\extrusion\FeatureExtrusionThinAction.cs" />
-    <Compile Include="bu\sketch\action\feature\loft\FeatureLoftAction.cs" />
-    <Compile Include="bu\sketch\action\feature\loft\FeatureLoftCutAction.cs" />
-    <Compile Include="bu\sketch\action\feature\revolve\FeatureRevolveAction.cs" />
-    <Compile Include="bu\sketch\action\feature\revolve\FeatureRevolveCutAction.cs" />
-    <Compile Include="bu\sketch\action\feature\sweep\FeatureSweepAction.cs" />
-    <Compile Include="bu\sketch\action\feature\sweep\FeatureSweepCutAction.cs" />
-    <Compile Include="bu\sketch\action\feature\SwSketchFeatureActionBase.cs" />
+    <Compile Include="bu\feature\action\feature\extrusion\FeatureExtrusionCutAction.cs" />
+    <Compile Include="bu\feature\action\feature\extrusion\FeatureExtrusionAction.cs" />
+    <Compile Include="bu\feature\action\feature\extrusion\FeatureExtrusionThinAction.cs" />
+    <Compile Include="bu\feature\action\feature\loft\FeatureLoftAction.cs" />
+    <Compile Include="bu\feature\action\feature\loft\FeatureLoftCutAction.cs" />
+    <Compile Include="bu\feature\action\feature\revolve\FeatureRevolveAction.cs" />
+    <Compile Include="bu\feature\action\feature\revolve\FeatureRevolveCutAction.cs" />
+    <Compile Include="bu\feature\action\feature\sweep\FeatureSweepAction.cs" />
+    <Compile Include="bu\feature\action\feature\sweep\FeatureSweepCutAction.cs" />
+    <Compile Include="bu\feature\action\feature\SwFeatureActionBase.cs" />
     <Compile Include="bu\sketch\action\sketch\ExitSketchAction.cs" />
     <Compile Include="bu\sketch\action\sketch\EditSketchAction.cs" />
     <Compile Include="bu\sketch\action\draw\slot\CreateSketchSlot3PointArcAction.cs" />
@@ -187,10 +205,8 @@
     <Compile Include="bu\sketch\action\draw\slot\CreateSketchSlotLineAction.cs" />
     <Compile Include="bu\sketch\action\draw\spline\CreateEquationSplineAction.cs" />
     <Compile Include="bu\sketch\action\draw\spline\CreateSplineAction.cs" />
-    <Compile Include="bu\sketch\action\SwSketchActionAttribute.cs" />
     <Compile Include="bu\sketch\action\SwSketchActionBase.cs" />
     <Compile Include="bu\sketch\action\draw\line\CreateLineAction.cs" />
-    <Compile Include="bu\sketch\action\SwSketchActionProvider.cs" />
     <Compile Include="bu\sketch\action\draw\SwSketchDrawActionBase.cs" />
     <Compile Include="bu\sketch\action\edit\SwSketchEditActionBase.cs" />
     <Compile Include="bu\sketch\action\draw\text\InsertSketchTextAction.cs" />
@@ -248,20 +264,20 @@
     <Compile Include="bu\sketch\vo\draw\rect\CreateParallelogramInVo.cs" />
     <Compile Include="bu\sketch\vo\draw\SketchDrawInVoBase.cs" />
     <Compile Include="bu\sketch\vo\edit\SketchEditInVoBase.cs" />
-    <Compile Include="bu\sketch\vo\feature\consts\swEndConditions_ext.cs" />
-    <Compile Include="bu\sketch\vo\feature\consts\swGuideCurveInfluence_ext.cs" />
-    <Compile Include="bu\sketch\vo\feature\consts\swStartConditions_ext.cs" />
-    <Compile Include="bu\sketch\vo\feature\consts\swThinWallType_ext.cs" />
-    <Compile Include="bu\sketch\vo\feature\extrusion\FeatureExtrusionCutInVo.cs" />
-    <Compile Include="bu\sketch\vo\feature\extrusion\FeatureExtrusionThinInVo.cs" />
-    <Compile Include="bu\sketch\vo\feature\loft\FeatureLoftCutInVo.cs" />
-    <Compile Include="bu\sketch\vo\feature\loft\FeatureLoftInVo.cs" />
-    <Compile Include="bu\sketch\vo\feature\consts\swLoftStartEndMatchingType.cs" />
-    <Compile Include="bu\sketch\vo\feature\revolve\FeatureRevolveBaseInVo.cs" />
-    <Compile Include="bu\sketch\vo\feature\revolve\FeatureRevolveCutInVo.cs" />
-    <Compile Include="bu\sketch\vo\feature\revolve\FeatureRevolveInVo.cs" />
-    <Compile Include="bu\sketch\vo\feature\sweep\FeatureSweepCutInVo.cs" />
-    <Compile Include="bu\sketch\vo\feature\sweep\FeatureSweepInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swEndConditions_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swGuideCurveInfluence_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swStartConditions_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swThinWallType_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\extrusion\FeatureExtrusionCutInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\extrusion\FeatureExtrusionThinInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\loft\FeatureLoftCutInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\loft\FeatureLoftInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swLoftStartEndMatchingType.cs" />
+    <Compile Include="bu\feature\vo\feature\revolve\FeatureRevolveBaseInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\revolve\FeatureRevolveCutInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\revolve\FeatureRevolveInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\sweep\FeatureSweepCutInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\sweep\FeatureSweepInVo.cs" />
     <Compile Include="bu\sketch\vo\sketch\EditSketchInVo.cs" />
     <Compile Include="bu\sketch\vo\sketch\ExitSketchInVo.cs" />
     <Compile Include="bu\sketch\vo\draw\slot\CreateSketchSlot3PointArcInVo.cs" />
@@ -298,8 +314,8 @@
     <Compile Include="ui\usecase\SwUseCaseStepInfoPanel.xaml.cs">
       <DependentUpon>SwUseCaseStepInfoPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="utils\io\RespErrItemVo.cs" />
-    <Compile Include="utils\io\RespErrVo.cs" />
+    <Compile Include="basic\io\RespErrItemVo.cs" />
+    <Compile Include="basic\io\RespErrVo.cs" />
     <Compile Include="utils\reflect\ReflectUtils.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -318,7 +334,7 @@
     <Compile Include="bu\sketch\vo\compose\pipe\CreateCirclePipeInVo.cs" />
     <Compile Include="bu\file\vo\NewDocInVo.cs" />
     <Compile Include="bu\file\vo\OpenDocInVo.cs" />
-    <Compile Include="utils\io\RespVo.cs" />
+    <Compile Include="basic\io\RespVo.cs" />
     <Compile Include="bu\file\vo\SaveDocInVo.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -399,8 +415,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bu\app\action\" />
+    <Folder Include="bu\app\vo\" />
     <Folder Include="bu\sketch\action\select\" />
-    <Folder Include="bu\sketch\vo\select\" />
+    <Folder Include="utils\io\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

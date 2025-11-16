@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using wpfapp.basic.io;
 using wpfapp.bu.log;
-using wpfapp.bu.vo;
 using wpfapp.nbi_web;
 using Xarial.XCad.SolidWorks;
 

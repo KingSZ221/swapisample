@@ -9,7 +9,7 @@ using Svg;
 using Svg.Pathing;
 using System.Drawing;
 using System.IO;
-using wpfapp.bu.vo;
+using wpfapp.basic.io;
 
 namespace wpfapp.bu.utils
 {
