@@ -63,6 +63,10 @@ using wpfapp.bu.feature.vo.feature.loft;
 using wpfapp.bu.feature.action.feature.sweep;
 using wpfapp.bu.feature.action.feature.loft;
 using wpfapp.bu.cmd.cmdtype;
+using wpfapp.bu.sketch.vo.select;
+using wpfapp.bu.sketch.action.select;
+using wpfapp.bu.sketch.vo.view;
+using wpfapp.bu.sketch.action.view;
 
 namespace wpfapp.bu.sketch.action
 {
@@ -74,11 +78,23 @@ namespace wpfapp.bu.sketch.action
         [SwCmdType("None", "None", typeof(Object), typeof(Object))]
         None = 0,
 
+        [SwCmdType("插入草图", "编辑草图", typeof(InsertSketchInVo), typeof(InsertSketchAction))]
+        InsertSketch = 1,
+
         [SwCmdType("草图绘制", "编辑草图", typeof(EditSketchInVo), typeof(EditSketchAction))]
-        EditSketch = 1,
+        EditSketch,
 
         [SwCmdType("退出草图", "退出草图编辑", typeof(ExitSketchInVo), typeof(ExitSketchAction))]
         ExitSketch,
+
+        [SwCmdType("清空选择对象列表", "清空选择对象列表", typeof(ClearSelectionInVo), typeof(ClearSelectionAction))]
+        ClearSelection,
+
+        [SwCmdType("通过名称或位置选中对象", "通过名称或位置选中对象", typeof(SelectByIDInVo), typeof(SelectByIDAction))]
+        SelectByID,
+
+        [SwCmdType("通过射线选中对象", "通过射线选中对象", typeof(SelectByRayInVo), typeof(SelectByRayAction))]
+        SelectByRay,
 
         [SwCmdType("获取草图实体", "获取草图实体", typeof(GetSketchEntityInfoInVo), typeof(GetSketchEntityInfoAction))]
         GetSketchEntityInfo,
@@ -115,6 +131,9 @@ namespace wpfapp.bu.sketch.action
 
         [SwCmdType("绘制中心点圆弧槽口", "绘制中心点圆弧槽口", typeof(CreateSketchSlotArcInVo), typeof(CreateSketchSlotArcAction))]
         CreateSketchSlot_arc,
+
+        [SwCmdType("绘制半径圆", "绘制半径圆", typeof(CreateCircleByRadiusInVo), typeof(CreateCircleByRadiusAction))]
+        CreateCircleByRadius, 
 
         [SwCmdType("绘制圆", "绘制圆", typeof(CreateCircleInVo), typeof(CreateCircleAction))]
         CreateCircle,
@@ -210,6 +229,8 @@ namespace wpfapp.bu.sketch.action
         [SwCmdType("完全草图定义", "完全草图定义", typeof(FullyDefineSketchInVo), typeof(FullyDefineSketchAction))]
         FullyDefineSketch,
 
+        [SwCmdType("显示视图", "显示视图", typeof(ShowNamedViewInVo), typeof(ShowNamedViewAction))]
+        ShowNamedView,
 
         [SwCmdType("绘制圆管", "绘制圆管", typeof(CreateCirclePipeInVo), typeof(CreateCirclePipeAction))]
         CreateCirclePipe,

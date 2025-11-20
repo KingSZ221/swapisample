@@ -56,6 +56,10 @@ namespace wpfapp.ui.usecase
 
         private void btnRemoveAllUseCase_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBoxResult.Yes != MessageBox.Show(this,"确认全部删除吗？","确认", MessageBoxButton.YesNo))
+            {
+                return;
+            }
             SwUseCaseDesignService.getInstance().removeAllUseCase();
             this.priRefreshDataGrid();
         }
@@ -97,6 +101,11 @@ namespace wpfapp.ui.usecase
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBoxResult.Yes != MessageBox.Show(this, "确认删除吗？", "确认", MessageBoxButton.YesNo))
+            {
+                return;
+            }
+
             if (sender is Button button && button.Tag is SwUseCaseInfo useCaseItem)
             {
                 SwUseCaseDesignService.getInstance().removeUseCase(useCaseItem.Id);

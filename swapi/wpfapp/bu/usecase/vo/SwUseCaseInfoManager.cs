@@ -114,9 +114,9 @@ namespace wpfapp.bu.usecase.vo
                 SwUseCaseInfo oSwUseCaseInfo = useCaseInfoList[i];
                 if (oSwUseCaseInfo.Id.Equals(id))
                 {
-                    useCaseInfoList.RemoveAt(i);
                     SwUseCaseInfo oNewUseCaseInfo = new SwUseCaseInfo(oSwUseCaseInfo);
                     oNewUseCaseInfo.Id = Guid.NewGuid().ToString();
+                    oNewUseCaseInfo.Name = oNewUseCaseInfo.Name + "_copy";
                     useCaseInfoList.Insert(i + 1, oNewUseCaseInfo);
                     return true;
                 }

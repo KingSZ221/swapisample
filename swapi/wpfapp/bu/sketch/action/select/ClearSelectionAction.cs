@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using wpfapp.basic.io;
+using wpfapp.bu.log;
+using wpfapp.bu.sketch.action.draw;
+using wpfapp.bu.sketch.vo.select;
+
+namespace wpfapp.bu.sketch.action.select
+{
+    /// <summary>
+    /// 清空选中对象列表
+    /// </summary>
+    public class ClearSelectionAction : SwModelDocActionBase
+    {
+        #region Fields
+        #endregion
+
+        #region Construction
+
+        public ClearSelectionAction() : base()
+        {
+
+        }
+
+        #endregion
+
+        protected override RespVo onExecute()
+        {
+            // 获取绘制参数
+            ClearSelectionInVo oInVo = this.actionInVo<ClearSelectionInVo>();
+
+            // 编辑图形
+            curDoc.ClearSelection2(oInVo.All);
+
+            return RespVoLogExt.genOk("清空选中对象列表完成");
+        }
+    }
+}

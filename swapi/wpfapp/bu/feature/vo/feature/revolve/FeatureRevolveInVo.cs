@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.sketch.vo.entity;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace wpfapp.bu.feature.vo.feature.revolve
 {
@@ -14,5 +15,13 @@ namespace wpfapp.bu.feature.vo.feature.revolve
     [JsonObject]
     public class FeatureRevolveInVo : FeatureRevolveBaseInVo
     {
+        /// <summary>
+        /// 旋转基体名称
+        /// </summary>
+        [DisplayName("旋转基体名称")]
+        [Description("设置旋转特征名称")]
+        [Category("旋转基体名称")]
+        [PropertyOrder(23)]
+        public string FeatrueName { get; set; } = "旋转体1";
     }
 }

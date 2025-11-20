@@ -12,9 +12,6 @@ namespace wpfapp.bu.feature.vo.feature.consts
     /// </summary>
     public enum swStartConditions_ext
     {
-        [Description("等距")]
-        swStartOffset = 3,
-
         [Description("草图基准面")]
         swStartSketchPlane = 0,
 
@@ -22,6 +19,9 @@ namespace wpfapp.bu.feature.vo.feature.consts
         swStartSurface = 1,
 
         [Description("顶点")]
-        swStartVertex = 2
+        swStartVertex = 2,
+
+        [Description("等距")]
+        swStartOffset = 3,
     }
 }

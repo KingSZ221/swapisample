@@ -124,8 +124,14 @@
     <Compile Include="bu\cmd\cmdtype\SwCmdTypeAttribute.cs" />
     <Compile Include="bu\cmd\cmdtype\SwCmdTypeManager.cs" />
     <Compile Include="bu\cmd\SwBuCmdService.cs" />
+    <Compile Include="bu\feature\action\feature\curve\Insert3DSplineCurveAction.cs" />
+    <Compile Include="bu\feature\action\feature\refplane\InsertRefPlaneAction.cs" />
     <Compile Include="bu\feature\cmd\EnumSwFeatureCmdType.cs" />
     <Compile Include="bu\feature\SwBuFeatureService.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swRefPlaneReferenceConstraints_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\curve\Insert3DSplineCurveInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\extrusion\FeatureExtrusionInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\refplane\InsertRefPlaneInVo.cs" />
     <Compile Include="bu\file\action\CloseDocAction.cs" />
     <Compile Include="bu\file\action\ExportDocAction.cs" />
     <Compile Include="bu\file\action\NewDocAction.cs" />
@@ -136,9 +142,22 @@
     <Compile Include="bu\file\cmd\EnumSwDocCmdType.cs" />
     <Compile Include="bu\file\export\SwDocExportUtils.cs" />
     <Compile Include="bu\file\vo\SaveAsDocInVo.cs" />
+    <Compile Include="bu\sketch\action\draw\circle\CreateCircleByRadiusAction.cs" />
+    <Compile Include="bu\sketch\action\select\ClearSelectionAction.cs" />
+    <Compile Include="bu\sketch\action\select\SelectByIDAction.cs" />
+    <Compile Include="bu\sketch\action\select\SelectByRayAction.cs" />
     <Compile Include="bu\sketch\action\sketch\InsertSketchAction.cs" />
+    <Compile Include="bu\sketch\action\SwModelDocActionBase.cs" />
+    <Compile Include="bu\sketch\action\view\ShowNamedViewAction.cs" />
+    <Compile Include="bu\sketch\vo\draw\circle\CreateCircleByRadiusInVo.cs" />
+    <Compile Include="bu\sketch\vo\select\ClearSelectionInVo.cs" />
+    <Compile Include="bu\sketch\vo\select\SelectByIDInVo.cs" />
     <Compile Include="bu\sketch\vo\select\SelectByRayInVo.cs" />
+    <Compile Include="bu\sketch\vo\select\swSelectOption_ext.cs" />
+    <Compile Include="bu\sketch\vo\select\swSelectType_ext.cs" />
     <Compile Include="bu\sketch\vo\sketch\InsertSketchInVo.cs" />
+    <Compile Include="bu\sketch\vo\view\ShowNamedViewInVo.cs" />
+    <Compile Include="bu\sketch\vo\view\swStandardViews_ext.cs" />
     <Compile Include="bu\usecase\design\SwUseCaseDesignService.cs" />
     <Compile Include="bu\usecase\excute\SwUseCaseExcuteService.cs" />
     <Compile Include="bu\usecase\vo\SwUseCaseInfoManager.cs" />
@@ -417,7 +436,6 @@
   <ItemGroup>
     <Folder Include="bu\app\action\" />
     <Folder Include="bu\app\vo\" />
-    <Folder Include="bu\sketch\action\select\" />
     <Folder Include="utils\io\" />
   </ItemGroup>
   <ItemGroup>

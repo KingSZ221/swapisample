@@ -101,7 +101,7 @@ namespace wpfapp.bu.sketch.vo.select
         /// <summary>
         /// 选择对象选项
         /// </summary>
-        [DisplayName("选择对象类型")]
+        [DisplayName("选择对象选项")]
         [Category("选择对象")]
         [Description("见 swSelectOption_e")]
         public int Option { get; set; } = 0;

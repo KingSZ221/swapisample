@@ -37,29 +37,6 @@ namespace wpfapp.bu.feature.action.feature.revolve
             var featMgr = curDoc.FeatureManager;
             var selMgr = curDoc.SelectionManager as ISelectionMgr;
 
-            // 清除选择
-            curDoc.ClearSelection2(true);
-
-            //selMgr.EnableContourSelection = true;
-
-            // 选中待旋转的草图轮廓
-            bool bSelContour = priSelectContourBySegmentName(oInVo.RevolveSketch.SketchName, oInVo.RevolveSketch.Name, 0);//"圆弧1"
-            //bool bSelContour = curDocExt.SelectByID2($"{oInVo.ContourName}@{oInVo.SketchName}", "EXTSKETCHSEGMENT", 0, 0, 0, true, 4, null, 0);
-            if (!bSelContour)
-            {
-                return RespVoLogExt.genError("选中待旋转的草图轮廓错误");
-            }
-
-            // 选中旋转轴
-            //bSelContour = priSelectContourBySegmentName(oInVo.RevolveAxis.SketchName, oInVo.RevolveAxis.Name, 4);//"圆弧1"
-            bSelContour = curDocExt.SelectByID2($"{oInVo.RevolveAxis.Name}@{oInVo.RevolveAxis.SketchName}", "EXTSKETCHSEGMENT", 0, 0, 0, true, 4, null, 0);
-            if (!bSelContour)
-            {
-                return RespVoLogExt.genError("选中旋转轴错误");
-            }
-
-            //selMgr.EnableContourSelection = false;
-
             Feature oFeature = featMgr.FeatureRevolve2(
                 SingleDir: oInVo.SingleDir, //拉伸方向
                 IsSolid: oInVo.IsSolid,
@@ -67,15 +44,15 @@ namespace wpfapp.bu.feature.action.feature.revolve
                 IsCut: true,
                 ReverseDir: oInVo.ReverseDir,
                 BothDirectionUpToSameEntity: oInVo.BothDirectionUpToSameEntity,
-                Dir1Type: oInVo.Dir1Type,
-                Dir2Type: oInVo.Dir2Type,
+                Dir1Type: (int)oInVo.Dir1Type,
+                Dir2Type: (int)oInVo.Dir2Type,
                 Dir1Angle: oInVo.Dir1Angle,
                 Dir2Angle: oInVo.Dir2Angle,
                 OffsetReverse1: oInVo.OffsetReverse1,
                 OffsetReverse2: oInVo.OffsetReverse2,
                 OffsetDistance1: oInVo.OffsetDistance1,
                 OffsetDistance2: oInVo.OffsetDistance2,
-                ThinType: oInVo.ThinType,
+                ThinType: (int)oInVo.ThinType,
                 ThinThickness1: oInVo.ThinThickness1,
                 ThinThickness2: oInVo.ThinThickness2,
                 Merge: oInVo.Merge,

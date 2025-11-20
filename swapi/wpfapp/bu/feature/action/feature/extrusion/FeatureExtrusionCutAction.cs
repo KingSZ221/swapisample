@@ -37,27 +37,12 @@ namespace wpfapp.bu.feature.action.feature.extrusion
             var featMgr = curDoc.FeatureManager;
             var selMgr = curDoc.SelectionManager as ISelectionMgr;
 
-            // 清除选择
-            curDoc.ClearSelection2(true);
-
-            //selMgr.EnableContourSelection = true;
-
-            // 选中草图轮廓
-            //bool bSelContour = priSelectContourBySegmentName(oInVo.SketchName, oInVo.ContourName, 4);//"圆弧1"
-            ////bool bSelContour = curDocExt.SelectByID2($"{oInVo.ContourName}@{oInVo.SketchName}", "EXTSKETCHSEGMENT", 0, 0, 0, true, 4, null, 0);
-            //if (!bSelContour)
-            //{
-            //    return RespVoLogExt.genError("选中轮廓错误");
-            //}
-
-            //selMgr.EnableContourSelection = false;
-
             Feature oFeature = featMgr.FeatureCut4(
                 Sd: oInVo.Sd, //拉伸方向
                 Flip: oInVo.Flip,
                 Dir: oInVo.Dir,
-                T1: oInVo.T1,
-                T2: oInVo.T2,
+                T1: (int)oInVo.T1,
+                T2: (int)oInVo.T2,
                 D1: oInVo.D1 / 1000, //拉伸深度
                 D2: oInVo.D2 / 1000,
                 //拔模参数
@@ -81,7 +66,7 @@ namespace wpfapp.bu.feature.action.feature.extrusion
                 AutoSelectComponents: oInVo.AutoSelectComponents,
                 PropagateFeatureToParts: oInVo.PropagateFeatureToParts,
                 //起始条件
-                T0: oInVo.T0,
+                T0: (int)oInVo.T0,
                 StartOffset: oInVo.StartOffset,
                 FlipStartOffset: oInVo.FlipStartOffset,
                 //正交切除

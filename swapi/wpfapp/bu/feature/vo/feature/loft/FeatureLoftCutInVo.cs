@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using wpfapp.bu.feature.vo.feature.consts;
 using wpfapp.bu.sketch.vo.entity;
 
 namespace wpfapp.bu.feature.vo.feature.loft
@@ -56,7 +57,7 @@ namespace wpfapp.bu.feature.vo.feature.loft
         [DisplayName("起始轮廓处的相切类型")]
         [Description("起始轮廓处的相切类型，见swLoftStartEndMatchingType。")]
         [Category("起始和结束")]
-        public short StartMatchingType { get; set; } = 0;
+        public swLoftStartEndMatchingType StartMatchingType { get; set; } = 0;
 
         /// <summary>
         /// 结束轮廓处的相切类型
@@ -64,7 +65,7 @@ namespace wpfapp.bu.feature.vo.feature.loft
         [DisplayName("结束轮廓处的相切类型")]
         [Description("结束轮廓处的相切类型，见swLoftStartEndMatchingType。")]
         [Category("起始和结束")]
-        public short EndMatchingType { get; set; } = 0;
+        public swLoftStartEndMatchingType EndMatchingType { get; set; } = 0;
 
         /// <summary>
         /// 薄壁
@@ -96,7 +97,7 @@ namespace wpfapp.bu.feature.vo.feature.loft
         [DisplayName("薄壁类型")]
         [Description("薄壁类型,见swThinWallType_ext。")]
         [Category("薄壁")]
-        public short ThinType { get; set; } = 0;
+        public swThinWallType_ext ThinType { get; set; } = 0;
 
         /// <summary>
         /// 影响实体范围
@@ -115,28 +116,12 @@ namespace wpfapp.bu.feature.vo.feature.loft
         public bool UseAutoSelect { get; set; } = true;
 
         /// <summary>
-        /// 轮廓1
-        /// </summary>
-        [DisplayName("轮廓1")]
-        [Description("使用Mark=1。")]
-        [Category("轮廓和引导线")]
-        public EntitySelectId Contour1 { get; set; } = new EntitySelectId();
-
-        /// <summary>
-        /// 轮廓2
-        /// </summary>
-        [DisplayName("轮廓2")]
-        [Description("使用Mark=1。")]
-        [Category("轮廓和引导线")]
-        public EntitySelectId Contour2 { get; set; } = new EntitySelectId();
-
-        /// <summary>
         /// 特征名称
         /// </summary>
         [DisplayName("特征名称")]
         [Description("设置新生成的特征名称")]
         [Category("特征名称")]
-        public string FeatrueName { get; set; } = "放样特征1";
+        public string FeatrueName { get; set; } = "放样切除特征1";
 
         #endregion
     }

@@ -99,6 +99,11 @@ namespace wpfapp.ui.usecase
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBoxResult.Yes != MessageBox.Show(this, "确认删除吗？", "确认", MessageBoxButton.YesNo))
+            {
+                return;
+            }
+
             if (sender is Button button && button.Tag is SwUseCaseStepItem useCaseStepItem)
             {
                 this.useCaseItem.removeStep(useCaseStepItem);

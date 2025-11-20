@@ -77,6 +77,11 @@ namespace wpfapp.ui.usecase
 
         private void btnRemoveAllCmd_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBoxResult.Yes != MessageBox.Show(this, "确认删除吗？", "确认", MessageBoxButton.YesNo))
+            {
+                return;
+            }
+
             this.useCaseStepItem.removeAllCmd();
             this.priRefreshCmdDataGrid();
         }
