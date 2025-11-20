@@ -63,7 +63,9 @@ namespace wpfapp.bu.cmd.usecase.excute
 
             foreach (SwUseCaseStepCmdItem oSwUseCaseStepCmdItem in oSwUseCaseStepItem.CmdInfos)
             {
-                if(oSwUseCaseStepCmdItem.CmdTypeId > 0)
+                //if(oSwUseCaseStepCmdItem.CmdTypeId > 0)
+                if (!string.IsNullOrEmpty(oSwUseCaseStepCmdItem.CmdTypeIdStr) 
+                    && oSwUseCaseStepCmdItem.CmdTypeIdStr != "None")
                 {
                     excuteUseCaseStepCmd(oSwUseCaseStepCmdItem);
                 }
@@ -76,7 +78,7 @@ namespace wpfapp.bu.cmd.usecase.excute
         {
             SwBuLogService.getInstance().Info($"执行命令 {oSwUseCaseStepCmdItem.CmdName}");
 
-            SwBuCmdService.getInstance().executeCmdWithInVo(oSwUseCaseStepCmdItem.CmdModule, oSwUseCaseStepCmdItem.CmdTypeId, oSwUseCaseStepCmdItem.CmdInVoObj);
+            SwBuCmdService.getInstance().executeCmdWithInVo2(oSwUseCaseStepCmdItem.CmdModule, oSwUseCaseStepCmdItem.CmdTypeIdStr, oSwUseCaseStepCmdItem.CmdInVoObj);
 
             //SwBuLogService.getInstance().Info($"命令结束 {oSwUseCaseStepCmdItem.CmdName}");
         }

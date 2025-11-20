@@ -26,6 +26,8 @@ namespace wpfapp.ui.usecase
         {
             InitializeComponent();
 
+            //SwUseCaseInfoManager.getInstance().solveTypeId();
+
             this.Owner = p_Owner;
             this.priInitUseCaseList();
         }

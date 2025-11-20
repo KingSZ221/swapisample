@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.basic.io;
+using wpfapp.bu.cmd.cmdtype;
 
 namespace wpfapp.bu.usecase.vo
 {
@@ -173,6 +174,21 @@ namespace wpfapp.bu.usecase.vo
                 useCaseInfoList = new List<SwUseCaseInfo>();
             }
         }
+
+        //public void solveTypeId()
+        //{
+        //    foreach (SwUseCaseInfo oSwUseCaseInfo in useCaseInfoList)
+        //    {
+        //        foreach (SwUseCaseStepInfo oSwUseCaseStepInfo in oSwUseCaseInfo.Steps)
+        //        {
+        //            foreach (SwUseCaseStepCmdInfo oSwUseCaseStepCmdInfo in oSwUseCaseStepInfo.CmdInfos)
+        //            {
+        //                SwCmdType oSwCmdType = SwCmdTypeManager.getInstance().getByTypeId(oSwUseCaseStepCmdInfo.CmdModule, oSwUseCaseStepCmdInfo.CmdTypeId);
+        //                oSwUseCaseStepCmdInfo.CmdTypeIdStr = oSwCmdType.CmdTypeIdStr;
+        //            }
+        //        }
+        //    }
+        //}
 
         public void saveToFile()
         {

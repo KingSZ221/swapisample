@@ -51,7 +51,7 @@ namespace wpfapp.ui.usecase
             this.comboBoxModule.ItemsSource = SwCmdTypeManager.getInstance().getModules();
             this.comboBoxModule.SelectedItem = useCaseStepCmdItem.CmdModule;
             this.comboBoxCmd.ItemsSource = SwCmdTypeManager.getInstance().getCmdsByModule(useCaseStepCmdItem.CmdModule);
-            this.comboBoxCmd.SelectedItem = SwCmdTypeManager.getInstance().getByTypeId(useCaseStepCmdItem.CmdModule, useCaseStepCmdItem.CmdTypeId);
+            this.comboBoxCmd.SelectedItem = SwCmdTypeManager.getInstance().getByTypeIdStr(useCaseStepCmdItem.CmdModule, useCaseStepCmdItem.CmdTypeIdStr);
             this.propertyGridCmd.SelectedObject = useCaseStepCmdItem.CmdInVoObj;
             this.bInit = false;
         }
@@ -78,7 +78,7 @@ namespace wpfapp.ui.usecase
                 this.comboBoxCmd.SelectedItem = cmds[0];
 
                 // 刷新当前命令
-                useCaseStepCmdItem.CmdTypeId = cmds[0].CmdTypeId;
+                useCaseStepCmdItem.CmdTypeIdStr = cmds[0].CmdTypeIdStr;
                 useCaseStepCmdItem.CmdName = cmds[0].CmdTypeName;
                 useCaseStepCmdItem.CmdInVoObj = Activator.CreateInstance(cmds[0].ActionInVoType);
 
@@ -95,7 +95,7 @@ namespace wpfapp.ui.usecase
 
             if (comboBoxCmd.SelectedItem is SwCmdType selectedCmd)
             {
-                useCaseStepCmdItem.CmdTypeId = selectedCmd.CmdTypeId;
+                useCaseStepCmdItem.CmdTypeIdStr = selectedCmd.CmdTypeIdStr;
                 useCaseStepCmdItem.CmdName = selectedCmd.CmdTypeName;
                 useCaseStepCmdItem.CmdInVoObj = Activator.CreateInstance(selectedCmd.ActionInVoType);
 

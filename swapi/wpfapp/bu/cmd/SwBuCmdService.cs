@@ -73,6 +73,24 @@ namespace wpfapp.bu.cmd
         /// <summary>
         /// 执行命令
         /// </summary>
+        /// <param name="cmdModule">命令模块</param>
+        /// <param name="cmdTypeId">命令类型ID</param>
+        /// <param name="cmdInVo">命令参数</param>
+        /// <returns>RespVo</returns>
+        public RespVo executeCmdWithInVo2(string cmdModule, string cmdTypeIdStr, object cmdInVo)
+        {
+            SwCmdType cmdType = SwCmdTypeManager.getInstance().getByTypeIdStr(cmdModule, cmdTypeIdStr);
+            if (cmdType == null)
+            {
+                return RespVoLogExt.genError($"未找到命令: {cmdModule} {cmdTypeIdStr}");
+            }
+
+            return executeCmdWithInVo(cmdType, cmdInVo);
+        }
+
+        /// <summary>
+        /// 执行命令
+        /// </summary>
         /// <param name="cmdType">命令类型</param>
         /// <param name="cmdInVo">命令参数</param>
         /// <returns>RespVo</returns>

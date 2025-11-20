@@ -22,7 +22,12 @@ namespace wpfapp.bu.usecase.vo
         /// <summary>
         /// 命令类型ID
         /// </summary>
-        public int CmdTypeId { get; set; } = 0;
+        //public int CmdTypeId { get; set; } = 0;
+
+        /// <summary>
+        /// 命令类型ID
+        /// </summary>
+        public string CmdTypeIdStr { get; set; } = "None";
 
         /// <summary>
         /// 命令的入参Json
@@ -41,14 +46,16 @@ namespace wpfapp.bu.usecase.vo
         public SwUseCaseStepCmdInfo(SwUseCaseStepCmdInfo oCmd)
         {
             this.CmdModule = oCmd.CmdModule;
-            this.CmdTypeId = oCmd.CmdTypeId;
+            //this.CmdTypeId = oCmd.CmdTypeId;
+            this.CmdTypeIdStr = oCmd.CmdTypeIdStr;
             this.CmdInVoJson = oCmd.CmdInVoJson;
         }
 
         public SwUseCaseStepCmdInfo(SwUseCaseStepCmdItem oCmd)
         {
             this.CmdModule = oCmd.CmdModule;
-            this.CmdTypeId = oCmd.CmdTypeId;
+            //this.CmdTypeId = oCmd.CmdTypeId;
+            this.CmdTypeIdStr = oCmd.CmdTypeIdStr;
             this.CmdInVoJson = JsonConvert.SerializeObject(oCmd.CmdInVoObj, Formatting.Indented); 
         }
 

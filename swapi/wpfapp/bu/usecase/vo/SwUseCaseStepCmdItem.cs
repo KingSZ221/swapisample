@@ -21,7 +21,13 @@ namespace wpfapp.bu.usecase.vo
         /// <summary>
         /// 命令类型ID
         /// </summary>
-        public int CmdTypeId { get; set; } = 0;
+        //public int CmdTypeId { get; set; } = 0;
+
+
+        /// <summary>
+        /// 命令类型ID
+        /// </summary>
+        public string CmdTypeIdStr { get; set; } = "None";
 
         /// <summary>
         /// 命令的入参对象
@@ -49,7 +55,8 @@ namespace wpfapp.bu.usecase.vo
         public SwUseCaseStepCmdItem(SwUseCaseStepCmdInfo oCmdInfo)
         {
             this.CmdModule = oCmdInfo.CmdModule;
-            this.CmdTypeId = oCmdInfo.CmdTypeId;
+            //this.CmdTypeId = oCmdInfo.CmdTypeId;
+            this.CmdTypeIdStr = oCmdInfo.CmdTypeIdStr;
             this.CmdInVoJson = oCmdInfo.CmdInVoJson;
 
             this.resolve();
@@ -58,7 +65,8 @@ namespace wpfapp.bu.usecase.vo
         internal void copyFrom(SwUseCaseStepCmdItem oCmdInfo)
         {
             this.CmdModule = oCmdInfo.CmdModule;
-            this.CmdTypeId = oCmdInfo.CmdTypeId;
+            //this.CmdTypeId = oCmdInfo.CmdTypeId;
+            this.CmdTypeIdStr = oCmdInfo.CmdTypeIdStr;
             this.CmdInVoJson = oCmdInfo.CmdInVoJson;
 
             this.resolve();
@@ -66,7 +74,7 @@ namespace wpfapp.bu.usecase.vo
 
         public void resolve()
         {
-            SwCmdType oSwCmdType = SwCmdTypeManager.getInstance().getByTypeId(this.CmdModule, this.CmdTypeId);
+            SwCmdType oSwCmdType = SwCmdTypeManager.getInstance().getByTypeIdStr(this.CmdModule, this.CmdTypeIdStr);
             if(oSwCmdType == null)
             {
                 this.CmdName = "None";

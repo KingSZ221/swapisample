@@ -23,7 +23,6 @@ namespace wpfapp.bu.cmd.cmdtype
 
         public SwCmdTypeManager()
         {
-            //this.priInitSysCmd();
         }
 
         public static SwCmdTypeManager getInstance()
@@ -60,6 +59,7 @@ namespace wpfapp.bu.cmd.cmdtype
                     SwCmdType oSwCmdType = new SwCmdType();
                     oSwCmdType.CmdModule = moduleName;
                     oSwCmdType.CmdTypeId = intValue;
+                    oSwCmdType.CmdTypeIdStr = rawValue.ToString();
                     oSwCmdType.CmdTypeName = attribute.CmdName;
                     oSwCmdType.CdmDesc = attribute.CmdDesc;
                     oSwCmdType.CmdGroupName = attribute.CmdGroup;
@@ -69,33 +69,6 @@ namespace wpfapp.bu.cmd.cmdtype
                 }
             }
         }
-
-        //private void priInitSysCmd()
-        //{
-        //    this.cmdTypeList.Clear();
-        //    Type enumType = typeof(EnumSwSketchCmdType);
-        //    var fields = enumType.GetFields(BindingFlags.Public | BindingFlags.Static);
-        //    foreach (var field in fields)
-        //    {
-        //        object rawValue = field.GetValue(null);
-        //        int intValue = (int)rawValue;
-        //        string name = field.Name;
-
-        //        // 获取自定义特性
-        //        SwSketchActionAttribute attribute = field.GetCustomAttribute<SwSketchActionAttribute>();
-        //        if (attribute.ActionType != null)
-        //        {
-        //            SwCmdType oSwCmdType = new SwCmdType();
-        //            oSwCmdType.CmdTypeId = intValue;
-        //            oSwCmdType.CmdTypeName = attribute.ActionName;
-        //            oSwCmdType.CdmDesc = attribute.ActionDesc;
-        //            oSwCmdType.CmdGroupName = "All";
-        //            oSwCmdType.ActionType = attribute.ActionType;
-        //            oSwCmdType.ActionInVoType = attribute.ActionInVoType;
-        //            cmdTypeList.Add(oSwCmdType);
-        //        }
-        //    }
-        //}
 
         #endregion
 
@@ -122,6 +95,19 @@ namespace wpfapp.bu.cmd.cmdtype
             {
                 SwCmdType oSwCmdType = this.cmdTypeList[i];
                 if (oSwCmdType.CmdModule.Equals(module) && oSwCmdType.CmdTypeId == id)
+                {
+                    return oSwCmdType;
+                }
+            }
+            return null;
+        }
+
+        public SwCmdType getByTypeIdStr(string module, string id)
+        {
+            for (int i = 0; i < this.cmdTypeList.Count; i++)
+            {
+                SwCmdType oSwCmdType = this.cmdTypeList[i];
+                if (oSwCmdType.CmdModule.Equals(module) && oSwCmdType.CmdTypeIdStr == id)
                 {
                     return oSwCmdType;
                 }

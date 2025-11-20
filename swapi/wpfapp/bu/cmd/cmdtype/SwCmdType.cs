@@ -24,6 +24,11 @@ namespace wpfapp.bu.cmd.cmdtype
         public int CmdTypeId { get; set; }
 
         /// <summary>
+        /// 命令类型ID
+        /// </summary>
+        public string CmdTypeIdStr { get; set; }
+
+        /// <summary>
         /// 命令名称
         /// </summary>
         public string CmdTypeName { get; set; }

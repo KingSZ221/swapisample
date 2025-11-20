@@ -11,7 +11,7 @@
         "CmdInfos": [
           {
             "CmdModule": "doc",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "NewDoc",
             "CmdInVoJson": "{\r\n  \"DocType\": 1\r\n}"
           }
         ]
@@ -30,7 +30,7 @@
         "CmdInfos": [
           {
             "CmdModule": "doc",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "NewDoc",
             "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
           }
         ]
@@ -41,17 +41,17 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 11,
+            "CmdTypeIdStr": "CreateCenterRectangle",
             "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 100.0,\r\n  \"Y2\": 100.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           }
         ]
@@ -62,22 +62,22 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 48,
+            "CmdTypeIdStr": "ShowNamedView",
             "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"\",\r\n  \"X\": 50.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "feature",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "FeatureExtrusion",
             "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 1000.0,\r\n  \"Thk1\": 2.0,\r\n  \"SeletctType\": 0,\r\n  \"SketchName\": \"\",\r\n  \"ContourName\": \"\",\r\n  \"FeatrueName\": \"立方体1\"\r\n}"
           }
         ]
@@ -96,7 +96,7 @@
         "CmdInfos": [
           {
             "CmdModule": "doc",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "NewDoc",
             "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
           }
         ]
@@ -107,17 +107,17 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 11,
+            "CmdTypeIdStr": "CreateCenterRectangle",
             "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 1000.0,\r\n  \"Y2\": 1000.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           }
         ]
@@ -128,22 +128,22 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 48,
+            "CmdTypeIdStr": "ShowNamedView",
             "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"\",\r\n  \"X\": 500.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "feature",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "FeatureExtrusion",
             "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 1000.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"立方体1\"\r\n}"
           }
         ]
@@ -154,22 +154,22 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 6,
+            "CmdTypeIdStr": "SelectByRay",
             "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 0.0,\r\n  \"WorldZ\": -1.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": 0.0,\r\n  \"RayVecZ\": 3000.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 15,
+            "CmdTypeIdStr": "CreateSketchSlot_line",
             "CmdInVoJson": "{\r\n  \"SlotLengthType\": 1,\r\n  \"Width\": 500.0,\r\n  \"X1\": -250.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 250.0,\r\n  \"Y2\": 0.0,\r\n  \"Z2\": 0.0,\r\n  \"X3\": 250.0,\r\n  \"Y3\": 250.0,\r\n  \"Z3\": 0.0,\r\n  \"CenterArcDirection\": 1,\r\n  \"AddDimension\": true,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           }
         ]
@@ -180,7 +180,7 @@
         "CmdInfos": [
           {
             "CmdModule": "feature",
-            "CmdTypeId": 7,
+            "CmdTypeIdStr": "FeatureExtrusionCut",
             "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"NormalCut\": false,\r\n  \"OptimizeGeometry\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": true,\r\n  \"AssemblyFeatureScope\": false,\r\n  \"AutoSelectComponents\": true,\r\n  \"PropagateFeatureToParts\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"拉伸切除特征1\"\r\n}"
           }
         ]
@@ -199,7 +199,7 @@
         "CmdInfos": [
           {
             "CmdModule": "doc",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "NewDoc",
             "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
           }
         ]
@@ -210,22 +210,22 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 9,
+            "CmdTypeIdStr": "CreateCenterLine",
             "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 0.0,\r\n  \"Y2\": 2000.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 19,
+            "CmdTypeIdStr": "CreateCircleByRadius",
             "CmdInVoJson": "{\r\n  \"XC\": -2000.0,\r\n  \"YC\": 1000.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 500.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           }
         ]
@@ -236,32 +236,32 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 48,
+            "CmdTypeIdStr": "ShowNamedView",
             "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"EXTSKETCHSEGMENT\",\r\n  \"X\": 0.0,\r\n  \"Y\": 1000.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 4,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"EXTSKETCHSEGMENT\",\r\n  \"X\": -1500.0,\r\n  \"Y\": 1000.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "feature",
-            "CmdTypeId": 3,
+            "CmdTypeIdStr": "FeatureRevolve",
             "CmdInVoJson": "{\r\n  \"SingleDir\": true,\r\n  \"IsSolid\": true,\r\n  \"IsThin\": false,\r\n  \"ReverseDir\": false,\r\n  \"BothDirectionUpToSameEntity\": false,\r\n  \"Dir1Type\": 0,\r\n  \"Dir2Type\": 0,\r\n  \"Dir1Angle\": 180.0,\r\n  \"Dir2Angle\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"OffsetDistance1\": 0.0,\r\n  \"OffsetDistance2\": 0.0,\r\n  \"ThinType\": 0,\r\n  \"ThinThickness1\": 0.0,\r\n  \"ThinThickness2\": 0.0,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": true,\r\n  \"FeatrueName\": \"旋转体1\"\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 48,
+            "CmdTypeIdStr": "ShowNamedView",
             "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           }
         ]
@@ -280,7 +280,7 @@
         "CmdInfos": [
           {
             "CmdModule": "doc",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "NewDoc",
             "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
           }
         ]
@@ -291,17 +291,17 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 11,
+            "CmdTypeIdStr": "CreateCenterRectangle",
             "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 1000.0,\r\n  \"Y2\": 1000.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           }
         ]
@@ -312,27 +312,27 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 48,
+            "CmdTypeIdStr": "ShowNamedView",
             "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"\",\r\n  \"X\": 500.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "feature",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "FeatureExtrusion",
             "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 1000.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"立方体1\"\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 48,
+            "CmdTypeIdStr": "ShowNamedView",
             "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           }
         ]
@@ -343,27 +343,27 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 6,
+            "CmdTypeIdStr": "SelectByRay",
             "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 0.0,\r\n  \"WorldZ\": 3000.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": 0.0,\r\n  \"RayVecZ\": -1.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 9,
+            "CmdTypeIdStr": "CreateCenterLine",
             "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 0.0,\r\n  \"Y2\": 1000.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 19,
+            "CmdTypeIdStr": "CreateCircleByRadius",
             "CmdInVoJson": "{\r\n  \"XC\": 500.0,\r\n  \"YC\": 1000.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 200.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           }
         ]
@@ -374,12 +374,12 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 48,
+            "CmdTypeIdStr": "ShowNamedView",
             "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           },
           {
             "CmdModule": "feature",
-            "CmdTypeId": 8,
+            "CmdTypeIdStr": "FeatureRevolveCut",
             "CmdInVoJson": "{\r\n  \"SingleDir\": true,\r\n  \"IsSolid\": true,\r\n  \"IsThin\": false,\r\n  \"ReverseDir\": false,\r\n  \"BothDirectionUpToSameEntity\": false,\r\n  \"Dir1Type\": 0,\r\n  \"Dir2Type\": 0,\r\n  \"Dir1Angle\": 90.0,\r\n  \"Dir2Angle\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"OffsetDistance1\": 0.0,\r\n  \"OffsetDistance2\": 0.0,\r\n  \"ThinType\": 0,\r\n  \"ThinThickness1\": 10.0,\r\n  \"ThinThickness2\": 0.0,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": true,\r\n  \"FeatrueName\": \"旋转体1\"\r\n}"
           }
         ]
@@ -398,7 +398,7 @@
         "CmdInfos": [
           {
             "CmdModule": "doc",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "NewDoc",
             "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
           }
         ]
@@ -409,27 +409,27 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 28,
+            "CmdTypeIdStr": "CreateEllipse",
             "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"XMajor\": 500.0,\r\n  \"YMajor\": 0.0,\r\n  \"ZMajor\": 0.0,\r\n  \"XMinor\": 0.0,\r\n  \"YMinor\": 1000.0,\r\n  \"ZMinor\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           }
         ]
@@ -440,32 +440,32 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 48,
+            "CmdTypeIdStr": "ShowNamedView",
             "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 22,
+            "CmdTypeIdStr": "CreateArc",
             "CmdInVoJson": "{\r\n  \"XC\": -2000.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": -2000.0,\r\n  \"Y2\": -2000.0,\r\n  \"Z2\": 0.0,\r\n  \"Direction\": 1,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           }
         ]
@@ -476,22 +476,22 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 500.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": -2000.0,\r\n  \"Y\": 2000.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 4,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "feature",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "FeatureSweep",
             "CmdInVoJson": "{\r\n  \"FeatrueName\": \"扫描体1\"\r\n}"
           }
         ]
@@ -510,7 +510,7 @@
         "CmdInfos": [
           {
             "CmdModule": "doc",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "NewDoc",
             "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
           }
         ]
@@ -521,27 +521,27 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 28,
+            "CmdTypeIdStr": "CreateEllipse",
             "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"XMajor\": 70.0,\r\n  \"YMajor\": 0.0,\r\n  \"ZMajor\": 0.0,\r\n  \"XMinor\": 0.0,\r\n  \"YMinor\": 30.0,\r\n  \"ZMinor\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           }
         ]
@@ -552,42 +552,42 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "feature",
-            "CmdTypeId": 12,
+            "CmdTypeIdStr": "InsertRefPlane",
             "CmdInVoJson": "{\r\n  \"FirstConstraint\": 8,\r\n  \"FirstConstraintAngleOrDistance\": 70.0,\r\n  \"SecondConstraint\": 0,\r\n  \"SecondConstraintAngleOrDistance\": 0.0,\r\n  \"ThirdConstraint\": 0,\r\n  \"ThirdConstraintAngleOrDistance\": 0.0,\r\n  \"RefPlaneName\": \"\"\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 70.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 28,
+            "CmdTypeIdStr": "CreateEllipse",
             "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"XMajor\": 50.0,\r\n  \"YMajor\": 0.0,\r\n  \"ZMajor\": 0.0,\r\n  \"XMinor\": 0.0,\r\n  \"YMinor\": 10.0,\r\n  \"ZMinor\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           }
         ]
@@ -598,42 +598,42 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "feature",
-            "CmdTypeId": 12,
+            "CmdTypeIdStr": "InsertRefPlane",
             "CmdInVoJson": "{\r\n  \"FirstConstraint\": 8,\r\n  \"FirstConstraintAngleOrDistance\": 140.0,\r\n  \"SecondConstraint\": 0,\r\n  \"SecondConstraintAngleOrDistance\": 0.0,\r\n  \"ThirdConstraint\": 0,\r\n  \"ThirdConstraintAngleOrDistance\": 0.0,\r\n  \"RefPlaneName\": \"\"\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 140.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 28,
+            "CmdTypeIdStr": "CreateEllipse",
             "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"XMajor\": 60.0,\r\n  \"YMajor\": 0.0,\r\n  \"ZMajor\": 0.0,\r\n  \"XMinor\": 0.0,\r\n  \"YMinor\": 20.0,\r\n  \"ZMinor\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 1,
+            "CmdTypeIdStr": "InsertSketch",
             "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
           }
         ]
@@ -644,32 +644,32 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 48,
+            "CmdTypeIdStr": "ShowNamedView",
             "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"EXTSKETCHPOINT\",\r\n  \"X\": 70.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"EXTSKETCHPOINT\",\r\n  \"X\": 50.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 70.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"EXTSKETCHPOINT\",\r\n  \"X\": 60.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 140.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "feature",
-            "CmdTypeId": 19,
+            "CmdTypeIdStr": "Insert3DSplineCurve",
             "CmdInVoJson": "{\r\n  \"CurveClosed\": false\r\n}"
           }
         ]
@@ -680,27 +680,27 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"EXTSKETCHPOINT\",\r\n  \"X\": -70.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"EXTSKETCHPOINT\",\r\n  \"X\": -50.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 70.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"EXTSKETCHPOINT\",\r\n  \"X\": -60.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 140.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "feature",
-            "CmdTypeId": 19,
+            "CmdTypeIdStr": "Insert3DSplineCurve",
             "CmdInVoJson": "{\r\n  \"CurveClosed\": false\r\n}"
           }
         ]
@@ -711,37 +711,37 @@
         "CmdInfos": [
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 4,
+            "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 70.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 50.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 70.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 60.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 140.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"REFERENCECURVES\",\r\n  \"X\": 50.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 70.0,\r\n  \"Append\": true,\r\n  \"Mark\": 2,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "SelectByID",
             "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"REFERENCECURVES\",\r\n  \"X\": -50.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 70.0,\r\n  \"Append\": true,\r\n  \"Mark\": 2,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "feature",
-            "CmdTypeId": 5,
+            "CmdTypeIdStr": "FeatureLoft",
             "CmdInVoJson": "{\r\n  \"Closed\": false,\r\n  \"KeepTangency\": true,\r\n  \"ForceNonRational\": false,\r\n  \"TessToleranceFactor\": 1.0,\r\n  \"StartMatchingType\": 0,\r\n  \"EndMatchingType\": 0,\r\n  \"StartTangentLength\": 1.0,\r\n  \"EndTangentLength\": 1.0,\r\n  \"StartTangentDir\": true,\r\n  \"EndTangentDir\": true,\r\n  \"IsThinBody\": false,\r\n  \"Thickness1\": 0.0,\r\n  \"Thickness2\": 0.0,\r\n  \"ThinType\": 0,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"GuideCurveInfluence\": 0,\r\n  \"FeatrueName\": \"放样特征1\"\r\n}"
           }
         ]
