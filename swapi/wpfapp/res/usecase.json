@@ -499,6 +499,165 @@
     ]
   },
   {
+    "Id": "15763940-2b26-4859-ad3e-af375aade486",
+    "Name": "扫描切除",
+    "Desc": "",
+    "Group": "特征",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "新建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制草图",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 1000.0,\r\n  \"Y2\": 1000.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "拉伸基体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ShowNamedView",
+            "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"\",\r\n  \"X\": 500.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 1000.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"立方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制切除草图",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 0.0,\r\n  \"WorldZ\": 3000.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": 0.0,\r\n  \"RayVecZ\": -1.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 1000.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 200.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制路径草图",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 2000.0,\r\n  \"WorldZ\": 1000.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateSpline",
+            "CmdInVoJson": "{\r\n  \"Points\": [\r\n    {\r\n      \"X\": 0.0,\r\n      \"Y\": 1000.0,\r\n      \"Z\": 0.0\r\n    },\r\n    {\r\n      \"X\": 200.0,\r\n      \"Y\": 500.0,\r\n      \"Z\": 0.0\r\n    },\r\n    {\r\n      \"X\": -200.0,\r\n      \"Y\": -500.0,\r\n      \"Z\": 0.0\r\n    },\r\n    {\r\n      \"X\": 0.0,\r\n      \"Y\": -1000.0,\r\n      \"Z\": 0.0\r\n    }\r\n  ],\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "扫描切除",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 0.0,\r\n  \"Y\": 1200.0,\r\n  \"Z\": 1000.0,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 0.0,\r\n  \"Y\": 1000.0,\r\n  \"Z\": -1000.0,\r\n  \"Append\": true,\r\n  \"Mark\": 4,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureSweepCut",
+            "CmdInVoJson": "{\r\n  \"FeatrueName\": \"扫描切除特征1\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ShowNamedView",
+            "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Id": "409c8f79-da75-44d5-8ea3-11c2dc6a58e9",
     "Name": "放样特征",
     "Desc": "",
@@ -743,6 +902,223 @@
             "CmdModule": "feature",
             "CmdTypeIdStr": "FeatureLoft",
             "CmdInVoJson": "{\r\n  \"Closed\": false,\r\n  \"KeepTangency\": true,\r\n  \"ForceNonRational\": false,\r\n  \"TessToleranceFactor\": 1.0,\r\n  \"StartMatchingType\": 0,\r\n  \"EndMatchingType\": 0,\r\n  \"StartTangentLength\": 1.0,\r\n  \"EndTangentLength\": 1.0,\r\n  \"StartTangentDir\": true,\r\n  \"EndTangentDir\": true,\r\n  \"IsThinBody\": false,\r\n  \"Thickness1\": 0.0,\r\n  \"Thickness2\": 0.0,\r\n  \"ThinType\": 0,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"GuideCurveInfluence\": 0,\r\n  \"FeatrueName\": \"放样特征1\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "077807d7-0a0c-497f-bf08-d199d289833e",
+    "Name": "放样切除",
+    "Desc": "",
+    "Group": "特征",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "新建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制草图",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 1000.0,\r\n  \"Y2\": 1000.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "拉伸基体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ShowNamedView",
+            "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"\",\r\n  \"X\": 500.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 1000.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"立方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制切除草图1",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 0.0,\r\n  \"WorldZ\": 3000.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": 0.0,\r\n  \"RayVecZ\": -1.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 700.0,\r\n  \"Y2\": 700.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制切除草图2",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 0.0,\r\n  \"WorldZ\": -3000.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": 0.0,\r\n  \"RayVecZ\": 1.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 500.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "放样切除",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 700.0,\r\n  \"Y\": 700.0,\r\n  \"Z\": 1000.0,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 0.0,\r\n  \"Y\": 500.0,\r\n  \"Z\": -1000.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureLoftCut",
+            "CmdInVoJson": "{\r\n  \"Closed\": false,\r\n  \"KeepTangency\": true,\r\n  \"ForceNonRational\": true,\r\n  \"TessToleranceFactor\": 0.01,\r\n  \"StartMatchingType\": 0,\r\n  \"EndMatchingType\": 0,\r\n  \"IsThinBody\": false,\r\n  \"Thickness1\": 0.0,\r\n  \"Thickness2\": 0.0,\r\n  \"ThinType\": 0,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"FeatrueName\": \"放样切除特征1\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ShowNamedView",
+            "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "dcab77c1-9df7-45e6-ab71-c0c772c5eae8",
+    "Name": "放样切除_copy",
+    "Desc": "",
+    "Group": "特征",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "放样切除",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 700.0,\r\n  \"Y\": 700.0,\r\n  \"Z\": 1000.0,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "77607e1f-63ac-42d1-b68e-4fc8f88c8762",
+    "Name": "放样切除_copy_copy",
+    "Desc": "",
+    "Group": "特征",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "放样切除",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 0.0,\r\n  \"Y\": 500.0,\r\n  \"Z\": -1000.0,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureLoftCut",
+            "CmdInVoJson": "{\r\n  \"Closed\": false,\r\n  \"KeepTangency\": true,\r\n  \"ForceNonRational\": true,\r\n  \"TessToleranceFactor\": 0.01,\r\n  \"StartMatchingType\": 0,\r\n  \"EndMatchingType\": 0,\r\n  \"IsThinBody\": false,\r\n  \"Thickness1\": 0.0,\r\n  \"Thickness2\": 0.0,\r\n  \"ThinType\": 0,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"FeatrueName\": \"放样切除特征1\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ShowNamedView",
+            "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           }
         ]
       }
