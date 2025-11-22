@@ -1067,14 +1067,25 @@
     ]
   },
   {
-    "Id": "dcab77c1-9df7-45e6-ab71-c0c772c5eae8",
-    "Name": "放样切除_copy",
+    "Id": "475d3000-936d-4b7c-87c8-d913caac0ebe",
+    "Name": "创建柱形沉头孔",
     "Desc": "",
-    "Group": "特征",
+    "Group": "异形孔向导",
     "Steps": [
       {
         "SubSteps": [],
-        "Name": "放样切除",
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
         "CmdInfos": [
           {
             "CmdModule": "sketch",
@@ -1084,21 +1095,68 @@
           {
             "CmdModule": "sketch",
             "CmdTypeIdStr": "SelectByID",
-            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 700.0,\r\n  \"Y\": 700.0,\r\n  \"Z\": 1000.0,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 10.0,\r\n  \"Y2\": 5.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 50.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建异形孔",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 10.0,\r\n  \"WorldZ\": 30.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "WzdCounterBore",
+            "CmdInVoJson": "{\r\n  \"CounterBoreDiameter\": 11.0,\r\n  \"CounterBoreDepth\": 6.4,\r\n  \"HeadClearance\": 0.0,\r\n  \"ScrewFit\": 1,\r\n  \"DrillAngleAtBottom\": 0.0,\r\n  \"NearCsinkDiameter\": 13.0,\r\n  \"NearCsinkAngle\": 90.0,\r\n  \"UnderheadCsinkDiameter\": 0.0,\r\n  \"UnderheadCsinkAngle\": 0.0,\r\n  \"FarCsinkDiameter\": 0.0,\r\n  \"FarCsinkAngle\": 0.0,\r\n  \"Offset\": 0.0,\r\n  \"StandardIndex\": 8,\r\n  \"FastenerTypeIndex\": 139,\r\n  \"SSize\": \"M6\",\r\n  \"EndType\": 1,\r\n  \"Diameter\": 6.6,\r\n  \"Depth\": 0.0,\r\n  \"Length\": -1.0,\r\n  \"ThreadClass\": \"\",\r\n  \"RevDir\": false,\r\n  \"FeatureScope\": true,\r\n  \"AutoSelect\": true,\r\n  \"AssemblyFeatureScope\": true,\r\n  \"AutoSelectComponents\": true,\r\n  \"PropagateFeatureToParts\": false,\r\n  \"FeatrueName\": \"柱形沉头孔1\"\r\n}"
           }
         ]
       }
     ]
   },
   {
-    "Id": "77607e1f-63ac-42d1-b68e-4fc8f88c8762",
-    "Name": "放样切除_copy_copy",
+    "Id": "f1105c26-73c2-4e34-b78a-413813a3999d",
+    "Name": "创建柱形沉头孔2",
     "Desc": "",
-    "Group": "特征",
+    "Group": "异形孔向导",
     "Steps": [
       {
         "SubSteps": [],
-        "Name": "放样切除",
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
         "CmdInfos": [
           {
             "CmdModule": "sketch",
@@ -1108,17 +1166,469 @@
           {
             "CmdModule": "sketch",
             "CmdTypeIdStr": "SelectByID",
-            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 0.0,\r\n  \"Y\": 500.0,\r\n  \"Z\": -1000.0,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
-          },
-          {
-            "CmdModule": "feature",
-            "CmdTypeIdStr": "FeatureLoftCut",
-            "CmdInVoJson": "{\r\n  \"Closed\": false,\r\n  \"KeepTangency\": true,\r\n  \"ForceNonRational\": true,\r\n  \"TessToleranceFactor\": 0.01,\r\n  \"StartMatchingType\": 0,\r\n  \"EndMatchingType\": 0,\r\n  \"IsThinBody\": false,\r\n  \"Thickness1\": 0.0,\r\n  \"Thickness2\": 0.0,\r\n  \"ThinType\": 0,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"FeatrueName\": \"放样切除特征1\"\r\n}"
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
           },
           {
             "CmdModule": "sketch",
-            "CmdTypeIdStr": "ShowNamedView",
-            "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 10.0,\r\n  \"Y2\": 5.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 50.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建异形孔",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 10.0,\r\n  \"WorldZ\": 30.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "WzdCounterBore",
+            "CmdInVoJson": "{\r\n  \"CounterBoreDiameter\": 11.0,\r\n  \"CounterBoreDepth\": 6.4,\r\n  \"HeadClearance\": 0.0,\r\n  \"ScrewFit\": 1,\r\n  \"DrillAngleAtBottom\": 0.0,\r\n  \"NearCsinkDiameter\": 13.0,\r\n  \"NearCsinkAngle\": 90.0,\r\n  \"UnderheadCsinkDiameter\": 0.0,\r\n  \"UnderheadCsinkAngle\": 0.0,\r\n  \"FarCsinkDiameter\": 0.0,\r\n  \"FarCsinkAngle\": 0.0,\r\n  \"Offset\": 0.0,\r\n  \"StandardIndex\": 8,\r\n  \"FastenerTypeIndex\": 139,\r\n  \"SSize\": \"M6\",\r\n  \"EndType\": 1,\r\n  \"Diameter\": 6.6,\r\n  \"Depth\": 0.0,\r\n  \"Length\": -1.0,\r\n  \"ThreadClass\": \"\",\r\n  \"RevDir\": false,\r\n  \"FeatureScope\": true,\r\n  \"AutoSelect\": true,\r\n  \"AssemblyFeatureScope\": true,\r\n  \"AutoSelectComponents\": true,\r\n  \"PropagateFeatureToParts\": false,\r\n  \"Positions\": [\r\n    {\r\n      \"X\": 0.0,\r\n      \"Y\": -10.0,\r\n      \"Z\": 0.0\r\n    },\r\n    {\r\n      \"X\": 0.0,\r\n      \"Y\": -40.0,\r\n      \"Z\": 0.0\r\n    }\r\n  ],\r\n  \"FeatrueName\": \"柱形沉头孔1\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "85341fac-58ea-4878-95f2-93a303e4c80d",
+    "Name": "创建锥形沉头孔",
+    "Desc": "",
+    "Group": "异形孔向导",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 10.0,\r\n  \"Y2\": 5.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 50.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建异形孔",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 10.0,\r\n  \"WorldZ\": 30.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "WzdCounterSink",
+            "CmdInVoJson": "{\r\n  \"NearCsinkDiameter\": 13.44,\r\n  \"NearCsinkAngle\": 90.0,\r\n  \"HeadClearance\": 0.0,\r\n  \"ScrewFit\": 0,\r\n  \"DrillAngleAtBottom\": 0.0,\r\n  \"FarCsinkDiameter\": 0.0,\r\n  \"FarCsinkAngle\": 0.0,\r\n  \"Offset\": 0.0,\r\n  \"HeadClearanceType\": 0,\r\n  \"StandardIndex\": 8,\r\n  \"FastenerTypeIndex\": 140,\r\n  \"SSize\": \"M6\",\r\n  \"EndType\": 1,\r\n  \"Diameter\": 6.6,\r\n  \"Depth\": 10.0,\r\n  \"Length\": -1.0,\r\n  \"ThreadClass\": \"\",\r\n  \"RevDir\": false,\r\n  \"FeatureScope\": true,\r\n  \"AutoSelect\": true,\r\n  \"AssemblyFeatureScope\": true,\r\n  \"AutoSelectComponents\": true,\r\n  \"PropagateFeatureToParts\": false,\r\n  \"Positions\": [],\r\n  \"FeatrueName\": \"\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "2f9df8b8-2a6b-4a8f-9199-abc36e13881e",
+    "Name": "创建锥形沉头孔2",
+    "Desc": "",
+    "Group": "异形孔向导",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 10.0,\r\n  \"Y2\": 5.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 50.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建异形孔",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 10.0,\r\n  \"WorldZ\": 30.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "WzdCounterSink",
+            "CmdInVoJson": "{\r\n  \"NearCsinkDiameter\": 13.44,\r\n  \"NearCsinkAngle\": 90.0,\r\n  \"HeadClearance\": 0.0,\r\n  \"ScrewFit\": 0,\r\n  \"DrillAngleAtBottom\": 0.0,\r\n  \"FarCsinkDiameter\": 0.0,\r\n  \"FarCsinkAngle\": 0.0,\r\n  \"Offset\": 0.0,\r\n  \"HeadClearanceType\": 0,\r\n  \"StandardIndex\": 8,\r\n  \"FastenerTypeIndex\": 140,\r\n  \"SSize\": \"M6\",\r\n  \"EndType\": 1,\r\n  \"Diameter\": 6.6,\r\n  \"Depth\": 10.0,\r\n  \"Length\": -1.0,\r\n  \"ThreadClass\": \"\",\r\n  \"RevDir\": false,\r\n  \"FeatureScope\": true,\r\n  \"AutoSelect\": true,\r\n  \"AssemblyFeatureScope\": true,\r\n  \"AutoSelectComponents\": true,\r\n  \"PropagateFeatureToParts\": false,\r\n  \"Positions\": [\r\n    {\r\n      \"X\": 0.0,\r\n      \"Y\": -10.0,\r\n      \"Z\": 0.0\r\n    },\r\n    {\r\n      \"X\": 0.0,\r\n      \"Y\": -40.0,\r\n      \"Z\": 0.0\r\n    }\r\n  ],\r\n  \"FeatrueName\": \"\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "a7dd6ed1-5228-44bf-8395-ca0eb826ed5b",
+    "Name": "创建常规孔",
+    "Desc": "",
+    "Group": "异形孔向导",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 10.0,\r\n  \"Y2\": 5.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 50.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建异形孔",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 10.0,\r\n  \"WorldZ\": 30.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "WzdHole",
+            "CmdInVoJson": "{\r\n  \"ScrewFit\": 1,\r\n  \"DrillAngleAtBottom\": 0.0,\r\n  \"NearCsinkDiameter\": 0.0,\r\n  \"NearCsinkAngle\": 0.0,\r\n  \"FarCsinkDiameter\": 0.0,\r\n  \"FarCsinkAngle\": 0.0,\r\n  \"Offset\": 0.0,\r\n  \"StandardIndex\": 13,\r\n  \"FastenerTypeIndex\": 357,\r\n  \"SSize\": \"M12\",\r\n  \"EndType\": 1,\r\n  \"Diameter\": 10.2,\r\n  \"Depth\": 10.0,\r\n  \"Length\": -1.0,\r\n  \"ThreadClass\": \"\",\r\n  \"RevDir\": false,\r\n  \"FeatureScope\": true,\r\n  \"AutoSelect\": true,\r\n  \"AssemblyFeatureScope\": true,\r\n  \"AutoSelectComponents\": true,\r\n  \"PropagateFeatureToParts\": false,\r\n  \"Positions\": [],\r\n  \"FeatrueName\": \"\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "0b456265-43c0-4c16-a17a-bdab13c07f14",
+    "Name": "创建常规孔2",
+    "Desc": "",
+    "Group": "异形孔向导",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 10.0,\r\n  \"Y2\": 5.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 50.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建异形孔",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 10.0,\r\n  \"WorldZ\": 30.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "WzdHole",
+            "CmdInVoJson": "{\r\n  \"ScrewFit\": 1,\r\n  \"DrillAngleAtBottom\": 0.0,\r\n  \"NearCsinkDiameter\": 0.0,\r\n  \"NearCsinkAngle\": 0.0,\r\n  \"FarCsinkDiameter\": 0.0,\r\n  \"FarCsinkAngle\": 0.0,\r\n  \"Offset\": 0.0,\r\n  \"StandardIndex\": 13,\r\n  \"FastenerTypeIndex\": 357,\r\n  \"SSize\": \"M12\",\r\n  \"EndType\": 1,\r\n  \"Diameter\": 10.2,\r\n  \"Depth\": 10.0,\r\n  \"Length\": -1.0,\r\n  \"ThreadClass\": \"\",\r\n  \"RevDir\": false,\r\n  \"FeatureScope\": true,\r\n  \"AutoSelect\": true,\r\n  \"AssemblyFeatureScope\": true,\r\n  \"AutoSelectComponents\": true,\r\n  \"PropagateFeatureToParts\": false,\r\n  \"Positions\": [\r\n    {\r\n      \"X\": 0.0,\r\n      \"Y\": -10.0,\r\n      \"Z\": 0.0\r\n    },\r\n    {\r\n      \"X\": 0.0,\r\n      \"Y\": -40.0,\r\n      \"Z\": 0.0\r\n    }\r\n  ],\r\n  \"FeatrueName\": \"\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "77e90087-dc79-49ad-8511-ebf662d24bd2",
+    "Name": "创建直螺纹孔",
+    "Desc": "",
+    "Group": "异形孔向导",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 10.0,\r\n  \"Y2\": 5.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 50.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建异形孔",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 10.0,\r\n  \"WorldZ\": 30.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "WzdTap",
+            "CmdInVoJson": "{\r\n  \"TabThreadDepth\": 0.0,\r\n  \"NearCsinkDiameter\": 0.0,\r\n  \"NearCsinkAngle\": 0.0,\r\n  \"FarCsinkDiameter\": 0.0,\r\n  \"FarCsinkAngle\": 0.0,\r\n  \"CosmeticThread\": 1.0,\r\n  \"CosmeticThreadType\": 1,\r\n  \"ThreadEndCondition\": 1,\r\n  \"HelicoilTapType\": 0,\r\n  \"Offset\": 0.0,\r\n  \"StandardIndex\": 13,\r\n  \"FastenerTypeIndex\": 358,\r\n  \"SSize\": \"M8\",\r\n  \"EndType\": 1,\r\n  \"Diameter\": 6.8,\r\n  \"Depth\": 10.0,\r\n  \"Length\": 6.4,\r\n  \"ThreadClass\": \"\",\r\n  \"RevDir\": false,\r\n  \"FeatureScope\": true,\r\n  \"AutoSelect\": true,\r\n  \"AssemblyFeatureScope\": true,\r\n  \"AutoSelectComponents\": true,\r\n  \"PropagateFeatureToParts\": false,\r\n  \"Positions\": [],\r\n  \"FeatrueName\": \"\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "47066e45-0cd8-43be-a0cb-b232328dadad",
+    "Name": "创建锥形螺纹孔",
+    "Desc": "",
+    "Group": "异形孔向导",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 10.0,\r\n  \"Y2\": 5.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 50.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建异形孔",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 10.0,\r\n  \"WorldZ\": 30.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "WzdPipeTap",
+            "CmdInVoJson": "{\r\n  \"TabThreadDepth\": 0.0,\r\n  \"NearCsinkDiameter\": 0.0,\r\n  \"NearCsinkAngle\": 0.0,\r\n  \"FarCsinkDiameter\": 0.0,\r\n  \"FarCsinkAngle\": 0.0,\r\n  \"CosmeticThread\": 1.0,\r\n  \"CosmeticThreadType\": 1,\r\n  \"Offset\": -1000.0,\r\n  \"StandardIndex\": 13,\r\n  \"FastenerTypeIndex\": 360,\r\n  \"SSize\": \"1/8\",\r\n  \"EndType\": 1,\r\n  \"Diameter\": 7.9,\r\n  \"Depth\": 10.0,\r\n  \"Length\": 7.4,\r\n  \"ThreadClass\": \"\",\r\n  \"RevDir\": false,\r\n  \"FeatureScope\": true,\r\n  \"AutoSelect\": true,\r\n  \"AssemblyFeatureScope\": true,\r\n  \"AutoSelectComponents\": true,\r\n  \"PropagateFeatureToParts\": false,\r\n  \"Positions\": [],\r\n  \"FeatrueName\": \"\"\r\n}"
           }
         ]
       }

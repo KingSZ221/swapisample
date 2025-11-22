@@ -13,6 +13,7 @@ using wpfapp.bu.feature.action.feature.revolve;
 using wpfapp.bu.feature.action.feature.sweep;
 using wpfapp.bu.feature.vo.feature.curve;
 using wpfapp.bu.feature.vo.feature.extrusion;
+using wpfapp.bu.feature.vo.feature.hole;
 using wpfapp.bu.feature.vo.feature.loft;
 using wpfapp.bu.feature.vo.feature.refplane;
 using wpfapp.bu.feature.vo.feature.revolve;
@@ -103,5 +104,27 @@ namespace wpfapp.bu.feature.cmd
         [SwCmdType("创建3D样条曲线", "创建3D样条曲线", typeof(Insert3DSplineCurveInVo), typeof(Insert3DSplineCurveAction))]
         [Description("创建3D样条曲线")]
         Insert3DSplineCurve = 19,
+
+        [SwCmdType("创建柱形沉头孔", "创建创建柱形沉头孔", typeof(WzdCounterBoreInVo), typeof(HoleWizardAction))]
+        [Description("创建创建柱形沉头孔")]
+        WzdCounterBore = 20,
+
+        [SwCmdType("创建锥形沉头孔", "创建锥形沉头孔", typeof(WzdCounterSinkInVo), typeof(HoleWizardAction))]
+        [Description("创建锥形沉头孔")]
+        WzdCounterSink = 21,
+
+        [SwCmdType("创建常规孔", "创建常规孔", typeof(WzdHoleInVo), typeof(HoleWizardAction))]
+        [Description("创建常规孔")]
+        WzdHole = 22,
+
+        [SwCmdType("创建锥形螺纹孔", "创建锥形螺纹孔", typeof(WzdPipeTapInVo), typeof(HoleWizardAction))]
+        [Description("创建锥形螺纹孔")]
+        WzdPipeTap = 23,
+
+        [SwCmdType("创建直螺纹孔", "创建直螺纹孔", typeof(WzdTapInVo), typeof(HoleWizardAction))]
+        [Description("创建直螺纹孔")]
+        WzdTap = 24,
+
+        HoleWizard
     }
 }
