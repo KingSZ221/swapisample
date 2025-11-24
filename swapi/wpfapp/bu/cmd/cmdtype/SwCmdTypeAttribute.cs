@@ -37,13 +37,13 @@ namespace wpfapp.bu.cmd.cmdtype
         /// </summary>
         public Type CmdActionType { get; }
 
-        public SwCmdTypeAttribute(string cmdName, string cmdDesc, Type cmdInVoType, Type cmdActionType)
+        public SwCmdTypeAttribute(string cmdName, string cmdDesc, string cmdGroup, Type cmdInVoType, Type cmdActionType)
         {
             CmdName = cmdName;
             CmdDesc = cmdDesc;
             CmdInVoType = cmdInVoType;
             CmdActionType = cmdActionType;
-            CmdGroup = "Default";
+            CmdGroup = cmdGroup;
         }
     }
 }

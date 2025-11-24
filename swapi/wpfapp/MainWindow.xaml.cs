@@ -46,16 +46,18 @@ namespace wpfapp
         {
             InitializeComponent();
 
+            // 初始化Service
+            SwBuAppService.getInstance().init();
+            SwBuFileService.getInstance().init();
+            SwBuSketchService.getInstance().init();
+            SwBuFeatureService.getInstance().init();
+
             // 初始化UI
             SwUiMenuService.getInstance().init(this.mainMenu, this.mainToobar);
             SwUiOutputService.getInstance().init(this.mainOutput);
 
             // 初始化Service
             SwBuLogService.createInstance(SwUiOutputService.getInstance());
-            SwBuAppService.getInstance().init();
-            SwBuFileService.getInstance().init();
-            SwBuSketchService.getInstance().init();
-            SwBuFeatureService.getInstance().init();
         }
 
         #endregion

@@ -70,8 +70,6 @@ namespace wpfapp.ui.menu
 
             priCreateToolbar4App(mainToolbar);
             priCreateToolbar4UseCase(mainToolbar);
-            //priCreateToolbar4File(mainToolbar);
-            //priCreateToolbar4Sketch(mainToolbar);
         }
 
         public void destroy()
@@ -147,7 +145,7 @@ namespace wpfapp.ui.menu
             menu.Header = "草图";
             mainMenu.Items.Add(menu);
 
-            priCreateSubMenu4Sketch(null, menu);
+            priCreateSubMenu4Moudle(menu, SwBuSketchService.MoudleName);
         }
 
         private void priCreateMenu4Feature(Menu mainMenu)
@@ -156,7 +154,7 @@ namespace wpfapp.ui.menu
             menu.Header = "特征";
             mainMenu.Items.Add(menu);
 
-            priCreateSubMenu4Feature(null, menu);
+            priCreateSubMenu4Moudle(menu, SwBuFeatureService.MoudleName);
         }
 
         private void priCreateMenu4Part(Menu mainMenu)
@@ -184,7 +182,6 @@ namespace wpfapp.ui.menu
             priCreateSubMenu4UseCase(menuUseCase);
         }
 
-
         private void priCreateSubMenu4UseCase(MenuItem menu1)
         {
             menu1.Items.Clear();
@@ -209,118 +206,37 @@ namespace wpfapp.ui.menu
             }
         }
 
-        private void priCreateSubMenu4Sketch(Menu menu1, MenuItem menu2)
+        private void priCreateSubMenu4Moudle(MenuItem menu1, string strMoudleName)
         {
-            MenuItem menuEdit = priCreateMenuItem("绘制草图", null);
-            menuEdit.Items.Add(priCreateMenuItem("绘制草图", Button_Click_EditSketch));
-            menuEdit.Items.Add(priCreateMenuItem("退出草图", Button_Click_ExitSketch));
-            menuEdit.Items.Add(priCreateMenuItem("获取实体信息", Button_Click_GetSketchEntityInfo));
+            menu1.Items.Clear();
 
-            MenuItem menuLine = priCreateMenuItem("绘制直线", null);
-            menuLine.Items.Add(priCreateMenuItem("绘制直线", Button_Click_CreateLine));
-            menuLine.Items.Add(priCreateMenuItem("绘制中心直线", Button_Click_CreateCenterLine));
-
-            MenuItem menuRect = priCreateMenuItem("绘制矩形", null);
-            menuRect.Items.Add(priCreateMenuItem("绘制边角矩形", Button_Click_CreateCornerRectangle));
-            menuRect.Items.Add(priCreateMenuItem("绘制中心矩形", Button_Click_CreateCenterRectangle));
-            menuRect.Items.Add(priCreateMenuItem("绘制3点边角矩形", Button_Click_Create3PointCornerRectangle));
-            menuRect.Items.Add(priCreateMenuItem("绘制3点中心矩形", Button_Click_Create3PointCenterRectangle));
-            menuRect.Items.Add(priCreateMenuItem("绘制平行四边形", Button_Click_CreateParallelogram));
-
-            MenuItem menuSlot = priCreateMenuItem("绘制槽口", null);
-            menuSlot.Items.Add(priCreateMenuItem("绘制直槽口", Button_Click_CreateSketchSlot_line));
-            menuSlot.Items.Add(priCreateMenuItem("绘制中心点直槽口", Button_Click_CreateSketchSlot_center_line));
-            menuSlot.Items.Add(priCreateMenuItem("绘制三点圆弧槽口", Button_Click_CreateSketchSlot_3pointarc));
-            menuSlot.Items.Add(priCreateMenuItem("绘制中心点圆弧槽口", Button_Click_CreateSketchSlot_arc));
-
-            MenuItem menuCircle = priCreateMenuItem("绘制圆", null);
-            menuCircle.Items.Add(priCreateMenuItem("绘制圆", Button_Click_CreateCircle));
-            menuCircle.Items.Add(priCreateMenuItem("绘制周边圆", Button_Click_PerimeterCircle));
-
-            MenuItem menuArc = priCreateMenuItem("绘制圆弧", null);
-            menuArc.Items.Add(priCreateMenuItem("绘制圆心/起/终点画弧", Button_Click_CreateArc));
-            menuArc.Items.Add(priCreateMenuItem("绘制切线弧", Button_Click_CreateTangentArc));
-            menuArc.Items.Add(priCreateMenuItem("绘制3点圆弧", Button_Click_Create3PointArc));
-
-            MenuItem menuPolygon = priCreateMenuItem("绘制多边形", null);
-            menuPolygon.Items.Add(priCreateMenuItem("绘制多边形", Button_Click_CreatePolygon));
-
-            MenuItem menuSpline = priCreateMenuItem("绘制样条曲线", null);
-            menuSpline.Items.Add(priCreateMenuItem("绘制B样条曲线", Button_Click_CreateSpline));
-            menuSpline.Items.Add(priCreateMenuItem("绘制方程式驱动曲线", Button_Click_CreateEquationSpline));
-
-            MenuItem menuEllipse = priCreateMenuItem("绘制椭圆", null);
-            menuEllipse.Items.Add(priCreateMenuItem("绘制椭圆", Button_Click_CreateEllipse));
-            menuEllipse.Items.Add(priCreateMenuItem("绘制部分椭圆", Button_Click_CreateEllipticalArc));
-            menuEllipse.Items.Add(priCreateMenuItem("绘制抛物线", Button_Click_CreateParabola));
-            menuEllipse.Items.Add(priCreateMenuItem("绘制圆锥", Button_Click_CreateConic));
-
-            MenuItem menuText = priCreateMenuItem("绘制文本", null);
-            menuText.Items.Add(priCreateMenuItem("绘制文本", Button_Click_InsertSketchText));
-            
-            MenuItem menuPoint = priCreateMenuItem("绘制点", null);
-            menuPoint.Items.Add(priCreateMenuItem("绘制点", Button_Click_CreatePoint));
-
-            MenuItem menuFillet = priCreateMenuItem("绘制圆角", null);
-            menuFillet.Items.Add(priCreateMenuItem("绘制圆角", Button_Click_CreateFillet));
-            menuFillet.Items.Add(priCreateMenuItem("绘制倒角", Button_Click_CreateChamfer));
-
-            MenuItem menuTrim = priCreateMenuItem("裁剪实体", null);
-            menuTrim.Items.Add(priCreateMenuItem("裁剪实体", Button_Click_SketchTrim));
-            menuTrim.Items.Add(priCreateMenuItem("延伸实体", Button_Click_SketchExtend));
-            menuTrim.Items.Add(priCreateMenuItem("偏移实体", Button_Click_SketchOffset));
-
-            MenuItem menuMirror = priCreateMenuItem("镜像实体", null);
-            menuMirror.Items.Add(priCreateMenuItem("镜像实体", Button_Click_SketchMirror));
-
-            MenuItem menuCopy = priCreateMenuItem("复制实体", null);
-            menuCopy.Items.Add(priCreateMenuItem("移动复制实体", Button_Click_MoveOrCopy));
-            menuCopy.Items.Add(priCreateMenuItem("旋转复制实体", Button_Click_RotateOrCopy));
-
-            MenuItem menuRepeat = priCreateMenuItem("草图阵列", null);
-            menuRepeat.Items.Add(priCreateMenuItem("线性草图阵列", Button_Click_CreateLinearSketchStepAndRepeat));
-            menuRepeat.Items.Add(priCreateMenuItem("圆周草图阵列", Button_Click_CreateCircularSketchStepAndRepeat));
-
-            MenuItem menuRelation = priCreateMenuItem("草图约束", null);
-            menuRelation.Items.Add(priCreateMenuItem("显示隐藏草图约束关系", Button_Click_ShowSketchRelations));
-            menuRelation.Items.Add(priCreateMenuItem("添加草图约束关系", Button_Click_SketchAddConstraints));
-            menuRelation.Items.Add(priCreateMenuItem("标注草图尺寸", Button_Click_AddDimension));
-            menuRelation.Items.Add(priCreateMenuItem("完全草图定义", Button_Click_FullyDefineSketch));
-
-            ItemCollection menuItems = (menu1 != null) ? menu1.Items : menu2.Items;
-            menuItems.Add(menuEdit);
-            menuItems.Add(menuLine);
-            menuItems.Add(menuRect);
-            menuItems.Add(menuSlot);
-            menuItems.Add(menuCircle);
-            menuItems.Add(menuArc);
-            menuItems.Add(menuPolygon);
-            menuItems.Add(menuSpline);
-            menuItems.Add(menuEllipse); 
-            menuItems.Add(menuText);
-            menuItems.Add(menuPoint);
-            menuItems.Add(menuFillet);
-            menuItems.Add(menuTrim);
-            menuItems.Add(menuMirror);
-            menuItems.Add(menuCopy);
-            menuItems.Add(menuRepeat);
-            menuItems.Add(menuRelation);
-        }
-
-        private void priCreateSubMenu4Feature(Menu menu1, MenuItem menu2)
-        {
-            MenuItem menuFeture = priCreateMenuItem("绘制特征", null);
-            menuFeture.Items.Add(priCreateMenuItem("拉伸特征", Button_Click_FeatureExtrusionThin));
-            menuFeture.Items.Add(priCreateMenuItem("旋转特征", Button_Click_FeatureRevolve));
-            menuFeture.Items.Add(priCreateMenuItem("扫描特征", Button_Click_FeatureSweep));
-            menuFeture.Items.Add(priCreateMenuItem("放样特征", Button_Click_FeatureLoft));
-            menuFeture.Items.Add(priCreateMenuItem("拉伸切除", Button_Click_FeatureExtrusionCut));
-            menuFeture.Items.Add(priCreateMenuItem("旋转切除", Button_Click_FeatureRevolveCut));
-            menuFeture.Items.Add(priCreateMenuItem("扫描切除", Button_Click_FeatureSweepCut));
-            menuFeture.Items.Add(priCreateMenuItem("放样切除", Button_Click_FeatureLoftCut));
-
-            ItemCollection menuItems = (menu1 != null) ? menu1.Items : menu2.Items;
-            menuItems.Add(menuFeture);
+            Dictionary<string, MenuItem> subMenuGroups = new Dictionary<string, MenuItem>();
+            List<SwCmdType> cmdTypes = SwCmdTypeManager.getInstance().getCmdsByModule(strMoudleName);
+            foreach (SwCmdType cmdType in cmdTypes)
+            {
+                if(cmdType.CmdTypeId == 0)
+                {
+                    continue;
+                }
+                string strGroup = cmdType.CmdGroupName;
+                if (string.IsNullOrEmpty(strGroup))
+                {
+                    menu1.Items.Add(priCreateMenuItem(cmdType.CmdTypeName, Button_Click_CmdType, cmdType));
+                }
+                else
+                {
+                    MenuItem subMenuGroup;
+                    subMenuGroups.TryGetValue(strGroup, out subMenuGroup);
+                    if (subMenuGroup == null)
+                    {
+                        subMenuGroup = priCreateMenuItem(strGroup, null);
+                        subMenuGroups[strGroup] = subMenuGroup;
+                        menu1.Items.Add(subMenuGroup);
+                    }
+                    subMenuGroup.Items.Add(priCreateMenuItem(cmdType.CmdTypeName, Button_Click_CmdType, cmdType));
+                }
+                
+            }
         }
 
         private void priCreateSubMenu4Part(Menu menu1, MenuItem menu2)
@@ -391,7 +307,6 @@ namespace wpfapp.ui.menu
             toolBar.Items.Add(priCreateToolBarBtn("用例设计", Button_Click_DesignUseCase)); 
         }
         
-
         private void priCreateToolbar4File(ToolBarTray mainToolbar)
         {
             // 创建ToolBar
@@ -414,19 +329,6 @@ namespace wpfapp.ui.menu
             priCreateSubMenu4File(menu, null);
 
             
-        }
-        private void priCreateToolbar4Sketch(ToolBarTray mainToolbar)
-        {
-            // 创建ToolBar
-            ToolBar toolBar = new ToolBar();
-
-            // 添加到ToolBarTray
-            mainToolbar.ToolBars.Add(toolBar);
-
-            // 添加按钮
-            Menu menu = new Menu();
-            toolBar.Items.Add(menu);
-            priCreateSubMenu4Sketch(menu, null); 
         }
 
         private Button priCreateToolBarBtn(string strHeader, Action<object, RoutedEventArgs> clickHandler = null)
@@ -604,416 +506,28 @@ namespace wpfapp.ui.menu
 
         #endregion
 
-        #region 草图操作
+        #region 草图操作和特征操作
 
-        #region 绘制草图
-
-        /// <summary>
-        /// 草图绘制
-        /// </summary>
-        private void Button_Click_EditSketch(object arg1, RoutedEventArgs arg2)
+        private void Button_Click_CmdType(object sender, RoutedEventArgs arg2)
         {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.EditSketch);
-        }
-
-        /// <summary>
-        /// 退出草图
-        /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="arg2"></param>
-        private void Button_Click_ExitSketch(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.ExitSketch);
-        }
-
-        /// <summary>
-        /// 获取实体
-        /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="arg2"></param>
-        private void Button_Click_GetSketchEntityInfo(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.GetSketchEntityInfo);
-        }
-        
-
-        #endregion
-
-        #region 绘制直线
-
-        /// <summary>
-        /// 绘制直线
-        /// </summary>
-        private void Button_Click_CreateLine(object sender, RoutedEventArgs e)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateLine);
-        }
-
-        /// <summary>
-        /// 绘制中心直线
-        /// </summary>
-        private void Button_Click_CreateCenterLine(object sender, RoutedEventArgs e)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCenterLine);
+            if (sender is MenuItem menuItem && menuItem.Tag is SwCmdType cmdType)
+            {
+                // 特殊命令处理-绘制B样条曲线
+                if (cmdType.CmdModule == SwBuSketchService.MoudleName && cmdType.CmdTypeId == (int)EnumSwSketchCmdType.CreateSpline)
+                {
+                    priExecuteCmdWithInVo(SwBuSketchService.MoudleName, (int)EnumSwSketchCmdType.CreateSpline, CreateSplineInVo.Default());
+                }
+                else
+                {
+                    // 通用命令处理
+                    priExecuteCmdAndConfigInVo(cmdType.CmdModule, cmdType.CmdTypeId);
+                }
+            }
         }
 
         #endregion
 
-        #region 绘制矩形
-
-        /// <summary>
-        /// 绘制边角矩形
-        /// </summary>
-        private void Button_Click_CreateCornerRectangle(object sender, RoutedEventArgs e)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCornerRectangle);
-        }
-
-        /// <summary>
-        /// 绘制中心矩形
-        /// </summary>
-        private void Button_Click_CreateCenterRectangle(object sender, RoutedEventArgs e)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCenterRectangle);
-        }
-
-        /// <summary>
-        /// 绘制3点边角矩形
-        /// </summary>
-        private void Button_Click_Create3PointCornerRectangle(object sender, RoutedEventArgs e)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.Create3PointCornerRectangle);
-        }
-
-        /// <summary>
-        /// 绘制3点中心矩形
-        /// </summary>
-        private void Button_Click_Create3PointCenterRectangle(object sender, RoutedEventArgs e)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.Create3PointCenterRectangle);
-        }
-
-        /// <summary>
-        /// 绘制平行四边形
-        /// </summary>
-        private void Button_Click_CreateParallelogram(object sender, RoutedEventArgs e)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateParallelogram);
-        }
-
-        #endregion
-
-        #region 绘制槽口
-
-        /// <summary>
-        /// 绘制直槽口
-        /// </summary>
-        private void Button_Click_CreateSketchSlot_line(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateSketchSlot_line);
-        }
-
-        /// <summary>
-        /// 绘制中心点直槽口
-        /// </summary>
-        private void Button_Click_CreateSketchSlot_center_line(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateSketchSlot_center_line);
-        }
-
-        /// <summary>
-        /// 绘制三点圆弧槽口
-        /// </summary>
-        private void Button_Click_CreateSketchSlot_3pointarc(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateSketchSlot_3pointarc);
-        }
-
-        /// <summary>
-        /// 绘制中心点圆弧槽口
-        /// </summary>
-        private void Button_Click_CreateSketchSlot_arc(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateSketchSlot_arc);
-        }
-        #endregion
-
-        #region 绘制圆
-
-        /// <summary>
-        /// 绘制圆
-        /// </summary>
-        private void Button_Click_CreateCircle(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCircle);
-        }
-
-        /// <summary>
-        /// 绘制周边圆
-        /// </summary>
-        private void Button_Click_PerimeterCircle(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.PerimeterCircle);
-        }
-
-        #endregion
-
-        #region 绘制圆弧
-
-        /// <summary>
-        /// 绘制圆心/起/终点画弧
-        /// </summary>
-        private void Button_Click_CreateArc(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateArc);
-        }
-
-        /// <summary>
-        /// 绘制切线弧
-        /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="arg2"></param>
-        private void Button_Click_CreateTangentArc(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateTangentArc);
-        }
-
-        /// <summary>
-        /// 绘制3点圆弧
-        /// </summary>
-        private void Button_Click_Create3PointArc(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.Create3PointArc);
-        }
-
-        #endregion
-
-        #region 绘制多边形
-
-        /// <summary>
-        /// 绘制多边形
-        /// </summary>
-        private void Button_Click_CreatePolygon(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreatePolygon);
-        }
-
-        #endregion
-
-        #region 绘制样条曲线
-
-        /// <summary>
-        /// 绘制B样条曲线
-        /// </summary>
-        private void Button_Click_CreateSpline(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteCmdWithInVo(SwBuSketchService.MoudleName, (int)EnumSwSketchCmdType.CreateSpline, CreateSplineInVo.Default());
-        }
-
-        /// <summary>
-        /// 绘制方程式驱动曲线
-        /// </summary>
-        private void Button_Click_CreateEquationSpline(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateEquationSpline);
-        }
-
-        #endregion
-
-        #region 绘制样条曲线
-
-
-        /// <summary>
-        /// 绘制椭圆
-        /// </summary>
-        private void Button_Click_CreateEllipse(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateEllipse);
-        }
-
-        /// <summary>
-        /// 绘制部分椭圆
-        /// </summary>
-        private void Button_Click_CreateEllipticalArc(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateEllipticalArc);
-        }
-
-        /// <summary>
-        /// 绘制抛物线
-        /// </summary>
-        private void Button_Click_CreateParabola(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateParabola);
-        }
-
-        /// <summary>
-        /// 绘制圆锥
-        /// </summary>
-        private void Button_Click_CreateConic(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateConic);
-        }
-
-        #endregion
-
-        #region 绘制文本
-
-        private void Button_Click_InsertSketchText(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.InsertSketchText);
-        }
-
-        #endregion
-
-        #region 绘制点
-
-        /// <summary>
-        /// 绘制点
-        /// </summary>
-        private void Button_Click_CreatePoint(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreatePoint);
-        }
-
-        #endregion
-
-        #region 绘制圆角
-
-        /// <summary>
-        /// 绘制圆角
-        /// </summary>
-        private void Button_Click_CreateFillet(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateFillet);
-        }
-
-        /// <summary>
-        /// 绘制倒角
-        /// </summary>
-        private void Button_Click_CreateChamfer(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateChamfer);
-        }
-
-        #endregion
-
-        #region 裁剪实体
-
-        /// <summary>
-        /// 裁剪实体
-        /// </summary>
-        private void Button_Click_SketchTrim(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.SketchTrim);
-        }
-
-        #endregion
-
-        #region 延伸实体
-
-        /// <summary>
-        /// 裁剪实体
-        /// </summary>
-        private void Button_Click_SketchExtend(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.SketchExtend);
-        }
-
-        #endregion
-
-        #region 偏移实体
-
-        /// <summary>
-        /// 偏移实体
-        /// </summary>
-        private void Button_Click_SketchOffset(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.SketchOffset);
-        }
-
-        #endregion
-
-        #region 镜像实体
-
-        /// <summary>
-        /// 偏移实体
-        /// </summary>
-        private void Button_Click_SketchMirror(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.SketchMirror);
-        }
-
-        #endregion
-
-        #region 复制实体
-
-        /// <summary>
-        /// 移动复制实体
-        /// </summary>
-        private void Button_Click_MoveOrCopy(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.MoveOrCopy);
-        }
-
-
-        /// <summary>
-        /// 旋转复制实体
-        /// </summary>
-        private void Button_Click_RotateOrCopy(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.RotateOrCopy);
-        }
-
-        #endregion
-
-        #region 草图阵列
-
-        /// <summary>
-        /// 线性草图阵列
-        /// </summary>
-        private void Button_Click_CreateLinearSketchStepAndRepeat(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateLinearSketchStepAndRepeat);
-        }
-
-        /// <summary>
-        /// 圆周草图阵列
-        /// </summary>
-        private void Button_Click_CreateCircularSketchStepAndRepeat(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateCircularSketchStepAndRepeat);
-        }
-
-        #endregion
-
-        #region 草图约束关系
-
-        /// <summary>
-        /// 显示隐藏草图约束关系
-        /// </summary>
-        private void Button_Click_ShowSketchRelations(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.ShowSketchRelations);
-        }
-
-        /// <summary>
-        /// 添加草图约束关系
-        /// </summary>
-        private void Button_Click_SketchAddConstraints(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.SketchAddConstraints);
-        }
-
-        /// <summary>
-        /// 标注草图尺寸
-        /// </summary>
-        private void Button_Click_AddDimension(object arg1, RoutedEventArgs arg2)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.AddDimension);
-        }
-
-        #endregion       
+        #region 零件操作
 
         /// <summary>
         /// 绘制圆管
@@ -1037,82 +551,6 @@ namespace wpfapp.ui.menu
         private void Button_Click_CreateLadder(object sender, RoutedEventArgs e)
         {
             priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.CreateLadder);
-        }
-
-        /// <summary>
-        /// 完全草图定义
-        /// </summary>
-        private void Button_Click_FullyDefineSketch(object sender, RoutedEventArgs e)
-        {
-            priExecuteSketchCmdAndConfigInVo(EnumSwSketchCmdType.FullyDefineSketch);
-        }
-
-        #endregion
-
-        #region 特征操作
-
-        /// <summary>
-        /// 薄壁拉伸
-        /// </summary>
-        private void Button_Click_FeatureExtrusionThin(object sender, RoutedEventArgs e)
-        {
-            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureExtrusionThin);
-        }
-
-        /// <summary>
-        /// 旋转基体
-        /// </summary>
-        private void Button_Click_FeatureRevolve(object sender, RoutedEventArgs e)
-        {
-            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureRevolve);
-        }
-
-        /// <summary>
-        /// 扫描特征
-        /// </summary>
-        private void Button_Click_FeatureSweep(object sender, RoutedEventArgs e)
-        {
-            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureSweep);
-        }
-
-        /// <summary>
-        /// 放样特征
-        /// </summary>
-        private void Button_Click_FeatureLoft(object sender, RoutedEventArgs e)
-        {
-            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureLoft);
-        }
-
-        /// <summary>
-        /// 拉伸切除
-        /// </summary>
-        private void Button_Click_FeatureExtrusionCut(object sender, RoutedEventArgs e)
-        {
-            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureExtrusionCut);
-        }
-
-        /// <summary>
-        /// 旋转切除
-        /// </summary>
-        private void Button_Click_FeatureRevolveCut(object sender, RoutedEventArgs e)
-        {
-            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureRevolveCut);
-        }
-
-        /// <summary>
-        /// 扫描切除
-        /// </summary>
-        private void Button_Click_FeatureSweepCut(object sender, RoutedEventArgs e)
-        {
-            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureSweepCut);
-        }
-
-        /// <summary>
-        /// 放样切除
-        /// </summary>
-        private void Button_Click_FeatureLoftCut(object sender, RoutedEventArgs e)
-        {
-            priExecuteFeatureCmdAndConfigInVo(EnumSwFeatureCmdType.FeatureLoftCut);
         }
 
         #endregion
