@@ -32,7 +32,7 @@ namespace wpfapp.bu.sketch.action.select
             SelectByRayInVo oInVo = this.actionInVo<SelectByRayInVo>();
 
             // 编辑图形
-            bool bOk = curDocExt.SelectByRay(oInVo.WorldX / 1000, oInVo.WorldY / 1000, oInVo.WorldZ / 1000, oInVo.RayVecX, oInVo.RayVecY, oInVo.RayVecZ, oInVo.RayRadius / 1000, oInVo.TypeWanted, oInVo.Append, oInVo.Mark, oInVo.Option);
+            bool bOk = curDocExt.SelectByRay(oInVo.WorldX / 1000, oInVo.WorldY / 1000, oInVo.WorldZ / 1000, oInVo.RayVecX, oInVo.RayVecY, oInVo.RayVecZ, oInVo.RayRadius / 1000, (int)oInVo.TypeWanted, oInVo.Append, oInVo.Mark, oInVo.Option);
 
             return RespVoLogExt.genOk("选择对象" + (bOk ? "成功" : "失败"));
         }

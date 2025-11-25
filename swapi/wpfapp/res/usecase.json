@@ -1633,5 +1633,522 @@
         ]
       }
     ]
+  },
+  {
+    "Id": "789912bc-c19e-486b-824f-9ec54c243a81",
+    "Name": "创建面圆角-不对称",
+    "Desc": "",
+    "Group": "圆角",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 50.0,\r\n  \"Y2\": 50.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 100.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建圆角",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 0.0,\r\n  \"WorldZ\": 3000.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": 0.0,\r\n  \"RayVecZ\": -1.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 2,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 3000.0,\r\n  \"WorldZ\": 0.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": true,\r\n  \"Mark\": 4,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "SimpleFillet",
+            "CmdInVoJson": "{\r\n  \"FilletType\": 2,\r\n  \"AsymmetricFillet\": true,\r\n  \"DefaultRadius\": 10.0,\r\n  \"DefaultDistance\": 20.0,\r\n  \"ConicTypeForCrossSectionProfile\": 0,\r\n  \"FeatrueName\": \"圆角特征1\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "03adb7c8-32ae-4aeb-a200-c022daf73240",
+    "Name": "创建面圆角-对称",
+    "Desc": "",
+    "Group": "圆角",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 50.0,\r\n  \"Y2\": 50.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 100.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建圆角",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 0.0,\r\n  \"WorldZ\": 3000.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": 0.0,\r\n  \"RayVecZ\": -1.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 2,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 3000.0,\r\n  \"WorldZ\": 0.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": true,\r\n  \"Mark\": 4,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "SimpleFillet",
+            "CmdInVoJson": "{\r\n  \"FilletType\": 2,\r\n  \"AsymmetricFillet\": false,\r\n  \"DefaultRadius\": 10.0,\r\n  \"DefaultDistance\": 20.0,\r\n  \"ConicTypeForCrossSectionProfile\": 0,\r\n  \"FeatrueName\": \"圆角特征1\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "8317306c-5dc6-49da-8c4b-9d13620a3420",
+    "Name": "创建固定圆角-选中边-不对称",
+    "Desc": "",
+    "Group": "圆角",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 50.0,\r\n  \"Y2\": 50.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 100.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建圆角",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 3000.0,\r\n  \"WorldZ\": 100.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 1,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "SimpleFillet",
+            "CmdInVoJson": "{\r\n  \"FilletType\": 0,\r\n  \"AsymmetricFillet\": true,\r\n  \"DefaultRadius\": 30.0,\r\n  \"DefaultDistance\": 50.0,\r\n  \"ConicTypeForCrossSectionProfile\": 0,\r\n  \"FeatrueName\": \"圆角特征1\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "b9800ffc-f52e-4fda-84cb-6a288868a383",
+    "Name": "创建固定圆角-选中边-对称",
+    "Desc": "",
+    "Group": "圆角",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 50.0,\r\n  \"Y2\": 50.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 100.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建圆角",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 3000.0,\r\n  \"WorldZ\": 100.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 1,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "SimpleFillet",
+            "CmdInVoJson": "{\r\n  \"FilletType\": 0,\r\n  \"AsymmetricFillet\": false,\r\n  \"DefaultRadius\": 40.0,\r\n  \"DefaultDistance\": 80.0,\r\n  \"ConicTypeForCrossSectionProfile\": 0,\r\n  \"FeatrueName\": \"圆角特征1\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "d39ad600-dbc3-4f02-9821-01ee0b904211",
+    "Name": "创建固定圆角-选中面-对称",
+    "Desc": "",
+    "Group": "圆角",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 50.0,\r\n  \"Y2\": 50.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 100.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建圆角",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 3000.0,\r\n  \"WorldZ\": 50.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "SimpleFillet",
+            "CmdInVoJson": "{\r\n  \"FilletType\": 0,\r\n  \"AsymmetricFillet\": false,\r\n  \"DefaultRadius\": 40.0,\r\n  \"DefaultDistance\": 80.0,\r\n  \"ConicTypeForCrossSectionProfile\": 0,\r\n  \"FeatrueName\": \"圆角特征1\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "1f6c5190-3bdb-4217-9872-1f0afa476449",
+    "Name": "创建固定圆角-选中特征-对称",
+    "Desc": "",
+    "Group": "圆角",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 50.0,\r\n  \"Y2\": 50.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 100.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建圆角",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "SelectFeatureByPositionReverse",
+            "CmdInVoJson": "{\r\n  \"Num\": 0,\r\n  \"Append\": false,\r\n  \"Mark\": 1\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "SimpleFillet",
+            "CmdInVoJson": "{\r\n  \"FilletType\": 0,\r\n  \"AsymmetricFillet\": false,\r\n  \"DefaultRadius\": 40.0,\r\n  \"DefaultDistance\": 80.0,\r\n  \"ConicTypeForCrossSectionProfile\": 0,\r\n  \"FeatrueName\": \"圆角特征1\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "b3838fef-7ef8-4628-b212-dd2b43a78f18",
+    "Name": "创建完整圆角-对称",
+    "Desc": "",
+    "Group": "圆角",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 50.0,\r\n  \"Y2\": 50.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 100.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建圆角",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": -3000.0,\r\n  \"WorldY\": 0.0,\r\n  \"WorldZ\": 50.0,\r\n  \"RayVecX\": 1.0,\r\n  \"RayVecY\": 0.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 2,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 0.0,\r\n  \"WorldZ\": 3000.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": 0.0,\r\n  \"RayVecZ\": -1.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": true,\r\n  \"Mark\": 512,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 3000.0,\r\n  \"WorldY\": 0.0,\r\n  \"WorldZ\": 50.0,\r\n  \"RayVecX\": -1.0,\r\n  \"RayVecY\": 0.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": true,\r\n  \"Mark\": 4,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "SimpleFillet",
+            "CmdInVoJson": "{\r\n  \"FilletType\": 2,\r\n  \"AsymmetricFillet\": false,\r\n  \"DefaultRadius\": 10.0,\r\n  \"DefaultDistance\": 20.0,\r\n  \"ConicTypeForCrossSectionProfile\": 0,\r\n  \"FeatrueName\": \"圆角特征1\"\r\n}"
+          }
+        ]
+      }
+    ]
   }
 ]

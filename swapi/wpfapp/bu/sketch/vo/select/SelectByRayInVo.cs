@@ -80,7 +80,7 @@ namespace wpfapp.bu.sketch.vo.select
         [DisplayName("选择对象类型")]
         [Category("选择对象")]
         [Description("选择对象类型")]
-        public int TypeWanted { get; set; } = 1;
+        public swSelectType_ext TypeWanted { get; set; } = swSelectType_ext.swSelEDGES;
 
         /// <summary>
         /// 追加选择

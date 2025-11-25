@@ -125,11 +125,16 @@
     <Compile Include="bu\cmd\cmdtype\SwCmdTypeManager.cs" />
     <Compile Include="bu\cmd\SwBuCmdService.cs" />
     <Compile Include="bu\feature\action\feature\curve\Insert3DSplineCurveAction.cs" />
+    <Compile Include="bu\feature\action\feature\fillet\SimpleFilletAction.cs" />
     <Compile Include="bu\feature\action\feature\hole\HoleWizardAction.cs" />
     <Compile Include="bu\feature\action\feature\refplane\InsertRefPlaneAction.cs" />
+    <Compile Include="bu\feature\action\feature\select\SelectFeatureByPositionReverseAction.cs" />
     <Compile Include="bu\feature\cmd\EnumSwFeatureCmdType.cs" />
     <Compile Include="bu\feature\SwBuFeatureService.cs" />
     <Compile Include="bu\feature\vo\feature\consts\swRefPlaneReferenceConstraints_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\fillet\SimpleFilletInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\fillet\swFeatureFilletProfileType_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\fillet\swSimpleFilletType_ext.cs" />
     <Compile Include="bu\feature\vo\feature\hole\HoleWizardBaseInVo.cs" />
     <Compile Include="bu\feature\vo\feature\hole\swWzdGeneralHoleTypes_ext.cs" />
     <Compile Include="bu\feature\vo\feature\hole\swWzdHoleCosmeticThreadTypes_ext.cs" />
@@ -165,6 +170,7 @@
     <Compile Include="bu\sketch\vo\select\ClearSelectionInVo.cs" />
     <Compile Include="bu\sketch\vo\select\SelectByIDInVo.cs" />
     <Compile Include="bu\sketch\vo\select\SelectByRayInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\select\SelectFeatureByPositionReverseInVo.cs" />
     <Compile Include="bu\sketch\vo\select\swSelectOption_ext.cs" />
     <Compile Include="bu\sketch\vo\select\swSelectType_ext.cs" />
     <Compile Include="bu\sketch\vo\sketch\InsertSketchInVo.cs" />
