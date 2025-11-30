@@ -2150,5 +2150,76 @@
         ]
       }
     ]
+  },
+  {
+    "Id": "0306e360-dd43-422a-b44c-8e961f998626",
+    "Name": "创建倒角",
+    "Desc": "",
+    "Group": "圆角",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建长方体",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"前视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCenterRectangle",
+            "CmdInVoJson": "{\r\n  \"X1\": 0.0,\r\n  \"Y1\": 0.0,\r\n  \"Z1\": 0.0,\r\n  \"X2\": 50.0,\r\n  \"Y2\": 50.0,\r\n  \"Z2\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 100.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"长方体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "创建倒角",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByRay",
+            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 100.0,\r\n  \"WorldZ\": 100.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 1,\r\n  \"Append\": false,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "InsertFeatureChamfer",
+            "CmdInVoJson": "{\r\n  \"ChamferType\": 1,\r\n  \"Width\": 20.0,\r\n  \"Angle\": 45.0,\r\n  \"OtherDist\": 0.0,\r\n  \"VertexChamDist1\": 0.0,\r\n  \"VertexChamDist2\": 0.0,\r\n  \"VertexChamDist3\": 0.0,\r\n  \"FlipDirection\": false,\r\n  \"KeepFeature\": false,\r\n  \"TangentPropagation\": true,\r\n  \"PropagateFeatToParts\": false,\r\n  \"FeatrueName\": \"倒角特征1\"\r\n}"
+          }
+        ]
+      }
+    ]
   }
 ]
