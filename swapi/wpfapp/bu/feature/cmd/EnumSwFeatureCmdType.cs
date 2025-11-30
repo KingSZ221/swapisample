@@ -135,6 +135,10 @@ namespace wpfapp.bu.feature.cmd
 
         [SwCmdType("创建圆角", "创建圆角", "圆角", typeof(SimpleFilletInVo), typeof(SimpleFilletAction))]
         [Description("创建圆角")]
-        SimpleFillet
+        SimpleFillet,
+
+        [SwCmdType("创建倒角", "创建倒角", "圆角", typeof(InsertFeatureChamferInVo), typeof(InsertFeatureChamferAction))]
+        [Description("创建圆角")]
+        InsertFeatureChamfer
     }
 }
