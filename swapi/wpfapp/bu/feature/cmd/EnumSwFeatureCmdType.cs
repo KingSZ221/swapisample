@@ -9,6 +9,7 @@ using wpfapp.bu.feature.action.feature.curve;
 using wpfapp.bu.feature.action.feature.extrusion;
 using wpfapp.bu.feature.action.feature.fillet;
 using wpfapp.bu.feature.action.feature.loft;
+using wpfapp.bu.feature.action.feature.mirror;
 using wpfapp.bu.feature.action.feature.refplane;
 using wpfapp.bu.feature.action.feature.revolve;
 using wpfapp.bu.feature.action.feature.select;
@@ -18,6 +19,7 @@ using wpfapp.bu.feature.vo.feature.extrusion;
 using wpfapp.bu.feature.vo.feature.fillet;
 using wpfapp.bu.feature.vo.feature.hole;
 using wpfapp.bu.feature.vo.feature.loft;
+using wpfapp.bu.feature.vo.feature.mirror;
 using wpfapp.bu.feature.vo.feature.refplane;
 using wpfapp.bu.feature.vo.feature.revolve;
 using wpfapp.bu.feature.vo.feature.select;
@@ -133,12 +135,16 @@ namespace wpfapp.bu.feature.cmd
         [Description("创建直螺纹孔")]
         WzdTap,
 
-        [SwCmdType("创建圆角", "创建圆角", "圆角", typeof(SimpleFilletInVo), typeof(SimpleFilletAction))]
+        [SwCmdType("创建圆角特征", "创建圆角特征", "圆角", typeof(SimpleFilletInVo), typeof(SimpleFilletAction))]
         [Description("创建圆角")]
         SimpleFillet,
 
-        [SwCmdType("创建倒角", "创建倒角", "圆角", typeof(InsertFeatureChamferInVo), typeof(InsertFeatureChamferAction))]
+        [SwCmdType("创建倒角特征", "创建倒角特征", "圆角", typeof(InsertFeatureChamferInVo), typeof(InsertFeatureChamferAction))]
         [Description("创建圆角")]
-        InsertFeatureChamfer
+        InsertFeatureChamfer,
+
+        [SwCmdType("创建镜像特征", "创建镜像特征", "圆角", typeof(InsertMirrorFeatureInVo), typeof(InsertMirrorFeatureAction))]
+        [Description("创建镜像特征")]
+        InsertMirrorFeature
     }
 }

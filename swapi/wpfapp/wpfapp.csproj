@@ -128,6 +128,7 @@
     <Compile Include="bu\feature\action\feature\fillet\InsertFeatureChamferAction.cs" />
     <Compile Include="bu\feature\action\feature\fillet\SimpleFilletAction.cs" />
     <Compile Include="bu\feature\action\feature\hole\HoleWizardAction.cs" />
+    <Compile Include="bu\feature\action\feature\mirror\InsertMirrorFeatureAction.cs" />
     <Compile Include="bu\feature\action\feature\refplane\InsertRefPlaneAction.cs" />
     <Compile Include="bu\feature\action\feature\select\SelectFeatureByPositionReverseAction.cs" />
     <Compile Include="bu\feature\cmd\EnumSwFeatureCmdType.cs" />
@@ -152,6 +153,8 @@
     <Compile Include="bu\feature\vo\feature\hole\WzdHoleInVo.cs" />
     <Compile Include="bu\feature\vo\feature\hole\WzdPipeTapInVo.cs" />
     <Compile Include="bu\feature\vo\feature\hole\WzdTapInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\mirror\InsertMirrorFeatureInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\mirror\swFeatureScope_ext.cs" />
     <Compile Include="bu\feature\vo\feature\refplane\InsertRefPlaneInVo.cs" />
     <Compile Include="bu\file\action\CloseDocAction.cs" />
     <Compile Include="bu\file\action\ExportDocAction.cs" />
