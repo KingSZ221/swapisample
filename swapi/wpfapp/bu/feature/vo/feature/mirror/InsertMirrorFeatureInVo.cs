@@ -67,7 +67,7 @@ namespace wpfapp.bu.feature.vo.feature.mirror
         [Description("设置拉伸特征名称")]
         [Category("拉伸特征名称")]
         [PropertyOrder(6)]
-        public string FeatrueName { get; set; } = "圆角特征1";
+        public string FeatrueName { get; set; } = "镜像特征1";
 
         #endregion
     }
