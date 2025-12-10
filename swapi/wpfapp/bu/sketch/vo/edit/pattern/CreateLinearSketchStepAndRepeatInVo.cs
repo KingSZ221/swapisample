@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpfapp.bu.sketch.vo.edit.repeat
+namespace wpfapp.bu.sketch.vo.edit.pattern
 {
     /// <summary>
     /// 线性草图阵列

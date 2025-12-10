@@ -10,6 +10,7 @@ using wpfapp.bu.feature.action.feature.extrusion;
 using wpfapp.bu.feature.action.feature.fillet;
 using wpfapp.bu.feature.action.feature.loft;
 using wpfapp.bu.feature.action.feature.mirror;
+using wpfapp.bu.feature.action.feature.pattern;
 using wpfapp.bu.feature.action.feature.refplane;
 using wpfapp.bu.feature.action.feature.revolve;
 using wpfapp.bu.feature.action.feature.select;
@@ -20,6 +21,7 @@ using wpfapp.bu.feature.vo.feature.fillet;
 using wpfapp.bu.feature.vo.feature.hole;
 using wpfapp.bu.feature.vo.feature.loft;
 using wpfapp.bu.feature.vo.feature.mirror;
+using wpfapp.bu.feature.vo.feature.pattern;
 using wpfapp.bu.feature.vo.feature.refplane;
 using wpfapp.bu.feature.vo.feature.revolve;
 using wpfapp.bu.feature.vo.feature.select;
@@ -145,6 +147,18 @@ namespace wpfapp.bu.feature.cmd
 
         [SwCmdType("创建镜像特征", "创建镜像特征", "圆角", typeof(InsertMirrorFeatureInVo), typeof(InsertMirrorFeatureAction))]
         [Description("创建镜像特征")]
-        InsertMirrorFeature
+        InsertMirrorFeature,
+
+        [SwCmdType("创建线性阵列特征", "创建线性阵列特征", "阵列", typeof(CreateLinearPatternFeatureInVo), typeof(CreateLinearPatternFeatureAction))]
+        [Description("创建线性阵列特征")]
+        CreateLinearPatternFeature,
+
+        [SwCmdType("创建圆周阵列特征", "创建圆周阵列特征", "阵列", typeof(CreateCircularPatternFeatureInVo), typeof(CreateCircularPatternFeatureAction))]
+        [Description("创建圆周阵列特征")]
+        CreateCircularPatternFeature,
+
+        [SwCmdType("创建草图阵列特征", "创建草图阵列特征", "阵列", typeof(CreateSketchPatternFeatureInVo), typeof(CreateSketchPatternFeatureAction))]
+        [Description("创建草图阵列特征")]
+        CreateSketchPatternFeature
     }
 }

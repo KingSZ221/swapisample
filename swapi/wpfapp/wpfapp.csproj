@@ -130,6 +130,9 @@
     <Compile Include="bu\feature\action\feature\hole\HoleWizardAction.cs" />
     <Compile Include="bu\feature\action\feature\mirror\InsertMirrorFeatureAction.cs" />
     <Compile Include="bu\feature\action\feature\refplane\InsertRefPlaneAction.cs" />
+    <Compile Include="bu\feature\action\feature\pattern\CreateCircularPatternFeatureAction.cs" />
+    <Compile Include="bu\feature\action\feature\pattern\CreateLinearPatternFeatureAction.cs" />
+    <Compile Include="bu\feature\action\feature\pattern\CreateSketchPatternFeatureAction.cs" />
     <Compile Include="bu\feature\action\feature\select\SelectFeatureByPositionReverseAction.cs" />
     <Compile Include="bu\feature\cmd\EnumSwFeatureCmdType.cs" />
     <Compile Include="bu\feature\SwBuFeatureService.cs" />
@@ -155,7 +158,11 @@
     <Compile Include="bu\feature\vo\feature\hole\WzdTapInVo.cs" />
     <Compile Include="bu\feature\vo\feature\mirror\InsertMirrorFeatureInVo.cs" />
     <Compile Include="bu\feature\vo\feature\mirror\swFeatureScope_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\pattern\swPatternEndCondition_ext.cs" />
     <Compile Include="bu\feature\vo\feature\refplane\InsertRefPlaneInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\pattern\CreateCircularPatternFeatureInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\pattern\CreateLinearPatternFeatureInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\pattern\CreateSketchPatternFeatureInVo.cs" />
     <Compile Include="bu\file\action\CloseDocAction.cs" />
     <Compile Include="bu\file\action\ExportDocAction.cs" />
     <Compile Include="bu\file\action\NewDocAction.cs" />
@@ -214,8 +221,8 @@
     <Compile Include="bu\sketch\action\edit\relation\AddDimensionAction.cs" />
     <Compile Include="bu\sketch\action\edit\relation\ShowSketchRelationsAction.cs" />
     <Compile Include="bu\sketch\action\edit\relation\SketchAddConstraintsAction.cs" />
-    <Compile Include="bu\sketch\action\edit\repeat\CreateCircularSketchStepAndRepeatAction.cs" />
-    <Compile Include="bu\sketch\action\edit\repeat\CreateLinearSketchStepAndRepeatAction.cs" />
+    <Compile Include="bu\sketch\action\edit\pattern\CreateCircularSketchStepAndRepeatAction.cs" />
+    <Compile Include="bu\sketch\action\edit\pattern\CreateLinearSketchStepAndRepeatAction.cs" />
     <Compile Include="bu\sketch\action\edit\offset\SketchOffsetAction.cs" />
     <Compile Include="bu\sketch\action\edit\trim\SketchTrimAction.cs" />
     <Compile Include="bu\sketch\action\entity\GetSketchEntityInfoAction.cs" />
@@ -267,8 +274,8 @@
     <Compile Include="bu\sketch\vo\edit\relation\AddDimensionInVo.cs" />
     <Compile Include="bu\sketch\vo\edit\relation\ShowSketchRelationsInVo.cs" />
     <Compile Include="bu\sketch\vo\edit\relation\SketchAddConstraintsInVo.cs" />
-    <Compile Include="bu\sketch\vo\edit\repeat\CreateCircularSketchStepAndRepeatInVo.cs" />
-    <Compile Include="bu\sketch\vo\edit\repeat\CreateLinearSketchStepAndRepeatInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\pattern\CreateCircularSketchStepAndRepeatInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\pattern\CreateLinearSketchStepAndRepeatInVo.cs" />
     <Compile Include="bu\sketch\vo\edit\offset\SketchOffsetInVo.cs" />
     <Compile Include="bu\sketch\vo\edit\trim\SketchTrimInVo.cs" />
     <Compile Include="bu\sketch\vo\entity\EntitySelectId.cs" />

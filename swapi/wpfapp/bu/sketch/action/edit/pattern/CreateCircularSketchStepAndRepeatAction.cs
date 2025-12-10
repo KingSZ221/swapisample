@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpfapp.bu.log;
-using wpfapp.bu.sketch.vo.edit.repeat;
+using wpfapp.bu.sketch.vo.edit.pattern;
 using wpfapp.basic.io;
 
-namespace wpfapp.bu.sketch.action.edit.repeat
+namespace wpfapp.bu.sketch.action.edit.pattern
 {
     /// <summary>
     /// 圆周草图阵列
