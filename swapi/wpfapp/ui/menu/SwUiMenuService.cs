@@ -610,7 +610,6 @@ namespace wpfapp.ui.menu
                 if (!SwUiPropService.getInstance().showPropObjDlg(cmdType.CmdTypeName, "请输入命令参数:", cmdInVo))
                 {
                     return RespVoLogExt.genOk($"命令取消, {cmdType.CmdTypeName}");
-
                 }
             }
 
