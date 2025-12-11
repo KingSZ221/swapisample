@@ -21,7 +21,7 @@ namespace wpfapp.bu.feature.vo.feature.pattern
         /// <summary>
         /// 方向1等间距
         /// </summary>
-        [DisplayName("等间距")]
+        [DisplayName("方向1等间距")]
         [Description("true:等间距，false:实例间距")]
         [PropertyOrder(1)]
         public bool EqualSpacing { get; set; } = true;
@@ -53,7 +53,7 @@ namespace wpfapp.bu.feature.vo.feature.pattern
         /// <summary>
         /// 方向2等间距
         /// </summary>
-        [DisplayName("等间距")]
+        [DisplayName("方向2等间距")]
         [Description("true:等间距，false:实例间距")]
         [PropertyOrder(5)]
         public bool EqualSpacing2 { get; set; } = true;

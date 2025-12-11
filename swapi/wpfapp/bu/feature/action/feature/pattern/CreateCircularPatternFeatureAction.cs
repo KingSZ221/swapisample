@@ -46,10 +46,10 @@ namespace wpfapp.bu.feature.action.feature.pattern
 
             oFeatureData.EqualSpacing = oInVo.EqualSpacing;
             oFeatureData.ReverseDirection = oInVo.ReverseDirection;
-            oFeatureData.Spacing = oInVo.Spacing / 1000;
+            oFeatureData.Spacing = oInVo.Spacing / 180 * Math.PI;
             oFeatureData.TotalInstances = oInVo.TotalInstances;
             oFeatureData.EqualSpacing2 = oInVo.EqualSpacing2;
-            oFeatureData.Spacing2 = oInVo.Spacing2 / 1000;
+            oFeatureData.Spacing2 = oInVo.Spacing2 / 180 * Math.PI;
             oFeatureData.TotalInstances2 = oInVo.TotalInstances2;
             oFeatureData.Direction2 = oInVo.Direction2;
             oFeatureData.GeometryPattern = oInVo.GeometryPattern;
