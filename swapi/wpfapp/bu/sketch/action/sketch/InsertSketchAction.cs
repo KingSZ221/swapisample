@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.sketch.vo.sketch;
 using wpfapp.basic.io;
+using wpfapp.bu.sketch.utils;
 
 namespace wpfapp.bu.sketch.action.sketch
 {
@@ -44,6 +45,17 @@ namespace wpfapp.bu.sketch.action.sketch
             // 获取绘制参数
             InsertSketchInVo oInVo = this.actionInVo<InsertSketchInVo>();
             skeMgr.InsertSketch(oInVo.UpdateEditRebuild);
+
+            // 设置草图名称
+            if (!string.IsNullOrEmpty(oInVo.SketchName))
+            {
+                Sketch activeSketch = skeMgr.ActiveSketch;
+                Feature feature = SketchManagerUtils.getFeatureBySketch(swModelDoc, activeSketch);
+                if (feature != null)
+                {
+                    feature.Name = oInVo.SketchName;
+                }
+            }
 
             return RespVoLogExt.genOk("插入草图完成");
         }

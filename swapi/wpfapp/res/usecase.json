@@ -2946,10 +2946,10 @@
     ]
   },
   {
-    "Id": "b5f2883b-ba35-427f-8de9-f99dcf9f13e9",
-    "Name": "创建草图阵列_1",
+    "Id": "6c984b9f-b015-490d-98f4-64c126e0586f",
+    "Name": "创建扶梯",
     "Desc": "",
-    "Group": "阵列",
+    "Group": "零件",
     "Steps": [
       {
         "SubSteps": [],
@@ -2964,7 +2964,69 @@
       },
       {
         "SubSteps": [],
-        "Name": "创建圆柱体",
+        "Name": "绘制面管1",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"右视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 750.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 50.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 1000.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"面管1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制面管2",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"右视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": -750.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 50.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 1000.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"面管2\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制立柱1",
         "CmdInfos": [
           {
             "CmdModule": "sketch",
@@ -2979,139 +3041,882 @@
           {
             "CmdModule": "sketch",
             "CmdTypeIdStr": "InsertSketch",
-            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
           },
           {
             "CmdModule": "sketch",
             "CmdTypeIdStr": "CreateCircleByRadius",
-            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 100.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+            "CmdInVoJson": "{\r\n  \"XC\": -500.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 40.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
           },
           {
             "CmdModule": "feature",
             "CmdTypeIdStr": "FeatureExtrusion",
-            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 100.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": true,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"圆柱体1\"\r\n}"
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 750.0,\r\n  \"D2\": 750.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"立柱1\"\r\n}"
           }
         ]
       },
       {
         "SubSteps": [],
-        "Name": "创建待阵列特征",
+        "Name": "绘制立柱2",
         "CmdInfos": [
           {
             "CmdModule": "sketch",
             "CmdTypeIdStr": "ClearSelection",
             "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
-          },
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "SelectByRay",
-            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 300.0,\r\n  \"WorldZ\": 0.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
-          },
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "InsertSketch",
-            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
-          },
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "CreateCircleByRadius",
-            "CmdInVoJson": "{\r\n  \"XC\": -30.0,\r\n  \"YC\": -80.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 10.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
-          },
-          {
-            "CmdModule": "feature",
-            "CmdTypeIdStr": "FeatureExtrusion",
-            "CmdInVoJson": "{\r\n  \"Sd\": true,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 50.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": true,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": true,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"拉伸体1\"\r\n}"
-          }
-        ]
-      },
-      {
-        "SubSteps": [],
-        "Name": "创建待阵列草图",
-        "CmdInfos": [
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "ClearSelection",
-            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
-          },
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "SelectByRay",
-            "CmdInVoJson": "{\r\n  \"WorldX\": 0.0,\r\n  \"WorldY\": 300.0,\r\n  \"WorldZ\": 0.0,\r\n  \"RayVecX\": 0.0,\r\n  \"RayVecY\": -1.0,\r\n  \"RayVecZ\": 0.0,\r\n  \"RayRadius\": 1.0,\r\n  \"TypeWanted\": 2,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
-          },
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "InsertSketch",
-            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
-          },
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "CreatePoint",
-            "CmdInVoJson": "{\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
-          },
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "CreatePoint",
-            "CmdInVoJson": "{\r\n  \"X\": -20.0,\r\n  \"Y\": -50.0,\r\n  \"Z\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
-          },
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "CreatePoint",
-            "CmdInVoJson": "{\r\n  \"X\": 30.0,\r\n  \"Y\": 70.0,\r\n  \"Z\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
-          },
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "CreatePoint",
-            "CmdInVoJson": "{\r\n  \"X\": 70.0,\r\n  \"Y\": -20.0,\r\n  \"Z\": 0.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
-          },
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "InsertSketch",
-            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true\r\n}"
-          }
-        ]
-      },
-      {
-        "SubSteps": [],
-        "Name": "创建阵列",
-        "CmdInfos": [
-          {
-            "CmdModule": "sketch",
-            "CmdTypeIdStr": "ClearSelection",
-            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
-          },
-          {
-            "CmdModule": "feature",
-            "CmdTypeIdStr": "SelectFeatureByPositionReverse",
-            "CmdInVoJson": "{\r\n  \"Num\": 0,\r\n  \"Append\": false,\r\n  \"Mark\": 4\r\n}"
           },
           {
             "CmdModule": "sketch",
             "CmdTypeIdStr": "SelectByID",
-            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 0.0,\r\n  \"Y\": 100.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 64,\r\n  \"Option\": 0\r\n}"
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 500.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 40.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 750.0,\r\n  \"D2\": 750.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"立柱2\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制横杆1",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"右视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 500.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 25.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"横杆1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制横杆2",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"右视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": -500.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 25.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"横杆2\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆1",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": -400.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆2",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": -240.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆2\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆3",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": -80.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆3\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆4",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 80.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆4\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆5",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 240.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆5\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆6",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 400.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆6\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "调整视图",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ShowNamedView",
+            "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           }
         ]
       }
     ]
   },
   {
-    "Id": "e4a7293b-68fa-4138-9692-aebe81d668c7",
-    "Name": "创建草图阵列_2",
+    "Id": "73709602-a42f-44a6-acfd-19987255985e",
+    "Name": "创建扶梯_成形到体",
     "Desc": "",
-    "Group": "阵列",
+    "Group": "零件",
     "Steps": [
       {
         "SubSteps": [],
-        "Name": "创建阵列",
+        "Name": "创建零件",
         "CmdInfos": [
           {
-            "CmdModule": "feature",
-            "CmdTypeIdStr": "SelectFeatureByPositionReverse",
-            "CmdInVoJson": "{\r\n  \"Num\": 1,\r\n  \"Append\": false,\r\n  \"Mark\": 4\r\n}"
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制面管1",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
           },
           {
             "CmdModule": "sketch",
             "CmdTypeIdStr": "SelectByID",
-            "CmdInVoJson": "{\r\n  \"Name\": \"\",\r\n  \"Type\": \"SKETCH\",\r\n  \"X\": 0.0,\r\n  \"Y\": 100.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 64,\r\n  \"Option\": 0\r\n}"
+            "CmdInVoJson": "{\r\n  \"Name\": \"右视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 750.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 50.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 1000.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"面管1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制面管2",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"右视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": -750.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 50.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 1000.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"面管2\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制立柱1",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": -500.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 40.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"面管1\",\r\n  \"Type\": \"SOLIDBODY\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"面管2\",\r\n  \"Type\": \"SOLIDBODY\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 2,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 7,\r\n  \"T2\": 7,\r\n  \"D1\": 750.0,\r\n  \"D2\": 750.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"立柱1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制立柱2",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 500.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 40.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"面管1\",\r\n  \"Type\": \"SOLIDBODY\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"面管2\",\r\n  \"Type\": \"SOLIDBODY\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 2,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 7,\r\n  \"T2\": 7,\r\n  \"D1\": 750.0,\r\n  \"D2\": 750.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"立柱2\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制横杆1",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"右视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 500.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 25.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"立柱2\",\r\n  \"Type\": \"SOLIDBODY\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"立柱1\",\r\n  \"Type\": \"SOLIDBODY\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 2,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 7,\r\n  \"T2\": 7,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"横杆1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制横杆2",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"右视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": -500.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 25.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"立柱2\",\r\n  \"Type\": \"SOLIDBODY\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"立柱1\",\r\n  \"Type\": \"SOLIDBODY\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 2,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 7,\r\n  \"T2\": 7,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"横杆2\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆1",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": -400.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆2",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": -240.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆2\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆3",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": -80.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆3\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆4",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 80.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆4\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆5",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 240.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆5\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制竖杆6",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 400.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 20.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 500.0,\r\n  \"D2\": 500.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"竖杆6\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "调整视图",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ShowNamedView",
+            "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "84b5fe23-30fe-4133-ae38-6060dc77fbff",
+    "Name": "创建扶梯测试",
+    "Desc": "",
+    "Group": "零件",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建零件",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 0\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制面管1",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"右视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": 750.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 50.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 1000.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"面管1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制面管2",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"右视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": 0.0,\r\n  \"YC\": -750.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 50.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 0,\r\n  \"T2\": 0,\r\n  \"D1\": 1000.0,\r\n  \"D2\": 1000.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"面管2\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "绘制立柱1",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ClearSelection",
+            "CmdInVoJson": "{\r\n  \"All\": true\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"上视基准面\",\r\n  \"Type\": \"PLANE\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": false,\r\n  \"Mark\": 0,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "InsertSketch",
+            "CmdInVoJson": "{\r\n  \"UpdateEditRebuild\": true,\r\n  \"SketchName\": \"\"\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "CreateCircleByRadius",
+            "CmdInVoJson": "{\r\n  \"XC\": -500.0,\r\n  \"YC\": 0.0,\r\n  \"ZC\": 0.0,\r\n  \"Radius\": 40.0,\r\n  \"SketchName\": \"\",\r\n  \"ExitEdit\": false\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"面管1\",\r\n  \"Type\": \"SOLIDBODY\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 1,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "SelectByID",
+            "CmdInVoJson": "{\r\n  \"Name\": \"面管2\",\r\n  \"Type\": \"SOLIDBODY\",\r\n  \"X\": 0.0,\r\n  \"Y\": 0.0,\r\n  \"Z\": 0.0,\r\n  \"Append\": true,\r\n  \"Mark\": 2,\r\n  \"Option\": 0\r\n}"
+          },
+          {
+            "CmdModule": "feature",
+            "CmdTypeIdStr": "FeatureExtrusion",
+            "CmdInVoJson": "{\r\n  \"Sd\": false,\r\n  \"Flip\": false,\r\n  \"Dir\": false,\r\n  \"T1\": 7,\r\n  \"T2\": 7,\r\n  \"D1\": 100.0,\r\n  \"D2\": 0.0,\r\n  \"Dchk1\": false,\r\n  \"Dchk2\": false,\r\n  \"Ddir1\": false,\r\n  \"Ddir2\": false,\r\n  \"Dang1\": 0.0,\r\n  \"Dang2\": 0.0,\r\n  \"OffsetReverse1\": false,\r\n  \"OffsetReverse2\": false,\r\n  \"TranslateSurface1\": false,\r\n  \"TranslateSurface2\": false,\r\n  \"Merge\": false,\r\n  \"UseFeatScope\": false,\r\n  \"UseAutoSelect\": false,\r\n  \"T0\": 0,\r\n  \"StartOffset\": 0.0,\r\n  \"FlipStartOffset\": false,\r\n  \"FeatrueName\": \"拉伸体1\"\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "调整视图",
+        "CmdInfos": [
+          {
+            "CmdModule": "sketch",
+            "CmdTypeIdStr": "ShowNamedView",
+            "CmdInVoJson": "{\r\n  \"VName\": \"\",\r\n  \"ViewId\": 7\r\n}"
           }
         ]
       }
