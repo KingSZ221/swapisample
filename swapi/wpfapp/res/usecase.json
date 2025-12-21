@@ -3921,5 +3921,65 @@
         ]
       }
     ]
+  },
+  {
+    "Id": "ebe7e4c8-f2a0-4a93-afc8-27c55924f0ae",
+    "Name": "插入单个零部件",
+    "Desc": "",
+    "Group": "装配体",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建装配体",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 2\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "插入零部件",
+        "CmdInfos": [
+          {
+            "CmdModule": "assembly",
+            "CmdTypeIdStr": "AddComponent",
+            "CmdInVoJson": "{\r\n  \"CompName\": \"E:\\\\1_repo_pub\\\\swapisample\\\\swapi\\\\wpfapp\\\\res\\\\toolbox\\\\baseplate.sldprt\",\r\n  \"ConfigOption\": 0,\r\n  \"NewConfigName\": \"\",\r\n  \"UseConfigForPartReferences\": false,\r\n  \"ExistingConfigName\": \"\",\r\n  \"X\": 1.0,\r\n  \"Y\": 1.0,\r\n  \"Z\": 1.0,\r\n  \"ComponentName\": \"零部件1\"\r\n}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "68f51765-da96-4073-89c2-3ce7da494ae7",
+    "Name": "插入多个零部件",
+    "Desc": "",
+    "Group": "装配体",
+    "Steps": [
+      {
+        "SubSteps": [],
+        "Name": "创建装配体",
+        "CmdInfos": [
+          {
+            "CmdModule": "doc",
+            "CmdTypeIdStr": "NewDoc",
+            "CmdInVoJson": "{\r\n  \"DocType\": 2\r\n}"
+          }
+        ]
+      },
+      {
+        "SubSteps": [],
+        "Name": "插入零部件",
+        "CmdInfos": [
+          {
+            "CmdModule": "assembly",
+            "CmdTypeIdStr": "AddComponents",
+            "CmdInVoJson": "{\r\n  \"ComponentInfoVos\": [\r\n    {\r\n      \"CompName\": \"E:\\\\1_repo_pub\\\\swapisample\\\\swapi\\\\wpfapp\\\\res\\\\toolbox\\\\baseplate.sldprt\",\r\n      \"CoordinateSystemName\": \"\",\r\n      \"TransformMatrix\": {\r\n        \"XRotateVec1\": 1.0,\r\n        \"XRotateVec2\": 0.0,\r\n        \"XRotateVec3\": 0.0,\r\n        \"YRotateVec1\": 1.0,\r\n        \"YRotateVec2\": 0.0,\r\n        \"YRotateVec3\": 0.0,\r\n        \"ZRotateVec1\": 1.0,\r\n        \"ZRotateVec2\": 0.0,\r\n        \"ZRotateVec3\": 0.0,\r\n        \"XTranslation\": 0.0,\r\n        \"YTranslation\": 0.0,\r\n        \"ZTranslation\": 0.0,\r\n        \"Scale\": 1.0\r\n      },\r\n      \"ComponentName\": \"\"\r\n    },\r\n    {\r\n      \"CompName\": \"E:\\\\1_repo_pub\\\\swapisample\\\\swapi\\\\wpfapp\\\\res\\\\toolbox\\\\crossbar.sldprt\",\r\n      \"CoordinateSystemName\": \"\",\r\n      \"TransformMatrix\": {\r\n        \"XRotateVec1\": 1.0,\r\n        \"XRotateVec2\": 0.0,\r\n        \"XRotateVec3\": 0.0,\r\n        \"YRotateVec1\": 1.0,\r\n        \"YRotateVec2\": 0.0,\r\n        \"YRotateVec3\": 0.0,\r\n        \"ZRotateVec1\": 1.0,\r\n        \"ZRotateVec2\": 0.0,\r\n        \"ZRotateVec3\": 0.0,\r\n        \"XTranslation\": 1.0,\r\n        \"YTranslation\": 0.0,\r\n        \"ZTranslation\": 0.0,\r\n        \"Scale\": 1.0\r\n      },\r\n      \"ComponentName\": \"\"\r\n    },\r\n    {\r\n      \"CompName\": \"E:\\\\1_repo_pub\\\\swapisample\\\\swapi\\\\wpfapp\\\\res\\\\toolbox\\\\braceright.sldprt\",\r\n      \"CoordinateSystemName\": \"\",\r\n      \"TransformMatrix\": {\r\n        \"XRotateVec1\": 1.0,\r\n        \"XRotateVec2\": 0.0,\r\n        \"XRotateVec3\": 0.0,\r\n        \"YRotateVec1\": 1.0,\r\n        \"YRotateVec2\": 0.0,\r\n        \"YRotateVec3\": 0.0,\r\n        \"ZRotateVec1\": 1.0,\r\n        \"ZRotateVec2\": 0.0,\r\n        \"ZRotateVec3\": 0.0,\r\n        \"XTranslation\": 0.0,\r\n        \"YTranslation\": 1.0,\r\n        \"ZTranslation\": 0.0,\r\n        \"Scale\": 1.0\r\n      },\r\n      \"ComponentName\": \"零部件3\"\r\n    }\r\n  ]\r\n}"
+          }
+        ]
+      }
+    ]
   }
 ]

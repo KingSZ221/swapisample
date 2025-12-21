@@ -28,6 +28,7 @@ using wpfapp.bu.log;
 using wpfapp.bu.file;
 using wpfapp.bu.feature;
 using wpfapp.bu.sketch;
+using wpfapp.bu.assembly;
 
 namespace wpfapp
 {
@@ -51,6 +52,7 @@ namespace wpfapp
             SwBuFileService.getInstance().init();
             SwBuSketchService.getInstance().init();
             SwBuFeatureService.getInstance().init();
+            SwBuAssemblyService.getInstance().init();
 
             // 初始化UI
             SwUiMenuService.getInstance().init(this.mainMenu, this.mainToobar);

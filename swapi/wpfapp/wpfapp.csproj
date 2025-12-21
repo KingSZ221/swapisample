@@ -118,6 +118,15 @@
     </ApplicationDefinition>
     <Compile Include="basic\io\PathUtilsEx.cs" />
     <Compile Include="basic\io\JsonFileUtilsEx.cs" />
+    <Compile Include="bu\assembly\action\component\AddComponentAction.cs" />
+    <Compile Include="bu\assembly\action\component\AddComponentsAction.cs" />
+    <Compile Include="bu\assembly\action\SwAssemblyActionBase.cs" />
+    <Compile Include="bu\assembly\cmd\EnumSwAssemblyCmdType.cs" />
+    <Compile Include="bu\assembly\SwBuAssemblyService.cs" />
+    <Compile Include="bu\assembly\vo\component\AddComponentInVo.cs" />
+    <Compile Include="bu\assembly\vo\component\AddComponentsInVo.cs" />
+    <Compile Include="bu\assembly\vo\component\swAddComponentConfigOptions_ext.cs" />
+    <Compile Include="bu\assembly\vo\component\TransformMatrixVo.cs" />
     <Compile Include="bu\cmd\action\SwCmdActionBase.cs" />
     <Compile Include="bu\cmd\cmdtype\SwCmdGroupType.cs" />
     <Compile Include="bu\cmd\cmdtype\SwCmdType.cs" />

@@ -26,6 +26,7 @@ using wpfapp.ui.ai;
 using wpfapp.ui.prop;
 using wpfapp.utils.reflect;
 using wpfapp.basic.io;
+using wpfapp.bu.assembly;
 
 namespace wpfapp.ui.menu
 {
@@ -66,6 +67,7 @@ namespace wpfapp.ui.menu
             priCreateMenu4Sketch(mainMenu);
             priCreateMenu4Feature(mainMenu);
             priCreateMenu4Part(mainMenu);
+            priCreateMenu4Assembly(mainMenu);
             priCreateMenu4UseCase(mainMenu);
 
             priCreateToolbar4App(mainToolbar);
@@ -164,6 +166,15 @@ namespace wpfapp.ui.menu
             mainMenu.Items.Add(menu);
 
             priCreateSubMenu4Part(null, menu);
+        }
+
+        private void priCreateMenu4Assembly(Menu mainMenu)
+        {
+            MenuItem menu = new MenuItem();
+            menu.Header = "装配体";
+            mainMenu.Items.Add(menu);
+
+            priCreateSubMenu4Moudle(menu, SwBuAssemblyService.MoudleName);
         }
 
         private void priCreateMenu4UseCase(Menu mainMenu)
