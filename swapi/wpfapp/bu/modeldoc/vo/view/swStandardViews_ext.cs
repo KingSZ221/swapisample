@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpfapp.bu.sketch.vo.view
+namespace wpfapp.bu.modeldoc.vo.view
 {
     /// <summary>
     /// 视图ID

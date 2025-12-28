@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 using wpfapp.bu.log;
 using wpfapp.bu.feature.vo.feature.extrusion;
 using wpfapp.basic.io;
-using wpfapp.bu.feature.vo.feature.select;
+using wpfapp.bu.modeldoc.action;
+using wpfapp.bu.modeldoc.vo.select;
 
-namespace wpfapp.bu.feature.action.feature.select
+namespace wpfapp.bu.modeldoc.action.select
 {
     /// <summary>
     /// 选中特征树最后1个特征
     /// </summary>
-    public class SelectFeatureByPositionReverseAction : SwFeatureActionBase
+    public class SelectFeatureByPositionReverseAction : SwModelDocActionBase
     {
         #region Fields
         #endregion

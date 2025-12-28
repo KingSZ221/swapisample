@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpfapp.bu.feature.vo.feature.select
+namespace wpfapp.bu.modeldoc.vo.select
 {
     /// <summary>
     /// 选中特征树从下往上排序的指定序号的1个特征

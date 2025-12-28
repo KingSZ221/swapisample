@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.basic.io;
 using wpfapp.bu.log;
-using wpfapp.bu.sketch.vo.select;
+using wpfapp.bu.modeldoc.action;
+using wpfapp.bu.modeldoc.vo.select;
 
-namespace wpfapp.bu.sketch.action.select
+namespace wpfapp.bu.modeldoc.action.select
 {
     /// <summary>
     /// 通过射线选择对象

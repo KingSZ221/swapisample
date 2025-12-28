@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpfapp.bu.sketch.vo.view
+namespace wpfapp.bu.modeldoc.vo.view
 {
     [DisplayName("显示视图")]
     [TypeConverter(typeof(ExpandableObjectConverter))]

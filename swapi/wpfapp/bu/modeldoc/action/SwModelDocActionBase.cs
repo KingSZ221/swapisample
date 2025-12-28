@@ -11,7 +11,7 @@ using wpfapp.bu.cmd.action;
 using wpfapp.bu.log;
 using Xarial.XCad.SolidWorks;
 
-namespace wpfapp.bu.sketch.action
+namespace wpfapp.bu.modeldoc.action
 {
     /// <summary>
     /// 文档操作基类
@@ -163,10 +163,10 @@ namespace wpfapp.bu.sketch.action
             }
 
             //防御文档不是零件
-            if (doc.GetType() != (int)swDocumentTypes_e.swDocPART)
-            {
-                return RespVoLogExt.genError("当前打开的不是零件");
-            }
+            //if (doc.GetType() != (int)swDocumentTypes_e.swDocPART)
+            //{
+            //    return RespVoLogExt.genError("当前打开的不是零件");
+            //}
 
             return RespVo.genOk();
         }

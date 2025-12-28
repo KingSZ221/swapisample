@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using wpfapp.bu.sketch.vo.select;
+using wpfapp.bu.modeldoc.vo.select;
 
 namespace wpfapp.bu.sketch.vo.sketch
 {

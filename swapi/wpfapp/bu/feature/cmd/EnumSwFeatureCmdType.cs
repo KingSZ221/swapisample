@@ -13,7 +13,6 @@ using wpfapp.bu.feature.action.feature.mirror;
 using wpfapp.bu.feature.action.feature.pattern;
 using wpfapp.bu.feature.action.feature.refplane;
 using wpfapp.bu.feature.action.feature.revolve;
-using wpfapp.bu.feature.action.feature.select;
 using wpfapp.bu.feature.action.feature.sweep;
 using wpfapp.bu.feature.vo.feature.curve;
 using wpfapp.bu.feature.vo.feature.extrusion;
@@ -24,8 +23,9 @@ using wpfapp.bu.feature.vo.feature.mirror;
 using wpfapp.bu.feature.vo.feature.pattern;
 using wpfapp.bu.feature.vo.feature.refplane;
 using wpfapp.bu.feature.vo.feature.revolve;
-using wpfapp.bu.feature.vo.feature.select;
 using wpfapp.bu.feature.vo.feature.sweep;
+using wpfapp.bu.modeldoc.action.select;
+using wpfapp.bu.modeldoc.vo.select;
 
 namespace wpfapp.bu.feature.cmd
 {

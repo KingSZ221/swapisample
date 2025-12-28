@@ -63,10 +63,10 @@ using wpfapp.bu.feature.vo.feature.loft;
 using wpfapp.bu.feature.action.feature.sweep;
 using wpfapp.bu.feature.action.feature.loft;
 using wpfapp.bu.cmd.cmdtype;
-using wpfapp.bu.sketch.vo.select;
-using wpfapp.bu.sketch.action.select;
-using wpfapp.bu.sketch.vo.view;
-using wpfapp.bu.sketch.action.view;
+using wpfapp.bu.modeldoc.vo.select;
+using wpfapp.bu.modeldoc.action.select;
+using wpfapp.bu.modeldoc.vo.view;
+using wpfapp.bu.modeldoc.action.view;
 
 namespace wpfapp.bu.sketch.action
 {

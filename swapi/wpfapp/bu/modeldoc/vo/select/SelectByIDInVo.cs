@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpfapp.bu.sketch.vo.select
+namespace wpfapp.bu.modeldoc.vo.select
 {
     /// <summary>
     /// 射线选择

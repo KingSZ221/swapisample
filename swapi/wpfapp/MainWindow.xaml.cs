@@ -29,6 +29,7 @@ using wpfapp.bu.file;
 using wpfapp.bu.feature;
 using wpfapp.bu.sketch;
 using wpfapp.bu.assembly;
+using wpfapp.bu.modeldoc;
 
 namespace wpfapp
 {
@@ -50,6 +51,7 @@ namespace wpfapp
             // 初始化Service
             SwBuAppService.getInstance().init();
             SwBuFileService.getInstance().init();
+            SwBuModelDocService.getInstance().init();
             SwBuSketchService.getInstance().init();
             SwBuFeatureService.getInstance().init();
             SwBuAssemblyService.getInstance().init();

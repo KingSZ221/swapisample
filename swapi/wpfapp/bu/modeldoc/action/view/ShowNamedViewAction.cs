@@ -5,22 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using wpfapp.basic.io;
 using wpfapp.bu.log;
-using wpfapp.bu.sketch.action.draw;
-using wpfapp.bu.sketch.vo.select;
+using wpfapp.bu.modeldoc.vo.view;
 
-namespace wpfapp.bu.sketch.action.select
+namespace wpfapp.bu.modeldoc.action.view
 {
     /// <summary>
-    /// 清空选中对象列表
+    /// 显示视图
     /// </summary>
-    public class ClearSelectionAction : SwModelDocActionBase
+    public class ShowNamedViewAction : SwModelDocActionBase
     {
         #region Fields
         #endregion
 
         #region Construction
 
-        public ClearSelectionAction() : base()
+        public ShowNamedViewAction() : base()
         {
 
         }
@@ -30,10 +29,11 @@ namespace wpfapp.bu.sketch.action.select
         protected override RespVo onExecute()
         {
             // 获取绘制参数
-            ClearSelectionInVo oInVo = this.actionInVo<ClearSelectionInVo>();
+            ShowNamedViewInVo oInVo = this.actionInVo<ShowNamedViewInVo>();
 
             // 编辑图形
-            curDoc.ClearSelection2(oInVo.All);
+            curDoc.ShowNamedView2(oInVo.VName, oInVo.ViewId);
+            curDoc.ViewZoomtofit2();
 
             return RespVoLogExt.genOk("清空选中对象列表完成");
         }

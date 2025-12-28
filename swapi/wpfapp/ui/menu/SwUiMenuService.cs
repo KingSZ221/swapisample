@@ -27,6 +27,7 @@ using wpfapp.ui.prop;
 using wpfapp.utils.reflect;
 using wpfapp.basic.io;
 using wpfapp.bu.assembly;
+using wpfapp.bu.modeldoc;
 
 namespace wpfapp.ui.menu
 {
@@ -140,6 +141,14 @@ namespace wpfapp.ui.menu
             }
         }
 
+        private void priCreateMenu4ModelDoc(Menu mainMenu)
+        {
+            MenuItem menu = new MenuItem();
+            menu.Header = "模型文档";
+            mainMenu.Items.Add(menu);
+
+            priCreateSubMenu4Moudle(menu, SwBuModelDocService.MoudleName);
+        }
 
         private void priCreateMenu4Sketch(Menu mainMenu)
         {

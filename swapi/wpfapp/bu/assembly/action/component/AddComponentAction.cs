@@ -10,7 +10,7 @@ using wpfapp.bu.assembly.vo.component;
 using wpfapp.bu.feature.vo.feature.curve;
 using wpfapp.bu.log;
 
-namespace wpfapp.bu.assembly.action.componen
+namespace wpfapp.bu.assembly.action.component
 {
     /// <summary>
     /// 装配体插入单个零部件
@@ -34,7 +34,7 @@ namespace wpfapp.bu.assembly.action.componen
             // 获取绘制参数
             AddComponentInVo oInVo = this.actionInVo<AddComponentInVo>();
 
-            // 获取草图管理器
+            // 获取装配体文档
             AssemblyDoc assemlyDoc = curAssemlyDoc;
             string strAssemlyDocTitle = curDoc.GetTitle();
 
