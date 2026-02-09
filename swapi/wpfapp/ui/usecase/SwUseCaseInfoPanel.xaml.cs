@@ -1,4 +1,5 @@
-﻿using System;
+﻿using swapilib.bu.usecase.vo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using wpfapp.bu.usecase.vo;
 
-namespace wpfapp.ui.usecase
+namespace swapiapp.ui.usecase
 {
     /// <summary>
     /// SwUseCaseInfoPanel.xaml 的交互逻辑

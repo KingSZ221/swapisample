@@ -1,0 +1,112 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using swapilib.basic.io;
+using swapilib.bu.log;
+using Xarial.XCad.SolidWorks;
+
+namespace swapilib.bu.app
+{
+    /// <summary>
+    /// APP服务
+    /// </summary>
+    public class SwBuAppService
+    {
+        #region Fields
+
+        private static SwBuAppService _instance = new SwBuAppService();
+        private ISwApplication _swApp = null;
+
+        private static string _appPath = "";
+
+        #endregion
+
+        #region Construction
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public SwBuAppService() { }
+
+        /// <summary>
+        /// 获取单例
+        /// </summary>
+        /// <returns></returns>
+        public static SwBuAppService getInstance()
+        {
+            return _instance;
+        }
+
+        #endregion
+
+        #region init
+
+        public void init(string strAppPath)
+        {
+            _appPath = strAppPath;
+        }
+
+        public void destroy()
+        {
+        }
+
+        #endregion
+
+        #region 连接SolidWorks
+
+        /// <summary>
+        /// 连接Sw
+        /// </summary>
+        /// <returns>RespVo</returns>
+        public RespVo connectSw()
+        {
+            var swProcess = Process.GetProcessesByName("SLDWORKS");
+            if (!swProcess.Any())
+            {
+                // 没有打开SolidWorks
+                return RespVoLogExt.genError("SolidWorks 没有打开，请打开SolidWorks后再试");
+            }
+
+            _swApp = SwApplicationFactory.FromProcess(swProcess.First());
+
+            // 如果连接成功，则返回SolidWorks版本
+            return RespVoLogExt.genOk("连接SolidWorks成功，版本:" + _swApp.Version.ToString());
+        }
+
+        #endregion
+
+        #region get
+
+        public ISwApplication getSwApp()
+        {
+            return _swApp;
+        }
+
+        public static string getAppPath()
+        {
+            return _appPath;
+            //string strAppPath = Path.GetDirectoryName(typeof(MainWindow).Assembly.Location);
+            //return strAppPath;
+        }
+
+        public static string getAppResDirPath()
+        {
+            string strResDirPath = Path.Combine(getAppPath(), "res");
+            return strResDirPath;
+        }
+
+        public static string getAppResFilePath(string strFileName)
+        {
+            string strDocPath = Path.Combine(getAppResDirPath(), strFileName);
+            return strDocPath;
+        }
+
+        #endregion
+
+    }
+}

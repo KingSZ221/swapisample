@@ -1,0 +1,61 @@
+﻿using SolidWorks.Interop.sldworks;
+using SolidWorks.Interop.swconst;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using swapilib.bu.log;
+using swapilib.bu.feature.vo.feature.sweep;
+using swapilib.basic.io;
+
+namespace swapilib.bu.feature.action.feature.sweep
+{
+    /// <summary>
+    /// 创建扫描基体/凸台特征
+    /// </summary>
+    public class FeatureSweepAction : SwFeatureActionBase
+    {
+        #region Fields
+        #endregion
+
+        #region Construction
+
+        public FeatureSweepAction()
+        {
+
+        }
+
+        #endregion
+
+        protected override RespVo onExecute()
+        {
+            // 获取绘制参数
+            FeatureSweepInVo oInVo = this.actionInVo<FeatureSweepInVo>();
+
+            // 获取草图管理器
+            var skeMgr = curDoc.SketchManager;
+            var featMgr = curDoc.FeatureManager;
+            var selMgr = curDoc.SelectionManager as ISelectionMgr;
+
+            SweepFeatureData oSweepFeatureData = featMgr.CreateDefinition((int)swFeatureNameID_e.swFmSweep) as SweepFeatureData;
+            if (oSweepFeatureData == null)
+            {
+                return RespVoLogExt.genError("创建扫描特征参数错误");
+            }
+
+            Feature oFeature = featMgr.CreateFeature(oSweepFeatureData);
+            if (oFeature == null)
+            {
+                return RespVoLogExt.genError("创建扫描特征错误");
+            }
+
+            if (!string.IsNullOrEmpty(oInVo.FeatrueName))
+            {
+                oFeature.Name = oInVo.FeatrueName;
+            }
+
+            return RespVoLogExt.genOk($"创建扫描特征成功：{oFeature.Name}");
+        }
+    }
+}

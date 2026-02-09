@@ -1,9 +1,9 @@
-﻿<Window x:Class="wpfapp.ui.usecase.SwUseCaseInfoPanel"
+﻿<Window x:Class="swapiapp.ui.usecase.SwUseCaseInfoPanel"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:wpfapp.ui.usecase"
+        xmlns:local="clr-namespace:swapiapp.ui.usecase"
         mc:Ignorable="d"
         Title="新增用例" Height="730" Width="760">
     <Grid>

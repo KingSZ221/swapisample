@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using wpfapp.bu.app;
-using wpfapp.bu.file;
-using wpfapp.bu.file.cmd;
-using wpfapp.bu.file.vo;
-using wpfapp.bu.log;
-using wpfapp.bu.sketch;
-using wpfapp.bu.sketch.action;
-using wpfapp.bu.sketch.vo.compose.ladder;
-using wpfapp.basic.io;
-using wpfapp.ui.ai.ladder;
+using swapiapp.ui.ai.ladder;
+using swapilib.bu.app;
+using swapilib.bu.file;
+using swapilib.bu.file.cmd;
+using swapilib.bu.file.vo;
+using swapilib.bu.log;
+using swapilib.bu.sketch;
+using swapilib.bu.sketch.action;
+using swapilib.bu.sketch.vo.compose.ladder;
+using swapiapp.ui.mainwindow;
 
-namespace wpfapp.ui.ai
+namespace swapiapp.ui.ai
 {
     class SwAiWrapService
     {
@@ -48,7 +48,7 @@ namespace wpfapp.ui.ai
         public void CreateLadder()
         {
             CreateLadderDialog swAiWrapDlg = new CreateLadderDialog();
-            swAiWrapDlg.Owner = SwBuAppService.getMainWindow();
+            swAiWrapDlg.Owner = SwMainWindowService.getMainWindow();
             bool? bResult = swAiWrapDlg.ShowDialog();
 
             if (bResult == true)

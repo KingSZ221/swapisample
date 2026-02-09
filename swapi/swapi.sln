@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "consoleapp", "consoleapp\consoleapp.csproj", "{CBAE251B-909F-48CF-AD49-91730E469DC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpfapp", "wpfapp\wpfapp.csproj", "{0E9F406D-D74C-49EA-A3B3-1449C103F996}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "swapiapp", "wpfapp\swapiapp.csproj", "{0E9F406D-D74C-49EA-A3B3-1449C103F996}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "swapilib", "swapilib\swapilib.csproj", "{6008B2CD-FFA3-4DF3-8C01-4D78AC5E5E89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{0E9F406D-D74C-49EA-A3B3-1449C103F996}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E9F406D-D74C-49EA-A3B3-1449C103F996}.Release|x64.ActiveCfg = Release|Any CPU
 		{0E9F406D-D74C-49EA-A3B3-1449C103F996}.Release|x64.Build.0 = Release|Any CPU
+		{6008B2CD-FFA3-4DF3-8C01-4D78AC5E5E89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6008B2CD-FFA3-4DF3-8C01-4D78AC5E5E89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6008B2CD-FFA3-4DF3-8C01-4D78AC5E5E89}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6008B2CD-FFA3-4DF3-8C01-4D78AC5E5E89}.Debug|x64.Build.0 = Debug|Any CPU
+		{6008B2CD-FFA3-4DF3-8C01-4D78AC5E5E89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6008B2CD-FFA3-4DF3-8C01-4D78AC5E5E89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6008B2CD-FFA3-4DF3-8C01-4D78AC5E5E89}.Release|x64.ActiveCfg = Release|Any CPU
+		{6008B2CD-FFA3-4DF3-8C01-4D78AC5E5E89}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

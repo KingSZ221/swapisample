@@ -1,0 +1,88 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using swapilib.bu.log;
+using swapilib.bu.sketch.action;
+using swapilib.bu.usecase.vo;
+
+namespace swapilib.bu.cmd.usecase.excute
+{
+    public class SwUseCaseExcuteService
+    {
+        #region Fields
+
+        private static SwUseCaseExcuteService _inst = null;
+
+        #endregion
+
+        #region Construction
+
+        public SwUseCaseExcuteService()
+        {
+
+        }
+
+        public static SwUseCaseExcuteService getInstance()
+        {
+            if (_inst == null)
+            {
+                _inst = new SwUseCaseExcuteService();
+            }
+            return _inst;
+        }
+
+        #endregion
+
+        #region 执行
+
+        public void excuteUseCase(string id)
+        {
+            SwUseCaseInfo oSwUseCaseInfo = SwUseCaseInfoManager.getInstance().getById(id);
+            if(oSwUseCaseInfo == null)
+            {
+                return;
+            }
+
+            SwUseCaseItem oSwUseCaseItem = new SwUseCaseItem(oSwUseCaseInfo);
+
+            SwBuLogService.getInstance().Info($"执行用例 {oSwUseCaseItem.Name}");
+
+            foreach(SwUseCaseStepItem oSwUseCaseStepItem in oSwUseCaseItem.Steps)
+            {
+                excuteUseCaseStep(oSwUseCaseStepItem);
+            }
+
+            //SwBuLogService.getInstance().Info($"用例结束 {oSwUseCaseItem.Name}");
+        }
+
+        private void excuteUseCaseStep(SwUseCaseStepItem oSwUseCaseStepItem)
+        {
+            SwBuLogService.getInstance().Info($"执行步骤 {oSwUseCaseStepItem.Name}");
+
+            foreach (SwUseCaseStepCmdItem oSwUseCaseStepCmdItem in oSwUseCaseStepItem.CmdInfos)
+            {
+                //if(oSwUseCaseStepCmdItem.CmdTypeId > 0)
+                if (!string.IsNullOrEmpty(oSwUseCaseStepCmdItem.CmdTypeIdStr) 
+                    && oSwUseCaseStepCmdItem.CmdTypeIdStr != "None")
+                {
+                    excuteUseCaseStepCmd(oSwUseCaseStepCmdItem);
+                }
+            }
+
+            //SwBuLogService.getInstance().Info($"步骤结束 {oSwUseCaseStepItem.Name}");
+        }
+
+        private void excuteUseCaseStepCmd(SwUseCaseStepCmdItem oSwUseCaseStepCmdItem)
+        {
+            SwBuLogService.getInstance().Info($"执行命令 {oSwUseCaseStepCmdItem.CmdName}");
+
+            SwBuCmdService.getInstance().executeCmdWithInVo2(oSwUseCaseStepCmdItem.CmdModule, oSwUseCaseStepCmdItem.CmdTypeIdStr, oSwUseCaseStepCmdItem.CmdInVoObj);
+
+            //SwBuLogService.getInstance().Info($"命令结束 {oSwUseCaseStepCmdItem.CmdName}");
+        }
+
+        #endregion
+    }
+}

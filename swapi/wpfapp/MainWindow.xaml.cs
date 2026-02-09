@@ -16,22 +16,21 @@ using Xarial.XCad.SolidWorks;
 using SolidWorks.Interop.swconst;
 using System.IO;
 using SolidWorks.Interop.sldworks;
-using wpfapp.bu;
-using wpfapp.basic.io;
 using Microsoft.Owin.Hosting;
-using wpfapp.nbi_web;
+using swapiapp.nbi_web;
 using System.Configuration;
-using wpfapp.bu.app;
-using wpfapp.ui.menu;
-using wpfapp.ui.output;
-using wpfapp.bu.log;
-using wpfapp.bu.file;
-using wpfapp.bu.feature;
-using wpfapp.bu.sketch;
-using wpfapp.bu.assembly;
-using wpfapp.bu.modeldoc;
+using swapiapp.ui.menu;
+using swapiapp.ui.output;
+using swapilib.bu.app;
+using swapilib.bu.file;
+using swapilib.bu.modeldoc;
+using swapilib.bu.sketch;
+using swapilib.bu.feature;
+using swapilib.bu.assembly;
+using swapilib.bu.log;
+using swapiapp.ui.mainwindow;
 
-namespace wpfapp
+namespace swapiapp
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
@@ -49,7 +48,7 @@ namespace wpfapp
             InitializeComponent();
 
             // 初始化Service
-            SwBuAppService.getInstance().init();
+            SwBuAppService.getInstance().init(SwMainWindowService.getAppPath());
             SwBuFileService.getInstance().init();
             SwBuModelDocService.getInstance().init();
             SwBuSketchService.getInstance().init();
@@ -62,6 +61,9 @@ namespace wpfapp
 
             // 初始化Service
             SwBuLogService.createInstance(SwUiOutputService.getInstance());
+
+            // 启动WebServer
+            SwApiWebServer.getInstance().init();
         }
 
         #endregion

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using wpfapp.bu.app;
+using swapiapp.ui.mainwindow;
 
-namespace wpfapp.ui.prop
+namespace swapiapp.ui.prop
 {
     public class SwUiPropService
     {
@@ -48,7 +48,7 @@ namespace wpfapp.ui.prop
         public bool showPropObjDlg(string strDlgTitle, string strTip, object oPropObj)
         {
             SwUiPropDialog oPropDlg = new SwUiPropDialog();
-            oPropDlg.Owner = SwBuAppService.getMainWindow();
+            oPropDlg.Owner = SwMainWindowService.getMainWindow();
             oPropDlg.Title = strDlgTitle;
             oPropDlg.setTip(strTip);
             oPropDlg.setPropObj(oPropObj);

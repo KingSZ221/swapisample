@@ -11,9 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using wpfapp.ui.prop;
+using swapiapp.ui.prop;
 
-namespace wpfapp.ui.output
+namespace swapiapp.ui.output
 {
     public enum LogLevel
     {

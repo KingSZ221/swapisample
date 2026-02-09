@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace wpfapp.ui.ai.ladder
+namespace swapiapp.ui.ai.ladder
 {
     /// <summary>
     /// CreateLadderDialog.xaml 的交互逻辑

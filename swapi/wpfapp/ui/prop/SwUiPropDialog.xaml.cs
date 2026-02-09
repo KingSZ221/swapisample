@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace wpfapp.ui.prop
+namespace swapiapp.ui.prop
 {
     /// <summary>
     /// SwUiPropDialog.xaml 的交互逻辑

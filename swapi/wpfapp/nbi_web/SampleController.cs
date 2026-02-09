@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace wpfapp.nbi_web
+namespace swapiapp.nbi_web
 {
     [RoutePrefix("api/values")]
     public class SampleController : ApiController

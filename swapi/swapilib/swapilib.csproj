@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6008B2CD-FFA3-4DF3-8C01-4D78AC5E5E89}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>swapilib</RootNamespace>
+    <AssemblyName>swapilib</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExCSS, Version=4.2.3.0, Culture=neutral, PublicKeyToken=bdbe16be9b936b9a, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExCSS.4.2.3\lib\netstandard2.0\ExCSS.dll</HintPath>
+    </Reference>
+    <Reference Include="netDxf, Version=2022.11.2.0, Culture=neutral, PublicKeyToken=618c63290969e781, processorArchitecture=MSIL">
+      <HintPath>..\packages\netDxf.2022.11.2\lib\net45\netDxf.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SolidWorks.Interop.sldworks, Version=33.0.0.5050, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.XCad.SolidWorks.0.8.2\lib\net461\SolidWorks.Interop.sldworks.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swconst, Version=33.0.0.5050, Culture=neutral, PublicKeyToken=19f43e188e4269d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.XCad.SolidWorks.0.8.2\lib\net461\SolidWorks.Interop.swconst.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swpublished, Version=33.0.0.5050, Culture=neutral, PublicKeyToken=89a97bdc5284e6d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.XCad.SolidWorks.0.8.2\lib\net461\SolidWorks.Interop.swpublished.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Svg, Version=3.4.0.0, Culture=neutral, PublicKeyToken=12a0bac221edeae2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Svg.3.4.7\lib\net472\Svg.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="Xarial.XCad, Version=0.8.2.5232, Culture=neutral, PublicKeyToken=60dcaf351d4060db, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.XCad.0.8.2\lib\net461\Xarial.XCad.dll</HintPath>
+    </Reference>
+    <Reference Include="Xarial.XCad.SolidWorks, Version=0.8.2.5232, Culture=neutral, PublicKeyToken=60dcaf351d4060db, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.XCad.SolidWorks.0.8.2\lib\net461\Xarial.XCad.SolidWorks.dll</HintPath>
+    </Reference>
+    <Reference Include="Xarial.XCad.Toolkit, Version=0.8.2.5232, Culture=neutral, PublicKeyToken=60dcaf351d4060db, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.XCad.Toolkit.0.8.2\lib\net461\Xarial.XCad.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.7.25104.5739\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.7.25104.5739\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.7.25104.5739\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.7.25104.5739\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.7.25104.5739\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="basic\io\JsonFileUtilsEx.cs" />
+    <Compile Include="basic\io\PathUtilsEx.cs" />
+    <Compile Include="basic\io\RespErrItemVo.cs" />
+    <Compile Include="basic\io\RespErrVo.cs" />
+    <Compile Include="basic\io\RespVo.cs" />
+    <Compile Include="basic\reflect\ReflectUtils.cs" />
+    <Compile Include="bu\app\SwBuAppService.cs" />
+    <Compile Include="bu\assembly\action\component\AddComponentAction.cs" />
+    <Compile Include="bu\assembly\action\component\AddComponentsAction.cs" />
+    <Compile Include="bu\assembly\action\component\FixComponentAction.cs" />
+    <Compile Include="bu\assembly\action\component\UnfixComponentAction.cs" />
+    <Compile Include="bu\assembly\action\mate\CreateMateCoincidentAction.cs" />
+    <Compile Include="bu\assembly\action\mate\swAddMateError_ext.cs" />
+    <Compile Include="bu\assembly\action\SwAssemblyActionBase.cs" />
+    <Compile Include="bu\assembly\cmd\EnumSwAssemblyCmdType.cs" />
+    <Compile Include="bu\assembly\SwBuAssemblyService.cs" />
+    <Compile Include="bu\assembly\vo\component\AddComponentInVo.cs" />
+    <Compile Include="bu\assembly\vo\component\AddComponentsInVo.cs" />
+    <Compile Include="bu\assembly\vo\component\FixComponentInVo.cs" />
+    <Compile Include="bu\assembly\vo\component\swAddComponentConfigOptions_ext.cs" />
+    <Compile Include="bu\assembly\vo\component\TransformMatrixVo.cs" />
+    <Compile Include="bu\assembly\vo\component\UnfixComponentInVo.cs" />
+    <Compile Include="bu\assembly\vo\mate\CreateMateCoincidentInVo.cs" />
+    <Compile Include="bu\assembly\vo\mate\swMateAlign_ext.cs" />
+    <Compile Include="bu\cmd\action\SwCmdActionBase.cs" />
+    <Compile Include="bu\cmd\cmdtype\SwCmdGroupType.cs" />
+    <Compile Include="bu\cmd\cmdtype\SwCmdType.cs" />
+    <Compile Include="bu\cmd\cmdtype\SwCmdTypeAttribute.cs" />
+    <Compile Include="bu\cmd\cmdtype\SwCmdTypeManager.cs" />
+    <Compile Include="bu\cmd\SwBuCmdService.cs" />
+    <Compile Include="bu\feature\action\feature\curve\Insert3DSplineCurveAction.cs" />
+    <Compile Include="bu\feature\action\feature\extrusion\FeatureExtrusionAction.cs" />
+    <Compile Include="bu\feature\action\feature\extrusion\FeatureExtrusionCutAction.cs" />
+    <Compile Include="bu\feature\action\feature\extrusion\FeatureExtrusionThinAction.cs" />
+    <Compile Include="bu\feature\action\feature\fillet\InsertFeatureChamferAction.cs" />
+    <Compile Include="bu\feature\action\feature\fillet\SimpleFilletAction.cs" />
+    <Compile Include="bu\feature\action\feature\hole\HoleWizardAction.cs" />
+    <Compile Include="bu\feature\action\feature\loft\FeatureLoftAction.cs" />
+    <Compile Include="bu\feature\action\feature\loft\FeatureLoftCutAction.cs" />
+    <Compile Include="bu\feature\action\feature\mirror\InsertMirrorFeatureAction.cs" />
+    <Compile Include="bu\feature\action\feature\pattern\CreateCircularPatternFeatureAction.cs" />
+    <Compile Include="bu\feature\action\feature\pattern\CreateLinearPatternFeatureAction.cs" />
+    <Compile Include="bu\feature\action\feature\pattern\CreateSketchPatternFeatureAction.cs" />
+    <Compile Include="bu\feature\action\feature\refplane\InsertRefPlaneAction.cs" />
+    <Compile Include="bu\feature\action\feature\revolve\FeatureRevolveAction.cs" />
+    <Compile Include="bu\feature\action\feature\revolve\FeatureRevolveCutAction.cs" />
+    <Compile Include="bu\feature\action\feature\sweep\FeatureSweepAction.cs" />
+    <Compile Include="bu\feature\action\feature\sweep\FeatureSweepCutAction.cs" />
+    <Compile Include="bu\feature\action\feature\SwFeatureActionBase.cs" />
+    <Compile Include="bu\feature\cmd\EnumSwFeatureCmdType.cs" />
+    <Compile Include="bu\feature\SwBuFeatureService.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swEndConditions_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swGuideCurveInfluence_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swLoftStartEndMatchingType.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swRefPlaneReferenceConstraints_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swStartConditions_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\consts\swThinWallType_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\curve\Insert3DSplineCurveInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\extrusion\FeatureExtrusionCutInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\extrusion\FeatureExtrusionInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\extrusion\FeatureExtrusionThinInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\fillet\InsertFeatureChamferInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\fillet\SimpleFilletInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\fillet\swChamferType_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\fillet\swFeatureChamferOption_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\fillet\swFeatureFilletProfileType_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\fillet\swSimpleFilletType_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\hole\HoleWizardBaseInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\hole\swWzdGeneralHoleTypes_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\hole\swWzdHoleCosmeticThreadTypes_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\hole\swWzdHoleScrewClearanceTypes_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\hole\swWzdHoleStandardFastenerTypes_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\hole\swWzdHoleStandards_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\hole\WzdCounterBoreInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\hole\WzdCounterSinkInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\hole\WzdHoleInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\hole\WzdPipeTapInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\hole\WzdTapInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\loft\FeatureLoftCutInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\loft\FeatureLoftInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\mirror\InsertMirrorFeatureInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\mirror\swFeatureScope_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\pattern\CreateCircularPatternFeatureInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\pattern\CreateLinearPatternFeatureInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\pattern\CreateSketchPatternFeatureInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\pattern\swPatternEndCondition_ext.cs" />
+    <Compile Include="bu\feature\vo\feature\refplane\InsertRefPlaneInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\revolve\FeatureRevolveBaseInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\revolve\FeatureRevolveCutInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\revolve\FeatureRevolveInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\sweep\FeatureSweepCutInVo.cs" />
+    <Compile Include="bu\feature\vo\feature\sweep\FeatureSweepInVo.cs" />
+    <Compile Include="bu\file\action\CloseDocAction.cs" />
+    <Compile Include="bu\file\action\ExportDocAction.cs" />
+    <Compile Include="bu\file\action\NewDocAction.cs" />
+    <Compile Include="bu\file\action\OpenDocAction.cs" />
+    <Compile Include="bu\file\action\SaveAsDocAction.cs" />
+    <Compile Include="bu\file\action\SaveDocAction.cs" />
+    <Compile Include="bu\file\action\SwDocActionBase.cs" />
+    <Compile Include="bu\file\cmd\EnumSwDocCmdType.cs" />
+    <Compile Include="bu\file\export\DxfToSvgConverter.cs" />
+    <Compile Include="bu\file\export\SwDocExportUtils.cs" />
+    <Compile Include="bu\file\SwBuFileService.cs" />
+    <Compile Include="bu\file\vo\CloseDocInVo.cs" />
+    <Compile Include="bu\file\vo\ExportDocInVo.cs" />
+    <Compile Include="bu\file\vo\NewDocInVo.cs" />
+    <Compile Include="bu\file\vo\OpenDocInVo.cs" />
+    <Compile Include="bu\file\vo\SaveAsDocInVo.cs" />
+    <Compile Include="bu\file\vo\SaveDocInVo.cs" />
+    <Compile Include="bu\log\ILogService.cs" />
+    <Compile Include="bu\log\RespVoLogExt.cs" />
+    <Compile Include="bu\log\SwBuLogService.cs" />
+    <Compile Include="bu\modeldoc\action\select\ClearSelectionAction.cs" />
+    <Compile Include="bu\modeldoc\action\select\SelectByIDAction.cs" />
+    <Compile Include="bu\modeldoc\action\select\SelectByRayAction.cs" />
+    <Compile Include="bu\modeldoc\action\select\SelectFeatureByPositionReverseAction.cs" />
+    <Compile Include="bu\modeldoc\action\SwModelDocActionBase.cs" />
+    <Compile Include="bu\modeldoc\action\view\ShowNamedViewAction.cs" />
+    <Compile Include="bu\modeldoc\cmd\EnumSwModelDocCmdType.cs" />
+    <Compile Include="bu\modeldoc\SwBuModelDocService.cs" />
+    <Compile Include="bu\modeldoc\vo\select\ClearSelectionInVo.cs" />
+    <Compile Include="bu\modeldoc\vo\select\SelectByIDInVo.cs" />
+    <Compile Include="bu\modeldoc\vo\select\SelectByRayInVo.cs" />
+    <Compile Include="bu\modeldoc\vo\select\SelectFeatureByPositionReverseInVo.cs" />
+    <Compile Include="bu\modeldoc\vo\select\swSelectOption_ext.cs" />
+    <Compile Include="bu\modeldoc\vo\select\swSelectType_ext.cs" />
+    <Compile Include="bu\modeldoc\vo\view\ShowNamedViewInVo.cs" />
+    <Compile Include="bu\modeldoc\vo\view\swStandardViews_ext.cs" />
+    <Compile Include="bu\sketch\action\compose\cube\CreateCubeAction.cs" />
+    <Compile Include="bu\sketch\action\compose\ladder\CreateLadderAction.cs" />
+    <Compile Include="bu\sketch\action\compose\pipe\CreateCirclePipeAction.cs" />
+    <Compile Include="bu\sketch\action\compose\SwSketchComposeActionBase.cs" />
+    <Compile Include="bu\sketch\action\draw\arc\Create3PointArcAction.cs" />
+    <Compile Include="bu\sketch\action\draw\arc\CreateArcAction.cs" />
+    <Compile Include="bu\sketch\action\draw\arc\CreateTangentArcAction.cs" />
+    <Compile Include="bu\sketch\action\draw\circle\CreateCircleAction.cs" />
+    <Compile Include="bu\sketch\action\draw\circle\CreateCircleByRadiusAction.cs" />
+    <Compile Include="bu\sketch\action\draw\circle\PerimeterCircleAction.cs" />
+    <Compile Include="bu\sketch\action\draw\define\FullyDefineSketchAction.cs" />
+    <Compile Include="bu\sketch\action\draw\ellipse\CreateConicAction.cs" />
+    <Compile Include="bu\sketch\action\draw\ellipse\CreateEllipseAction.cs" />
+    <Compile Include="bu\sketch\action\draw\ellipse\CreateEllipticalArcAction.cs" />
+    <Compile Include="bu\sketch\action\draw\ellipse\CreateParabolaAction.cs" />
+    <Compile Include="bu\sketch\action\draw\line\CreateCenterLineAction.cs" />
+    <Compile Include="bu\sketch\action\draw\line\CreateLineAction.cs" />
+    <Compile Include="bu\sketch\action\draw\point\CreatePointAction.cs" />
+    <Compile Include="bu\sketch\action\draw\polygon\CreatePolygonAction.cs" />
+    <Compile Include="bu\sketch\action\draw\rect\Create3PointCenterRectangleAction.cs" />
+    <Compile Include="bu\sketch\action\draw\rect\Create3PointCornerRectangleAction.cs" />
+    <Compile Include="bu\sketch\action\draw\rect\CreateCenterRectangleAction.cs" />
+    <Compile Include="bu\sketch\action\draw\rect\CreateCornerRectangleAction.cs" />
+    <Compile Include="bu\sketch\action\draw\rect\CreateParallelogramAction.cs" />
+    <Compile Include="bu\sketch\action\draw\slot\CreateSketchSlot3PointArcAction.cs" />
+    <Compile Include="bu\sketch\action\draw\slot\CreateSketchSlotArcAction.cs" />
+    <Compile Include="bu\sketch\action\draw\slot\CreateSketchSlotCenterLineAction.cs" />
+    <Compile Include="bu\sketch\action\draw\slot\CreateSketchSlotLineAction.cs" />
+    <Compile Include="bu\sketch\action\draw\spline\CreateEquationSplineAction.cs" />
+    <Compile Include="bu\sketch\action\draw\spline\CreateSplineAction.cs" />
+    <Compile Include="bu\sketch\action\draw\SwSketchDrawActionBase.cs" />
+    <Compile Include="bu\sketch\action\draw\text\InsertSketchTextAction.cs" />
+    <Compile Include="bu\sketch\action\edit\copy\MoveOrCopyAction.cs" />
+    <Compile Include="bu\sketch\action\edit\copy\RotateOrCopyAction.cs" />
+    <Compile Include="bu\sketch\action\edit\extend\SketchExtendAction.cs" />
+    <Compile Include="bu\sketch\action\edit\fillet\CreateChamferAction.cs" />
+    <Compile Include="bu\sketch\action\edit\fillet\CreateFilletAction.cs" />
+    <Compile Include="bu\sketch\action\edit\mirror\SketchMirrorAction.cs" />
+    <Compile Include="bu\sketch\action\edit\offset\SketchOffsetAction.cs" />
+    <Compile Include="bu\sketch\action\edit\pattern\CreateCircularSketchStepAndRepeatAction.cs" />
+    <Compile Include="bu\sketch\action\edit\pattern\CreateLinearSketchStepAndRepeatAction.cs" />
+    <Compile Include="bu\sketch\action\edit\relation\AddDimensionAction.cs" />
+    <Compile Include="bu\sketch\action\edit\relation\ShowSketchRelationsAction.cs" />
+    <Compile Include="bu\sketch\action\edit\relation\SketchAddConstraintsAction.cs" />
+    <Compile Include="bu\sketch\action\edit\SwSketchEditActionBase.cs" />
+    <Compile Include="bu\sketch\action\edit\trim\SketchTrimAction.cs" />
+    <Compile Include="bu\sketch\action\entity\GetSketchEntityInfoAction.cs" />
+    <Compile Include="bu\sketch\action\sketch\EditSketchAction.cs" />
+    <Compile Include="bu\sketch\action\sketch\ExitSketchAction.cs" />
+    <Compile Include="bu\sketch\action\sketch\InsertSketchAction.cs" />
+    <Compile Include="bu\sketch\action\SwSketchActionBase.cs" />
+    <Compile Include="bu\sketch\cmd\EnumSwSketchCmdType.cs" />
+    <Compile Include="bu\sketch\SwBuSketchService.cs" />
+    <Compile Include="bu\sketch\utils\SketchManagerUtils.cs" />
+    <Compile Include="bu\sketch\vo\compose\cube\CreateCubeInVo.cs" />
+    <Compile Include="bu\sketch\vo\compose\cube\CreateCubeOutVo.cs" />
+    <Compile Include="bu\sketch\vo\compose\ladder\CreateLadderInVo.cs" />
+    <Compile Include="bu\sketch\vo\compose\ladder\CreateLadderOutVo.cs" />
+    <Compile Include="bu\sketch\vo\compose\pipe\CreateCirclePipeInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\arc\Create3PointArcInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\arc\CreateArcInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\arc\CreateTangentArcInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\circle\CreateCircleByRadiusInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\circle\CreateCircleInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\circle\PerimeterCircleInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\define\FullyDefineSketchInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\ellipse\CreateConicInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\ellipse\CreateEllipseInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\ellipse\CreateEllipticalArcInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\ellipse\CreateParabolaInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\line\CreateCenterLineInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\line\CreateLineInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\point\CreatePointInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\polygon\CreatePolygonInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\rect\Create3PointCenterRectangleInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\rect\Create3PointCornerRectangleInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\rect\CreateCenterRectangleInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\rect\CreateCornerRectangleInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\rect\CreateParallelogramInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\rect\CreateRectangleOutVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\SketchDrawInVoBase.cs" />
+    <Compile Include="bu\sketch\vo\draw\slot\CreateSketchSlot3PointArcInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\slot\CreateSketchSlotArcInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\slot\CreateSketchSlotCenterLineInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\slot\CreateSketchSlotLineInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\spline\CreateEquationSplineInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\spline\CreateSplineInVo.cs" />
+    <Compile Include="bu\sketch\vo\draw\spline\SplinePoint.cs" />
+    <Compile Include="bu\sketch\vo\draw\text\InsertSketchTextInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\copy\MoveOrCopyInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\copy\RotateOrCopyInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\extend\SketchExtendInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\fillet\CreateChamferInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\fillet\CreateFilletInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\mirror\SketchMirrorInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\offset\SketchOffsetInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\pattern\CreateCircularSketchStepAndRepeatInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\pattern\CreateLinearSketchStepAndRepeatInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\relation\AddDimensionInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\relation\ShowSketchRelationsInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\relation\SketchAddConstraintsInVo.cs" />
+    <Compile Include="bu\sketch\vo\edit\SketchEditInVoBase.cs" />
+    <Compile Include="bu\sketch\vo\edit\trim\SketchTrimInVo.cs" />
+    <Compile Include="bu\sketch\vo\entity\EntitySelectId.cs" />
+    <Compile Include="bu\sketch\vo\entity\GetSketchEntityInfoInVo.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchArcInfo.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchEllipseInfo.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchEntityConverter.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchEntityInfo.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchEntityItemInfo.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchLineInfo.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchMathPointInfo.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchParabolaInfo.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchPointInfo.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchSegmentInfo.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchSplineInfo.cs" />
+    <Compile Include="bu\sketch\vo\entity\SketchTextInfo.cs" />
+    <Compile Include="bu\sketch\vo\sketch\EditSketchInVo.cs" />
+    <Compile Include="bu\sketch\vo\sketch\ExitSketchInVo.cs" />
+    <Compile Include="bu\sketch\vo\sketch\InsertSketchInVo.cs" />
+    <Compile Include="bu\usecase\design\SwUseCaseDesignService.cs" />
+    <Compile Include="bu\usecase\excute\SwUseCaseExcuteService.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseInfo.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseInfoManager.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseItem.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseStepCmdInfo.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseStepCmdItem.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseStepInfo.cs" />
+    <Compile Include="bu\usecase\vo\SwUseCaseStepItem.cs" />
+    <Compile Include="swapipy.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bu\app\action\" />
+    <Folder Include="bu\app\cmd\" />
+    <Folder Include="bu\app\vo\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Xarial.XCad.SolidWorks.0.8.2\build\Xarial.XCad.SolidWorks.targets" Condition="Exists('..\packages\Xarial.XCad.SolidWorks.0.8.2\build\Xarial.XCad.SolidWorks.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Xarial.XCad.SolidWorks.0.8.2\build\Xarial.XCad.SolidWorks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xarial.XCad.SolidWorks.0.8.2\build\Xarial.XCad.SolidWorks.targets'))" />
+  </Target>
+</Project>

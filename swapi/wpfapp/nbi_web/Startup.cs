@@ -2,8 +2,8 @@
 using Owin;
 using System.Web.Http;
 
-[assembly: OwinStartup(typeof(wpfapp.nbi_web.Startup))]
-namespace wpfapp.nbi_web
+[assembly: OwinStartup(typeof(swapiapp.nbi_web.Startup))]
+namespace swapiapp.nbi_web
 {
     public class Startup
     {

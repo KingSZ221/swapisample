@@ -7,29 +7,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using wpfapp.bu.app;
-using wpfapp.bu.cmd;
-using wpfapp.bu.cmd.cmdtype;
-using wpfapp.bu.cmd.usecase.design;
-using wpfapp.bu.cmd.usecase.excute;
-using wpfapp.bu.feature;
-using wpfapp.bu.feature.cmd;
-using wpfapp.bu.file;
-using wpfapp.bu.file.cmd;
-using wpfapp.bu.log;
-using wpfapp.bu.sketch;
-using wpfapp.bu.sketch.action;
-using wpfapp.bu.sketch.vo.draw.spline;
-using wpfapp.bu.usecase.vo;
-using wpfapp.bu.file.vo;
-using wpfapp.ui.ai;
-using wpfapp.ui.prop;
-using wpfapp.utils.reflect;
-using wpfapp.basic.io;
-using wpfapp.bu.assembly;
-using wpfapp.bu.modeldoc;
+using swapiapp.ui.ai;
+using swapiapp.ui.prop;
+using swapilib.bu.modeldoc;
+using swapilib.bu.sketch;
+using swapilib.bu.feature;
+using swapilib.bu.assembly;
+using swapilib.bu.cmd.usecase.design;
+using swapilib.bu.usecase.vo;
+using swapilib.bu.cmd.cmdtype;
+using swapilib.bu.app;
+using swapilib.bu.cmd.usecase.excute;
+using swapilib.bu.file.vo;
+using swapilib.bu.file;
+using swapilib.bu.file.cmd;
+using swapilib.bu.sketch.action;
+using swapilib.bu.sketch.vo.draw.spline;
+using swapilib.basic.io;
+using swapilib.bu.feature.cmd;
+using swapilib.bu.log;
+using swapilib.bu.cmd;
+using swapiapp.ui.usecase;
 
-namespace wpfapp.ui.menu
+namespace swapiapp.ui.menu
 {
     public class SwUiMenuService
     {
@@ -391,7 +391,7 @@ namespace wpfapp.ui.menu
 
         private void Button_Click_DesignUseCase(object sender, RoutedEventArgs e)
         {
-            SwUseCaseDesignService.getInstance().showUseCaseListDialog();
+            SwUseCaseUiService.showUseCaseListDialog();
         }
 
         private void Button_Click_ExcuteUseCase(object sender, RoutedEventArgs arg2)
