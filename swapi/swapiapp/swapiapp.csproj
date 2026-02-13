@@ -212,6 +212,9 @@
     <None Include="res\SwApiWeb.postman_collection.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="res\usecase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="res\工程图测试1.SLDDRW">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
